@@ -194,7 +194,7 @@ export function ProjectsSection() {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:underline font-medium"
                       >
-                        <SiGithub className="w-3.5 h-3.5" />
+                        <SiGithub className="w-3.5 h-3.5" aria-hidden="true" />
                         <span>Source Code</span>
                         <ExternalLink className="w-3 h-3 text-on-surface-variant" />
                       </a>

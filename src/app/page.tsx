@@ -28,10 +28,11 @@ export default async function Home() {
             {/* Clean logo icon */}
             <div className="relative w-7 h-7 flex-shrink-0 flex items-center justify-center">
               <Image
-                src="/icon.png"
+                src="/icon-sm.png"
                 alt="Ugandhar Vaddi"
                 width={28}
                 height={28}
+                priority
                 className="w-full h-full object-contain rounded-md"
               />
             </div>

@@ -19,27 +19,32 @@ interface SocialIconProps {
 export function SocialIcon({ name, className = "w-5 h-5" }: SocialIconProps) {
   const norm = name.toLowerCase();
 
+  const iconProps = {
+    className,
+    "aria-hidden": "true" as const,
+  };
+
   switch (norm) {
     case "github":
-      return <SiGithub className={className} />;
+      return <SiGithub {...iconProps} />;
     case "linkedin":
-      return <FaLinkedin className={className} />;
+      return <FaLinkedin {...iconProps} />;
     case "youtube":
-      return <SiYoutube className={className} />;
+      return <SiYoutube {...iconProps} />;
     case "reddit":
-      return <SiReddit className={className} />;
+      return <SiReddit {...iconProps} />;
     case "instagram":
-      return <SiInstagram className={className} />;
+      return <SiInstagram {...iconProps} />;
     case "hackerrank":
-      return <SiHackerrank className={className} />;
+      return <SiHackerrank {...iconProps} />;
     case "blog":
-      return <BookOpen className={className} />;
+      return <BookOpen {...iconProps} />;
     case "website":
     case "globe":
-      return <Globe className={className} />;
+      return <Globe {...iconProps} />;
     case "code":
-      return <Code2 className={className} />;
+      return <Code2 {...iconProps} />;
     default:
-      return <ExternalLink className={className} />;
+      return <ExternalLink {...iconProps} />;
   }
 }

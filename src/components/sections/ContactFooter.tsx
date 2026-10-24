@@ -46,7 +46,7 @@ export function ContactFooter() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface/90 border border-outline-variant/60 text-foreground text-sm font-mono shadow-sm hover:bg-white dark:hover:bg-surface-container-highest hover:border-foreground/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 active:scale-95 active:translate-y-0"
             >
-              <FaLinkedin className="w-4 h-4 text-[#0a66c2]" />
+              <FaLinkedin className="w-4 h-4 text-[#0a66c2]" aria-hidden="true" />
               <span>Connect on LinkedIn</span>
             </a>
           )}

@@ -79,6 +79,7 @@ function DockIcon({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={label}
         className="focus:outline-none"
       >
         {content}
@@ -87,7 +88,7 @@ function DockIcon({
   }
 
   return (
-    <Link href={href} className="focus:outline-none">
+    <Link href={href} aria-label={label} className="focus:outline-none">
       {content}
     </Link>
   );
