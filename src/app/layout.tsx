@@ -18,8 +18,9 @@ const geistMono = Geist_Mono({
 const newsreader = Newsreader({
   variable: "--font-newsreader",
   subsets: ["latin"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   display: "swap",
+  preload: false,
 });
 
 export const viewport: Viewport = {
