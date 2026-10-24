@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Mode */
+    --background: 140 18% 98%;
+    --foreground: 150 5% 10%;
+    
+    --primary: 162 100% 21%;
+    --primary-hover: 162 100% 16%;
+    --primary-foreground: 0 0% 100%;
+    --primary-container: 153 87% 76%;
+    --primary-on-container: 156 100% 7%;
+    
+    --surface: 140 18% 98%;
+    --surface-container-lowest: 0 0% 100%;
+    --surface-container-low: 140 14% 96%;
+    --surface-container: 140 10% 94%;
+    --surface-container-high: 140 8% 92%;
+    --surface-container-highest: 140 6% 89%;
+    
+    --on-surface: 150 5% 10%;
+    --on-surface-variant: 150 4% 26%;
+    
+    --outline: 150 4% 46%;
+    --outline-variant: 150 8% 77%;
+  }
+
+  .dark {
+    /* Dark Mode (Default) matching blog.ugandhar.in */
+    --background: 160 7% 7%;
+    --foreground: 140 5% 88%;
+    
+    --primary: 155 60% 65%;
+    --primary-hover: 155 70% 75%;
+    --primary-foreground: 160 100% 11%;
+    --primary-container: 162 100% 16%;
+    --primary-on-container: 153 87% 76%;
+    
+    --surface: 160 7% 7%;
+    --surface-container-lowest: 160 8% 5%;
+    --surface-container-low: 160 6% 9%;
+    --surface-container: 160 5% 11%;
+    --surface-container-high: 160 4% 15%;
+    --surface-container-highest: 160 3% 20%;
+    
+    --on-surface: 140 5% 88%;
+    --on-surface-variant: 150 7% 77%;
+    
+    --outline: 150 3% 55%;
+    --outline-variant: 150 4% 26%;
+  }
+
+  * {
+    border-color: hsl(var(--outline-variant) / 0.35);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--on-surface));
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--surface-container-highest));
+  border-radius: 9999px;
+  border: 2px solid hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.6);
+}
+
+/* Radial Glow Background */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, hsl(var(--outline-variant) / 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--outline-variant) / 0.08) 1px, transparent 1px);
+}
+
+.radial-mask {
+  mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+}
