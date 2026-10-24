@@ -21,8 +21,8 @@ export default async function Home() {
 
   return (
     <main className="min-h-screen bg-background text-on-surface relative selection:bg-foreground/15 pb-28 sm:pb-24">
-      {/* Top Glass Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3.5 backdrop-blur-md bg-background/85 border-b border-outline-variant/25 transition-all">
+      {/* Top Navigation Header */}
+      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3.5 bg-background/95 sm:bg-background/85 sm:backdrop-blur-md border-b border-outline-variant/25 transition-all">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="#hero" className="flex items-center gap-2.5 group">
             {/* Clean logo icon */}

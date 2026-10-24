@@ -26,7 +26,7 @@ export function ExperienceSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         {/* Company selector tabs */}
-        <div className="md:col-span-4 flex flex-row md:flex-col gap-2.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+        <div className="md:col-span-4 flex flex-row md:flex-col gap-2.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none touch-pan-x overscroll-x-contain">
           {EXPERIENCES.map((exp, idx) => {
             const isSelected = selectedIdx === idx;
             return (
