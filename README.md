@@ -1,85 +1,143 @@
-# Ugandhar Vaddi — Personal Engineering Portfolio 🌐
+# Ugandhar Vaddi — Personal Engineering Portfolio
 
-[![Website](https://img.shields.io/badge/Website-ugandhar.in-047857?style=flat-square&logo=googlechrome&logoColor=white)](https://ugandhar.in)
-[![Blog](https://img.shields.io/badge/Blog-blog.ugandhar.in-10b981?style=flat-square&logo=hashnode&logoColor=white)](https://blog.ugandhar.in)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](./LICENSE)
-[![Next.js 15](https://img.shields.io/badge/Next.js-15.1-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+Official repository for [ugandhar.in](https://ugandhar.in).
 
-An ultra-responsive, dynamic portfolio for **Ugandhar Vaddi** built with **Next.js 15 (App Router)**, **React 19**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**.
-
-Designed with a high-contrast Notion / Claude terminal aesthetic, in complete visual harmony with [blog.ugandhar.in](https://blog.ugandhar.in).
+Built with **Next.js 15 (App Router)**, **React 19**, **TypeScript**, **Tailwind CSS**, and **Framer Motion**. Designed for high performance, accessibility, and visual cohesion with [blog.ugandhar.in](https://blog.ugandhar.in).
 
 ---
 
-## ✨ Features
+## Architecture Overview
 
-- 🎯 **Design Cohesion:** Styled with Material Design 3 emerald/forest palette, paired with `Geist Sans`, `Geist Mono`, and `Newsreader` serif typography.
-- 🌓 **High-Contrast Dark & Light Mode:** Optimized contrast ratios in both light and dark modes with flash-free inline hydration.
-- 🧲 **Magnetic Floating Dock:** Fluid macOS/Dock-style navigation with spring magnification on desktop and a compact, stable tap bar on mobile devices.
-- ⚡ **Dynamic Blog Sync:** Automatically pulls live RSS posts from `https://blog.ugandhar.in/feed.xml` via Next.js ISR (revalidated hourly) with instant client-side refresh.
-- 📺 **Interactive Media Showcase:** Direct video cards linking to hands-on Python/Pandas workshops and creative storytelling on [@uga961](https://www.youtube.com/@uga961).
-- ⌨️ **Command Palette (`⌘K` / `Ctrl+K`):** Spotlight-style quick search to jump to sections, copy email with confetti, toggle themes, or download the resume.
-- 🔒 **Enterprise & IP Protection:** Proprietary work (e.g. Draw2Spec, SpecMap) is showcased with technical architecture summaries while strictly preventing link leakage.
-
----
-
-## 🛠 Tech Stack
-
-- **Framework:** Next.js 15 (App Router)
-- **Library:** React 19
-- **Language:** TypeScript 5
-- **Styling:** Tailwind CSS + PostCSS
-- **Animations:** Framer Motion (`framer-motion`)
-- **Icons:** `lucide-react` & `react-icons` (Simple Icons & FontAwesome 6)
-- **Feedback & Micro-interactions:** `canvas-confetti`
-- **Deployment:** Vercel
+- **Framework**: Next.js 15 App Router with Turbopack support.
+- **Styling**: Tailwind CSS with Material Design 3 surface tokens and custom high-contrast dark/light mode.
+- **Typography**: Geist Sans (interface), Geist Mono (data and code), and Newsreader (editorial accents).
+- **Navigation**: Floating magnetic dock with Framer Motion spring physics on desktop, and a static tap bar on mobile devices.
+- **Dynamic Content**: Live RSS synchronization from `https://blog.ugandhar.in/feed.xml` with Incremental Static Regeneration (ISR).
+- **Security**: Strict separation of public and proprietary enterprise project metadata.
 
 ---
 
-## 📁 How to Update Your Content
+## Content Management Guide
 
-All portfolio data is decoupled and centralized in a single configuration file:
+All portfolio data is centralized in a single configuration file:
 
-```text
+```
 src/data/portfolio.ts
 ```
 
-- **Add an Experience:** Append an object to the `EXPERIENCES` array.
-- **Add a Project:** Append an object to the `PROJECTS` array (set `isProprietary: true` if no external repo link should be exposed).
-- **Update YouTube Videos:** Add video IDs and titles to `YOUTUBE_INFO.featuredVideos`.
-- **Update Socials / Bio:** Edit `PERSONAL_INFO` and `SOCIAL_LINKS`.
+### 1. How to Add a New Experience
+
+Open `src/data/portfolio.ts` and append a new object to the `EXPERIENCES` array:
+
+```typescript
+{
+  company: "Company Name",
+  role: "Job Title",
+  period: "Month Year – Month Year",
+  location: "City, Country (On-site / Remote)",
+  type: "Internship", // "Internship" | "Apprenticeship" | "Full-time" | "Contract"
+  team: "Optional Team or Division",
+  description: "Brief summary of your primary responsibility.",
+  bullets: [
+    "Key achievement or technical contribution.",
+    "Performance metric or architecture improvement.",
+    "Tooling or framework implemented."
+  ],
+  skills: ["Skill 1", "Skill 2", "Skill 3"],
+  repoUrl: "https://github.com/uga961/your-repo" // Optional practice repo link
+}
+```
+
+### 2. How to Add a New Project
+
+To add a public open-source project or an internal proprietary project, append an object to the `PROJECTS` array in `src/data/portfolio.ts`:
+
+**Standard Public Project:**
+```typescript
+{
+  id: "project-id",
+  title: "Project Title",
+  subtitle: "One-line descriptive subtitle",
+  description: "Detailed description of what the project does and how it was built.",
+  category: "AI & ML", // "AI & ML" | "Hardware & VLSI" | "Desktop & Web" | "Systems"
+  tags: ["Python", "FastAPI", "React"],
+  metrics: "Optional key metric (e.g. 30% latency reduction)",
+  githubUrl: "https://github.com/uga961/project-repo",
+  liveUrl: "https://project.ugandhar.in", // Optional live link
+  featured: true,
+  date: "Month Year"
+}
+```
+
+**Proprietary Project (Hides External Links):**
+```typescript
+{
+  id: "internal-tool",
+  title: "Internal Tool Name",
+  subtitle: "Enterprise Data Extraction System",
+  description: "High-level summary of the architecture and business impact.",
+  category: "AI & ML",
+  tags: ["Google Gemini Vision", "Vertex AI", "Python"],
+  isProprietary: true, // Displays 'Proprietary' badge with NO source links
+  featured: true,
+  date: "Month Year"
+}
+```
+
+### 3. How to Update or Add YouTube Playlists
+
+In `src/data/portfolio.ts`, navigate to `YOUTUBE_INFO.playlists`. Edit an existing playlist or append a new one:
+
+```typescript
+{
+  title: "Learn PYTHON in 5 Days or Less",
+  description: "Complete hands-on beginner to intermediate series covering Python fundamentals.",
+  playlistUrl: "https://www.youtube.com/playlist?list=YOUR_PLAYLIST_ID",
+  topics: ["Google Colab", "NumPy", "Pandas", "OOP"]
+}
+```
+
+### 4. How to Update Your Resume or Profile Photo
+
+- **Resume**: Replace the PDF at `public/resume/Resume.pdf`. The website opens it directly in a browser tab without forcing a file download.
+- **Profile Photo**: Replace the image at `public/avatar/profile.jpg`.
 
 ---
 
-## 🚀 Local Development
+## Local Development
 
 ```bash
-# 1. Install dependencies
+# Install dependencies
 npm install
 
-# 2. Run local dev server with Turbopack
+# Start development server with Turbopack
 npm run dev
 
-# 3. Open browser
+# Open application
 http://localhost:3000
 ```
 
 ---
 
-## 🚢 Production Build & Deployment
+## Production Build & Deployment
 
 ```bash
-# Build production bundle
+# Build optimized production bundle
 npm run build
 
 # Start production server
 npm start
 ```
 
-Deployable with zero configuration on **[Vercel](https://vercel.com)**. Connect custom domain `ugandhar.in` in Vercel settings.
+### Vercel Deployment
+
+1. Import the `uga961/portfolio` repository into Vercel.
+2. Ensure Framework Preset is detected as **Next.js**.
+3. Under Project Settings > Domains, assign `ugandhar.in` and `www.ugandhar.in`.
+4. Point DNS `A` record to `76.76.21.21` and `CNAME` for `www` to `cname.vercel-dns.com`.
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](./LICENSE) © 2026 Ugandhar Vaddi.

@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin, ExternalLink, GitBranch, Terminal } from "lucide-react";
+import { Briefcase, Calendar, MapPin, ExternalLink, GitBranch } from "lucide-react";
 import { EXPERIENCES } from "@/data/portfolio";
 import { SpotlightCard } from "../ui/SpotlightCard";
 
@@ -11,8 +11,8 @@ export function ExperienceSection() {
 
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      <div className="space-y-3 mb-12 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30 text-xs font-mono text-primary">
+      <div className="space-y-3 mb-10 text-center sm:text-left">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30 text-xs font-mono text-emerald-800 dark:text-primary font-semibold">
           <Briefcase className="w-3.5 h-3.5" />
           <span>Work & Apprenticeships</span>
         </div>
@@ -20,47 +20,51 @@ export function ExperienceSection() {
           Engineering Experience
         </h2>
         <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl">
-          From industry internships at McKinsey and enterprise .NET development at Cognizant, to low-level Linux systems programming and UAV avionics.
+          From industry engineering at McKinsey and enterprise .NET development at Cognizant, to low-level Linux systems programming and UAV avionics.
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
         {/* Company selector tabs */}
-        <div className="md:col-span-4 flex flex-row md:flex-col gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
+        <div className="md:col-span-4 flex flex-row md:flex-col gap-2.5 overflow-x-auto pb-2 md:pb-0 scrollbar-none">
           {EXPERIENCES.map((exp, idx) => {
             const isSelected = selectedIdx === idx;
             return (
               <button
                 key={exp.company}
                 onClick={() => setSelectedIdx(idx)}
-                className={`flex-shrink-0 text-left p-3.5 rounded-xl border transition-all duration-200 ${
+                className={`flex-shrink-0 text-left p-4 rounded-xl border transition-all duration-150 ${
                   isSelected
-                    ? "bg-surface-container-high border-primary/50 shadow-sm"
-                    : "bg-surface-container/40 border-outline-variant/20 hover:bg-surface-container hover:border-outline-variant/40"
+                    ? "bg-surface-container-high border-primary/60 dark:border-primary shadow-sm ring-1 ring-primary/25"
+                    : "bg-surface-container/50 border-outline-variant/30 hover:bg-surface-container hover:border-outline-variant/60"
                 }`}
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2">
                   <span
-                    className={`text-sm font-semibold truncate ${
-                      isSelected ? "text-primary" : "text-foreground"
+                    className={`text-sm font-bold truncate ${
+                      isSelected
+                        ? "text-emerald-900 dark:text-primary"
+                        : "text-foreground"
                     }`}
                   >
                     {exp.company}
                   </span>
+
                   {exp.type === "Internship" ? (
-                    <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-surface-container-highest text-on-surface-variant">
+                    <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-surface-container-highest border border-outline-variant/40 text-foreground/80 flex-shrink-0">
                       Intern
                     </span>
                   ) : (
-                    <span className="text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-surface-container-highest text-emerald-400">
+                    <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-950 border border-emerald-300 dark:bg-emerald-950/70 dark:text-emerald-300 dark:border-emerald-700/60 flex-shrink-0">
                       Apprentice
                     </span>
                   )}
                 </div>
-                <div className="text-xs text-on-surface-variant truncate mt-1">
+
+                <div className="text-xs font-medium text-foreground/80 truncate mt-1">
                   {exp.role}
                 </div>
-                <div className="text-[11px] font-mono text-on-surface-variant/70 mt-1">
+                <div className="text-[11px] font-mono font-medium text-on-surface-variant mt-1.5">
                   {exp.period}
                 </div>
               </button>
@@ -73,9 +77,9 @@ export function ExperienceSection() {
           {EXPERIENCES[selectedIdx] && (
             <motion.div
               key={EXPERIENCES[selectedIdx].company}
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
             >
               <SpotlightCard className="p-6 sm:p-8 space-y-6">
                 <div>
@@ -83,12 +87,12 @@ export function ExperienceSection() {
                     <h3 className="text-xl sm:text-2xl font-bold text-foreground">
                       {EXPERIENCES[selectedIdx].role}
                     </h3>
-                    <span className="text-xs font-mono px-2.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary">
+                    <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-950 border border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-700/60">
                       {EXPERIENCES[selectedIdx].type}
                     </span>
                   </div>
 
-                  <div className="text-base font-medium text-primary mt-1">
+                  <div className="text-base font-semibold text-emerald-900 dark:text-primary mt-1">
                     {EXPERIENCES[selectedIdx].company}
                     {EXPERIENCES[selectedIdx].team && (
                       <span className="text-on-surface-variant font-normal">
@@ -98,7 +102,7 @@ export function ExperienceSection() {
                     )}
                   </div>
 
-                  <div className="flex flex-wrap items-center gap-4 text-xs font-mono text-on-surface-variant mt-3">
+                  <div className="flex flex-wrap items-center gap-4 text-xs font-mono font-medium text-on-surface-variant mt-3">
                     <span className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5 text-primary" />
                       {EXPERIENCES[selectedIdx].period}
@@ -110,19 +114,19 @@ export function ExperienceSection() {
                   </div>
                 </div>
 
-                <p className="text-sm text-on-surface-variant leading-relaxed">
+                <p className="text-sm text-foreground/90 leading-relaxed font-sans">
                   {EXPERIENCES[selectedIdx].description}
                 </p>
 
                 {/* Key Achievements Bullet points */}
-                <div className="space-y-2.5">
-                  <div className="text-xs font-mono uppercase tracking-wider text-on-surface-variant">
+                <div className="space-y-3">
+                  <div className="text-xs font-mono font-bold uppercase tracking-wider text-foreground/80">
                     Key Contributions & Focus Areas
                   </div>
-                  <ul className="space-y-2 text-sm text-on-surface-variant">
+                  <ul className="space-y-2.5 text-sm text-foreground/90">
                     {EXPERIENCES[selectedIdx].bullets.map((b, i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <span className="text-primary mt-1 font-mono">▸</span>
+                        <span className="text-primary mt-0.5 font-mono font-bold">▸</span>
                         <span className="leading-relaxed">{b}</span>
                       </li>
                     ))}
@@ -136,7 +140,7 @@ export function ExperienceSection() {
                       href={EXPERIENCES[selectedIdx].repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant/40 bg-surface-container-high/60 hover:bg-surface-container-highest hover:border-primary/50 text-xs font-mono text-primary transition-all"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant/50 bg-surface-container-high hover:border-primary text-xs font-mono font-medium text-emerald-900 dark:text-primary transition-all"
                     >
                       <GitBranch className="w-3.5 h-3.5" />
                       <span>View Program Practice Repo</span>
@@ -146,15 +150,15 @@ export function ExperienceSection() {
                 )}
 
                 {/* Skills tags */}
-                <div className="pt-2 border-t border-outline-variant/20">
-                  <div className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant mb-2">
+                <div className="pt-3 border-t border-outline-variant/30">
+                  <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-foreground/80 mb-2.5">
                     Technologies & Skills
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {EXPERIENCES[selectedIdx].skills.map((skill) => (
                       <span
                         key={skill}
-                        className="text-xs font-mono px-2.5 py-1 rounded-md bg-surface-container-highest/60 border border-outline-variant/30 text-on-surface"
+                        className="text-xs font-mono font-medium px-2.5 py-1 rounded-md bg-surface-container-highest/80 border border-outline-variant/40 text-foreground"
                       >
                         {skill}
                       </span>

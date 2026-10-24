@@ -1,13 +1,14 @@
 /**
  * =============================================================================
- * UGANDHAR VADDI — PORTFOLIO DATA CONFIGURATION
+ * UGANDHAR VADDI — PORTFOLIO CONFIGURATION & DATA SOURCE
  * =============================================================================
- * This file is your single source of truth for the entire portfolio website.
+ * Central data source for ugandhar.in.
  * 
- * TO UPDATE YOUR SITE:
- * - Add a new job/role: Add an object to EXPERIENCES array below.
- * - Add a new project: Add an object to PROJECTS array below.
- * - Add or change social links: Edit SOCIAL_LINKS array.
+ * TUTORIALS:
+ * 1. ADD NEW EXPERIENCE: Add an object to EXPERIENCES array below.
+ * 2. ADD NEW PROJECT: Add an object to PROJECTS array below.
+ * 3. UPDATE YOUTUBE PLAYLIST: Change 'playlistUrl' inside YOUTUBE_INFO below.
+ * 4. UPDATE RESUME: Place new PDF in public/resume/ and update 'resumePath'.
  * =============================================================================
  */
 
@@ -70,13 +71,11 @@ export interface BlogPost {
   tags: string[];
 }
 
-export interface YouTubeVideo {
-  id: string;
+export interface YouTubePlaylist {
   title: string;
-  url: string;
-  thumbnailUrl: string;
-  category: "Python Series" | "Data Science" | "Speed Typing" | "Creative / Film";
-  date: string;
+  description: string;
+  playlistUrl: string;
+  topics: string[];
 }
 
 export interface YouTubeContent {
@@ -84,7 +83,8 @@ export interface YouTubeContent {
   handle: string;
   url: string;
   description: string;
-  featuredVideos: YouTubeVideo[];
+  // Change or add your YouTube playlist URLs here:
+  playlists: YouTubePlaylist[];
 }
 
 export const PERSONAL_INFO = {
@@ -153,14 +153,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     icon: "Instagram",
     handle: "@ugandhar_961",
     color: "#e1306c",
-    category: "social",
-  },
-  {
-    name: "HackerRank",
-    url: "https://www.hackerrank.com/profile/42130516_ECE",
-    icon: "Code",
-    handle: "42130516_ECE",
-    color: "#00ea64",
     category: "social",
   },
 ];
@@ -295,7 +287,7 @@ export const PROJECTS: Project[] = [
     tags: [".NET 8", "C#", "WPF", "Windows API", "Clean Architecture", "Open Source"],
     metrics: "Production v2.1 Release · Active system tray & media coordination",
     githubUrl: "https://github.com/uga961/StayActive",
-    blogSlug: "why-i-built-stayactive-a-small-reminder-to-take-care-of-myself",
+    blogSlug: "why-i-built-stayactive",
     featured: true,
     date: "Sep 2026",
     stars: 1,
@@ -535,47 +527,36 @@ export const YOUTUBE_INFO: YouTubeContent = {
   handle: "@uga961",
   url: "https://www.youtube.com/@uga961",
   description:
-    "Practical walkthroughs in Python, data cleaning with Pandas, touch-typing mastery, and creative storytelling.",
-  featuredVideos: [
+    "Hands-on coding workshops in Python, data cleaning with Pandas, touch-typing practice, and independent creative films.",
+  // TO UPDATE PLAYLISTS: Edit or add items to this array:
+  playlists: [
     {
-      id: "T-u2sO0edDI",
-      title: "Data Visualization in Python | Matplotlib, Seaborn & Pandas Tutorial",
-      url: "https://www.youtube.com/watch?v=T-u2sO0edDI",
-      thumbnailUrl: "https://img.youtube.com/vi/T-u2sO0edDI/hqdefault.jpg",
-      category: "Data Science",
-      date: "Hands-on Workshop",
+      title: "Learn PYTHON in 5 Days or Less",
+      description: "Complete hands-on beginner to intermediate Python series covering Google Colab, Data Structures, OOPs, NumPy, and Pandas Data Analytics.",
+      // Paste your full YouTube playlist URL here:
+      playlistUrl: "https://www.youtube.com/@uga961/playlists",
+      topics: ["Google Colab", "Data Structures", "OOPs & NumPy", "Pandas Analytics"],
     },
     {
-      id: "O36QgaTrp-0",
-      title: "[Day 05] Learn PYTHON in 5 Days: PANDAS Data Cleaning & Analytics",
-      url: "https://www.youtube.com/watch?v=O36QgaTrp-0",
-      thumbnailUrl: "https://img.youtube.com/vi/O36QgaTrp-0/hqdefault.jpg",
-      category: "Python Series",
-      date: "Day 05 Tutorial",
+      title: "Python Data Visualization Mastery",
+      description: "Practical walkthroughs creating line charts, correlation matrices, heatmaps, and publication-ready charts using Matplotlib, Seaborn, and Pandas.",
+      // Paste your full YouTube playlist or video URL here:
+      playlistUrl: "https://www.youtube.com/watch?v=T-u2sO0edDI",
+      topics: ["Matplotlib", "Seaborn", "Correlation Plots", "Heatmaps"],
     },
     {
-      id: "zZlbW3m_2Rk",
-      title: "[Day 04] Learn PYTHON in 5 Days: PANDAS Import & Manipulation",
-      url: "https://www.youtube.com/watch?v=zZlbW3m_2Rk",
-      thumbnailUrl: "https://img.youtube.com/vi/zZlbW3m_2Rk/hqdefault.jpg",
-      category: "Python Series",
-      date: "Day 04 Tutorial",
+      title: "Typing Practice & Speed Sessions",
+      description: "Daily typing routines, technique breakdown, and progress tracking towards fast and accurate touch typing.",
+      // Paste your full YouTube playlist or video URL here:
+      playlistUrl: "https://www.youtube.com/watch?v=y-RCOEktz4E",
+      topics: ["Touch Typing", "Speed Tracking", "Muscle Memory"],
     },
     {
-      id: "bIzV_ZHJ3SY",
-      title: "[Day 03] Learn PYTHON in 5 Days: OOPs & NUMPY Arrays",
-      url: "https://www.youtube.com/watch?v=bIzV_ZHJ3SY",
-      thumbnailUrl: "https://img.youtube.com/vi/bIzV_ZHJ3SY/hqdefault.jpg",
-      category: "Python Series",
-      date: "Day 03 Tutorial",
-    },
-    {
-      id: "y-RCOEktz4E",
-      title: "Learning How to Type: High Speed Typing Practice Routine",
-      url: "https://www.youtube.com/watch?v=y-RCOEktz4E",
-      thumbnailUrl: "https://img.youtube.com/vi/y-RCOEktz4E/hqdefault.jpg",
-      category: "Speed Typing",
-      date: "Day 06 Routine",
+      title: "Independent Short Films & Filmmaking",
+      description: "Creative storytelling experiments exploring cinematography, color grading, sound design, and pacing, including 'The Fake'.",
+      // Paste your creative playlist or channel link here:
+      playlistUrl: "https://www.youtube.com/@uga961",
+      topics: ["Cinematography", "Direction", "Pacing", "Short Films"],
     },
   ],
 };

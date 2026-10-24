@@ -11,13 +11,11 @@ import {
 } from "framer-motion";
 import {
   Home,
-  User,
   Briefcase,
   FolderGit2,
   BookOpen,
   Youtube,
   Mail,
-  Command,
 } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -25,9 +23,8 @@ import { cn } from "@/lib/utils";
 interface DockItemProps {
   mouseX: MotionValue<number>;
   label: string;
-  href?: string;
+  href: string;
   isExternal?: boolean;
-  onClick?: () => void;
   icon: React.ReactNode;
   isMobile: boolean;
 }
@@ -37,7 +34,6 @@ function DockIcon({
   label,
   href,
   isExternal,
-  onClick,
   icon,
   isMobile,
 }: DockItemProps) {
@@ -50,8 +46,8 @@ function DockIcon({
     return val - bounds.x - bounds.width / 2;
   });
 
-  const widthSync = useTransform(distance, [-120, 0, 120], [38, 52, 38]);
-  const width = useSpring(widthSync, { mass: 0.1, stiffness: 160, damping: 14 });
+  const widthSync = useTransform(distance, [-100, 0, 100], [38, 48, 38]);
+  const width = useSpring(widthSync, { mass: 0.1, stiffness: 200, damping: 20 });
 
   const content = (
     <motion.div
@@ -66,57 +62,38 @@ function DockIcon({
     >
       {/* Tooltip on desktop only */}
       {!isMobile && hovered && (
-        <motion.div
-          initial={{ opacity: 0, y: 10, scale: 0.9 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: 5 }}
-          className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-surface-container-highest px-2 py-0.5 text-[11px] font-mono font-medium text-foreground shadow-lg border border-outline-variant/40 pointer-events-none z-50"
-        >
+        <div className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-surface-container-highest px-2 py-0.5 text-[11px] font-mono font-medium text-foreground shadow-lg border border-outline-variant/40 pointer-events-none z-50 animate-in fade-in zoom-in-95 duration-100">
           {label}
           {isExternal && <span className="ml-1 text-primary text-[10px]">↗</span>}
-        </motion.div>
+        </div>
       )}
-      <div className="flex items-center justify-center w-4 h-4">{icon}</div>
+      <div className="flex items-center justify-center w-4 h-4 pointer-events-none">
+        {icon}
+      </div>
     </motion.div>
   );
 
-  if (onClick) {
+  if (isExternal) {
     return (
-      <button type="button" onClick={onClick} className="focus:outline-none">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="focus:outline-none"
+      >
         {content}
-      </button>
+      </a>
     );
   }
 
-  if (href) {
-    if (isExternal) {
-      return (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="focus:outline-none"
-        >
-          {content}
-        </a>
-      );
-    }
-    return (
-      <Link href={href} className="focus:outline-none">
-        {content}
-      </Link>
-    );
-  }
-
-  return content;
+  return (
+    <Link href={href} className="focus:outline-none">
+      {content}
+    </Link>
+  );
 }
 
-interface MagneticDockProps {
-  onOpenCommandPalette?: () => void;
-  className?: string;
-}
-
-export function MagneticDock({ onOpenCommandPalette, className }: MagneticDockProps) {
+export function MagneticDock({ className }: { className?: string }) {
   const mouseX = useMotionValue(Infinity);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -131,19 +108,14 @@ export function MagneticDock({ onOpenCommandPalette, className }: MagneticDockPr
 
   return (
     <div
+      onMouseMove={(e) => !isMobile && mouseX.set(e.clientX)}
+      onMouseLeave={() => !isMobile && mouseX.set(Infinity)}
       className={cn(
-        "fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center max-w-[calc(100vw-1rem)] px-1",
+        "fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center pointer-events-auto",
         className
       )}
     >
-      <motion.div
-        onMouseMove={(e) => !isMobile && mouseX.set(e.pageX)}
-        onMouseLeave={() => !isMobile && mouseX.set(Infinity)}
-        initial={{ y: 50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.4, ease: "easeOut" }}
-        className="flex items-center gap-1 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full border border-outline-variant/40 bg-surface-container-low/90 backdrop-blur-xl shadow-2xl overflow-x-auto scrollbar-none"
-      >
+      <div className="flex items-center gap-1 sm:gap-2 px-2.5 sm:px-3 py-1.5 sm:py-2 rounded-full border border-outline-variant/40 bg-surface-container-low/95 backdrop-blur-xl shadow-2xl overflow-visible">
         <DockIcon
           mouseX={mouseX}
           label="Home"
@@ -193,20 +165,10 @@ export function MagneticDock({ onOpenCommandPalette, className }: MagneticDockPr
 
         <div className="w-[1px] h-5 bg-outline-variant/40 mx-0.5 sm:mx-1 flex-shrink-0" />
 
-        {onOpenCommandPalette && (
-          <DockIcon
-            mouseX={mouseX}
-            label="Command (⌘K)"
-            onClick={onOpenCommandPalette}
-            icon={<Command className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
-            isMobile={isMobile}
-          />
-        )}
-
         <div className="flex items-center justify-center pl-0.5 sm:pl-1 flex-shrink-0">
           <ThemeToggle />
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

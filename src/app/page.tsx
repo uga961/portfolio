@@ -10,22 +10,22 @@ import { EducationSection } from "@/components/sections/EducationSection";
 import { WritingSection } from "@/components/sections/WritingSection";
 import { MediaSection } from "@/components/sections/MediaSection";
 import { ContactFooter } from "@/components/sections/ContactFooter";
-import { PortfolioNavShell } from "@/components/ui/PortfolioNavShell";
+import { MagneticDock } from "@/components/ui/MagneticDock";
 import { PERSONAL_INFO } from "@/data/portfolio";
 import { getLiveBlogPosts } from "@/lib/blog";
 
-export const revalidate = 3600; // Revalidate every hour for dynamic blog updates
+export const revalidate = 3600; // Hourly ISR for automatic blog synchronization
 
 export default async function Home() {
   const liveBlogPosts = await getLiveBlogPosts();
 
   return (
-    <main className="min-h-screen bg-background text-on-surface relative selection:bg-primary/20 pb-20 sm:pb-24">
+    <main className="min-h-screen bg-background text-on-surface relative selection:bg-primary/20 pb-28 sm:pb-24">
       {/* Top Glass Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3 backdrop-blur-md bg-background/85 border-b border-outline-variant/20 transition-all">
+      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3.5 backdrop-blur-md bg-background/85 border-b border-outline-variant/20 transition-all">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="#hero" className="flex items-center gap-2.5 group">
-            {/* Clean, perfectly aligned logo icon */}
+            {/* Clean logo icon */}
             <div className="relative w-7 h-7 flex-shrink-0 flex items-center justify-center">
               <Image
                 src="/icon.png"
@@ -75,8 +75,8 @@ export default async function Home() {
 
       <ContactFooter />
 
-      {/* Client navigation shell: Floating Magnetic Dock + Command Palette */}
-      <PortfolioNavShell />
+      {/* Floating Magnetic Dock Navigation */}
+      <MagneticDock />
     </main>
   );
 }

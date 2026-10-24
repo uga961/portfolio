@@ -4,13 +4,12 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import {
-  Download,
+  FileText,
   Copy,
   Check,
   ArrowDown,
   Sparkles,
   MapPin,
-  ExternalLink,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/portfolio";
@@ -34,7 +33,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[90vh] flex flex-col items-center justify-center pt-24 pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-[88vh] flex flex-col items-center justify-center pt-24 pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 dark:bg-primary/15 rounded-full blur-[140px] pointer-events-none -z-10" />
@@ -141,13 +140,15 @@ export function HeroSection() {
             <ArrowDown className="w-4 h-4" />
           </a>
 
+          {/* Resume opens in new browser tab without downloading */}
           <a
             href={PERSONAL_INFO.resumePath}
-            download="Ugandhar_Vaddi_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface-container border border-outline-variant/60 text-foreground font-medium text-sm hover:bg-surface-container-high hover:border-primary/50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
           >
-            <Download className="w-4 h-4 text-primary" />
-            <span>Resume (PDF)</span>
+            <FileText className="w-4 h-4 text-primary" />
+            <span>View Resume (PDF)</span>
           </a>
 
           <button

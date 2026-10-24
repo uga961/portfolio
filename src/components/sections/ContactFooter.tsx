@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Copy, Check, Download, ArrowUp, Globe, Clock, Heart } from "lucide-react";
+import { Mail, Copy, Check, FileText, ArrowUp, Globe, Clock } from "lucide-react";
 import confetti from "canvas-confetti";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/portfolio";
 import { SocialIcon } from "../ui/SocialIcons";
@@ -29,7 +29,7 @@ export function ContactFooter() {
   return (
     <footer id="contact" className="pt-20 pb-32 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-16">
       <SpotlightCard className="p-8 sm:p-12 text-center space-y-6 border-primary/30">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-primary">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono text-emerald-800 dark:text-primary font-semibold">
           <Mail className="w-3.5 h-3.5" />
           <span>Get in Touch</span>
         </div>
@@ -45,7 +45,7 @@ export function ContactFooter() {
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
           <a
             href={`mailto:${PERSONAL_INFO.email}`}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary-hover shadow-glow-sm transition-all hover:scale-105 active:scale-95"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary-hover shadow-sm transition-all hover:scale-105 active:scale-95"
           >
             <Mail className="w-4 h-4" />
             <span>Send an Email</span>
@@ -53,7 +53,7 @@ export function ContactFooter() {
 
           <button
             onClick={handleCopyEmail}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface-container border border-outline-variant/40 text-foreground text-sm font-mono hover:bg-surface-container-high hover:border-primary/50 transition-all active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface-container border border-outline-variant/50 text-foreground text-sm font-mono hover:bg-surface-container-high hover:border-primary/50 transition-all active:scale-95"
           >
             {copied ? (
               <>
@@ -68,13 +68,15 @@ export function ContactFooter() {
             )}
           </button>
 
+          {/* View resume in new tab without downloading */}
           <a
             href={PERSONAL_INFO.resumePath}
-            download="Ugandhar_Vaddi_Resume.pdf"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface-container border border-outline-variant/40 text-on-surface text-sm font-mono hover:bg-surface-container-high hover:border-primary/50 transition-all active:scale-95"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface-container border border-outline-variant/50 text-foreground text-sm font-mono hover:bg-surface-container-high hover:border-primary/50 transition-all active:scale-95"
           >
-            <Download className="w-4 h-4 text-primary" />
-            <span>Resume</span>
+            <FileText className="w-4 h-4 text-primary" />
+            <span>View Resume</span>
           </a>
         </div>
 
