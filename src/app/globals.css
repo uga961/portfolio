@@ -26,6 +26,12 @@
     
     --outline: 48 10% 65%;
     --outline-variant: 48 12% 78%;
+
+    /* Dynamic Card Spotlight & Hover Sheen */
+    --spotlight-surface: rgba(255, 255, 255, 0.85);
+    --spotlight-border: rgba(26, 26, 23, 0.16);
+    --card-shadow: 0 1px 3px 0 rgba(35, 30, 20, 0.04), 0 1px 2px -1px rgba(35, 30, 20, 0.04);
+    --card-hover-shadow: 0 16px 36px -8px rgba(35, 30, 20, 0.12), 0 4px 12px -2px rgba(35, 30, 20, 0.05);
   }
 
   .dark {
@@ -51,6 +57,12 @@
     
     --outline: 60 3% 40%;
     --outline-variant: 60 4% 22%;
+
+    /* Dynamic Card Spotlight & Hover Sheen */
+    --spotlight-surface: rgba(222, 219, 200, 0.08);
+    --spotlight-border: rgba(222, 219, 200, 0.28);
+    --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+    --card-hover-shadow: 0 18px 40px -10px rgba(0, 0, 0, 0.7), 0 0 1px 1px rgba(222, 219, 200, 0.12);
   }
 
   * {

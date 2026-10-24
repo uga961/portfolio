@@ -33,10 +33,10 @@ export function ExperienceSection() {
               <button
                 key={exp.company}
                 onClick={() => setSelectedIdx(idx)}
-                className={`flex-shrink-0 text-left p-4 rounded-xl border transition-all duration-150 ${
+                className={`flex-shrink-0 text-left p-4 rounded-xl border transition-all duration-200 ${
                   isSelected
-                    ? "bg-surface-container-high border-primary/60 dark:border-primary shadow-sm ring-1 ring-primary/25"
-                    : "bg-surface-container/50 border-outline-variant/30 hover:bg-surface-container hover:border-outline-variant/60"
+                    ? "bg-white dark:bg-surface-container-high border-foreground/50 shadow-md ring-1 ring-foreground/20"
+                    : "bg-surface/70 border-outline-variant/40 hover:bg-white dark:hover:bg-surface-container hover:border-foreground/30 hover:shadow-sm"
                 }`}
               >
                 <div className="flex items-center justify-between gap-2">

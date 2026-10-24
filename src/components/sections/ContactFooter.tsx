@@ -33,7 +33,7 @@ export function ContactFooter() {
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
           <a
             href={`mailto:${PERSONAL_INFO.email}`}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-foreground text-background font-semibold text-sm hover:opacity-90 transition-all shadow-sm active:scale-95"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-foreground text-background font-semibold text-sm shadow-sm hover:shadow-lg hover:-translate-y-0.5 hover:bg-foreground/90 transition-all duration-200 active:scale-95 active:translate-y-0"
           >
             <Mail className="w-4 h-4" />
             <span>Send an Email</span>
@@ -44,7 +44,7 @@ export function ContactFooter() {
               href={linkedinLink.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface-container border border-outline-variant/50 text-foreground text-sm font-mono hover:bg-surface-container-high transition-all active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface/90 border border-outline-variant/60 text-foreground text-sm font-mono shadow-sm hover:bg-white dark:hover:bg-surface-container-highest hover:border-foreground/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 active:scale-95 active:translate-y-0"
             >
               <FaLinkedin className="w-4 h-4 text-[#0a66c2]" />
               <span>Connect on LinkedIn</span>
@@ -55,7 +55,7 @@ export function ContactFooter() {
             href={PERSONAL_INFO.resumePath}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface-container border border-outline-variant/50 text-foreground text-sm font-mono hover:bg-surface-container-high transition-all active:scale-95"
+            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface/90 border border-outline-variant/60 text-foreground text-sm font-mono shadow-sm hover:bg-white dark:hover:bg-surface-container-highest hover:border-foreground/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 active:scale-95 active:translate-y-0"
           >
             <FileText className="w-4 h-4 text-foreground/70" />
             <span>View Resume</span>

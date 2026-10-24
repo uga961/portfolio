@@ -169,7 +169,7 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
           href={`https://${PERSONAL_INFO.blogDomain}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background font-semibold text-xs font-mono hover:opacity-90 transition-all flex-shrink-0 shadow-sm"
+          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background font-semibold text-xs font-mono shadow-sm hover:shadow-lg hover:-translate-y-0.5 hover:bg-foreground/90 transition-all duration-200 flex-shrink-0 active:scale-95"
         >
           <span>Open {PERSONAL_INFO.blogDomain}</span>
           <ExternalLink className="w-3.5 h-3.5" />

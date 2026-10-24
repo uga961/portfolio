@@ -90,7 +90,7 @@ export function MediaSection() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface-container-highest hover:bg-surface-container-high text-foreground text-xs font-mono font-medium transition-all border border-outline-variant/40 hover:border-foreground/60"
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface/90 hover:bg-white dark:hover:bg-surface-container-highest text-foreground text-xs font-mono font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 border border-outline-variant/50 hover:border-foreground/50 active:scale-95"
               >
                 <Play className="w-3.5 h-3.5 fill-current" />
                 <span>Watch {item.type}</span>

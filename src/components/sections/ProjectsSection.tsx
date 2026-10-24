@@ -59,7 +59,7 @@ export function ProjectsSection() {
                 className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-150 ${
                   filter === cat
                     ? "bg-foreground text-background font-semibold shadow-sm"
-                    : "text-on-surface-variant hover:text-foreground hover:bg-surface-container-high"
+                    : "text-on-surface-variant hover:text-foreground hover:bg-white dark:hover:bg-surface-container-high hover:shadow-xs"
                 }`}
               >
                 {cat}

@@ -98,7 +98,7 @@ export function HeroSection() {
           >
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background font-semibold text-sm hover:opacity-90 transition-all shadow-sm active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background font-semibold text-sm shadow-sm hover:shadow-lg hover:-translate-y-0.5 hover:bg-foreground/90 transition-all duration-200 active:scale-95 active:translate-y-0"
             >
               <span>Explore Projects</span>
               <ArrowDown className="w-4 h-4" />
@@ -108,7 +108,7 @@ export function HeroSection() {
               href={PERSONAL_INFO.resumePath}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface-container border border-outline-variant/60 text-foreground font-medium text-sm hover:bg-surface-container-high transition-all active:scale-95"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface/90 border border-outline-variant/60 text-foreground font-medium text-sm shadow-sm hover:bg-white dark:hover:bg-surface-container-highest hover:border-foreground/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 active:scale-95 active:translate-y-0"
             >
               <FileText className="w-4 h-4 text-foreground/80" />
               <span>View Resume</span>
@@ -116,7 +116,7 @@ export function HeroSection() {
 
             <button
               onClick={handleCopyEmail}
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container border border-outline-variant/60 text-foreground font-mono text-sm hover:bg-surface-container-high transition-all active:scale-95"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface/90 border border-outline-variant/60 text-foreground font-mono text-sm shadow-sm hover:bg-white dark:hover:bg-surface-container-highest hover:border-foreground/50 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 active:scale-95 active:translate-y-0"
             >
               {copied ? (
                 <>
@@ -145,7 +145,7 @@ export function HeroSection() {
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant/40 bg-surface-container/60 text-on-surface-variant hover:text-foreground hover:border-outline hover:bg-surface-container-high transition-all text-xs font-mono shadow-sm active:scale-95"
+                className="group flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant/50 bg-surface/80 text-on-surface-variant hover:text-foreground hover:border-foreground/50 hover:bg-white dark:hover:bg-surface-container-highest hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 text-xs font-mono shadow-sm active:scale-95"
               >
                 <SocialIcon name={link.icon} className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
                 <span>{link.name}</span>
