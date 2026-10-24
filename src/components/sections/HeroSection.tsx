@@ -9,6 +9,8 @@ import {
   Check,
   ArrowDown,
   MapPin,
+  GraduationCap,
+  FolderGit2,
 } from "lucide-react";
 import confetti from "canvas-confetti";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/portfolio";
@@ -32,7 +34,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[85vh] flex flex-col justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto overflow-hidden"
+      className="relative min-h-[82vh] flex flex-col justify-center pt-28 pb-14 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto overflow-hidden"
     >
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40 radial-mask pointer-events-none -z-10" />
@@ -40,18 +42,28 @@ export function HeroSection() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         {/* Left Column: Bio, Name & Actions */}
         <div className="lg:col-span-7 space-y-6 text-center lg:text-left order-2 lg:order-1">
-          {/* Location badge */}
+          {/* Metadata Badges Row */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground/80"
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-2 text-xs font-mono text-on-surface-variant"
           >
-            <MapPin className="w-3.5 h-3.5 text-foreground/70" />
-            <span>{PERSONAL_INFO.location}</span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40">
+              <MapPin className="w-3.5 h-3.5 text-foreground/70" />
+              <span>{PERSONAL_INFO.location}</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40">
+              <GraduationCap className="w-3.5 h-3.5 text-foreground/70" />
+              <span>B.E. ECE (9.0 CGPA)</span>
+            </span>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40">
+              <FolderGit2 className="w-3.5 h-3.5 text-foreground/70" />
+              <span>22+ Repositories</span>
+            </span>
           </motion.div>
 
-          {/* Large Name */}
+          {/* Large Name & Headline */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -62,7 +74,7 @@ export function HeroSection() {
               Ugandhar<span className="text-foreground/40 font-serif ml-1">*</span>
             </h1>
 
-            <p className="text-base sm:text-xl font-medium text-on-surface-variant font-mono">
+            <p className="text-base sm:text-xl font-medium text-foreground/90 font-mono">
               {PERSONAL_INFO.headline}
             </p>
           </motion.div>
@@ -82,7 +94,7 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2"
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-1"
           >
             <a
               href="#projects"
@@ -171,31 +183,6 @@ export function HeroSection() {
           </div>
         </motion.div>
       </div>
-
-      {/* Quick Numbers Bar */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.35 }}
-        className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-12 w-full"
-      >
-        <div className="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 text-left">
-          <div className="text-2xl sm:text-3xl font-bold font-mono text-foreground">9.0</div>
-          <div className="text-xs text-on-surface-variant mt-0.5">B.E. ECE CGPA</div>
-        </div>
-        <div className="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 text-left">
-          <div className="text-2xl sm:text-3xl font-bold font-mono text-foreground">5+</div>
-          <div className="text-xs text-on-surface-variant mt-0.5">Industry Roles & Projects</div>
-        </div>
-        <div className="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 text-left">
-          <div className="text-2xl sm:text-3xl font-bold font-mono text-foreground">22+</div>
-          <div className="text-xs text-on-surface-variant mt-0.5">Public Repositories</div>
-        </div>
-        <div className="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 text-left">
-          <div className="text-2xl sm:text-3xl font-bold font-mono text-foreground">100%</div>
-          <div className="text-xs text-on-surface-variant mt-0.5">Independent Work</div>
-        </div>
-      </motion.div>
     </section>
   );
 }

@@ -1,26 +1,14 @@
 "use client";
 
-import React, { useState } from "react";
-import { Mail, Copy, Check, FileText, ArrowUp, Globe, Clock } from "lucide-react";
-import confetti from "canvas-confetti";
+import React from "react";
+import { Mail, FileText, ArrowUp, Globe, Clock } from "lucide-react";
+import { FaLinkedin } from "react-icons/fa6";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/portfolio";
 import { SocialIcon } from "../ui/SocialIcons";
 import { SpotlightCard } from "../ui/SpotlightCard";
 
 export function ContactFooter() {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyEmail = () => {
-    navigator.clipboard.writeText(PERSONAL_INFO.email);
-    setCopied(true);
-    confetti({
-      particleCount: 50,
-      spread: 70,
-      origin: { y: 0.8 },
-      colors: ["#dedbc8", "#e1e0cc", "#a2a095"],
-    });
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const linkedinLink = SOCIAL_LINKS.find((s) => s.name === "LinkedIn");
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -51,22 +39,17 @@ export function ContactFooter() {
             <span>Send an Email</span>
           </a>
 
-          <button
-            onClick={handleCopyEmail}
-            className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface-container border border-outline-variant/50 text-foreground text-sm font-mono hover:bg-surface-container-high transition-all active:scale-95"
-          >
-            {copied ? (
-              <>
-                <Check className="w-4 h-4 text-emerald-500" />
-                <span className="text-emerald-500 font-bold">Email Copied!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-4 h-4 text-on-surface-variant" />
-                <span>{PERSONAL_INFO.email}</span>
-              </>
-            )}
-          </button>
+          {linkedinLink && (
+            <a
+              href={linkedinLink.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-surface-container border border-outline-variant/50 text-foreground text-sm font-mono hover:bg-surface-container-high transition-all active:scale-95"
+            >
+              <FaLinkedin className="w-4 h-4 text-[#0a66c2]" />
+              <span>Connect on LinkedIn</span>
+            </a>
+          )}
 
           <a
             href={PERSONAL_INFO.resumePath}

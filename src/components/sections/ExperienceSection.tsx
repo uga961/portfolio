@@ -12,9 +12,9 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       <div className="space-y-3 mb-10 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30 text-xs font-mono text-emerald-800 dark:text-primary font-semibold">
-          <Briefcase className="w-3.5 h-3.5" />
-          <span>Work & Apprenticeships</span>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground font-semibold">
+          <Briefcase className="w-3.5 h-3.5 text-foreground/70" />
+          <span>Work & Experience</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
           Engineering Experience
@@ -43,19 +43,27 @@ export function ExperienceSection() {
                   <span
                     className={`text-sm font-bold truncate ${
                       isSelected
-                        ? "text-emerald-900 dark:text-primary"
-                        : "text-foreground"
+                        ? "text-foreground"
+                        : "text-foreground/80"
                     }`}
                   >
                     {exp.company}
                   </span>
 
-                  {exp.type === "Internship" ? (
+                  {exp.isIncoming ? (
+                    <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-foreground/10 text-foreground border border-outline-variant/60 flex-shrink-0">
+                      Joining Soon
+                    </span>
+                  ) : exp.type === "Internship" ? (
                     <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-surface-container-highest border border-outline-variant/40 text-foreground/80 flex-shrink-0">
                       Intern
                     </span>
+                  ) : exp.type === "Full-time" ? (
+                    <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-surface-container-highest border border-outline-variant/40 text-foreground/80 flex-shrink-0">
+                      Full-time
+                    </span>
                   ) : (
-                    <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-950 border border-emerald-300 dark:bg-emerald-950/70 dark:text-emerald-300 dark:border-emerald-700/60 flex-shrink-0">
+                    <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-surface-container-highest border border-outline-variant/40 text-foreground/80 flex-shrink-0">
                       Apprentice
                     </span>
                   )}
@@ -87,12 +95,12 @@ export function ExperienceSection() {
                     <h3 className="text-xl sm:text-2xl font-bold text-foreground">
                       {EXPERIENCES[selectedIdx].role}
                     </h3>
-                    <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-950 border border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-300 dark:border-emerald-700/60">
-                      {EXPERIENCES[selectedIdx].type}
+                    <span className="text-xs font-mono font-bold px-2.5 py-1 rounded-md bg-surface-container-highest border border-outline-variant/60 text-foreground">
+                      {EXPERIENCES[selectedIdx].isIncoming ? "Joining Soon" : EXPERIENCES[selectedIdx].type}
                     </span>
                   </div>
 
-                  <div className="text-base font-semibold text-emerald-900 dark:text-primary mt-1">
+                  <div className="text-base font-semibold text-foreground mt-1">
                     {EXPERIENCES[selectedIdx].company}
                     {EXPERIENCES[selectedIdx].team && (
                       <span className="text-on-surface-variant font-normal">
@@ -104,11 +112,11 @@ export function ExperienceSection() {
 
                   <div className="flex flex-wrap items-center gap-4 text-xs font-mono font-medium text-on-surface-variant mt-3">
                     <span className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-primary" />
+                      <Calendar className="w-3.5 h-3.5 text-foreground/70" />
                       {EXPERIENCES[selectedIdx].period}
                     </span>
                     <span className="flex items-center gap-1.5">
-                      <MapPin className="w-3.5 h-3.5 text-primary" />
+                      <MapPin className="w-3.5 h-3.5 text-foreground/70" />
                       {EXPERIENCES[selectedIdx].location}
                     </span>
                   </div>
@@ -126,7 +134,7 @@ export function ExperienceSection() {
                   <ul className="space-y-2.5 text-sm text-foreground/90">
                     {EXPERIENCES[selectedIdx].bullets.map((b, i) => (
                       <li key={i} className="flex items-start gap-2.5">
-                        <span className="text-primary mt-0.5 font-mono font-bold">▸</span>
+                        <span className="text-foreground/70 mt-0.5 font-mono font-bold">▸</span>
                         <span className="leading-relaxed">{b}</span>
                       </li>
                     ))}
@@ -140,11 +148,11 @@ export function ExperienceSection() {
                       href={EXPERIENCES[selectedIdx].repoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant/50 bg-surface-container-high hover:border-primary text-xs font-mono font-medium text-emerald-900 dark:text-primary transition-all"
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant/50 bg-surface-container-high hover:border-foreground/50 text-xs font-mono font-medium text-foreground transition-all"
                     >
-                      <GitBranch className="w-3.5 h-3.5" />
+                      <GitBranch className="w-3.5 h-3.5 text-foreground/70" />
                       <span>View Program Practice Repo</span>
-                      <ExternalLink className="w-3 h-3 ml-0.5" />
+                      <ExternalLink className="w-3 h-3 ml-0.5 opacity-70" />
                     </a>
                   </div>
                 )}

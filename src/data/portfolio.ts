@@ -3,12 +3,6 @@
  * UGANDHAR VADDI — PORTFOLIO CONFIGURATION & DATA SOURCE
  * =============================================================================
  * Central data source for ugandhar.in.
- * 
- * TUTORIALS:
- * 1. ADD NEW EXPERIENCE: Append an object to the EXPERIENCES array.
- * 2. ADD NEW PROJECT: Append an object to the PROJECTS array.
- * 3. UPDATE YOUTUBE PLAYLIST: Change 'playlistUrl' inside YOUTUBE_INFO.
- * 4. UPDATE RESUME: Place new PDF in public/resume/ and update 'resumePath'.
  * =============================================================================
  */
 
@@ -18,7 +12,7 @@ export interface Project {
   subtitle: string;
   description: string;
   longDescription?: string;
-  category: "AI & ML" | "Hardware & VLSI" | "Desktop & Web" | "Systems";
+  category: "AI & ML" | "Hardware & VLSI" | "Desktop & Web";
   tags: string[];
   metrics?: string;
   isProprietary?: boolean; // Set true for proprietary enterprise work (hides external links)
@@ -28,6 +22,7 @@ export interface Project {
   featured: boolean;
   date: string;
   stars?: number;
+  contributors?: string[]; // List of contributors if collaborative
 }
 
 export interface Experience {
@@ -35,12 +30,13 @@ export interface Experience {
   role: string;
   period: string;
   location: string;
-  type: "Internship" | "Apprenticeship" | "Full-time" | "Contract";
+  type: "Full-time" | "Internship" | "Apprenticeship" | "Contract";
   team?: string;
   description: string;
   bullets: string[];
   skills: string[];
   repoUrl?: string;
+  isIncoming?: boolean;
 }
 
 export interface Education {
@@ -71,10 +67,12 @@ export interface BlogPost {
   tags: string[];
 }
 
-export interface YouTubePlaylist {
+export interface YouTubeItem {
+  badge: "Featured" | "Latest";
+  type: "Playlist" | "Video" | "Live";
   title: string;
   description: string;
-  playlistUrl: string;
+  url: string;
   topics: string[];
 }
 
@@ -83,7 +81,7 @@ export interface YouTubeContent {
   handle: string;
   url: string;
   description: string;
-  playlists: YouTubePlaylist[];
+  items: YouTubeItem[];
 }
 
 export const PERSONAL_INFO = {
@@ -91,11 +89,11 @@ export const PERSONAL_INFO = {
   handle: "uga961",
   domain: "ugandhar.in",
   blogDomain: "blog.ugandhar.in",
-  headline: "Data Scientist · Electronics Engineer · Systems Builder",
+  headline: "Associate Data Scientist at Tredence",
   bioShort:
-    "Building at the intersection of silicon, software, data, and intelligent systems. Exploring transistor-level VLSI memory, autonomous multi-agent pipelines, and native desktop utilities.",
+    "Associate Data Scientist at Tredence. Building enterprise data intelligence, automated pipelines, and applied machine learning models while exploring low-level silicon architectures.",
   bioLong:
-    "I'm Ugandhar, an engineer who enjoys understanding how systems work from first principles — from transistor-level circuit design in Cadence to machine learning classifiers, Linux kernel primitives, and full-stack software architectures.",
+    "I'm Ugandhar, an engineer who enjoys understanding how systems work from first principles — from transistor-level circuit design in Cadence to enterprise machine learning pipelines, predictive modeling, and native desktop utilities.",
   location: "Visakhapatnam, India",
   email: "annajiratnam@gmail.com",
   phone: "+91 9493586647",
@@ -148,6 +146,23 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const EXPERIENCES: Experience[] = [
+  {
+    company: "Tredence Analytics Solutions",
+    role: "Associate Data Scientist",
+    period: "Nov 2026 – Present (Joining Soon)",
+    location: "Chennai, India",
+    type: "Full-time",
+    team: "Analytics & Applied AI",
+    isIncoming: true,
+    description:
+      "Incoming Associate Data Scientist (Analyst L1) focusing on enterprise data science, end-to-end predictive modeling, and scalable analytics solutions.",
+    bullets: [
+      "Appointed as Analyst-Level L1 / Associate Data Scientist at Tredence Analytics Solutions.",
+      "Developing applied machine learning pipelines and statistical analytics solutions for enterprise clients.",
+      "Engineering robust feature pipelines, predictive algorithms, and automated data workflows.",
+    ],
+    skills: ["Python", "Machine Learning", "Data Science", "SQL", "Predictive Analytics"],
+  },
   {
     company: "McKinsey & Company",
     role: "Research and Insights Intern",
@@ -343,30 +358,7 @@ export const PROJECTS: Project[] = [
     featured: true,
     date: "Sep 2025 – Apr 2026",
     stars: 1,
-  },
-  {
-    id: "cmos-6t-sram",
-    title: "CMOS 6-Transistor SRAM Cell",
-    subtitle: "Transistor-Level Design & Physical Layout",
-    description:
-      "Designed, simulated, and laid out a single-bit CMOS 6T SRAM cell using Cadence Virtuoso, with full DRC and LVS physical verification via Assura.",
-    category: "Hardware & VLSI",
-    tags: ["Cadence Virtuoso", "Assura DRC/LVS", "CMOS", "Physical Layout", "Analog Design"],
-    githubUrl: "https://github.com/uga961/CMOS_6_T_SRAM",
-    featured: false,
-    date: "Jan 2025 – Feb 2025",
-  },
-  {
-    id: "plant-disease-classification",
-    title: "Crop Disease Classification & Fertilizer Guidance",
-    subtitle: "Deep Learning Ensemble for Agricultural Vision",
-    description:
-      "Ensemble computer vision pipeline combining DenseNet and Xception architectures to accurately detect plant pathologies from leaf imagery and deliver contextual fertilizer guidance.",
-    category: "AI & ML",
-    tags: ["Deep Learning", "DenseNet", "Xception", "PyTorch / TensorFlow", "Computer Vision"],
-    githubUrl: "https://github.com/uga961/Image-Based-Plant-Disease-Classification-and-Fertilizer-Guidance",
-    featured: false,
-    date: "2024",
+    contributors: ["Naralasetti Umesh"],
   },
   {
     id: "sexual-harassment-classification",
@@ -384,18 +376,6 @@ export const PROJECTS: Project[] = [
     date: "Jan 2025 – Apr 2025",
   },
   {
-    id: "cognizant-dn4",
-    title: "Cognizant DN 4.0 Full Stack Repository",
-    subtitle: ".NET Core & Enterprise Microservices",
-    description:
-      "Comprehensive repository demonstrating C#, .NET Framework, clean architectural separation, relational database queries, and test-driven development.",
-    category: "Systems",
-    tags: [".NET", "C#", "ASP.NET Core", "SQL", "Clean Code"],
-    githubUrl: "https://github.com/uga961/MyPracticeRepo_6417029_Cognizant-DN-4.0",
-    featured: false,
-    date: "Jun 2025 – Aug 2025",
-  },
-  {
     id: "safety-radar",
     title: "Arduino Real-Time Safety Radar",
     subtitle: "Ultrasonic Spatial Mapping & Processing GUI",
@@ -406,17 +386,6 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/uga961/Safety-radar",
     featured: false,
     date: "Jul 2023 – Nov 2023",
-  },
-  {
-    id: "lifi-audio",
-    title: "Visible Light Audio Transmission (Li-Fi)",
-    subtitle: "High-Speed Optical Wireless Communication",
-    description:
-      "Implemented an experimental Li-Fi audio transmission setup utilizing high-frequency visible light LEDs and solar photovoltaic reception for wireless, interference-free short-range audio streaming.",
-    category: "Hardware & VLSI",
-    tags: ["Li-Fi", "Optical Communication", "Analog Electronics", "Solar Cells"],
-    featured: false,
-    date: "Sep 2024 – Nov 2024",
   },
 ];
 
@@ -490,31 +459,23 @@ export const YOUTUBE_INFO: YouTubeContent = {
   handle: "@uga961",
   url: "https://www.youtube.com/@uga961",
   description:
-    "Hands-on coding workshops in Python, data cleaning with Pandas, touch-typing practice, and independent creative films.",
-  playlists: [
+    "Technical walkthroughs, Python series, data manipulation tutorials, and engineering experiments.",
+  items: [
     {
+      badge: "Featured",
+      type: "Playlist",
       title: "Learn PYTHON in 5 Days or Less",
-      description: "Complete hands-on beginner to intermediate Python series covering Google Colab, Data Structures, OOPs, NumPy, and Pandas Data Analytics.",
-      playlistUrl: "https://www.youtube.com/@uga961/playlists",
-      topics: ["Google Colab", "Data Structures", "OOPs & NumPy", "Pandas Analytics"],
+      description: "Complete beginner to intermediate hands-on Python series covering Google Colab, Data Structures, OOPs, NumPy, and Pandas Analytics.",
+      url: "https://www.youtube.com/@uga961/playlists",
+      topics: ["Google Colab", "OOPs", "NumPy", "Pandas"],
     },
     {
-      title: "Python Data Visualization Mastery",
-      description: "Practical walkthroughs creating line charts, correlation matrices, heatmaps, and publication-ready charts using Matplotlib, Seaborn, and Pandas.",
-      playlistUrl: "https://www.youtube.com/watch?v=T-u2sO0edDI",
-      topics: ["Matplotlib", "Seaborn", "Correlation Plots", "Heatmaps"],
-    },
-    {
-      title: "Typing Practice & Speed Sessions",
-      description: "Daily typing routines, technique breakdown, and progress tracking towards fast and accurate touch typing.",
-      playlistUrl: "https://www.youtube.com/watch?v=y-RCOEktz4E",
-      topics: ["Touch Typing", "Speed Tracking", "Muscle Memory"],
-    },
-    {
-      title: "Independent Short Films & Filmmaking",
-      description: "Creative storytelling experiments exploring cinematography, color grading, sound design, and pacing, including 'The Fake'.",
-      playlistUrl: "https://www.youtube.com/@uga961",
-      topics: ["Cinematography", "Direction", "Pacing", "Short Films"],
+      badge: "Latest",
+      type: "Video",
+      title: "Data Visualization in Python | Matplotlib, Seaborn & Pandas Tutorial",
+      description: "End-to-end practical workshop on building heatmaps, correlation plots, and custom visualizations with Google Colab notebooks.",
+      url: "https://www.youtube.com/watch?v=T-u2sO0edDI",
+      topics: ["Matplotlib", "Seaborn", "Correlation Plots", "Pandas"],
     },
   ],
 };

@@ -9,23 +9,23 @@ import {
   BookOpen,
   Sparkles,
   Star,
-  CheckCircle2,
+  User,
+  Users,
 } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { PROJECTS } from "@/data/portfolio";
 import { SpotlightCard } from "../ui/SpotlightCard";
 
-type CategoryFilter = "All" | "AI & ML" | "Hardware & VLSI" | "Desktop & Web" | "Systems";
+type CategoryFilter = "All" | "AI & ML" | "Hardware & VLSI" | "Desktop & Web";
 
 export function ProjectsSection() {
   const [filter, setFilter] = useState<CategoryFilter>("All");
 
   const categories: CategoryFilter[] = [
     "All",
-    "Desktop & Web",
-    "Hardware & VLSI",
     "AI & ML",
-    "Systems",
+    "Hardware & VLSI",
+    "Desktop & Web",
   ];
 
   const filteredProjects =
@@ -50,8 +50,8 @@ export function ProjectsSection() {
             </p>
           </div>
 
-          {/* Filter Pills */}
-          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-surface-container/60 border border-outline-variant/30 self-start sm:self-auto">
+          {/* Filter Pills - clean single-row on desktop */}
+          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-surface-container/60 border border-outline-variant/30 self-start sm:self-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -129,7 +129,22 @@ export function ProjectsSection() {
                     {project.description}
                   </p>
 
-                  {/* Key Metrics / Highlights with functional green dot */}
+                  {/* Contributors / Solo status badge */}
+                  <div className="flex items-center gap-2 text-[11px] font-mono text-on-surface-variant">
+                    {project.contributors && project.contributors.length > 0 ? (
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container border border-outline-variant/30 text-foreground">
+                        <Users className="w-3 h-3 text-foreground/70" />
+                        <span>Contributors: {project.contributors.join(", ")}</span>
+                      </div>
+                    ) : (
+                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container border border-outline-variant/30 text-on-surface-variant">
+                        <User className="w-3 h-3 opacity-60" />
+                        <span>Solo Project</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Key Metrics / Highlights */}
                   {project.metrics && (
                     <div className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 text-foreground">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
