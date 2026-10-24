@@ -273,7 +273,7 @@ export const EDUCATION: Education[] = [
     institution: "Suresh High School",
     degree: "Secondary School Certificate (10th Standard)",
     period: "Feb 2019 – Mar 2020",
-    grade: "10.0 GPA (Perfect 10 Points)",
+    grade: "10 CGPA",
     location: "Andhra Pradesh, India",
     skills: ["Foundational Sciences", "Mathematics", "Leadership"],
   },

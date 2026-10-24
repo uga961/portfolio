@@ -111,7 +111,7 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
             rel="noopener noreferrer"
             className="group block focus:outline-none"
           >
-            <SpotlightCard className="h-full flex flex-col justify-between p-6 space-y-4 border-outline-variant/40 hover:border-foreground/50 transition-all">
+            <SpotlightCard className="h-full flex flex-col justify-between p-5 sm:p-6 space-y-4 border-outline-variant/40 hover:border-foreground/50 transition-all">
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-xs font-mono text-on-surface-variant">
                   <span className="flex items-center gap-1.5">

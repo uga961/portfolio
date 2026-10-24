@@ -161,7 +161,7 @@ export function HeroSection() {
 
         {/* Right Column: Square Framed Profile Avatar (Instant render for LCP) */}
         <div className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2">
-          <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border border-outline-variant/50 bg-surface-container p-2 shadow-2xl group">
+          <div className="relative w-60 h-60 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border border-outline-variant/50 bg-surface-container p-2 shadow-2xl group">
             <div className="relative w-full h-full rounded-xl overflow-hidden bg-surface-container-highest">
               <Image
                 src={PERSONAL_INFO.avatarPath}

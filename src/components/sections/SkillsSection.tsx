@@ -36,7 +36,7 @@ export function SkillsSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {SKILL_CATEGORIES.map((cat) => (
-          <SpotlightCard key={cat.name} className="p-6 space-y-4 border-outline-variant/40 hover:border-foreground/50">
+          <SpotlightCard key={cat.name} className="p-5 sm:p-6 space-y-4 border-outline-variant/40 hover:border-foreground/50">
             <div className="flex items-center gap-2.5 pb-2 border-b border-outline-variant/30">
               {getCategoryIcon(cat.name)}
               <h3 className="text-base font-bold text-foreground font-mono">

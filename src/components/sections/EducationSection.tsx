@@ -23,13 +23,13 @@ export function EducationSection() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {EDUCATION.map((edu, idx) => (
-          <SpotlightCard key={edu.institution} className="p-6 flex flex-col justify-between space-y-4 border-outline-variant/40 hover:border-foreground/50">
+          <SpotlightCard key={edu.institution} className="p-5 sm:p-6 flex flex-col justify-between space-y-4 border-outline-variant/40 hover:border-foreground/50">
             <div className="space-y-3">
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <span className="text-xs font-mono text-foreground font-bold">
                   {idx === 0 ? "Undergraduate" : idx === 1 ? "Higher Secondary" : "Secondary School"}
                 </span>
-                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-surface-container-highest text-foreground border border-outline-variant/40">
+                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-surface-container-highest text-foreground border border-outline-variant/40 flex-shrink-0">
                   {edu.grade}
                 </span>
               </div>
@@ -49,7 +49,7 @@ export function EducationSection() {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <MapPin className="w-3 h-3 text-foreground/70" />
-                  <span className="truncate">{edu.location}</span>
+                  <span className="break-words">{edu.location}</span>
                 </div>
               </div>
 

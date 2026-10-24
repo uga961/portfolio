@@ -50,13 +50,13 @@ export function ProjectsSection() {
             </p>
           </div>
 
-          {/* Filter Pills - clean single-row on desktop */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-surface-container/60 border border-outline-variant/30 self-start sm:self-auto">
+          {/* Filter Pills - clean single-row on desktop & smooth touch swipe on mobile */}
+          <div className="w-full sm:w-auto flex overflow-x-auto sm:flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-surface-container/60 border border-outline-variant/30 scrollbar-none touch-pan-x">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-150 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-150 whitespace-nowrap flex-shrink-0 ${
                   filter === cat
                     ? "bg-foreground text-background font-semibold shadow-sm"
                     : "text-on-surface-variant hover:text-foreground hover:bg-white dark:hover:bg-surface-container-high hover:shadow-xs"
@@ -82,7 +82,7 @@ export function ProjectsSection() {
               transition={{ duration: 0.25 }}
               className={project.id === "stayactive" ? "md:col-span-2 lg:col-span-2" : ""}
             >
-              <SpotlightCard className="h-full flex flex-col justify-between p-6 sm:p-7 space-y-5 border-outline-variant/40 hover:border-foreground/50 group">
+              <SpotlightCard className="h-full flex flex-col justify-between p-5 sm:p-7 space-y-4 sm:space-y-5 border-outline-variant/40 hover:border-foreground/50 group">
                 <div className="space-y-4">
                   {/* Card Header & Badges */}
                   <div className="flex items-start justify-between gap-2">
@@ -95,8 +95,8 @@ export function ProjectsSection() {
                           • {project.date}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold text-foreground group-hover:underline transition-colors flex items-center gap-2">
-                        {project.title}
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:underline transition-colors flex flex-wrap items-center gap-2">
+                        <span>{project.title}</span>
                         {project.id === "stayactive" && (
                           <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-surface-container-highest border border-outline-variant/60 text-foreground font-semibold">
                             <Sparkles className="w-2.5 h-2.5 text-foreground/80" /> Featured Spotlight
@@ -110,13 +110,13 @@ export function ProjectsSection() {
 
                     {/* Status Badge */}
                     {project.isProprietary ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest border border-outline-variant/50 text-foreground/80 whitespace-nowrap">
+                      <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest border border-outline-variant/50 text-foreground/80 whitespace-nowrap flex-shrink-0">
                         <Lock className="w-3 h-3 text-foreground/60" />
                         Proprietary
                       </span>
                     ) : (
                       project.stars !== undefined && project.stars > 0 && (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest text-foreground border border-outline-variant/40">
+                        <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest text-foreground border border-outline-variant/40 flex-shrink-0">
                           <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
                           {project.stars}
                         </span>
@@ -146,9 +146,9 @@ export function ProjectsSection() {
 
                   {/* Key Metrics / Highlights */}
                   {project.metrics && (
-                    <div className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 text-foreground">
+                    <div className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 text-foreground max-w-full">
                       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-                      <span>{project.metrics}</span>
+                      <span className="break-words">{project.metrics}</span>
                     </div>
                   )}
 
@@ -186,7 +186,7 @@ export function ProjectsSection() {
                   </div>
 
                   {/* External Links */}
-                  <div className="flex items-center gap-3">
+                  <div className="flex flex-wrap items-center gap-3">
                     {project.githubUrl && (
                       <a
                         href={project.githubUrl}

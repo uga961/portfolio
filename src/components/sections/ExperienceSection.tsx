@@ -33,7 +33,7 @@ export function ExperienceSection() {
               <button
                 key={exp.company}
                 onClick={() => setSelectedIdx(idx)}
-                className={`flex-shrink-0 text-left p-4 rounded-xl border transition-all duration-200 ${
+                className={`flex-shrink-0 min-w-[175px] sm:min-w-0 text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 ${
                   isSelected
                     ? "bg-white dark:bg-surface-container-high border-foreground/50 shadow-md ring-1 ring-foreground/20"
                     : "bg-surface/70 border-outline-variant/40 hover:bg-white dark:hover:bg-surface-container hover:border-foreground/30 hover:shadow-sm"
@@ -89,7 +89,7 @@ export function ExperienceSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25 }}
             >
-              <SpotlightCard className="p-6 sm:p-8 space-y-6">
+              <SpotlightCard className="p-5 sm:p-8 space-y-5 sm:space-y-6">
                 <div>
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <h3 className="text-xl sm:text-2xl font-bold text-foreground">

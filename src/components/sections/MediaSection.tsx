@@ -41,7 +41,7 @@ export function MediaSection() {
         {YOUTUBE_INFO.items.map((item) => (
           <SpotlightCard
             key={item.title}
-            className="h-full flex flex-col justify-between p-6 space-y-4 border-outline-variant/40 hover:border-foreground/50"
+            className="h-full flex flex-col justify-between p-5 sm:p-6 space-y-4 border-outline-variant/40 hover:border-foreground/50"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between">

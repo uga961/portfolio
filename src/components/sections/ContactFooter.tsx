@@ -16,7 +16,7 @@ export function ContactFooter() {
 
   return (
     <footer id="contact" className="pt-20 pb-32 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-16">
-      <SpotlightCard className="p-8 sm:p-12 text-center space-y-6 border-outline-variant/40">
+      <SpotlightCard className="p-6 sm:p-12 text-center space-y-6 border-outline-variant/40">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground font-semibold">
           <Mail className="w-3.5 h-3.5 text-foreground/70" />
           <span>Get in Touch</span>

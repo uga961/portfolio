@@ -38,7 +38,7 @@ To eliminate any hallucinations, here is the complete breakdown of information g
 3. **Suresh High School**
    * *Program*: 10th Standard / SSC
    * *Duration*: Feb 2019 – Mar 2020
-   * *Grade*: **10.0 GPA (10 points)**
+   * *Grade*: **10 CGPA**
 
 ---
 
