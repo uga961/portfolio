@@ -36,8 +36,8 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       <div className="space-y-3 mb-10 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30 text-xs font-mono text-emerald-800 dark:text-primary">
-          <FolderGit2 className="w-3.5 h-3.5" />
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground font-medium">
+          <FolderGit2 className="w-3.5 h-3.5 text-foreground/70" />
           <span>Selected Work & Engineering Systems</span>
         </div>
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
@@ -51,14 +51,14 @@ export function ProjectsSection() {
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-surface-container/60 border border-outline-variant/20 self-start sm:self-auto">
+          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-surface-container/60 border border-outline-variant/30 self-start sm:self-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-150 ${
                   filter === cat
-                    ? "bg-primary text-primary-foreground font-semibold shadow-sm"
+                    ? "bg-foreground text-background font-semibold shadow-sm"
                     : "text-on-surface-variant hover:text-foreground hover:bg-surface-container-high"
                 }`}
               >
@@ -76,30 +76,30 @@ export function ProjectsSection() {
             <motion.div
               layout
               key={project.id}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.3 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.25 }}
               className={project.id === "stayactive" ? "md:col-span-2 lg:col-span-2" : ""}
             >
-              <SpotlightCard className="h-full flex flex-col justify-between p-6 sm:p-7 space-y-5 border-outline-variant/30 hover:border-primary/50 group">
+              <SpotlightCard className="h-full flex flex-col justify-between p-6 sm:p-7 space-y-5 border-outline-variant/40 hover:border-foreground/50 group">
                 <div className="space-y-4">
                   {/* Card Header & Badges */}
                   <div className="flex items-start justify-between gap-2">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-medium text-emerald-800 dark:text-primary">
+                        <span className="text-xs font-mono font-medium text-foreground/80">
                           {project.category}
                         </span>
                         <span className="text-[11px] font-mono text-on-surface-variant">
                           • {project.date}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
+                      <h3 className="text-xl font-bold text-foreground group-hover:underline transition-colors flex items-center gap-2">
                         {project.title}
                         {project.id === "stayactive" && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 border border-emerald-500/30">
-                            <Sparkles className="w-2.5 h-2.5" /> Featured Spotlight
+                          <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-surface-container-highest border border-outline-variant/60 text-foreground font-semibold">
+                            <Sparkles className="w-2.5 h-2.5 text-foreground/80" /> Featured Spotlight
                           </span>
                         )}
                       </h3>
@@ -108,15 +108,15 @@ export function ProjectsSection() {
                       </div>
                     </div>
 
-                    {/* Proprietary or Public Status Badge */}
+                    {/* Status Badge */}
                     {project.isProprietary ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-500/10 text-amber-900 dark:text-amber-300 border border-amber-500/30 whitespace-nowrap">
-                        <Lock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+                      <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest border border-outline-variant/50 text-foreground/80 whitespace-nowrap">
+                        <Lock className="w-3 h-3 text-foreground/60" />
                         Proprietary
                       </span>
                     ) : (
                       project.stars !== undefined && project.stars > 0 && (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest text-on-surface">
+                        <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest text-foreground border border-outline-variant/40">
                           <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
                           {project.stars}
                         </span>
@@ -125,30 +125,30 @@ export function ProjectsSection() {
                   </div>
 
                   {/* Project Description */}
-                  <p className="text-sm text-on-surface-variant leading-relaxed">
+                  <p className="text-sm text-foreground/85 leading-relaxed">
                     {project.description}
                   </p>
 
-                  {/* Key Metrics / Highlights */}
+                  {/* Key Metrics / Highlights with functional green dot */}
                   {project.metrics && (
-                    <div className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30 text-emerald-800 dark:text-emerald-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                    <div className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 text-foreground">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
                       <span>{project.metrics}</span>
                     </div>
                   )}
 
-                  {/* Extra deep dive for StayActive Spotlight */}
+                  {/* Deep dive for StayActive Spotlight */}
                   {project.id === "stayactive" && (
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2 text-xs font-mono text-on-surface-variant">
-                      <div className="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+                      <div className="p-2.5 rounded-lg bg-surface-container border border-outline-variant/30">
                         <div className="font-semibold text-foreground">Hydration & Eye-Rest</div>
                         <div className="text-[11px] text-on-surface-variant mt-0.5">20-20-20 rule & water schedules</div>
                       </div>
-                      <div className="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+                      <div className="p-2.5 rounded-lg bg-surface-container border border-outline-variant/30">
                         <div className="font-semibold text-foreground">Meeting Detection</div>
                         <div className="text-[11px] text-on-surface-variant mt-0.5">Pauses during active mics & calls</div>
                       </div>
-                      <div className="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+                      <div className="p-2.5 rounded-lg bg-surface-container border border-outline-variant/30">
                         <div className="font-semibold text-foreground">System Media Pause</div>
                         <div className="text-[11px] text-on-surface-variant mt-0.5">Auto-pauses audio during reminders</div>
                       </div>
@@ -157,13 +157,13 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Footer with Tags & Action Links */}
-                <div className="pt-4 border-t border-outline-variant/20 space-y-4">
+                <div className="pt-4 border-t border-outline-variant/30 space-y-4">
                   {/* Tech stack tags */}
                   <div className="flex flex-wrap gap-1.5">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container-highest/60 border border-outline-variant/30 text-on-surface"
+                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container-highest/80 border border-outline-variant/40 text-foreground"
                       >
                         {tag}
                       </span>
@@ -177,7 +177,7 @@ export function ProjectsSection() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:text-primary transition-colors font-medium"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:underline font-medium"
                       >
                         <SiGithub className="w-3.5 h-3.5" />
                         <span>Source Code</span>
@@ -190,7 +190,7 @@ export function ProjectsSection() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-700 dark:text-emerald-400 hover:underline font-medium"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:underline font-medium"
                       >
                         <BookOpen className="w-3.5 h-3.5" />
                         <span>Live Site</span>
@@ -203,7 +203,7 @@ export function ProjectsSection() {
                         href={`https://blog.ugandhar.in/posts/${project.blogSlug}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-primary hover:underline ml-auto font-medium"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:underline ml-auto font-medium"
                       >
                         <BookOpen className="w-3.5 h-3.5" />
                         <span>Read Essay</span>

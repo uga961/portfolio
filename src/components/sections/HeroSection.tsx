@@ -8,7 +8,6 @@ import {
   Copy,
   Check,
   ArrowDown,
-  Sparkles,
   MapPin,
 } from "lucide-react";
 import confetti from "canvas-confetti";
@@ -25,7 +24,7 @@ export function HeroSection() {
       particleCount: 50,
       spread: 70,
       origin: { y: 0.7 },
-      colors: ["#34d399", "#10b981", "#059669"],
+      colors: ["#dedbc8", "#e1e0cc", "#a2a095"],
     });
     setTimeout(() => setCopied(false), 2000);
   };
@@ -33,197 +32,170 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[88vh] flex flex-col items-center justify-center pt-24 pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-[85vh] flex flex-col justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto overflow-hidden"
     >
-      {/* Background ambient lighting */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 dark:bg-primary/15 rounded-full blur-[140px] pointer-events-none -z-10" />
-
       {/* Grid pattern overlay */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40 radial-mask pointer-events-none -z-10" />
 
-      <div className="max-w-4xl mx-auto flex flex-col items-center text-center space-y-6">
-        {/* Availability status badge */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface-container border border-primary/30 shadow-sm"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600 dark:bg-emerald-400"></span>
-          </span>
-          <span className="text-xs font-mono font-medium text-emerald-800 dark:text-primary">
-            {PERSONAL_INFO.status}
-          </span>
-        </motion.div>
-
-        {/* Profile Avatar with clean aligned border */}
-        <motion.div
-          initial={{ scale: 0.85, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, type: "spring", stiffness: 140 }}
-          className="relative group"
-        >
-          <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full p-1 bg-surface-container border border-outline-variant/60 shadow-lg">
-            <Image
-              src={PERSONAL_INFO.avatarPath}
-              alt={PERSONAL_INFO.name}
-              width={128}
-              height={128}
-              priority
-              className="w-full h-full object-cover rounded-full transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
-
-          <div className="absolute bottom-1 right-1 bg-surface-container-highest border border-primary/40 rounded-full p-1.5 shadow-md">
-            <Sparkles className="w-3.5 h-3.5 text-primary" />
-          </div>
-        </motion.div>
-
-        {/* Main Title & Headline */}
-        <div className="space-y-3">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        {/* Left Column: Bio, Name & Actions */}
+        <div className="lg:col-span-7 space-y-6 text-center lg:text-left order-2 lg:order-1">
+          {/* Location badge */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="flex items-center justify-center gap-2 text-on-surface-variant text-xs sm:text-sm font-mono"
+            transition={{ duration: 0.4 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground/80"
           >
-            <MapPin className="w-3.5 h-3.5 text-primary" />
+            <MapPin className="w-3.5 h-3.5 text-foreground/70" />
             <span>{PERSONAL_INFO.location}</span>
           </motion.div>
 
-          <motion.h1
+          {/* Large Name */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-4xl sm:text-6xl font-bold tracking-tight text-foreground"
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="space-y-2"
           >
-            Hi, I&apos;m{" "}
-            <span className="bg-gradient-to-r from-emerald-800 via-teal-700 to-emerald-900 dark:from-emerald-400 dark:via-teal-300 dark:to-emerald-400 bg-clip-text text-transparent">
-              {PERSONAL_INFO.name}
-            </span>
-          </motion.h1>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-foreground font-sans">
+              Ugandhar<span className="text-foreground/40 font-serif ml-1">*</span>
+            </h1>
 
+            <p className="text-base sm:text-xl font-medium text-on-surface-variant font-mono">
+              {PERSONAL_INFO.headline}
+            </p>
+          </motion.div>
+
+          {/* Bio Paragraph */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-            className="text-base sm:text-xl font-medium text-emerald-800 dark:text-primary font-mono tracking-wide"
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="text-sm sm:text-base text-on-surface-variant leading-relaxed max-w-xl mx-auto lg:mx-0 font-sans"
           >
-            {PERSONAL_INFO.headline}
+            {PERSONAL_INFO.bioShort}
           </motion.p>
-        </div>
 
-        {/* Bio Paragraph */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="max-w-2xl text-sm sm:text-base text-on-surface-variant leading-relaxed font-sans"
-        >
-          {PERSONAL_INFO.bioShort}
-        </motion.p>
-
-        {/* Call to Action Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="flex flex-wrap items-center justify-center gap-3 pt-1"
-        >
-          <a
-            href="#projects"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-primary-foreground font-medium text-sm hover:bg-primary-hover transition-all duration-200 shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+          {/* Action Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2"
           >
-            <span>Explore Projects</span>
-            <ArrowDown className="w-4 h-4" />
-          </a>
-
-          {/* Resume opens in new browser tab without downloading */}
-          <a
-            href={PERSONAL_INFO.resumePath}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface-container border border-outline-variant/60 text-foreground font-medium text-sm hover:bg-surface-container-high hover:border-primary/50 transition-all duration-200 hover:scale-[1.02] active:scale-[0.98]"
-          >
-            <FileText className="w-4 h-4 text-primary" />
-            <span>View Resume (PDF)</span>
-          </a>
-
-          <button
-            onClick={handleCopyEmail}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container border border-outline-variant/60 text-on-surface font-mono text-sm hover:bg-surface-container-high hover:border-primary/50 transition-all duration-200 active:scale-[0.98]"
-          >
-            {copied ? (
-              <>
-                <Check className="w-4 h-4 text-primary" />
-                <span className="text-primary font-bold">Copied!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-4 h-4 text-on-surface-variant" />
-                <span>Copy Email</span>
-              </>
-            )}
-          </button>
-        </motion.div>
-
-        {/* Social Links Bar */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="pt-2 flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
-        >
-          {SOCIAL_LINKS.map((link) => (
             <a
-              key={link.name}
-              href={link.url}
+              href="#projects"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-foreground text-background font-semibold text-sm hover:opacity-90 transition-all shadow-sm active:scale-95"
+            >
+              <span>Explore Projects</span>
+              <ArrowDown className="w-4 h-4" />
+            </a>
+
+            <a
+              href={PERSONAL_INFO.resumePath}
               target="_blank"
               rel="noopener noreferrer"
-              className={`group flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant/40 bg-surface-container/60 text-on-surface-variant hover:text-foreground hover:border-primary/50 hover:bg-surface-container-high transition-all text-xs font-mono shadow-sm active:scale-95 ${
-                link.name === "Blog"
-                  ? "border-emerald-600/40 bg-emerald-100/60 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 font-semibold"
-                  : ""
-              }`}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-surface-container border border-outline-variant/60 text-foreground font-medium text-sm hover:bg-surface-container-high transition-all active:scale-95"
             >
-              <SocialIcon name={link.icon} className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
-              <span>{link.name}</span>
-              {link.name === "Blog" && (
-                <span className="text-[10px] bg-emerald-200 dark:bg-primary/20 text-emerald-900 dark:text-primary px-1 rounded">
-                  Live
-                </span>
-              )}
+              <FileText className="w-4 h-4 text-foreground/80" />
+              <span>View Resume</span>
             </a>
-          ))}
-        </motion.div>
 
-        {/* Quick Highlights Notion-like grid */}
+            <button
+              onClick={handleCopyEmail}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container border border-outline-variant/60 text-foreground font-mono text-sm hover:bg-surface-container-high transition-all active:scale-95"
+            >
+              {copied ? (
+                <>
+                  <Check className="w-4 h-4 text-emerald-500" />
+                  <span className="text-emerald-500 font-bold">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-4 h-4 text-on-surface-variant" />
+                  <span>Copy Email</span>
+                </>
+              )}
+            </button>
+          </motion.div>
+
+          {/* Social Links */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2.5"
+          >
+            {SOCIAL_LINKS.map((link) => (
+              <a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2 px-3 py-1.5 rounded-lg border border-outline-variant/40 bg-surface-container/60 text-on-surface-variant hover:text-foreground hover:border-outline hover:bg-surface-container-high transition-all text-xs font-mono shadow-sm active:scale-95"
+              >
+                <SocialIcon name={link.icon} className="w-3.5 h-3.5 group-hover:scale-110 transition-transform" />
+                <span>{link.name}</span>
+                {link.name === "Blog" && (
+                  <span className="text-[10px] bg-surface-container-highest text-foreground px-1 rounded font-bold">
+                    Live
+                  </span>
+                )}
+              </a>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Right Column: Square Framed Profile Avatar */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.45 }}
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 w-full max-w-3xl"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, type: "spring", stiffness: 120 }}
+          className="lg:col-span-5 flex flex-col items-center justify-center order-1 lg:order-2"
         >
-          <div className="p-3 rounded-xl bg-surface-container/50 border border-outline-variant/30 text-left">
-            <div className="text-xl sm:text-2xl font-bold font-mono text-emerald-800 dark:text-primary">9.2</div>
-            <div className="text-xs text-on-surface-variant mt-0.5">B.E. ECE CGPA</div>
+          <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-2xl overflow-hidden border border-outline-variant/50 bg-surface-container p-2 shadow-2xl group">
+            <div className="relative w-full h-full rounded-xl overflow-hidden bg-surface-container-highest">
+              <Image
+                src={PERSONAL_INFO.avatarPath}
+                alt={PERSONAL_INFO.name}
+                fill
+                priority
+                sizes="(max-width: 640px) 256px, 320px"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
           </div>
-          <div className="p-3 rounded-xl bg-surface-container/50 border border-outline-variant/30 text-left">
-            <div className="text-xl sm:text-2xl font-bold font-mono text-foreground">5+</div>
-            <div className="text-xs text-on-surface-variant mt-0.5">Industry Roles & Projects</div>
-          </div>
-          <div className="p-3 rounded-xl bg-surface-container/50 border border-outline-variant/30 text-left">
-            <div className="text-xl sm:text-2xl font-bold font-mono text-foreground">22+</div>
-            <div className="text-xs text-on-surface-variant mt-0.5">Public Repos & Work</div>
-          </div>
-          <div className="p-3 rounded-xl bg-surface-container/50 border border-outline-variant/30 text-left">
-            <div className="text-xl sm:text-2xl font-bold font-mono text-emerald-700 dark:text-emerald-400">100%</div>
-            <div className="text-xs text-on-surface-variant mt-0.5">Independent & Open</div>
+          <div className="mt-3 text-[11px] font-mono text-on-surface-variant/80 tracking-widest uppercase">
+            Build · Ship · Sleep
           </div>
         </motion.div>
       </div>
+
+      {/* Quick Numbers Bar */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 0.35 }}
+        className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-12 w-full"
+      >
+        <div className="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 text-left">
+          <div className="text-2xl sm:text-3xl font-bold font-mono text-foreground">9.0</div>
+          <div className="text-xs text-on-surface-variant mt-0.5">B.E. ECE CGPA</div>
+        </div>
+        <div className="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 text-left">
+          <div className="text-2xl sm:text-3xl font-bold font-mono text-foreground">5+</div>
+          <div className="text-xs text-on-surface-variant mt-0.5">Industry Roles & Projects</div>
+        </div>
+        <div className="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 text-left">
+          <div className="text-2xl sm:text-3xl font-bold font-mono text-foreground">22+</div>
+          <div className="text-xs text-on-surface-variant mt-0.5">Public Repositories</div>
+        </div>
+        <div className="p-4 rounded-xl bg-surface-container/60 border border-outline-variant/30 text-left">
+          <div className="text-2xl sm:text-3xl font-bold font-mono text-foreground">100%</div>
+          <div className="text-xs text-on-surface-variant mt-0.5">Independent Work</div>
+        </div>
+      </motion.div>
     </section>
   );
 }

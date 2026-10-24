@@ -58,13 +58,13 @@ function DockIcon({
       }}
       onMouseEnter={() => !isMobile && setHovered(true)}
       onMouseLeave={() => !isMobile && setHovered(false)}
-      className="relative flex items-center justify-center rounded-full bg-surface-container/90 text-on-surface hover:text-primary hover:bg-surface-container-high transition-colors border border-outline-variant/40 backdrop-blur-md cursor-pointer shadow-sm active:scale-95"
+      className="relative flex items-center justify-center rounded-full bg-surface-container/90 text-foreground hover:bg-surface-container-high transition-colors border border-outline-variant/40 backdrop-blur-md cursor-pointer shadow-sm active:scale-95"
     >
       {/* Tooltip on desktop only */}
       {!isMobile && hovered && (
         <div className="absolute -top-9 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-surface-container-highest px-2 py-0.5 text-[11px] font-mono font-medium text-foreground shadow-lg border border-outline-variant/40 pointer-events-none z-50 animate-in fade-in zoom-in-95 duration-100">
           {label}
-          {isExternal && <span className="ml-1 text-primary text-[10px]">↗</span>}
+          {isExternal && <span className="ml-1 text-foreground/60 text-[10px]">↗</span>}
         </div>
       )}
       <div className="flex items-center justify-center w-4 h-4 pointer-events-none">
@@ -145,14 +145,14 @@ export function MagneticDock({ className }: { className?: string }) {
           label="Blog"
           href="https://blog.ugandhar.in"
           isExternal
-          icon={<BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-600 dark:text-emerald-400" />}
+          icon={<BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
           isMobile={isMobile}
         />
         <DockIcon
           mouseX={mouseX}
           label="YouTube"
           href="#media"
-          icon={<Youtube className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-red-500" />}
+          icon={<Youtube className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
           isMobile={isMobile}
         />
         <DockIcon

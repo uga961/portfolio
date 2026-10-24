@@ -20,9 +20,9 @@ export default async function Home() {
   const liveBlogPosts = await getLiveBlogPosts();
 
   return (
-    <main className="min-h-screen bg-background text-on-surface relative selection:bg-primary/20 pb-28 sm:pb-24">
+    <main className="min-h-screen bg-background text-on-surface relative selection:bg-foreground/15 pb-28 sm:pb-24">
       {/* Top Glass Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3.5 backdrop-blur-md bg-background/85 border-b border-outline-variant/20 transition-all">
+      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3.5 backdrop-blur-md bg-background/85 border-b border-outline-variant/25 transition-all">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="#hero" className="flex items-center gap-2.5 group">
             {/* Clean logo icon */}
@@ -36,7 +36,7 @@ export default async function Home() {
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-tight text-foreground group-hover:text-primary transition-colors leading-none">
+              <span className="text-sm font-bold tracking-tight text-foreground group-hover:underline transition-colors leading-none">
                 {PERSONAL_INFO.name}
               </span>
               <span className="text-[10px] font-mono text-on-surface-variant mt-1 leading-none">
@@ -51,11 +51,11 @@ export default async function Home() {
               href={`https://${PERSONAL_INFO.blogDomain}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-emerald-600/30 text-emerald-800 dark:text-emerald-400 hover:bg-surface-container-high text-xs font-mono transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/50 text-foreground hover:bg-surface-container-high text-xs font-mono transition-all font-medium"
             >
-              <BookOpen className="w-3.5 h-3.5" />
+              <BookOpen className="w-3.5 h-3.5 text-foreground/80" />
               <span>Blog</span>
-              <span className="text-[10px] opacity-75">↗</span>
+              <span className="text-[10px] opacity-70">↗</span>
             </a>
           </div>
         </div>

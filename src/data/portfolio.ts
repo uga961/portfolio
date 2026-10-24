@@ -5,9 +5,9 @@
  * Central data source for ugandhar.in.
  * 
  * TUTORIALS:
- * 1. ADD NEW EXPERIENCE: Add an object to EXPERIENCES array below.
- * 2. ADD NEW PROJECT: Add an object to PROJECTS array below.
- * 3. UPDATE YOUTUBE PLAYLIST: Change 'playlistUrl' inside YOUTUBE_INFO below.
+ * 1. ADD NEW EXPERIENCE: Append an object to the EXPERIENCES array.
+ * 2. ADD NEW PROJECT: Append an object to the PROJECTS array.
+ * 3. UPDATE YOUTUBE PLAYLIST: Change 'playlistUrl' inside YOUTUBE_INFO.
  * 4. UPDATE RESUME: Place new PDF in public/resume/ and update 'resumePath'.
  * =============================================================================
  */
@@ -83,7 +83,6 @@ export interface YouTubeContent {
   handle: string;
   url: string;
   description: string;
-  // Change or add your YouTube playlist URLs here:
   playlists: YouTubePlaylist[];
 }
 
@@ -97,8 +96,7 @@ export const PERSONAL_INFO = {
     "Building at the intersection of silicon, software, data, and intelligent systems. Exploring transistor-level VLSI memory, autonomous multi-agent pipelines, and native desktop utilities.",
   bioLong:
     "I'm Ugandhar, an engineer who enjoys understanding how systems work from first principles — from transistor-level circuit design in Cadence to machine learning classifiers, Linux kernel primitives, and full-stack software architectures.",
-  status: "Available for innovative collaborations & engineering roles",
-  location: "Visakhapatnam & Chennai, India",
+  location: "Visakhapatnam, India",
   email: "annajiratnam@gmail.com",
   phone: "+91 9493586647",
   resumePath: "/resume/Resume.pdf",
@@ -112,7 +110,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     url: "https://blog.ugandhar.in",
     icon: "Blog",
     handle: "blog.ugandhar.in",
-    color: "#10b981",
+    color: "#dedbc8",
     category: "primary",
   },
   {
@@ -120,7 +118,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     url: "https://github.com/uga961",
     icon: "GitHub",
     handle: "@uga961",
-    color: "#f3f4f6",
+    color: "#dedbc8",
     category: "primary",
   },
   {
@@ -145,14 +143,6 @@ export const SOCIAL_LINKS: SocialLink[] = [
     icon: "Reddit",
     handle: "u/uga961",
     color: "#ff4500",
-    category: "social",
-  },
-  {
-    name: "Instagram",
-    url: "https://www.instagram.com/ugandhar_961/",
-    icon: "Instagram",
-    handle: "@ugandhar_961",
-    color: "#e1306c",
     category: "social",
   },
 ];
@@ -243,11 +233,11 @@ export const EDUCATION: Education[] = [
     institution: "Sathyabama Institute of Science and Technology",
     degree: "Bachelor of Engineering (B.E.) in Electronics and Communication Engineering",
     period: "Aug 2022 – May 2026",
-    grade: "9.2 CGPA",
+    grade: "9.0 CGPA",
     location: "Chennai, Tamil Nadu, India",
     skills: ["Embedded Systems", "VLSI CAD", "RTL Design", "Digital Signal Processing", "Microcontrollers"],
     highlights: [
-      "Consistent academic top-tier performance (9.2 CGPA)",
+      "Consistent academic top-tier performance (9.0 CGPA)",
       "Lead researcher for High Performance 6T & 7T SRAM Energy Efficient Memory Project",
       "Active participant and organizer in student technical forums & hackathons",
     ],
@@ -464,7 +454,7 @@ export const SKILL_CATEGORIES = [
     name: "Systems, Tools & Web",
     skills: [
       "Next.js 15 & React 19",
-      "Tailwind CSS & Material 3",
+      "Tailwind CSS",
       "Linux Kernel & POSIX",
       "WPF Desktop Applications",
       "Git & GitHub",
@@ -493,33 +483,6 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "24 min read",
     tags: ["Android", "ADB", "Optimization", "Hardware"],
   },
-  {
-    title: "Why I Built StayActive: A Small Reminder to Take Care of Myself",
-    excerpt:
-      "StayActive started with a simple thought: working for hours should not mean forgetting water, rest, or movement. The engineering and design choices behind the Windows app.",
-    url: "https://blog.ugandhar.in/posts/why-i-built-stayactive",
-    date: "Oct 21, 2026",
-    readTime: "11 min read",
-    tags: ["StayActive", "C#", "WPF", "Open Source"],
-  },
-  {
-    title: "RBI's Quality Control on ₹500 Notes: When a Visible Printing Error Raises Questions",
-    excerpt:
-      "A visibly misaligned ₹500 note led me to question currency quality control, test it with a currency counter, and contact the Department of Currency Management.",
-    url: "https://blog.ugandhar.in/posts/rbi-500-rupee-note-quality-control",
-    date: "Oct 22, 2026",
-    readTime: "7 min read",
-    tags: ["Investigation", "Curiosity", "Notes"],
-  },
-  {
-    title: "I Decided to Start This Again",
-    excerpt:
-      "A quiet Sunday in Chennai reminded me that a day doesn't have to be perfectly productive to feel full. Sometimes, taking care of small things is enough to begin again.",
-    url: "https://blog.ugandhar.in/posts/i-decided-to-start-this-again",
-    date: "Mar 1, 2026",
-    readTime: "3 min read",
-    tags: ["Reflection", "Journal", "Chennai"],
-  },
 ];
 
 export const YOUTUBE_INFO: YouTubeContent = {
@@ -528,33 +491,28 @@ export const YOUTUBE_INFO: YouTubeContent = {
   url: "https://www.youtube.com/@uga961",
   description:
     "Hands-on coding workshops in Python, data cleaning with Pandas, touch-typing practice, and independent creative films.",
-  // TO UPDATE PLAYLISTS: Edit or add items to this array:
   playlists: [
     {
       title: "Learn PYTHON in 5 Days or Less",
       description: "Complete hands-on beginner to intermediate Python series covering Google Colab, Data Structures, OOPs, NumPy, and Pandas Data Analytics.",
-      // Paste your full YouTube playlist URL here:
       playlistUrl: "https://www.youtube.com/@uga961/playlists",
       topics: ["Google Colab", "Data Structures", "OOPs & NumPy", "Pandas Analytics"],
     },
     {
       title: "Python Data Visualization Mastery",
       description: "Practical walkthroughs creating line charts, correlation matrices, heatmaps, and publication-ready charts using Matplotlib, Seaborn, and Pandas.",
-      // Paste your full YouTube playlist or video URL here:
       playlistUrl: "https://www.youtube.com/watch?v=T-u2sO0edDI",
       topics: ["Matplotlib", "Seaborn", "Correlation Plots", "Heatmaps"],
     },
     {
       title: "Typing Practice & Speed Sessions",
       description: "Daily typing routines, technique breakdown, and progress tracking towards fast and accurate touch typing.",
-      // Paste your full YouTube playlist or video URL here:
       playlistUrl: "https://www.youtube.com/watch?v=y-RCOEktz4E",
       topics: ["Touch Typing", "Speed Tracking", "Muscle Memory"],
     },
     {
       title: "Independent Short Films & Filmmaking",
       description: "Creative storytelling experiments exploring cinematography, color grading, sound design, and pacing, including 'The Fake'.",
-      // Paste your creative playlist or channel link here:
       playlistUrl: "https://www.youtube.com/@uga961",
       topics: ["Cinematography", "Direction", "Pacing", "Short Films"],
     },
