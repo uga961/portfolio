@@ -4,39 +4,39 @@
 
 @layer base {
   :root {
-    /* Light Mode */
-    --background: 140 18% 98%;
-    --foreground: 150 5% 10%;
+    /* Light Mode - Notion / Claude clean high-contrast aesthetic */
+    --background: 140 12% 98%;
+    --foreground: 160 30% 10%;
     
-    --primary: 162 100% 21%;
-    --primary-hover: 162 100% 16%;
+    --primary: 162 90% 22%;
+    --primary-hover: 162 95% 17%;
     --primary-foreground: 0 0% 100%;
-    --primary-container: 153 87% 76%;
-    --primary-on-container: 156 100% 7%;
+    --primary-container: 153 50% 88%;
+    --primary-on-container: 160 80% 12%;
     
-    --surface: 140 18% 98%;
+    --surface: 0 0% 100%;
     --surface-container-lowest: 0 0% 100%;
-    --surface-container-low: 140 14% 96%;
-    --surface-container: 140 10% 94%;
-    --surface-container-high: 140 8% 92%;
-    --surface-container-highest: 140 6% 89%;
+    --surface-container-low: 140 10% 96%;
+    --surface-container: 140 8% 93%;
+    --surface-container-high: 140 8% 89%;
+    --surface-container-highest: 140 6% 85%;
     
-    --on-surface: 150 5% 10%;
-    --on-surface-variant: 150 4% 26%;
+    --on-surface: 160 25% 12%;
+    --on-surface-variant: 160 12% 32%;
     
-    --outline: 150 4% 46%;
-    --outline-variant: 150 8% 77%;
+    --outline: 150 10% 50%;
+    --outline-variant: 150 10% 82%;
   }
 
   .dark {
-    /* Dark Mode (Default) matching blog.ugandhar.in */
+    /* Dark Mode - Obsidian & Emerald matching blog.ugandhar.in */
     --background: 160 7% 7%;
-    --foreground: 140 5% 88%;
+    --foreground: 140 5% 92%;
     
-    --primary: 155 60% 65%;
-    --primary-hover: 155 70% 75%;
-    --primary-foreground: 160 100% 11%;
-    --primary-container: 162 100% 16%;
+    --primary: 155 65% 62%;
+    --primary-hover: 155 75% 72%;
+    --primary-foreground: 160 100% 9%;
+    --primary-container: 162 100% 15%;
     --primary-on-container: 153 87% 76%;
     
     --surface: 160 7% 7%;
@@ -46,15 +46,15 @@
     --surface-container-high: 160 4% 15%;
     --surface-container-highest: 160 3% 20%;
     
-    --on-surface: 140 5% 88%;
-    --on-surface-variant: 150 7% 77%;
+    --on-surface: 140 5% 90%;
+    --on-surface-variant: 150 7% 72%;
     
-    --outline: 150 3% 55%;
-    --outline-variant: 150 4% 26%;
+    --outline: 150 4% 50%;
+    --outline-variant: 150 4% 24%;
   }
 
   * {
-    border-color: hsl(var(--outline-variant) / 0.35);
+    border-color: hsl(var(--outline-variant) / 0.45);
   }
 
   html {
@@ -71,15 +71,15 @@
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.3);
+    background: hsl(var(--primary) / 0.25);
     color: hsl(var(--foreground));
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -89,22 +89,21 @@
 ::-webkit-scrollbar-thumb {
   background: hsl(var(--surface-container-highest));
   border-radius: 9999px;
-  border: 2px solid hsl(var(--background));
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.6);
+  background: hsl(var(--primary) / 0.5);
 }
 
-/* Radial Glow Background */
+/* Subtle Technical Grid Overlay */
 .bg-grid-pattern {
-  background-size: 32px 32px;
+  background-size: 28px 28px;
   background-image: 
-    linear-gradient(to right, hsl(var(--outline-variant) / 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--outline-variant) / 0.08) 1px, transparent 1px);
+    linear-gradient(to right, hsl(var(--outline-variant) / 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--outline-variant) / 0.12) 1px, transparent 1px);
 }
 
 .radial-mask {
-  mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
-  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+  mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
+  -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
 }

@@ -1,17 +1,11 @@
 "use client";
 
 import React from "react";
-import { GraduationCap, Award, BookCheck, MapPin, Calendar } from "lucide-react";
+import { GraduationCap, MapPin, Calendar, Award } from "lucide-react";
 import { EDUCATION } from "@/data/portfolio";
 import { SpotlightCard } from "../ui/SpotlightCard";
 
 export function EducationSection() {
-  const certifications = [
-    { title: "Responsive Web Design", issuer: "freeCodeCamp", tag: "Frontend" },
-    { title: "Google Cloud Study Jams", issuer: "Generative AI & Cloud", tag: "Cloud / GenAI" },
-    { title: "Data Structures through C & C++", issuer: "SIST", tag: "Algorithms" },
-  ];
-
   return (
     <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       <div className="space-y-3 mb-12 text-center sm:text-left">
@@ -20,10 +14,10 @@ export function EducationSection() {
           <span>Academic Background</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-          Education & Credentials
+          Education & Foundations
         </h2>
         <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl">
-          Strong academic foundations across Electronics and Communications, Mathematics, and Computer Science.
+          Rigorous academic foundations across Electronics and Communications, Mathematics, Circuit Theory, and Computer Science.
         </p>
       </div>
 
@@ -83,33 +77,6 @@ export function EducationSection() {
             </div>
           </SpotlightCard>
         ))}
-      </div>
-
-      {/* Certifications Banner */}
-      <div className="mt-10 p-6 rounded-2xl bg-surface-container/40 border border-outline-variant/30">
-        <div className="flex items-center gap-2 mb-4">
-          <Award className="w-4 h-4 text-primary" />
-          <h3 className="text-sm font-mono font-semibold uppercase tracking-wider text-foreground">
-            Certifications & Technical Badges
-          </h3>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {certifications.map((cert) => (
-            <div
-              key={cert.title}
-              className="p-3.5 rounded-xl bg-surface-container-low/80 border border-outline-variant/20 flex items-start gap-3"
-            >
-              <BookCheck className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-              <div>
-                <div className="text-xs font-semibold text-foreground">{cert.title}</div>
-                <div className="text-[11px] text-on-surface-variant mt-0.5">{cert.issuer}</div>
-                <span className="inline-block mt-2 text-[10px] font-mono px-1.5 py-0.5 rounded bg-surface-container-highest text-primary">
-                  {cert.tag}
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );

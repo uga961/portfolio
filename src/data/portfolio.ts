@@ -1,3 +1,16 @@
+/**
+ * =============================================================================
+ * UGANDHAR VADDI — PORTFOLIO DATA CONFIGURATION
+ * =============================================================================
+ * This file is your single source of truth for the entire portfolio website.
+ * 
+ * TO UPDATE YOUR SITE:
+ * - Add a new job/role: Add an object to EXPERIENCES array below.
+ * - Add a new project: Add an object to PROJECTS array below.
+ * - Add or change social links: Edit SOCIAL_LINKS array.
+ * =============================================================================
+ */
+
 export interface Project {
   id: string;
   title: string;
@@ -7,7 +20,7 @@ export interface Project {
   category: "AI & ML" | "Hardware & VLSI" | "Desktop & Web" | "Systems";
   tags: string[];
   metrics?: string;
-  isProprietary?: boolean; // For Draw2Spec and SpecMap (McKinsey proprietary, no link)
+  isProprietary?: boolean; // Set true for proprietary enterprise work (hides external links)
   githubUrl?: string;
   liveUrl?: string;
   blogSlug?: string;
@@ -21,7 +34,7 @@ export interface Experience {
   role: string;
   period: string;
   location: string;
-  type: string; // e.g. "Internship", "Apprenticeship"
+  type: "Internship" | "Apprenticeship" | "Full-time" | "Contract";
   team?: string;
   description: string;
   bullets: string[];
@@ -42,7 +55,7 @@ export interface Education {
 export interface SocialLink {
   name: string;
   url: string;
-  icon: string; // icon identifier
+  icon: string;
   handle: string;
   color: string;
   category: "primary" | "social" | "media";
@@ -57,13 +70,21 @@ export interface BlogPost {
   tags: string[];
 }
 
+export interface YouTubeVideo {
+  id: string;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+  category: "Python Series" | "Data Science" | "Speed Typing" | "Creative / Film";
+  date: string;
+}
+
 export interface YouTubeContent {
   channelName: string;
   handle: string;
   url: string;
-  subscribers?: string;
   description: string;
-  featuredTopics: string[];
+  featuredVideos: YouTubeVideo[];
 }
 
 export const PERSONAL_INFO = {
@@ -73,10 +94,10 @@ export const PERSONAL_INFO = {
   blogDomain: "blog.ugandhar.in",
   headline: "Data Scientist · Electronics Engineer · Systems Builder",
   bioShort:
-    "Building at the intersection of silicon, software, data, and intelligent systems. Exploring everything from transistor-level VLSI design to modern multi-agent AI and responsive desktop apps.",
+    "Building at the intersection of silicon, software, data, and intelligent systems. Exploring transistor-level VLSI memory, autonomous multi-agent pipelines, and native desktop utilities.",
   bioLong:
-    "I'm Ugandhar, an engineer who enjoys understanding how systems work from the ground up — from transistor-level circuit design in Cadence to machine learning classifiers, low-level Linux systems programming, and full-stack web applications. My philosophy is simple: understand deeply, build deliberately, test rigorously, and share the journey.",
-  status: "Available for innovative collaborations & engineering opportunities",
+    "I'm Ugandhar, an engineer who enjoys understanding how systems work from first principles — from transistor-level circuit design in Cadence to machine learning classifiers, Linux kernel primitives, and full-stack software architectures.",
+  status: "Available for innovative collaborations & engineering roles",
   location: "Visakhapatnam & Chennai, India",
   email: "annajiratnam@gmail.com",
   phone: "+91 9493586647",
@@ -91,7 +112,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     url: "https://blog.ugandhar.in",
     icon: "Blog",
     handle: "blog.ugandhar.in",
-    color: "#10b981", // Emerald accent
+    color: "#10b981",
     category: "primary",
   },
   {
@@ -115,7 +136,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
     url: "https://www.youtube.com/@uga961",
     icon: "YouTube",
     handle: "@uga961",
-    color: "#ff0000",
+    color: "#ef4444",
     category: "media",
   },
   {
@@ -306,7 +327,7 @@ export const PROJECTS: Project[] = [
     category: "AI & ML",
     tags: ["Python", "Google Gemini Vision", "Vertex AI", "Gradio", "Computer Vision", "LLMs"],
     metrics: "Automated extraction of technical dimensions & material specs",
-    isProprietary: true, // McKinsey proprietary — no external repo link
+    isProprietary: true,
     featured: true,
     date: "Dec 2025 – Jan 2026",
   },
@@ -321,7 +342,7 @@ export const PROJECTS: Project[] = [
     category: "AI & ML",
     tags: ["Microsoft AutoGen", "Google Gemini", "FastAPI", "Streamlit", "Python 3.11", "Multi-Agent"],
     metrics: "Automated cross-competitor benchmarking matrices",
-    isProprietary: true, // McKinsey proprietary — no external repo link
+    isProprietary: true,
     featured: true,
     date: "Feb 2026 – Apr 2026",
   },
@@ -466,7 +487,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Python Data Visualization: A Practical Guide to Matplotlib, Seaborn, and Pandas",
     excerpt:
       "Learn practical data visualization in Python, from your first Matplotlib line chart to Seaborn plots, heatmaps, correlation, and pair plots, with examples you can run in Google Colab.",
-    url: "https://blog.ugandhar.in/posts/python-data-visualization-a-practical-guide-to-matplotlib-seaborn-and-pandas",
+    url: "https://blog.ugandhar.in/posts/python-data-visualization-matplotlib-seaborn-guide",
     date: "Oct 23, 2026",
     readTime: "24 min read",
     tags: ["Python", "Data Science", "Visualization", "Pandas"],
@@ -475,7 +496,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "How I Debloated My Android TV: A Step-by-Step Guide Using ADB",
     excerpt:
       "My practical guide to cleaning up a slow Android TV with ADB over Wi-Fi, a lighter home screen, careful package checks, reversible changes, and troubleshooting steps.",
-    url: "https://blog.ugandhar.in/posts/how-i-debloated-my-android-tv-a-step-by-step-guide-using-adb",
+    url: "https://blog.ugandhar.in/posts/debloat-android-tv-adb-guide",
     date: "Oct 22, 2026",
     readTime: "24 min read",
     tags: ["Android", "ADB", "Optimization", "Hardware"],
@@ -484,7 +505,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Why I Built StayActive: A Small Reminder to Take Care of Myself",
     excerpt:
       "StayActive started with a simple thought: working for hours should not mean forgetting water, rest, or movement. The engineering and design choices behind the Windows app.",
-    url: "https://blog.ugandhar.in/posts/why-i-built-stayactive-a-small-reminder-to-take-care-of-myself",
+    url: "https://blog.ugandhar.in/posts/why-i-built-stayactive",
     date: "Oct 21, 2026",
     readTime: "11 min read",
     tags: ["StayActive", "C#", "WPF", "Open Source"],
@@ -493,10 +514,19 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "RBI's Quality Control on ₹500 Notes: When a Visible Printing Error Raises Questions",
     excerpt:
       "A visibly misaligned ₹500 note led me to question currency quality control, test it with a currency counter, and contact the Department of Currency Management.",
-    url: "https://blog.ugandhar.in/posts/rbis-quality-control-on-500-notes-when-a-visible-printing-error-raises-questions",
+    url: "https://blog.ugandhar.in/posts/rbi-500-rupee-note-quality-control",
     date: "Oct 22, 2026",
     readTime: "7 min read",
     tags: ["Investigation", "Curiosity", "Notes"],
+  },
+  {
+    title: "I Decided to Start This Again",
+    excerpt:
+      "A quiet Sunday in Chennai reminded me that a day doesn't have to be perfectly productive to feel full. Sometimes, taking care of small things is enough to begin again.",
+    url: "https://blog.ugandhar.in/posts/i-decided-to-start-this-again",
+    date: "Mar 1, 2026",
+    readTime: "3 min read",
+    tags: ["Reflection", "Journal", "Chennai"],
   },
 ];
 
@@ -505,11 +535,47 @@ export const YOUTUBE_INFO: YouTubeContent = {
   handle: "@uga961",
   url: "https://www.youtube.com/@uga961",
   description:
-    "Where I break down engineering concepts, share Python & Pandas hands-on tutorials, practice fast touch typing, and experiment with creative short films.",
-  featuredTopics: [
-    "Python & Pandas Data Tutorials",
-    "Hands-on Programming Walkthroughs",
-    "Speed Typing Sessions",
-    "Creative Filmmaking & Short Films",
+    "Practical walkthroughs in Python, data cleaning with Pandas, touch-typing mastery, and creative storytelling.",
+  featuredVideos: [
+    {
+      id: "T-u2sO0edDI",
+      title: "Data Visualization in Python | Matplotlib, Seaborn & Pandas Tutorial",
+      url: "https://www.youtube.com/watch?v=T-u2sO0edDI",
+      thumbnailUrl: "https://img.youtube.com/vi/T-u2sO0edDI/hqdefault.jpg",
+      category: "Data Science",
+      date: "Hands-on Workshop",
+    },
+    {
+      id: "O36QgaTrp-0",
+      title: "[Day 05] Learn PYTHON in 5 Days: PANDAS Data Cleaning & Analytics",
+      url: "https://www.youtube.com/watch?v=O36QgaTrp-0",
+      thumbnailUrl: "https://img.youtube.com/vi/O36QgaTrp-0/hqdefault.jpg",
+      category: "Python Series",
+      date: "Day 05 Tutorial",
+    },
+    {
+      id: "zZlbW3m_2Rk",
+      title: "[Day 04] Learn PYTHON in 5 Days: PANDAS Import & Manipulation",
+      url: "https://www.youtube.com/watch?v=zZlbW3m_2Rk",
+      thumbnailUrl: "https://img.youtube.com/vi/zZlbW3m_2Rk/hqdefault.jpg",
+      category: "Python Series",
+      date: "Day 04 Tutorial",
+    },
+    {
+      id: "bIzV_ZHJ3SY",
+      title: "[Day 03] Learn PYTHON in 5 Days: OOPs & NUMPY Arrays",
+      url: "https://www.youtube.com/watch?v=bIzV_ZHJ3SY",
+      thumbnailUrl: "https://img.youtube.com/vi/bIzV_ZHJ3SY/hqdefault.jpg",
+      category: "Python Series",
+      date: "Day 03 Tutorial",
+    },
+    {
+      id: "y-RCOEktz4E",
+      title: "Learning How to Type: High Speed Typing Practice Routine",
+      url: "https://www.youtube.com/watch?v=y-RCOEktz4E",
+      thumbnailUrl: "https://img.youtube.com/vi/y-RCOEktz4E/hqdefault.jpg",
+      category: "Speed Typing",
+      date: "Day 06 Routine",
+    },
   ],
 };

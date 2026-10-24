@@ -8,12 +8,11 @@ import {
   Lock,
   BookOpen,
   Sparkles,
-  Layers,
   Star,
   CheckCircle2,
 } from "lucide-react";
 import { SiGithub } from "react-icons/si";
-import { PROJECTS, Project } from "@/data/portfolio";
+import { PROJECTS } from "@/data/portfolio";
 import { SpotlightCard } from "../ui/SpotlightCard";
 
 type CategoryFilter = "All" | "AI & ML" | "Hardware & VLSI" | "Desktop & Web" | "Systems";
@@ -37,7 +36,7 @@ export function ProjectsSection() {
   return (
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       <div className="space-y-3 mb-10 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30 text-xs font-mono text-primary">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30 text-xs font-mono text-emerald-800 dark:text-primary">
           <FolderGit2 className="w-3.5 h-3.5" />
           <span>Selected Work & Engineering Systems</span>
         </div>
@@ -89,17 +88,17 @@ export function ProjectsSection() {
                   <div className="flex items-start justify-between gap-2">
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-medium text-primary">
+                        <span className="text-xs font-mono font-medium text-emerald-800 dark:text-primary">
                           {project.category}
                         </span>
-                        <span className="text-[11px] font-mono text-on-surface-variant/60">
+                        <span className="text-[11px] font-mono text-on-surface-variant">
                           • {project.date}
                         </span>
                       </div>
                       <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
                         {project.title}
                         {project.id === "stayactive" && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                          <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-400 border border-emerald-500/30">
                             <Sparkles className="w-2.5 h-2.5" /> Featured Spotlight
                           </span>
                         )}
@@ -111,14 +110,14 @@ export function ProjectsSection() {
 
                     {/* Proprietary or Public Status Badge */}
                     {project.isProprietary ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/20 whitespace-nowrap">
-                        <Lock className="w-3 h-3 text-amber-400" />
+                      <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2.5 py-1 rounded-md bg-amber-100 dark:bg-amber-500/10 text-amber-900 dark:text-amber-300 border border-amber-500/30 whitespace-nowrap">
+                        <Lock className="w-3 h-3 text-amber-600 dark:text-amber-400" />
                         Proprietary
                       </span>
                     ) : (
                       project.stars !== undefined && project.stars > 0 && (
                         <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest text-on-surface">
-                          <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
+                          <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
                           {project.stars}
                         </span>
                       )
@@ -132,7 +131,7 @@ export function ProjectsSection() {
 
                   {/* Key Metrics / Highlights */}
                   {project.metrics && (
-                    <div className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-container-highest/70 border border-outline-variant/30 text-emerald-300">
+                    <div className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-container-low border border-outline-variant/30 text-emerald-800 dark:text-emerald-300">
                       <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                       <span>{project.metrics}</span>
                     </div>
@@ -164,7 +163,7 @@ export function ProjectsSection() {
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container-highest/80 border border-outline-variant/30 text-on-surface"
+                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container-highest/60 border border-outline-variant/30 text-on-surface"
                       >
                         {tag}
                       </span>
@@ -178,7 +177,7 @@ export function ProjectsSection() {
                         href={project.githubUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:text-primary transition-colors"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:text-primary transition-colors font-medium"
                       >
                         <SiGithub className="w-3.5 h-3.5" />
                         <span>Source Code</span>
@@ -191,11 +190,11 @@ export function ProjectsSection() {
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:underline"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-700 dark:text-emerald-400 hover:underline font-medium"
                       >
                         <BookOpen className="w-3.5 h-3.5" />
                         <span>Live Site</span>
-                        <ExternalLink className="w-3 h-3 text-emerald-400" />
+                        <ExternalLink className="w-3 h-3" />
                       </a>
                     )}
 
@@ -204,7 +203,7 @@ export function ProjectsSection() {
                         href={`https://blog.ugandhar.in/posts/${project.blogSlug}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-primary hover:underline ml-auto"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-primary hover:underline ml-auto font-medium"
                       >
                         <BookOpen className="w-3.5 h-3.5" />
                         <span>Read Essay</span>
@@ -213,7 +212,7 @@ export function ProjectsSection() {
                     )}
 
                     {project.isProprietary && (
-                      <span className="text-[11px] font-mono text-on-surface-variant/70 italic">
+                      <span className="text-[11px] font-mono text-on-surface-variant italic">
                         Enterprise internal tool
                       </span>
                     )}

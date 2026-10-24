@@ -1,9 +1,7 @@
-"use client";
-
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Command, BookOpen } from "lucide-react";
+import { BookOpen } from "lucide-react";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ExperienceSection } from "@/components/sections/ExperienceSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
@@ -12,33 +10,36 @@ import { EducationSection } from "@/components/sections/EducationSection";
 import { WritingSection } from "@/components/sections/WritingSection";
 import { MediaSection } from "@/components/sections/MediaSection";
 import { ContactFooter } from "@/components/sections/ContactFooter";
-import { MagneticDock } from "@/components/ui/MagneticDock";
-import { CommandPalette } from "@/components/ui/CommandPalette";
+import { PortfolioNavShell } from "@/components/ui/PortfolioNavShell";
 import { PERSONAL_INFO } from "@/data/portfolio";
+import { getLiveBlogPosts } from "@/lib/blog";
 
-export default function Home() {
-  const [commandPaletteOpen, setCommandPaletteOpen] = useState(false);
+export const revalidate = 3600; // Revalidate every hour for dynamic blog updates
+
+export default async function Home() {
+  const liveBlogPosts = await getLiveBlogPosts();
 
   return (
-    <main className="min-h-screen bg-background text-on-surface relative selection:bg-primary/20">
-      {/* Top Floating Glass Header */}
-      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3.5 backdrop-blur-md bg-background/70 border-b border-outline-variant/20 transition-all">
+    <main className="min-h-screen bg-background text-on-surface relative selection:bg-primary/20 pb-20 sm:pb-24">
+      {/* Top Glass Navigation Header */}
+      <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3 backdrop-blur-md bg-background/85 border-b border-outline-variant/20 transition-all">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="#hero" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-lg overflow-hidden border border-outline-variant/40 bg-surface-container flex items-center justify-center p-1">
+            {/* Clean, perfectly aligned logo icon */}
+            <div className="relative w-7 h-7 flex-shrink-0 flex items-center justify-center">
               <Image
-                src={PERSONAL_INFO.logoPath}
-                alt="Ugandhar Vaddi Logo"
+                src="/icon.png"
+                alt="Ugandhar Vaddi"
                 width={28}
                 height={28}
-                className="w-full h-full object-contain group-hover:scale-110 transition-transform"
+                className="w-full h-full object-contain rounded-md"
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-sm font-bold tracking-tight text-foreground group-hover:text-primary transition-colors">
+              <span className="text-sm font-bold tracking-tight text-foreground group-hover:text-primary transition-colors leading-none">
                 {PERSONAL_INFO.name}
               </span>
-              <span className="text-[10px] font-mono text-on-surface-variant">
+              <span className="text-[10px] font-mono text-on-surface-variant mt-1 leading-none">
                 {PERSONAL_INFO.domain}
               </span>
             </div>
@@ -50,29 +51,17 @@ export default function Home() {
               href={`https://${PERSONAL_INFO.blogDomain}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-emerald-500/30 text-emerald-400 hover:bg-emerald-950/30 hover:border-emerald-500 text-xs font-mono transition-all"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container border border-emerald-600/30 text-emerald-800 dark:text-emerald-400 hover:bg-surface-container-high text-xs font-mono transition-all"
             >
               <BookOpen className="w-3.5 h-3.5" />
               <span>Blog</span>
               <span className="text-[10px] opacity-75">↗</span>
             </a>
-
-            {/* Command Palette Trigger Button */}
-            <button
-              onClick={() => setCommandPaletteOpen(true)}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/30 text-on-surface-variant hover:text-foreground hover:border-primary/40 text-xs font-mono transition-all"
-            >
-              <Command className="w-3.5 h-3.5 text-primary" />
-              <span className="hidden sm:inline">Search</span>
-              <kbd className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-surface-container-highest text-[10px] text-on-surface-variant border border-outline-variant/30">
-                ⌘K
-              </kbd>
-            </button>
           </div>
         </div>
       </header>
 
-      {/* Main Page Sections */}
+      {/* Main Sections */}
       <HeroSection />
 
       <div className="space-y-4">
@@ -80,20 +69,14 @@ export default function Home() {
         <ProjectsSection />
         <SkillsSection />
         <EducationSection />
-        <WritingSection />
+        <WritingSection initialPosts={liveBlogPosts} />
         <MediaSection />
       </div>
 
       <ContactFooter />
 
-      {/* Floating Magnetic Dock Navigation (ayush101.dev style) */}
-      <MagneticDock onOpenCommandPalette={() => setCommandPaletteOpen(true)} />
-
-      {/* Command Palette Modal */}
-      <CommandPalette
-        isOpen={commandPaletteOpen}
-        onClose={() => setCommandPaletteOpen(false)}
-      />
+      {/* Client navigation shell: Floating Magnetic Dock + Command Palette */}
+      <PortfolioNavShell />
     </main>
   );
 }
