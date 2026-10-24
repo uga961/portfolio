@@ -1,0 +1,229 @@
+"use client";
+
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FolderGit2,
+  ExternalLink,
+  Lock,
+  BookOpen,
+  Sparkles,
+  Layers,
+  Star,
+  CheckCircle2,
+} from "lucide-react";
+import { SiGithub } from "react-icons/si";
+import { PROJECTS, Project } from "@/data/portfolio";
+import { SpotlightCard } from "../ui/SpotlightCard";
+
+type CategoryFilter = "All" | "AI & ML" | "Hardware & VLSI" | "Desktop & Web" | "Systems";
+
+export function ProjectsSection() {
+  const [filter, setFilter] = useState<CategoryFilter>("All");
+
+  const categories: CategoryFilter[] = [
+    "All",
+    "Desktop & Web",
+    "Hardware & VLSI",
+    "AI & ML",
+    "Systems",
+  ];
+
+  const filteredProjects =
+    filter === "All"
+      ? PROJECTS
+      : PROJECTS.filter((p) => p.category === filter);
+
+  return (
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+      <div className="space-y-3 mb-10 text-center sm:text-left">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/30 text-xs font-mono text-primary">
+          <FolderGit2 className="w-3.5 h-3.5" />
+          <span>Selected Work & Engineering Systems</span>
+        </div>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+              Featured Projects
+            </h2>
+            <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl mt-1">
+              Building across silicon, desktop utilities, machine learning systems, and web platforms.
+            </p>
+          </div>
+
+          {/* Filter Pills */}
+          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-surface-container/60 border border-outline-variant/20 self-start sm:self-auto">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setFilter(cat)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-200 ${
+                  filter === cat
+                    ? "bg-primary text-primary-foreground font-semibold shadow-sm"
+                    : "text-on-surface-variant hover:text-foreground hover:bg-surface-container-high"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Projects Grid */}
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <AnimatePresence>
+          {filteredProjects.map((project) => (
+            <motion.div
+              layout
+              key={project.id}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className={project.id === "stayactive" ? "md:col-span-2 lg:col-span-2" : ""}
+            >
+              <SpotlightCard className="h-full flex flex-col justify-between p-6 sm:p-7 space-y-5 border-outline-variant/30 hover:border-primary/50 group">
+                <div className="space-y-4">
+                  {/* Card Header & Badges */}
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="space-y-1">
+                      <div className="flex items-center gap-2">
+                        <span className="text-xs font-mono font-medium text-primary">
+                          {project.category}
+                        </span>
+                        <span className="text-[11px] font-mono text-on-surface-variant/60">
+                          • {project.date}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors flex items-center gap-2">
+                        {project.title}
+                        {project.id === "stayactive" && (
+                          <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                            <Sparkles className="w-2.5 h-2.5" /> Featured Spotlight
+                          </span>
+                        )}
+                      </h3>
+                      <div className="text-xs text-on-surface-variant font-medium">
+                        {project.subtitle}
+                      </div>
+                    </div>
+
+                    {/* Proprietary or Public Status Badge */}
+                    {project.isProprietary ? (
+                      <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-300 border border-amber-500/20 whitespace-nowrap">
+                        <Lock className="w-3 h-3 text-amber-400" />
+                        Proprietary
+                      </span>
+                    ) : (
+                      project.stars !== undefined && project.stars > 0 && (
+                        <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest text-on-surface">
+                          <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
+                          {project.stars}
+                        </span>
+                      )
+                    )}
+                  </div>
+
+                  {/* Project Description */}
+                  <p className="text-sm text-on-surface-variant leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Key Metrics / Highlights */}
+                  {project.metrics && (
+                    <div className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-container-highest/70 border border-outline-variant/30 text-emerald-300">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                      <span>{project.metrics}</span>
+                    </div>
+                  )}
+
+                  {/* Extra deep dive for StayActive Spotlight */}
+                  {project.id === "stayactive" && (
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2 text-xs font-mono text-on-surface-variant">
+                      <div className="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+                        <div className="font-semibold text-foreground">Hydration & Eye-Rest</div>
+                        <div className="text-[11px] text-on-surface-variant mt-0.5">20-20-20 rule & water schedules</div>
+                      </div>
+                      <div className="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+                        <div className="font-semibold text-foreground">Meeting Detection</div>
+                        <div className="text-[11px] text-on-surface-variant mt-0.5">Pauses during active mics & calls</div>
+                      </div>
+                      <div className="p-2.5 rounded-lg bg-surface-container-low border border-outline-variant/20">
+                        <div className="font-semibold text-foreground">System Media Pause</div>
+                        <div className="text-[11px] text-on-surface-variant mt-0.5">Auto-pauses audio during reminders</div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Footer with Tags & Action Links */}
+                <div className="pt-4 border-t border-outline-variant/20 space-y-4">
+                  {/* Tech stack tags */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container-highest/80 border border-outline-variant/30 text-on-surface"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* External Links */}
+                  <div className="flex items-center gap-3">
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:text-primary transition-colors"
+                      >
+                        <SiGithub className="w-3.5 h-3.5" />
+                        <span>Source Code</span>
+                        <ExternalLink className="w-3 h-3 text-on-surface-variant" />
+                      </a>
+                    )}
+
+                    {project.liveUrl && (
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-400 hover:underline"
+                      >
+                        <BookOpen className="w-3.5 h-3.5" />
+                        <span>Live Site</span>
+                        <ExternalLink className="w-3 h-3 text-emerald-400" />
+                      </a>
+                    )}
+
+                    {project.blogSlug && (
+                      <a
+                        href={`https://blog.ugandhar.in/posts/${project.blogSlug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-mono text-primary hover:underline ml-auto"
+                      >
+                        <BookOpen className="w-3.5 h-3.5" />
+                        <span>Read Essay</span>
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                    )}
+
+                    {project.isProprietary && (
+                      <span className="text-[11px] font-mono text-on-surface-variant/70 italic">
+                        Enterprise internal tool
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </SpotlightCard>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+    </section>
+  );
+}
