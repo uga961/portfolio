@@ -6,8 +6,6 @@ Built with **Next.js 15 (App Router)**, **React 19**, **TypeScript**, **Tailwind
 
 ---
 
----
-
 ## Architecture Overview
 
 ```
