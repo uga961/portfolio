@@ -35,7 +35,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "monospace"],
-        serif: ["var(--font-newsreader)", "Georgia", "serif"],
+        serif: ["ui-serif", "Georgia", "Cambria", "serif"],
       },
       animation: {
         "spin-slow": "spin 20s linear infinite",

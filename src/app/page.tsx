@@ -1,18 +1,35 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { BookOpen } from "lucide-react";
 import { HeroSection } from "@/components/sections/HeroSection";
-import { ExperienceSection } from "@/components/sections/ExperienceSection";
-import { ProjectsSection } from "@/components/sections/ProjectsSection";
-import { SkillsSection } from "@/components/sections/SkillsSection";
-import { EducationSection } from "@/components/sections/EducationSection";
-import { WritingSection } from "@/components/sections/WritingSection";
-import { MediaSection } from "@/components/sections/MediaSection";
-import { ContactFooter } from "@/components/sections/ContactFooter";
 import { MagneticDock } from "@/components/ui/MagneticDock";
 import { PERSONAL_INFO } from "@/data/portfolio";
 import { getLiveBlogPosts } from "@/lib/blog";
+
+// Code-split below-the-fold client components with SSR preserved for SEO & instant HTML render
+const ExperienceSection = dynamic(() =>
+  import("@/components/sections/ExperienceSection").then((mod) => mod.ExperienceSection)
+);
+const ProjectsSection = dynamic(() =>
+  import("@/components/sections/ProjectsSection").then((mod) => mod.ProjectsSection)
+);
+const SkillsSection = dynamic(() =>
+  import("@/components/sections/SkillsSection").then((mod) => mod.SkillsSection)
+);
+const EducationSection = dynamic(() =>
+  import("@/components/sections/EducationSection").then((mod) => mod.EducationSection)
+);
+const WritingSection = dynamic(() =>
+  import("@/components/sections/WritingSection").then((mod) => mod.WritingSection)
+);
+const MediaSection = dynamic(() =>
+  import("@/components/sections/MediaSection").then((mod) => mod.MediaSection)
+);
+const ContactFooter = dynamic(() =>
+  import("@/components/sections/ContactFooter").then((mod) => mod.ContactFooter)
+);
 
 export const revalidate = 3600; // Hourly ISR for automatic blog synchronization
 

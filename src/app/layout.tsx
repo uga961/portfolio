@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
@@ -13,14 +13,6 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
-  preload: false,
-});
-
-const newsreader = Newsreader({
-  variable: "--font-newsreader",
-  subsets: ["latin"],
-  style: ["normal"],
   display: "swap",
   preload: false,
 });
@@ -215,7 +207,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} font-sans bg-background text-on-surface antialiased selection:bg-primary/20 selection:text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans bg-background text-on-surface antialiased selection:bg-primary/20 selection:text-foreground`}
       >
         {children}
         <Analytics />

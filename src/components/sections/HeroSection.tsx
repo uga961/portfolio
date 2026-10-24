@@ -12,22 +12,24 @@ import {
   GraduationCap,
   FolderGit2,
 } from "lucide-react";
-import confetti from "canvas-confetti";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/portfolio";
 import { SocialIcon } from "../ui/SocialIcons";
 
 export function HeroSection() {
   const [copied, setCopied] = useState(false);
 
-  const handleCopyEmail = () => {
+  const handleCopyEmail = async () => {
     navigator.clipboard.writeText(PERSONAL_INFO.email);
     setCopied(true);
-    confetti({
-      particleCount: 50,
-      spread: 70,
-      origin: { y: 0.7 },
-      colors: ["#dedbc8", "#e1e0cc", "#a2a095"],
-    });
+    try {
+      const confetti = (await import("canvas-confetti")).default;
+      confetti({
+        particleCount: 50,
+        spread: 70,
+        origin: { y: 0.7 },
+        colors: ["#dedbc8", "#e1e0cc", "#a2a095"],
+      });
+    } catch (_) {}
     setTimeout(() => setCopied(false), 2000);
   };
 
@@ -168,8 +170,8 @@ export function HeroSection() {
                 alt={PERSONAL_INFO.name}
                 fill
                 priority
-                loading="eager"
-                sizes="(max-width: 640px) 256px, 320px"
+                fetchPriority="high"
+                sizes="(max-width: 640px) 240px, 320px"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
             </div>
