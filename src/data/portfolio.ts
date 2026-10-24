@@ -149,7 +149,7 @@ export const EXPERIENCES: Experience[] = [
   {
     company: "Tredence Analytics Solutions",
     role: "Associate Data Scientist",
-    period: "Nov 2026 – Present (Joining Soon)",
+    period: "Nov 2026 (Joining Soon)",
     location: "Chennai, India",
     type: "Full-time",
     team: "Analytics & Applied AI",
@@ -374,6 +374,7 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/uga961/Sexual-Harrasment-Classification",
     featured: false,
     date: "Jan 2025 – Apr 2025",
+    contributors: ["Yogeshwaran S", "Aashish Kumar", "Yash Raj Gupta"],
   },
   {
     id: "safety-radar",
