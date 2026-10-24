@@ -7,12 +7,14 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
+  preload: false,
 });
 
 const newsreader = Newsreader({
@@ -83,7 +85,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    type: "profile",
+    type: "website",
     locale: "en_US",
     url: "https://ugandhar.in",
     siteName: "Ugandhar Vaddi",
@@ -92,7 +94,7 @@ export const metadata: Metadata = {
       "Associate Data Scientist at Tredence. Building at the intersection of silicon, software, enterprise data pipelines, and applied machine learning models.",
     images: [
       {
-        url: "/social/og-image.png",
+        url: "https://ugandhar.in/social/og-image.png",
         width: 1200,
         height: 630,
         alt: "Ugandhar Vaddi — Engineering Portfolio",
@@ -104,7 +106,7 @@ export const metadata: Metadata = {
     title: "Ugandhar Vaddi — Associate Data Scientist & Systems Builder",
     description:
       "Associate Data Scientist at Tredence. Building at the intersection of silicon, software, enterprise data pipelines, and applied machine learning models.",
-    images: ["/social/og-image.png"],
+    images: ["https://ugandhar.in/social/og-image.png"],
     creator: "@uga961",
     site: "@uga961",
   },
@@ -131,7 +133,12 @@ const jsonLd = {
       name: "Ugandhar Vaddi",
       alternateName: "uga961",
       url: "https://ugandhar.in",
-      image: "https://ugandhar.in/avatar/profile.jpg",
+      image: {
+        "@type": "ImageObject",
+        url: "https://ugandhar.in/avatar/profile.jpg",
+        width: 640,
+        height: 640,
+      },
       jobTitle: "Associate Data Scientist",
       worksFor: {
         "@type": "Organization",
@@ -171,6 +178,7 @@ const jsonLd = {
       publisher: {
         "@id": "https://ugandhar.in/#person",
       },
+      inLanguage: "en-US",
     },
   ],
 };
