@@ -97,7 +97,7 @@ export const PERSONAL_INFO = {
   location: "Visakhapatnam, India",
   email: "annajiratnam@gmail.com",
   phone: "+91 9493586647",
-  resumePath: "/resume/Resume.pdf",
+  resumePath: "/resume",
   avatarPath: "/avatar/profile.jpg",
   logoPath: "/Logo.png",
 };

@@ -76,6 +76,10 @@ const nextConfig: NextConfig = {
         source: "/logo.png",
         destination: "/Logo.png",
       },
+      {
+        source: "/resume/Resume.pdf",
+        destination: "/resume",
+      },
     ];
   },
 };
