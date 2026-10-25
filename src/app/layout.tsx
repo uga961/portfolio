@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ugandhar.in"),
+  metadataBase: new URL("https://www.ugandhar.in"),
   title: {
     default: "Ugandhar Vaddi — Associate Data Scientist & Systems Builder",
     template: "%s | Ugandhar Vaddi",
@@ -54,11 +54,11 @@ export const metadata: Metadata = {
     "Electronics Engineer",
     "Visakhapatnam",
   ],
-  authors: [{ name: "Ugandhar Vaddi", url: "https://ugandhar.in" }],
+  authors: [{ name: "Ugandhar Vaddi", url: "https://www.ugandhar.in" }],
   creator: "Ugandhar Vaddi",
   publisher: "Ugandhar Vaddi",
   alternates: {
-    canonical: "https://ugandhar.in",
+    canonical: "https://www.ugandhar.in",
   },
   verification: {
     google: "d6qC6JXOnKpcVtH15DHGM1LslxfSPMTZd2mavDkuMY8",
@@ -79,14 +79,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://ugandhar.in",
+    url: "https://www.ugandhar.in",
     siteName: "Ugandhar Vaddi",
     title: "Ugandhar Vaddi — Associate Data Scientist & Systems Builder",
     description:
       "Associate Data Scientist at Tredence. Building at the intersection of silicon, software, enterprise data pipelines, and applied machine learning models.",
     images: [
       {
-        url: "https://ugandhar.in/social/og-image.png",
+        url: "https://www.ugandhar.in/social/og-image.png",
         width: 1200,
         height: 630,
         alt: "Ugandhar Vaddi — Engineering Portfolio",
@@ -98,7 +98,7 @@ export const metadata: Metadata = {
     title: "Ugandhar Vaddi — Associate Data Scientist & Systems Builder",
     description:
       "Associate Data Scientist at Tredence. Building at the intersection of silicon, software, enterprise data pipelines, and applied machine learning models.",
-    images: ["https://ugandhar.in/social/og-image.png"],
+    images: ["https://www.ugandhar.in/social/og-image.png"],
     creator: "@uga961",
     site: "@uga961",
   },
@@ -120,16 +120,17 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://ugandhar.in/#person",
+      "@id": "https://www.ugandhar.in/#person",
       name: "Ugandhar Vaddi",
       alternateName: "uga961",
-      url: "https://ugandhar.in",
+      url: "https://www.ugandhar.in",
       image: {
         "@type": "ImageObject",
-        url: "https://ugandhar.in/avatar/profile.jpg",
+        url: "https://www.ugandhar.in/avatar/profile.jpg",
         width: 640,
         height: 640,
       },
+      logo: "https://www.ugandhar.in/icon.png",
       jobTitle: "Associate Data Scientist",
       worksFor: {
         "@type": "Organization",
@@ -161,13 +162,16 @@ const jsonLd = {
     },
     {
       "@type": "WebSite",
-      "@id": "https://ugandhar.in/#website",
-      url: "https://ugandhar.in",
+      "alternateName": ["Ugandhar", "ugandhar.in", "Ugandhar Vaddi Portfolio"],
+      "image": "https://www.ugandhar.in/icon.png",
+      "thumbnailUrl": "https://www.ugandhar.in/icon.png",
+      "@id": "https://www.ugandhar.in/#website",
+      url: "https://www.ugandhar.in",
       name: "Ugandhar Vaddi",
       description:
         "Building at the intersection of silicon, software, data, and intelligent systems.",
       publisher: {
-        "@id": "https://ugandhar.in/#person",
+        "@id": "https://www.ugandhar.in/#person",
       },
       inLanguage: "en-US",
     },
@@ -182,9 +186,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="48x48" />
-        <link rel="icon" type="image/png" sizes="96x96" href="/icon.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

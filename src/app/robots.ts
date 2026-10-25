@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://ugandhar.in/sitemap.xml",
+    sitemap: "https://www.ugandhar.in/sitemap.xml",
   };
 }
