@@ -56,12 +56,6 @@ export function ResumeStatusCard() {
               I am currently happy in my current role and am <span className="font-semibold text-foreground">not looking for new opportunities, roles, or job options</span> at this time.
             </p>
           </div>
-          <div className="flex items-start gap-2.5">
-            <Sparkles className="w-4 h-4 text-foreground/70 flex-shrink-0 mt-0.5" />
-            <p>
-              My resume file is temporarily offline while being refined. Once ready, it will be accessible right here automatically.
-            </p>
-          </div>
         </div>
 
         {/* Alternative Contact Links */}
