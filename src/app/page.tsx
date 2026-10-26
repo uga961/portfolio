@@ -31,7 +31,7 @@ const ContactFooter = dynamic(() =>
   import("@/components/sections/ContactFooter").then((mod) => mod.ContactFooter)
 );
 
-export const revalidate = 3600; // Hourly ISR for automatic blog synchronization
+export const revalidate = 60; // 60-second ISR for near real-time blog synchronization
 
 export default async function Home() {
   const liveBlogPosts = await getLiveBlogPosts();

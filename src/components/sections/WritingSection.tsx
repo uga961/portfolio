@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BookOpen, ExternalLink, ArrowRight, Clock, Calendar, RefreshCw } from "lucide-react";
 import { BlogPost, BLOG_POSTS, PERSONAL_INFO } from "@/data/portfolio";
 import { SpotlightCard } from "../ui/SpotlightCard";
@@ -13,57 +13,35 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
   const [posts, setPosts] = useState<BlogPost[]>(initialPosts.slice(0, 2));
   const [isRefreshing, setIsRefreshing] = useState(false);
 
+  // Proactively fetch live feed on mount to guarantee fresh content even if static ISR is serving
+  useEffect(() => {
+    let isMounted = true;
+    fetch("/api/blog")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data: BlogPost[] | null) => {
+        if (isMounted && Array.isArray(data) && data.length > 0) {
+          setPosts(data.slice(0, 2));
+        }
+      })
+      .catch(() => {});
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   const refreshPosts = async () => {
     setIsRefreshing(true);
     try {
-      const res = await fetch("https://blog.ugandhar.in/feed.xml", { cache: "no-store" });
+      const res = await fetch(`/api/blog?t=${Date.now()}`, { cache: "no-store" });
       if (res.ok) {
-        const xml = await res.text();
-        const itemRegex = /<item>([\s\S]*?)<\/item>/gi;
-        const fetched: BlogPost[] = [];
-        let match: RegExpExecArray | null;
-
-        while ((match = itemRegex.exec(xml)) !== null && fetched.length < 2) {
-          const content = match[1];
-          const title = /<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/i.exec(content);
-          const link = /<link>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/link>/i.exec(content);
-          const desc = /<description>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/description>/i.exec(content);
-          const date = /<pubDate>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/pubDate>/i.exec(content);
-
-          if (title && link) {
-            let cleanDesc = (desc ? desc[1] : "")
-              .replace(/<[^>]+>/g, " ")
-              .replace(/\s+/g, " ")
-              .trim();
-            if (cleanDesc.length > 170) cleanDesc = cleanDesc.substring(0, 167) + "...";
-
-            let dateStr = "Recent";
-            if (date) {
-              try {
-                dateStr = new Date(date[1]).toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                });
-              } catch {
-                dateStr = date[1];
-              }
-            }
-
-            fetched.push({
-              title: title[1].trim(),
-              url: link[1].trim(),
-              excerpt: cleanDesc || "Read the complete technical essay on blog.ugandhar.in.",
-              date: dateStr,
-              readTime: `${Math.max(5, Math.min(25, Math.ceil(cleanDesc.length / 15)))} min read`,
-              tags: ["Engineering", "Notes"],
-            });
-          }
+        const data: BlogPost[] = await res.json();
+        if (Array.isArray(data) && data.length > 0) {
+          setPosts(data.slice(0, 2));
         }
-        if (fetched.length > 0) setPosts(fetched);
       }
     } catch (e) {
-      console.log("Feed sync fallback", e);
+      console.warn("Manual feed sync fallback", e);
     } finally {
       setIsRefreshing(false);
     }
@@ -75,17 +53,17 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground font-medium">
             <BookOpen className="w-3.5 h-3.5 text-foreground/80" />
-            <span>Technical Journal · Latest 2 Essays</span>
+            <span>Technical Journal · Live from Blog</span>
           </div>
 
           <button
             onClick={refreshPosts}
             disabled={isRefreshing}
             title="Refresh feed from blog.ugandhar.in"
-            className="text-xs font-mono text-on-surface-variant hover:text-foreground transition-colors flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container border border-outline-variant/40"
+            className="text-xs font-mono text-on-surface-variant hover:text-foreground transition-colors flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container border border-outline-variant/40 cursor-pointer active:scale-95"
           >
             <RefreshCw className={`w-3 h-3 ${isRefreshing ? "animate-spin text-foreground" : ""}`} />
-            <span>Sync Live</span>
+            <span>{isRefreshing ? "Syncing..." : "Sync Live"}</span>
           </button>
         </div>
 
@@ -101,7 +79,7 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
         </div>
       </div>
 
-      {/* Grid of Latest 2 Posts */}
+      {/* Grid of Latest Posts */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {posts.map((post) => (
           <a

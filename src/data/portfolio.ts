@@ -436,13 +436,22 @@ export const SKILL_CATEGORIES = [
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    title: "Four Interviews, One Long Day, and a Chapter I’ll Always Remember",
+    excerpt:
+      "The story of how the McKinsey opportunity began, a long interview day in Chennai, and how I felt then—and how I look back on it now.",
+    url: "https://blog.ugandhar.in/posts/mckinsey-interview-day-and-results",
+    date: "Oct 26, 2026",
+    readTime: "11 min read",
+    tags: ["McKinsey", "Interview Experience", "Career Journey", "Personal Reflection"],
+  },
+  {
     title: "Python Data Visualization: A Practical Guide to Matplotlib, Seaborn, and Pandas",
     excerpt:
       "Learn practical data visualization in Python, from your first Matplotlib line chart to Seaborn plots, heatmaps, correlation, and pair plots, with examples you can run in Google Colab.",
     url: "https://blog.ugandhar.in/posts/python-data-visualization-matplotlib-seaborn-guide",
     date: "Oct 23, 2026",
     readTime: "24 min read",
-    tags: ["Python", "Data Science", "Visualization", "Pandas"],
+    tags: ["Python", "Data Visualization", "Matplotlib", "Seaborn", "Pandas"],
   },
   {
     title: "How I Debloated My Android TV: A Step-by-Step Guide Using ADB",
@@ -451,7 +460,7 @@ export const BLOG_POSTS: BlogPost[] = [
     url: "https://blog.ugandhar.in/posts/debloat-android-tv-adb-guide",
     date: "Oct 22, 2026",
     readTime: "24 min read",
-    tags: ["Android", "ADB", "Optimization", "Hardware"],
+    tags: ["Android TV", "ADB", "Optimization", "Guides"],
   },
 ];
 
