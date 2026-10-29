@@ -4,67 +4,63 @@
 
 @layer base {
   :root {
-    /* Light Mode - Warm Bone Parchment / Ayush101 inspired (#dedbc8 / #e1e0cc family) */
-    --background: 48 20% 93%; /* #f2efe4 */
-    --foreground: 60 8% 10%;  /* #1a1a17 */
-    
-    --primary: 60 8% 10%;     /* #1a1a17 deep carbon */
-    --primary-hover: 60 6% 20%;
-    --primary-foreground: 48 20% 93%;
-    --primary-container: 48 22% 85%;
-    --primary-on-container: 60 8% 10%;
-    
-    --surface: 48 25% 97%;    /* #faf8f2 */
-    --surface-container-lowest: 0 0% 100%;
-    --surface-container-low: 48 20% 91%;
-    --surface-container: 48 18% 87%; /* #e4e1d2 */
-    --surface-container-high: 47 18% 83%; /* #dedbc8 */
-    --surface-container-highest: 47 15% 78%; /* #d3cfbe */
-    
-    --on-surface: 60 8% 10%;
-    --on-surface-variant: 50 6% 36%;
-    
-    --outline: 48 10% 65%;
-    --outline-variant: 48 12% 78%;
+    /* Editorial Light Mode — Warm Parchment & Deep Charcoal Ink */
+    --background: 45 20% 96.5%;     /* #F8F7F4 warm bone off-white */
+    --foreground: 0 0% 8.6%;        /* #161616 near-black text */
 
-    /* Subtle touch-up card spotlight */
-    --spotlight-surface: rgba(255, 255, 255, 0.22);
-    --card-shadow: 0 1px 3px 0 rgba(35, 30, 20, 0.04);
-    --card-hover-shadow: 0 8px 24px -6px rgba(35, 30, 20, 0.08), 0 2px 6px -1px rgba(35, 30, 20, 0.03);
+    --primary: 0 0% 8.6%;
+    --primary-foreground: 45 20% 96.5%;
+    --primary-hover: 0 0% 18%;
+
+    --accent: 149 33% 26.5%;        /* #2D5A43 deep forest green */
+    --accent-hover: 148 33% 20%;    /* #224432 */
+    --accent-foreground: 0 0% 100%;
+    --accent-muted: 149 20% 92%;
+
+    --surface: 0 0% 100%;           /* #FFFFFF pure clean surface */
+    --surface-subtle: 45 15% 94%;   /* #F2F0EB */
+    --surface-container: 45 12% 91%;/* #EBE8E1 */
+    --surface-container-high: 42 12% 86%;
+
+    --on-surface: 0 0% 8.6%;
+    --on-surface-variant: 60 2% 40%;/* #666663 neutral slate gray */
+
+    --border: 40 14% 87.6%;         /* #E4E1DB hairline border */
+    --border-subtle: 40 14% 92%;
+    --outline: 40 14% 75%;
+    --outline-variant: 40 14% 87.6%;
   }
 
   .dark {
-    /* Dark Mode - Obsidian Carbon & Warm Bone Parchment (#e1e0cc / #dedbc8) */
-    --background: 60 5% 6%;   /* #10100f deep carbon */
-    --foreground: 48 22% 85%;  /* #dedbc8 warm bone */
-    
-    --primary: 48 24% 87%;    /* #e1e0cc */
-    --primary-hover: 48 30% 95%;
-    --primary-foreground: 60 5% 6%;
-    --primary-container: 60 4% 18%;
-    --primary-on-container: 48 22% 85%;
-    
-    --surface: 60 5% 9%;      /* #171715 */
-    --surface-container-lowest: 60 5% 5%;
-    --surface-container-low: 60 4% 11%;
-    --surface-container: 60 4% 14%;
-    --surface-container-high: 60 4% 18%;
-    --surface-container-highest: 60 4% 22%;
-    
-    --on-surface: 48 22% 85%; /* #dedbc8 */
-    --on-surface-variant: 48 8% 62%; /* #a2a095 */
-    
-    --outline: 60 3% 40%;
-    --outline-variant: 60 4% 22%;
+    /* Editorial Dark Mode — Deep Carbon & Warm Bone Ink */
+    --background: 60 3% 6.9%;       /* #121211 deep carbon canvas */
+    --foreground: 47 16% 89.2%;     /* #E8E6DF warm bone text */
 
-    /* Subtle touch-up card spotlight */
-    --spotlight-surface: rgba(255, 255, 255, 0.035);
-    --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
-    --card-hover-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.5), 0 0 1px 1px rgba(222, 219, 200, 0.08);
+    --primary: 47 16% 89.2%;
+    --primary-foreground: 60 3% 6.9%;
+    --primary-hover: 47 25% 96%;
+
+    --accent: 144 21% 48.6%;        /* #629677 muted architectural sage */
+    --accent-hover: 144 26% 56%;
+    --accent-foreground: 60 3% 6.9%;
+    --accent-muted: 144 15% 15%;
+
+    --surface: 60 4% 9.8%;          /* #1A1A18 deep surface */
+    --surface-subtle: 60 3% 12%;    /* #20201E */
+    --surface-container: 60 3% 14.5%;/* #262624 */
+    --surface-container-high: 60 3% 18%;
+
+    --on-surface: 47 16% 89.2%;
+    --on-surface-variant: 48 4% 53.7%;/* #8E8C84 warm gray */
+
+    --border: 60 3% 16%;            /* #2A2A27 carbon hairline */
+    --border-subtle: 60 3% 12%;
+    --outline: 60 3% 30%;
+    --outline-variant: 60 3% 16%;
   }
 
   * {
-    border-color: hsl(var(--outline-variant) / 0.5);
+    border-color: hsl(var(--border));
   }
 
   html {
@@ -73,7 +69,6 @@
     scroll-padding-top: 5rem;
   }
 
-  /* Only enable smooth scrolling for desktop pointer devices; keep native hardware momentum on touch/mobile */
   @media (hover: hover) and (pointer: fine) {
     html {
       scroll-behavior: smooth;
@@ -92,15 +87,15 @@
   }
 
   ::selection {
-    background: hsl(var(--foreground) / 0.15);
+    background: hsl(var(--accent) / 0.15);
     color: hsl(var(--foreground));
   }
 }
 
-/* Custom Scrollbar */
+/* Minimal Editorial Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -108,23 +103,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--surface-container-highest));
-  border-radius: 9999px;
+  background: hsl(var(--border));
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.4);
-}
-
-/* Subtle Technical Grid Overlay */
-.bg-grid-pattern {
-  background-size: 28px 28px;
-  background-image: 
-    linear-gradient(to right, hsl(var(--outline-variant) / 0.15) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--outline-variant) / 0.15) 1px, transparent 1px);
-}
-
-.radial-mask {
-  mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
-  -webkit-mask-image: radial-gradient(circle at center, black 45%, transparent 92%);
+  background: hsl(var(--on-surface-variant) / 0.5);
 }

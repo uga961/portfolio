@@ -1,30 +1,19 @@
 "use client";
 
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import {
-  FolderGit2,
-  ExternalLink,
-  Lock,
-  BookOpen,
-  Sparkles,
-  Star,
-  User,
-  Users,
-} from "lucide-react";
+import { ArrowUpRight, Lock, Star, Users, User } from "lucide-react";
 import { SiGithub } from "react-icons/si";
-import { PROJECTS } from "@/data/portfolio";
-import { SpotlightCard } from "../ui/SpotlightCard";
+import { PROJECTS, Project } from "@/data/portfolio";
 
-type CategoryFilter = "All" | "AI & ML" | "Hardware & VLSI" | "Desktop & Web";
+type CategoryFilter = "All" | "Hardware & VLSI" | "AI & ML" | "Desktop & Web";
 
 export function ProjectsSection() {
   const [filter, setFilter] = useState<CategoryFilter>("All");
 
   const categories: CategoryFilter[] = [
     "All",
-    "AI & ML",
     "Hardware & VLSI",
+    "AI & ML",
     "Desktop & Web",
   ];
 
@@ -34,210 +23,179 @@ export function ProjectsSection() {
       : PROJECTS.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-      <div className="space-y-3 mb-10 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground font-medium">
-          <FolderGit2 className="w-3.5 h-3.5 text-foreground/70" />
-          <span>Selected Work & Engineering Systems</span>
+    <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      {/* Editorial Header */}
+      <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 002</span>
+          <span className="text-border">/</span>
+          <span>SELECTED WORK &amp; ENGINEERING SYSTEMS</span>
         </div>
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-              Featured Projects
-            </h2>
-            <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl mt-1">
-              Building across silicon, desktop utilities, machine learning systems, and web platforms.
-            </p>
-          </div>
+        <span className="hidden sm:inline font-mono text-[11px]">
+          {filteredProjects.length} OF {PROJECTS.length} SYSTEMS LISTED
+        </span>
+      </div>
 
-          {/* Filter Pills - clean single-row on desktop & smooth touch swipe on mobile */}
-          <div className="w-full sm:w-auto flex overflow-x-auto sm:flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-surface-container/60 border border-outline-variant/30 scrollbar-none touch-pan-x">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setFilter(cat)}
-                className={`px-3 py-1.5 rounded-lg text-xs font-mono transition-all duration-150 whitespace-nowrap flex-shrink-0 ${
-                  filter === cat
-                    ? "bg-foreground text-background font-semibold shadow-sm"
-                    : "text-on-surface-variant hover:text-foreground hover:bg-white dark:hover:bg-surface-container-high hover:shadow-xs"
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
+      <div className="pt-8 sm:pt-10 flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8">
+        <div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground font-sans uppercase">
+            Featured Systems
+          </h2>
+          <p className="mt-2 text-sm sm:text-base text-on-surface-variant font-sans max-w-xl">
+            Transistor-level circuit design, autonomous multi-agent pipelines, native desktop utilities, and systems tooling.
+          </p>
+        </div>
+
+        {/* Minimalist Filter Bar */}
+        <div className="flex items-center gap-1 sm:gap-2 text-xs font-mono overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`px-3 py-1.5 rounded-[3px] transition-colors whitespace-nowrap ${
+                filter === cat
+                  ? "bg-foreground text-background font-medium"
+                  : "text-on-surface-variant hover:text-foreground hover:bg-surface-subtle"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
       </div>
 
-      {/* Projects Grid */}
-      <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <AnimatePresence>
-          {filteredProjects.map((project) => (
-            <motion.div
-              layout
-              key={project.id}
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.96 }}
-              transition={{ duration: 0.25 }}
-              className={project.id === "stayactive" ? "md:col-span-2 lg:col-span-2" : ""}
-            >
-              <SpotlightCard className="h-full flex flex-col justify-between p-5 sm:p-7 space-y-4 sm:space-y-5 border-outline-variant/40 hover:border-foreground/50 group">
-                <div className="space-y-4">
-                  {/* Card Header & Badges */}
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-mono font-medium text-foreground/80">
-                          {project.category}
-                        </span>
-                        <span className="text-[11px] font-mono text-on-surface-variant">
-                          • {project.date}
-                        </span>
-                      </div>
-                      <h3 className="text-lg sm:text-xl font-bold text-foreground group-hover:underline transition-colors flex flex-wrap items-center gap-2">
-                        <span>{project.title}</span>
-                        {project.id === "stayactive" && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded-full bg-surface-container-highest border border-outline-variant/60 text-foreground font-semibold">
-                            <Sparkles className="w-2.5 h-2.5 text-foreground/80" /> Featured Spotlight
-                          </span>
-                        )}
-                      </h3>
-                      <div className="text-xs text-on-surface-variant font-medium">
-                        {project.subtitle}
-                      </div>
-                    </div>
+      {/* Editorial Project Entries */}
+      <div className="divide-y divide-border/80 border-t border-border/80">
+        {filteredProjects.map((project, idx) => (
+          <article
+            key={project.id}
+            className="py-8 sm:py-10 transition-colors group"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+              {/* Left Column: Number, Title, Context */}
+              <div className="lg:col-span-5 space-y-3">
+                <div className="flex items-center gap-3 text-xs font-mono text-on-surface-variant">
+                  <span className="text-foreground/70 font-semibold">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-border">/</span>
+                  <span className="uppercase">{project.category}</span>
+                  <span className="text-border">/</span>
+                  <span>{project.date}</span>
+                </div>
 
-                    {/* Status Badge */}
-                    {project.isProprietary ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest border border-outline-variant/50 text-foreground/80 whitespace-nowrap flex-shrink-0">
-                        <Lock className="w-3 h-3 text-foreground/60" />
-                        Proprietary
-                      </span>
-                    ) : (
-                      project.stars !== undefined && project.stars > 0 && (
-                        <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded-md bg-surface-container-highest text-foreground border border-outline-variant/40 flex-shrink-0">
-                          <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
-                          {project.stars}
-                        </span>
-                      )
-                    )}
-                  </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground font-sans tracking-tight">
+                  {project.title}
+                </h3>
 
-                  {/* Project Description */}
-                  <p className="text-sm text-foreground/85 leading-relaxed">
-                    {project.description}
+                <div className="text-sm font-medium text-foreground/80 font-serif italic">
+                  {project.subtitle}
+                </div>
+
+                {/* Scope & Collaborators */}
+                <div className="flex items-center gap-3 text-xs font-mono text-on-surface-variant pt-1">
+                  {project.contributors && project.contributors.length > 0 ? (
+                    <span className="inline-flex items-center gap-1.5">
+                      <Users className="w-3.5 h-3.5 opacity-70" />
+                      <span>With {project.contributors.join(", ")}</span>
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5">
+                      <User className="w-3.5 h-3.5 opacity-70" />
+                      <span>Solo Research &amp; Implementation</span>
+                    </span>
+                  )}
+
+                  {project.stars !== undefined && project.stars > 0 && (
+                    <span className="inline-flex items-center gap-1">
+                      <Star className="w-3 h-3 text-amber-500 fill-amber-500" />
+                      <span>{project.stars}</span>
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Right Column: Detailed Technical Breakdown & Links */}
+              <div className="lg:col-span-7 space-y-4">
+                <p className="text-sm sm:text-base text-foreground/90 leading-relaxed font-sans">
+                  {project.description}
+                </p>
+
+                {project.longDescription && (
+                  <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed font-sans">
+                    {project.longDescription}
                   </p>
+                )}
 
-                  {/* Contributors / Solo status badge */}
-                  <div className="flex items-center gap-2 text-[11px] font-mono text-on-surface-variant">
-                    {project.contributors && project.contributors.length > 0 ? (
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container border border-outline-variant/30 text-foreground">
-                        <Users className="w-3 h-3 text-foreground/70" />
-                        <span>Contributors: {project.contributors.join(", ")}</span>
-                      </div>
-                    ) : (
-                      <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-surface-container border border-outline-variant/30 text-on-surface-variant">
-                        <User className="w-3 h-3 opacity-60" />
-                        <span>Solo Project</span>
-                      </div>
-                    )}
+                {/* Evidence / Metric Callout */}
+                {project.metrics && (
+                  <div className="text-xs font-mono text-foreground border-l-2 border-accent pl-3 py-1 bg-surface-subtle/50">
+                    <span className="text-accent font-semibold uppercase tracking-wider text-[10px] block mb-0.5">
+                      Evidence &amp; Measurements
+                    </span>
+                    <span>{project.metrics}</span>
                   </div>
+                )}
 
-                  {/* Key Metrics / Highlights */}
-                  {project.metrics && (
-                    <div className="inline-flex items-center gap-2 text-xs font-mono px-3 py-1.5 rounded-lg bg-surface-container border border-outline-variant/40 text-foreground max-w-full">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
-                      <span className="break-words">{project.metrics}</span>
-                    </div>
-                  )}
-
-                  {/* Deep dive for StayActive Spotlight */}
-                  {project.id === "stayactive" && (
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 pt-2 text-xs font-mono text-on-surface-variant">
-                      <div className="p-2.5 rounded-lg bg-surface-container border border-outline-variant/30">
-                        <div className="font-semibold text-foreground">Hydration & Eye-Rest</div>
-                        <div className="text-[11px] text-on-surface-variant mt-0.5">20-20-20 rule & water schedules</div>
-                      </div>
-                      <div className="p-2.5 rounded-lg bg-surface-container border border-outline-variant/30">
-                        <div className="font-semibold text-foreground">Meeting Detection</div>
-                        <div className="text-[11px] text-on-surface-variant mt-0.5">Pauses during active mics & calls</div>
-                      </div>
-                      <div className="p-2.5 rounded-lg bg-surface-container border border-outline-variant/30">
-                        <div className="font-semibold text-foreground">System Media Pause</div>
-                        <div className="text-[11px] text-on-surface-variant mt-0.5">Auto-pauses audio during reminders</div>
-                      </div>
-                    </div>
-                  )}
+                {/* Technology Metadata Line (Plain monospace text, not pill badges) */}
+                <div className="pt-2 text-xs font-mono text-on-surface-variant">
+                  <span className="text-foreground/70 font-semibold mr-2 uppercase tracking-wider text-[11px]">
+                    Stack:
+                  </span>
+                  <span>{project.tags.join(" &middot; ")}</span>
                 </div>
 
-                {/* Footer with Tags & Action Links */}
-                <div className="pt-4 border-t border-outline-variant/30 space-y-4">
-                  {/* Tech stack tags */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface-container-highest/80 border border-outline-variant/40 text-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                {/* Links */}
+                <div className="pt-3 flex flex-wrap items-center gap-4 text-xs font-mono">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium"
+                    >
+                      <SiGithub className="w-3.5 h-3.5" aria-hidden="true" />
+                      <span>Repository</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                    </a>
+                  )}
 
-                  {/* External Links */}
-                  <div className="flex flex-wrap items-center gap-3">
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:underline font-medium"
-                      >
-                        <SiGithub className="w-3.5 h-3.5" aria-hidden="true" />
-                        <span>Source Code</span>
-                        <ExternalLink className="w-3 h-3 text-on-surface-variant" />
-                      </a>
-                    )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium"
+                    >
+                      <span>Live Site</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                    </a>
+                  )}
 
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:underline font-medium"
-                      >
-                        <BookOpen className="w-3.5 h-3.5" />
-                        <span>Live Site</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    )}
+                  {project.blogSlug && (
+                    <a
+                      href={`https://blog.ugandhar.in/posts/${project.blogSlug}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium"
+                    >
+                      <span>Engineering Essay</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
+                    </a>
+                  )}
 
-                    {project.blogSlug && (
-                      <a
-                        href={`https://blog.ugandhar.in/posts/${project.blogSlug}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-mono text-foreground hover:underline ml-auto font-medium"
-                      >
-                        <BookOpen className="w-3.5 h-3.5" />
-                        <span>Read Essay</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    )}
-
-                    {project.isProprietary && (
-                      <span className="text-[11px] font-mono text-on-surface-variant italic">
-                        Enterprise internal tool
-                      </span>
-                    )}
-                  </div>
+                  {project.isProprietary && (
+                    <span className="inline-flex items-center gap-1.5 text-on-surface-variant italic">
+                      <Lock className="w-3 h-3 opacity-60" />
+                      <span>Internal Enterprise Tool (Private IP)</span>
+                    </span>
+                  )}
                 </div>
-              </SpotlightCard>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
     </section>
   );
 }

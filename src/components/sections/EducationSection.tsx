@@ -1,81 +1,90 @@
 "use client";
 
 import React from "react";
-import { GraduationCap, MapPin, Calendar } from "lucide-react";
 import { EDUCATION } from "@/data/portfolio";
-import { SpotlightCard } from "../ui/SpotlightCard";
 
 export function EducationSection() {
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      <div className="space-y-3 mb-12 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground font-medium">
-          <GraduationCap className="w-3.5 h-3.5 text-foreground/70" />
-          <span>Academic Background</span>
+    <section id="education" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      {/* Editorial Header */}
+      <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 005</span>
+          <span className="text-border">/</span>
+          <span>ACADEMIC FOUNDATIONS</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-          Education & Foundations
+        <span className="hidden sm:inline font-mono text-[11px]">
+          CIRCUIT THEORY &middot; MATHEMATICS &middot; COMPUTATION
+        </span>
+      </div>
+
+      <div className="pt-8 sm:pt-10 pb-8">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground font-sans uppercase">
+          Academic Background
         </h2>
-        <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl">
-          Rigorous academic foundations across Electronics and Communications, Mathematics, Circuit Theory, and Computer Science.
+        <p className="mt-2 text-sm sm:text-base text-on-surface-variant font-sans max-w-xl">
+          Formal training in semiconductor physics, VLSI circuit architecture, digital signal processing, and mathematics.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Chronological List */}
+      <div className="divide-y divide-border/80 border-t border-border/80">
         {EDUCATION.map((edu, idx) => (
-          <SpotlightCard key={edu.institution} className="p-5 sm:p-6 flex flex-col justify-between space-y-4 border-outline-variant/40 hover:border-foreground/50">
-            <div className="space-y-3">
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-mono text-foreground font-bold">
-                  {idx === 0 ? "Undergraduate" : idx === 1 ? "Higher Secondary" : "Secondary School"}
-                </span>
-                <span className="text-xs font-mono font-bold px-2 py-0.5 rounded bg-surface-container-highest text-foreground border border-outline-variant/40 flex-shrink-0">
+          <div
+            key={edu.institution}
+            className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start"
+          >
+            {/* Left Column: Period & Grade */}
+            <div className="md:col-span-4 space-y-1.5 text-xs font-mono">
+              <div className="text-foreground font-semibold text-sm">
+                {edu.period}
+              </div>
+              <div className="text-on-surface-variant">
+                {edu.location}
+              </div>
+              <div className="pt-1">
+                <span className="inline-block text-xs font-mono font-semibold text-foreground bg-surface-subtle px-2 py-0.5 rounded-[2px] border border-border/80">
                   {edu.grade}
                 </span>
               </div>
+            </div>
 
-              <h3 className="text-base font-bold text-foreground leading-snug">
-                {edu.institution}
-              </h3>
-
-              <div className="text-xs text-on-surface-variant font-medium">
-                {edu.degree}
-              </div>
-
-              <div className="space-y-1 text-[11px] font-mono text-on-surface-variant/90 pt-1">
-                <div className="flex items-center gap-1.5">
-                  <Calendar className="w-3 h-3 text-foreground/70" />
-                  <span>{edu.period}</span>
-                </div>
-                <div className="flex items-center gap-1.5">
-                  <MapPin className="w-3 h-3 text-foreground/70" />
-                  <span className="break-words">{edu.location}</span>
+            {/* Right Column: Institution, Degree, Highlights, Coursework */}
+            <div className="md:col-span-8 space-y-3">
+              <div>
+                <span className="text-xs font-mono text-on-surface-variant uppercase tracking-wider">
+                  {idx === 0 ? "Undergraduate Degree" : idx === 1 ? "Higher Secondary (12th)" : "Secondary School (10th)"}
+                </span>
+                <h3 className="text-lg sm:text-xl font-bold text-foreground font-sans tracking-tight mt-0.5">
+                  {edu.institution}
+                </h3>
+                <div className="text-sm font-medium text-foreground/85 font-mono mt-0.5">
+                  {edu.degree}
                 </div>
               </div>
 
               {edu.highlights && (
-                <ul className="space-y-1.5 pt-2 text-xs text-foreground/80">
+                <ul className="space-y-1.5 text-xs sm:text-sm text-foreground/80 font-sans pt-1">
                   {edu.highlights.map((h, i) => (
-                    <li key={i} className="flex items-start gap-1.5">
-                      <span className="text-foreground/60 mt-0.5">▸</span>
+                    <li key={i} className="flex items-start gap-2.5">
+                      <span className="text-on-surface-variant/60 font-mono text-xs mt-1 select-none">
+                        &mdash;
+                      </span>
                       <span className="leading-relaxed">{h}</span>
                     </li>
                   ))}
                 </ul>
               )}
-            </div>
 
-            <div className="pt-3 border-t border-outline-variant/30 flex flex-wrap gap-1">
-              {edu.skills.map((s) => (
-                <span
-                  key={s}
-                  className="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container-highest/80 text-foreground"
-                >
-                  {s}
+              {/* Coursework / Skills in clean text */}
+              <div className="pt-2 text-xs font-mono text-on-surface-variant">
+                <span className="text-foreground/70 font-semibold mr-2 uppercase tracking-wider text-[11px]">
+                  Focus Areas:
                 </span>
-              ))}
+                <span>{edu.skills.join(" &middot; ")}</span>
+              </div>
             </div>
-          </SpotlightCard>
+          </div>
         ))}
       </div>
     </section>

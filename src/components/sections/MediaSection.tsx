@@ -1,102 +1,68 @@
 "use client";
 
 import React from "react";
-import { Youtube, ExternalLink, Play, Sparkles } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { YOUTUBE_INFO } from "@/data/portfolio";
-import { SpotlightCard } from "../ui/SpotlightCard";
 
 export function MediaSection() {
   return (
-    <section id="media" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      <div className="space-y-3 mb-10 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground font-medium">
-          <Youtube className="w-3.5 h-3.5 text-red-500" />
-          <span>YouTube & Technical Tutorials</span>
+    <section id="media" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      {/* Editorial Header */}
+      <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 007</span>
+          <span className="text-border">/</span>
+          <span>TECHNICAL WORKSHOPS</span>
         </div>
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
-              Technical Walkthroughs & Deep-Dives
-            </h2>
-            <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl mt-1">
-              Hands-on coding series, data analytics workshops, touch typing sessions, and creative experiments.
-            </p>
-          </div>
-
-          <a
-            href={YOUTUBE_INFO.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-foreground text-background font-semibold text-xs font-mono transition-all self-start sm:self-auto hover:opacity-90 shadow-sm"
-          >
-            <Youtube className="w-4 h-4 text-red-500" />
-            <span>Visit @uga961</span>
-            <ExternalLink className="w-3 h-3" />
-          </a>
-        </div>
+        <a
+          href={YOUTUBE_INFO.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-foreground hover:underline transition-colors flex items-center gap-1 font-mono text-[11px]"
+        >
+          <span>{YOUTUBE_INFO.handle} ON YOUTUBE</span>
+          <ArrowUpRight className="w-3 h-3 opacity-60" />
+        </a>
       </div>
 
-      {/* Featured & Latest Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="pt-8 sm:pt-10 pb-8">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground font-sans uppercase">
+          Video Tutorials
+        </h2>
+        <p className="mt-2 text-sm sm:text-base text-on-surface-variant font-sans max-w-xl">
+          Hands-on Python analytics series, Google Colab notebooks, and end-to-end data manipulation sessions.
+        </p>
+      </div>
+
+      {/* Grid of 2 Workshops */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-border/80 pt-8 sm:pt-10">
         {YOUTUBE_INFO.items.map((item) => (
-          <SpotlightCard
+          <a
             key={item.title}
-            className="h-full flex flex-col justify-between p-5 sm:p-6 space-y-4 border-outline-variant/40 hover:border-foreground/50"
+            href={item.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group block space-y-3 p-5 sm:p-6 border border-border/80 bg-surface/60 rounded-[4px] hover:border-foreground/40 hover:bg-surface transition-all"
           >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-surface-container-highest border border-outline-variant/40 text-foreground">
-                    {item.badge}
-                  </span>
-                  <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-surface-container border border-outline-variant/30 text-on-surface-variant">
-                    {item.type}
-                  </span>
-                </div>
-
-                <a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs font-mono text-on-surface-variant hover:text-foreground flex items-center gap-1"
-                >
-                  <span>Open {item.type}</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </div>
-
-              <h3 className="text-lg font-bold text-foreground leading-snug">
-                {item.title}
-              </h3>
-
-              <p className="text-sm text-foreground/85 leading-relaxed font-sans">
-                {item.description}
-              </p>
+            <div className="flex items-center justify-between text-xs font-mono text-on-surface-variant">
+              <span className="text-foreground font-medium uppercase tracking-wider">
+                {item.badge} {item.type}
+              </span>
+              <ArrowUpRight className="w-4 h-4 text-on-surface-variant group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
             </div>
 
-            <div className="space-y-4 pt-3 border-t border-outline-variant/30">
-              <div className="flex flex-wrap gap-1.5">
-                {item.topics.map((t) => (
-                  <span
-                    key={t}
-                    className="text-[10px] font-mono px-2 py-0.5 rounded bg-surface-container-highest/80 border border-outline-variant/40 text-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
+            <h3 className="text-base sm:text-lg font-bold text-foreground font-sans group-hover:underline leading-snug">
+              {item.title}
+            </h3>
 
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-surface/90 hover:bg-white dark:hover:bg-surface-container-highest text-foreground text-xs font-mono font-medium shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 border border-outline-variant/50 hover:border-foreground/50 active:scale-95"
-              >
-                <Play className="w-3.5 h-3.5 fill-current" />
-                <span>Watch {item.type}</span>
-              </a>
+            <p className="text-xs sm:text-sm text-on-surface-variant leading-relaxed font-sans">
+              {item.description}
+            </p>
+
+            <div className="pt-2 border-t border-border/40 text-xs font-mono text-on-surface-variant/80">
+              <span>{item.topics.join(" &middot; ")}</span>
             </div>
-          </SpotlightCard>
+          </a>
         ))}
       </div>
     </section>

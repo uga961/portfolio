@@ -1,59 +1,137 @@
 "use client";
 
 import React from "react";
-import { Cpu, Code, Brain, Wrench } from "lucide-react";
-import { SKILL_CATEGORIES } from "@/data/portfolio";
-import { SpotlightCard } from "../ui/SpotlightCard";
+
+interface Discipline {
+  index: string;
+  title: string;
+  domain: string;
+  narrative: string;
+  competencies: string[];
+}
+
+const DISCIPLINES: Discipline[] = [
+  {
+    index: "01",
+    title: "Digital Design & VLSI",
+    domain: "Transistor-Level Circuit Capture & Memory Architectures",
+    narrative:
+      "Deep focus on CMOS circuit design, comparative static noise margin (SNM) optimization, static leakage reduction in 6T and novel 7T SRAM architectures, and analog/transient verification in Cadence Virtuoso.",
+    competencies: [
+      "Cadence Virtuoso",
+      "Assura DRC & LVS",
+      "ADE Transient Simulation",
+      "SRAM Design (6T & 7T)",
+      "CMOS Digital Design",
+      "Static Leakage Reduction",
+      "RTL Design",
+    ],
+  },
+  {
+    index: "02",
+    title: "Embedded Systems & Hardware",
+    domain: "Real-Time Telemetry & Microcontroller Firmware",
+    narrative:
+      "Hardware-software interfacing, low-power telemetry links for autonomous UAVs, sensor integration over standard serial protocols, and hardware debugging routines.",
+    competencies: [
+      "Embedded C / C++",
+      "UART, SPI, I2C Protocols",
+      "Arduino & Microcontrollers",
+      "Sensory Telemetry (IMU, Barometer, GPS)",
+      "Hardware Fault Tolerance",
+      "PWM & Analog Interfacing",
+    ],
+  },
+  {
+    index: "03",
+    title: "Intelligent Systems & Data Science",
+    domain: "Applied Predictive Pipelines & Multi-Agent Tooling",
+    narrative:
+      "Enterprise predictive modeling, statistical feature engineering, multi-agent LLM systems with Microsoft AutoGen, and high-throughput vision extraction pipelines leveraging Google Gemini via Vertex AI.",
+    competencies: [
+      "Python 3.11",
+      "Google Gemini & Vertex AI",
+      "Microsoft AutoGen",
+      "scikit-learn & PyTorch",
+      "Pandas & NumPy",
+      "NLP (TF-IDF & Text Classifiers)",
+      "Data Visualization (Matplotlib, Seaborn)",
+    ],
+  },
+  {
+    index: "04",
+    title: "Systems Programming & Applications",
+    domain: "Linux OS Primitives, .NET Core & Web Architectures",
+    narrative:
+      "Low-level memory management and POSIX concurrency in C, enterprise Clean Architecture microservices in .NET 8, native Windows WPF desktop utilities, and high-performance React/Next.js platforms.",
+    competencies: [
+      "C / C++ (Linux Internals & POSIX)",
+      ".NET 8 & C#",
+      "WPF Desktop Architecture",
+      "Next.js 15 & React 19",
+      "TypeScript",
+      "SQL & Relational Schemas",
+      "Git & Linux Toolchains",
+    ],
+  },
+];
 
 export function SkillsSection() {
-  const getCategoryIcon = (name: string) => {
-    switch (name) {
-      case "Hardware & VLSI":
-        return <Cpu className="w-4 h-4 text-foreground/80" />;
-      case "AI, ML & Data Science":
-        return <Brain className="w-4 h-4 text-foreground/80" />;
-      case "Languages & Frameworks":
-        return <Code className="w-4 h-4 text-foreground/80" />;
-      default:
-        return <Wrench className="w-4 h-4 text-foreground/80" />;
-    }
-  };
-
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      <div className="space-y-3 mb-12 text-center sm:text-left">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container border border-outline-variant/40 text-xs font-mono text-foreground font-medium">
-          <Cpu className="w-3.5 h-3.5 text-foreground/70" />
-          <span>Core Competencies</span>
+    <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      {/* Editorial Header */}
+      <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 004</span>
+          <span className="text-border">/</span>
+          <span>TECHNICAL DISCIPLINES &amp; COMPETENCIES</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+        <span className="hidden sm:inline font-mono text-[11px]">
+          HARDWARE &middot; SYSTEMS &middot; INTELLIGENCE
+        </span>
+      </div>
+
+      <div className="pt-8 sm:pt-10 pb-8">
+        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground font-sans uppercase">
           Technical Toolkit
         </h2>
-        <p className="text-sm sm:text-base text-on-surface-variant max-w-2xl">
-          A blend of silicon design, algorithmic data analysis, multi-agent LLM systems, and robust desktop engineering.
+        <p className="mt-2 text-sm sm:text-base text-on-surface-variant font-sans max-w-xl">
+          Organized by engineering discipline and real-world implementation rather than arbitrary percentage bars or badge walls.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {SKILL_CATEGORIES.map((cat) => (
-          <SpotlightCard key={cat.name} className="p-5 sm:p-6 space-y-4 border-outline-variant/40 hover:border-foreground/50">
-            <div className="flex items-center gap-2.5 pb-2 border-b border-outline-variant/30">
-              {getCategoryIcon(cat.name)}
-              <h3 className="text-base font-bold text-foreground font-mono">
-                {cat.name}
+      {/* Structured Matrix of Disciplines */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 border-t border-border/80 pt-8 sm:pt-10">
+        {DISCIPLINES.map((d) => (
+          <div
+            key={d.title}
+            className="space-y-4 border-b md:border-b-0 pb-8 md:pb-0 border-border/60"
+          >
+            <div className="space-y-1">
+              <div className="text-xs font-mono text-on-surface-variant flex items-center gap-2">
+                <span className="text-foreground font-semibold">{d.index}</span>
+                <span className="text-border">/</span>
+                <span className="uppercase">{d.domain}</span>
+              </div>
+              <h3 className="text-xl font-bold text-foreground font-sans tracking-tight">
+                {d.title}
               </h3>
             </div>
-            <div className="flex flex-wrap gap-2">
-              {cat.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="px-3 py-1.5 rounded-lg text-xs font-mono font-medium bg-surface-container border border-outline-variant/40 text-foreground hover:bg-surface-container-high transition-colors cursor-default"
-                >
-                  {skill}
-                </span>
-              ))}
+
+            <p className="text-xs sm:text-sm text-foreground/85 leading-relaxed font-sans">
+              {d.narrative}
+            </p>
+
+            {/* Competency Listing */}
+            <div className="pt-2 border-t border-border/40 space-y-1.5">
+              <span className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant block font-medium">
+                Core Technologies &amp; Methods:
+              </span>
+              <p className="text-xs font-mono text-foreground/90 leading-relaxed">
+                {d.competencies.join(" &middot; ")}
+              </p>
             </div>
-          </SpotlightCard>
+          </div>
         ))}
       </div>
     </section>
