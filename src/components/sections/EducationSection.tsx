@@ -5,15 +5,15 @@ import { EDUCATION } from "@/data/portfolio";
 
 export function EducationSection() {
   return (
-    <section id="education" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <section id="education" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden">
       {/* Editorial Header */}
       <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 005</span>
-          <span className="text-border">/</span>
-          <span>ACADEMIC FOUNDATIONS</span>
+        <div className="flex items-center gap-2 sm:gap-3 truncate">
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 005</span>
+          <span className="text-border flex-shrink-0">/</span>
+          <span className="truncate">ACADEMIC FOUNDATIONS</span>
         </div>
-        <span className="hidden sm:inline font-mono text-[11px]">
+        <span className="hidden sm:inline font-mono text-[11px] flex-shrink-0">
           CIRCUIT THEORY · MATHEMATICS · COMPUTATION
         </span>
       </div>
@@ -55,10 +55,10 @@ export function EducationSection() {
                 <span className="text-xs font-mono text-on-surface-variant uppercase tracking-wider">
                   {idx === 0 ? "Undergraduate Degree" : idx === 1 ? "Higher Secondary (12th)" : "Secondary School (10th)"}
                 </span>
-                <h3 className="text-lg sm:text-xl font-bold text-foreground font-sans tracking-tight mt-0.5">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground font-sans tracking-tight mt-0.5 break-words">
                   {edu.institution}
                 </h3>
-                <div className="text-sm font-medium text-foreground/85 font-mono mt-0.5">
+                <div className="text-sm font-medium text-foreground/85 font-mono mt-0.5 break-words">
                   {edu.degree}
                 </div>
               </div>
@@ -67,7 +67,7 @@ export function EducationSection() {
                 <ul className="space-y-1.5 text-xs sm:text-sm text-foreground/80 font-sans pt-1">
                   {edu.highlights.map((h, i) => (
                     <li key={i} className="flex items-start gap-2.5">
-                      <span className="text-on-surface-variant/60 font-mono text-xs mt-1 select-none">
+                      <span className="text-on-surface-variant/60 font-mono text-xs mt-1 select-none flex-shrink-0">
                         &mdash;
                       </span>
                       <span className="leading-relaxed">{h}</span>
@@ -76,8 +76,8 @@ export function EducationSection() {
                 </ul>
               )}
 
-              {/* Coursework / Skills (Real unicode middle dot) */}
-              <div className="pt-2 text-xs font-mono text-on-surface-variant">
+              {/* Coursework / Skills (Real unicode middle dot with break-words) */}
+              <div className="pt-2 text-xs font-mono text-on-surface-variant break-words">
                 <span className="text-foreground/70 font-semibold mr-2 uppercase tracking-wider text-[11px]">
                   Focus Areas:
                 </span>

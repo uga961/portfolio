@@ -64,7 +64,7 @@ export function ResumeStatusCard() {
           <div className="flex flex-wrap items-center gap-3">
             <a
               href={`mailto:${PERSONAL_INFO.email}`}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-[3px] bg-foreground text-background text-xs font-mono uppercase tracking-wider hover:bg-foreground/90 transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-[3px] bg-foreground text-background text-xs font-mono uppercase tracking-wider hover:bg-foreground/90 transition-colors touch-manipulation min-h-[38px]"
             >
               <Mail className="w-3.5 h-3.5" />
               <span>Email</span>
@@ -75,7 +75,7 @@ export function ResumeStatusCard() {
                 href={linkedinLink.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-[3px] border border-border/90 bg-surface/80 text-foreground text-xs font-mono hover:border-foreground transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-[3px] border border-border/90 bg-surface/80 text-foreground text-xs font-mono hover:border-foreground transition-colors touch-manipulation min-h-[38px]"
               >
                 <FaLinkedin className="w-3.5 h-3.5 text-[#0a66c2]" />
                 <span>LinkedIn</span>
@@ -88,7 +88,7 @@ export function ResumeStatusCard() {
         <div className="pt-4 border-t border-border/80">
           <button
             onClick={handleGoBack}
-            className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[3px] border border-border/90 bg-surface-subtle hover:bg-surface hover:border-foreground text-foreground text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer"
+            className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-[3px] border border-border/90 bg-surface-subtle hover:bg-surface hover:border-foreground text-foreground text-xs font-mono uppercase tracking-wider transition-colors cursor-pointer touch-manipulation min-h-[40px]"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Return to Portfolio</span>

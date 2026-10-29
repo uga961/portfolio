@@ -78,15 +78,15 @@ const DISCIPLINES: Discipline[] = [
 
 export function SkillsSection() {
   return (
-    <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden">
       {/* Editorial Header */}
       <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 004</span>
-          <span className="text-border">/</span>
-          <span>TECHNICAL DISCIPLINES &amp; COMPETENCIES</span>
+        <div className="flex items-center gap-2 sm:gap-3 truncate">
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 004</span>
+          <span className="text-border flex-shrink-0">/</span>
+          <span className="truncate">TECHNICAL DISCIPLINES &amp; COMPETENCIES</span>
         </div>
-        <span className="hidden sm:inline font-mono text-[11px]">
+        <span className="hidden sm:inline font-mono text-[11px] flex-shrink-0">
           HARDWARE · SYSTEMS · INTELLIGENCE
         </span>
       </div>
@@ -113,7 +113,7 @@ export function SkillsSection() {
                 <span className="text-border">/</span>
                 <span className="uppercase">{d.domain}</span>
               </div>
-              <h3 className="text-xl font-bold text-foreground font-sans tracking-tight">
+              <h3 className="text-xl font-bold text-foreground font-sans tracking-tight break-words">
                 {d.title}
               </h3>
             </div>
@@ -122,12 +122,12 @@ export function SkillsSection() {
               {d.narrative}
             </p>
 
-            {/* Competency Listing (Real unicode middle dot) */}
+            {/* Competency Listing (Real unicode middle dot with break-words) */}
             <div className="pt-2 border-t border-border/40 space-y-1.5">
               <span className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant block font-medium">
                 Core Technologies &amp; Methods:
               </span>
-              <p className="text-xs font-mono text-foreground/90 leading-relaxed">
+              <p className="text-xs font-mono text-foreground/90 leading-relaxed break-words">
                 {d.competencies.join(" · ")}
               </p>
             </div>

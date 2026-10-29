@@ -21,33 +21,33 @@ export function ContactFooter() {
   };
 
   return (
-    <footer id="contact" className="pt-20 pb-28 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-16">
+    <footer id="contact" className="pt-20 pb-28 sm:pb-32 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-16 overflow-hidden">
       {/* Editorial Contact Block */}
       <div className="border-t border-border/80 pt-8 sm:pt-10 space-y-8">
         <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 008</span>
-            <span className="text-border">/</span>
-            <span>CONTACT &amp; CORRESPONDENCE</span>
+          <div className="flex items-center gap-2 sm:gap-3 truncate">
+            <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 008</span>
+            <span className="text-border flex-shrink-0">/</span>
+            <span className="truncate">CONTACT &amp; CORRESPONDENCE</span>
           </div>
-          <span className="font-mono text-[11px] text-on-surface-variant">
+          <span className="font-mono text-[11px] text-on-surface-variant flex-shrink-0">
             UTC+5:30 · IST
           </span>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           <div className="md:col-span-7 space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-sans uppercase">
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground font-sans uppercase break-words">
               Let&apos;s build something solid.
             </h2>
             <p className="text-sm sm:text-base text-on-surface-variant leading-relaxed font-sans max-w-lg">
               Whether you want to discuss VLSI hardware, SRAM stability, enterprise data intelligence pipelines, open-source desktop tooling, or collaborative research &mdash; my inbox is always open.
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center gap-3">
+            <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3">
               <a
                 href={`mailto:${PERSONAL_INFO.email}`}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[4px] bg-foreground text-background font-medium text-xs font-mono uppercase tracking-wider hover:bg-foreground/90 transition-colors"
+                className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-[4px] bg-foreground text-background font-medium text-xs font-mono uppercase tracking-wider hover:bg-foreground/90 transition-colors touch-manipulation min-h-[40px]"
               >
                 <span>Write Email</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
@@ -55,7 +55,7 @@ export function ContactFooter() {
 
               <button
                 onClick={handleCopyEmail}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors cursor-pointer touch-manipulation min-h-[40px]"
               >
                 {copied ? (
                   <>
@@ -75,7 +75,7 @@ export function ContactFooter() {
                   href={linkedinLink.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors touch-manipulation min-h-[40px]"
                 >
                   <span>LinkedIn</span>
                   <ArrowUpRight className="w-3.5 h-3.5 text-on-surface-variant" />
@@ -86,7 +86,7 @@ export function ContactFooter() {
                 href={PERSONAL_INFO.resumePath}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors touch-manipulation min-h-[40px]"
               >
                 <span>Resume</span>
                 <ArrowUpRight className="w-3.5 h-3.5 text-on-surface-variant" />
@@ -99,16 +99,16 @@ export function ContactFooter() {
               <span className="text-[10px] uppercase tracking-wider text-foreground/70 font-semibold block">
                 Primary Coordinates
               </span>
-              <div className="text-foreground">{PERSONAL_INFO.email}</div>
-              <div>{PERSONAL_INFO.location}</div>
+              <div className="text-foreground break-words">{PERSONAL_INFO.email}</div>
+              <div className="break-words">{PERSONAL_INFO.location}</div>
             </div>
 
             <div className="pt-2 space-y-1">
               <span className="text-[10px] uppercase tracking-wider text-foreground/70 font-semibold block">
                 Availability
               </span>
-              <div>Associate Data Scientist at Tredence (Nov 2026)</div>
-              <div>Open for technical discourse &amp; research dialogues</div>
+              <div className="break-words">Associate Data Scientist at Tredence (Nov 2026)</div>
+              <div className="break-words">Open for technical discourse &amp; research dialogues</div>
             </div>
           </div>
         </div>
@@ -116,14 +116,14 @@ export function ContactFooter() {
 
       {/* Quiet Bottom Bar */}
       <div className="pt-6 border-t border-border/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-on-surface-variant">
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+        <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1">
           {SOCIAL_LINKS.map((link, idx) => (
             <React.Fragment key={link.name}>
               <a
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground hover:underline transition-colors"
+                className="hover:text-foreground hover:underline transition-colors touch-manipulation"
               >
                 {link.name}
               </a>
@@ -139,7 +139,7 @@ export function ContactFooter() {
           <button
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="p-1.5 rounded-[2px] border border-border/80 hover:border-foreground text-on-surface-variant hover:text-foreground transition-colors cursor-pointer"
+            className="p-1.5 rounded-[2px] border border-border/80 hover:border-foreground text-on-surface-variant hover:text-foreground transition-colors cursor-pointer touch-manipulation"
           >
             <ArrowUp className="w-3.5 h-3.5" />
           </button>

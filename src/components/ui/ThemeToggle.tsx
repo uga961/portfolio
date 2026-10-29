@@ -39,7 +39,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       type="button"
       aria-label="Toggle color theme"
       title={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className={`w-8 h-8 rounded-[3px] border border-border/80 bg-surface/50 hover:bg-surface hover:border-foreground/40 flex items-center justify-center transition-colors text-foreground ${className}`}
+      className={`w-8 h-8 rounded-[3px] border border-border/80 bg-surface/50 hover:bg-surface hover:border-foreground/40 flex items-center justify-center transition-colors text-foreground touch-manipulation cursor-pointer ${className}`}
     >
       {isDark ? (
         <Sun className="w-3.5 h-3.5 text-on-surface-variant hover:text-foreground transition-colors" />

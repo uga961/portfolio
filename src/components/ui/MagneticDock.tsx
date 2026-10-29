@@ -30,13 +30,13 @@ export function MagneticDock({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center pointer-events-auto",
+        "fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center pointer-events-auto gpu-layer",
         className
       )}
     >
       <nav
         aria-label="Quick Navigation"
-        className="flex items-center gap-1 px-2 py-1.5 rounded-[4px] border border-border/90 bg-background/90 backdrop-blur-md shadow-subtle text-xs font-mono"
+        className="flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 py-1 sm:py-1.5 rounded-[4px] border border-border/90 bg-background/95 sm:bg-background/90 sm:backdrop-blur-md shadow-subtle text-xs font-mono will-change-transform"
       >
         {items.map((item) => (
           <Link
@@ -44,14 +44,14 @@ export function MagneticDock({ className }: { className?: string }) {
             href={item.href}
             aria-label={item.label}
             title={item.label}
-            className="flex items-center gap-1.5 px-2 py-1 rounded-[2px] text-on-surface-variant hover:text-foreground hover:bg-surface-subtle transition-colors"
+            className="flex items-center gap-1.5 px-2 py-1 rounded-[2px] text-on-surface-variant hover:text-foreground hover:bg-surface-subtle transition-colors touch-manipulation"
           >
             {item.icon}
             <span className="hidden sm:inline text-[11px]">{item.label}</span>
           </Link>
         ))}
 
-        <div className="w-[1px] h-4 bg-border/80 mx-1 flex-shrink-0" />
+        <div className="w-[1px] h-3.5 bg-border/80 mx-0.5 sm:mx-1 flex-shrink-0" />
 
         <ThemeToggle />
       </nav>

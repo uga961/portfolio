@@ -23,15 +23,15 @@ export function ProjectsSection() {
       : PROJECTS.filter((p) => p.category === filter);
 
   return (
-    <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden">
       {/* Editorial Header */}
       <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 002</span>
-          <span className="text-border">/</span>
-          <span>SELECTED WORK &amp; ENGINEERING SYSTEMS</span>
+        <div className="flex items-center gap-2 sm:gap-3 truncate">
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 002</span>
+          <span className="text-border flex-shrink-0">/</span>
+          <span className="truncate">SELECTED WORK &amp; ENGINEERING SYSTEMS</span>
         </div>
-        <span className="hidden sm:inline font-mono text-[11px]">
+        <span className="hidden sm:inline font-mono text-[11px] flex-shrink-0">
           {filteredProjects.length} OF {PROJECTS.length} SYSTEMS LISTED
         </span>
       </div>
@@ -46,13 +46,13 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        {/* Minimalist Filter Bar without ugly scrollbars */}
+        {/* Minimalist Filter Bar without scrollbars */}
         <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 text-xs font-mono no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-3 py-1.5 rounded-[3px] transition-colors whitespace-nowrap cursor-pointer ${
+              className={`px-3 py-1.5 rounded-[3px] transition-colors whitespace-nowrap cursor-pointer touch-manipulation min-h-[36px] ${
                 filter === cat
                   ? "bg-foreground text-background font-medium"
                   : "text-on-surface-variant hover:text-foreground hover:bg-surface-subtle"
@@ -84,7 +84,7 @@ export function ProjectsSection() {
                   <span>{project.date}</span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-bold text-foreground font-sans tracking-tight">
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground font-sans tracking-tight break-words">
                   {project.title}
                 </h3>
 
@@ -93,15 +93,15 @@ export function ProjectsSection() {
                 </div>
 
                 {/* Scope & Collaborators */}
-                <div className="flex items-center gap-3 text-xs font-mono text-on-surface-variant pt-1">
+                <div className="flex items-center gap-3 text-xs font-mono text-on-surface-variant pt-1 flex-wrap">
                   {project.contributors && project.contributors.length > 0 ? (
                     <span className="inline-flex items-center gap-1.5">
-                      <Users className="w-3.5 h-3.5 opacity-70" />
+                      <Users className="w-3.5 h-3.5 opacity-70 flex-shrink-0" />
                       <span>With {project.contributors.join(", ")}</span>
                     </span>
                   ) : (
                     <span className="inline-flex items-center gap-1.5">
-                      <User className="w-3.5 h-3.5 opacity-70" />
+                      <User className="w-3.5 h-3.5 opacity-70 flex-shrink-0" />
                       <span>Solo Research &amp; Implementation</span>
                     </span>
                   )}
@@ -129,7 +129,7 @@ export function ProjectsSection() {
 
                 {/* Evidence / Metric Callout (No green tint!) */}
                 {project.metrics && (
-                  <div className="text-xs font-mono text-foreground border-l-2 border-foreground/50 pl-3 py-1 bg-surface-subtle/50">
+                  <div className="text-xs font-mono text-foreground border-l-2 border-foreground/50 pl-3 py-1 bg-surface-subtle/50 break-words">
                     <span className="text-foreground/70 font-semibold uppercase tracking-wider text-[10px] block mb-0.5">
                       Evidence &amp; Measurements
                     </span>
@@ -137,8 +137,8 @@ export function ProjectsSection() {
                   </div>
                 )}
 
-                {/* Technology Metadata Line (Real unicode middle dot) */}
-                <div className="pt-2 text-xs font-mono text-on-surface-variant">
+                {/* Technology Metadata Line (Real unicode middle dot with break-words) */}
+                <div className="pt-2 text-xs font-mono text-on-surface-variant break-words">
                   <span className="text-foreground/70 font-semibold mr-2 uppercase tracking-wider text-[11px]">
                     Stack:
                   </span>
@@ -152,7 +152,7 @@ export function ProjectsSection() {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium"
+                      className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium touch-manipulation min-h-[36px]"
                     >
                       <SiGithub className="w-3.5 h-3.5" aria-hidden="true" />
                       <span>Repository</span>
@@ -165,7 +165,7 @@ export function ProjectsSection() {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium"
+                      className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium touch-manipulation min-h-[36px]"
                     >
                       <span>Live Site</span>
                       <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
@@ -177,7 +177,7 @@ export function ProjectsSection() {
                       href={`https://blog.ugandhar.in/posts/${project.blogSlug}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium"
+                      className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium touch-manipulation min-h-[36px]"
                     >
                       <span>Engineering Essay</span>
                       <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />

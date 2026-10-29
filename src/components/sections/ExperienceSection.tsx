@@ -6,15 +6,15 @@ import { EXPERIENCES } from "@/data/portfolio";
 
 export function ExperienceSection() {
   return (
-    <section id="experience" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+    <section id="experience" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden">
       {/* Editorial Header */}
       <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 003</span>
-          <span className="text-border">/</span>
-          <span>CHRONOLOGICAL RECORD</span>
+        <div className="flex items-center gap-2 sm:gap-3 truncate">
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 003</span>
+          <span className="text-border flex-shrink-0">/</span>
+          <span className="truncate">CHRONOLOGICAL RECORD</span>
         </div>
-        <span className="hidden sm:inline font-mono text-[11px]">
+        <span className="hidden sm:inline font-mono text-[11px] flex-shrink-0">
           INDUSTRY &amp; APPRENTICESHIPS
         </span>
       </div>
@@ -59,10 +59,10 @@ export function ExperienceSection() {
             {/* Right Column: Organization, Role, Detailed Bullet Points */}
             <div className="md:col-span-8 space-y-4">
               <div>
-                <h3 className="text-lg sm:text-xl font-bold text-foreground font-sans tracking-tight">
+                <h3 className="text-lg sm:text-xl font-bold text-foreground font-sans tracking-tight break-words">
                   {exp.role}
                 </h3>
-                <div className="text-sm font-semibold text-foreground/90 font-mono mt-0.5">
+                <div className="text-sm font-semibold text-foreground/90 font-mono mt-0.5 break-words">
                   {exp.company}
                   {exp.team && (
                     <span className="text-on-surface-variant font-normal">
@@ -80,7 +80,7 @@ export function ExperienceSection() {
               <ul className="space-y-2 text-xs sm:text-sm text-foreground/85 font-sans">
                 {exp.bullets.map((b, i) => (
                   <li key={i} className="flex items-start gap-2.5">
-                    <span className="text-on-surface-variant/60 font-mono text-xs mt-1 select-none">
+                    <span className="text-on-surface-variant/60 font-mono text-xs mt-1 select-none flex-shrink-0">
                       &mdash;
                     </span>
                     <span className="leading-relaxed">{b}</span>
@@ -88,9 +88,9 @@ export function ExperienceSection() {
                 ))}
               </ul>
 
-              {/* Stack Metadata (Real unicode middle dot) */}
-              <div className="pt-2 text-xs font-mono text-on-surface-variant flex flex-wrap items-center justify-between gap-2">
-                <div>
+              {/* Stack Metadata (Real unicode middle dot with break-words) */}
+              <div className="pt-2 text-xs font-mono text-on-surface-variant flex flex-wrap items-center justify-between gap-2 break-words">
+                <div className="break-words">
                   <span className="text-foreground/70 font-semibold mr-2 uppercase tracking-wider text-[11px]">
                     Focus:
                   </span>
@@ -102,7 +102,7 @@ export function ExperienceSection() {
                     href={exp.repoUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-foreground hover:underline"
+                    className="inline-flex items-center gap-1 text-foreground hover:underline touch-manipulation min-h-[36px]"
                   >
                     <span>Practice Repo</span>
                     <ArrowUpRight className="w-3 h-3 opacity-60" />

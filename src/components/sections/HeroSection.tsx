@@ -19,30 +19,30 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="pt-28 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto"
+      className="pt-24 sm:pt-36 pb-16 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden"
     >
       {/* Top Editorial Index & Category Bar */}
       <div className="flex items-center justify-between border-b border-border/80 pb-3 text-xs font-mono text-on-surface-variant">
-        <div className="flex items-center gap-3">
-          <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 001</span>
-          <span className="text-border">/</span>
-          <span>ENGINEERING &amp; APPLIED RESEARCH</span>
+        <div className="flex items-center gap-2 sm:gap-3 truncate">
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 001</span>
+          <span className="text-border flex-shrink-0">/</span>
+          <span className="truncate">ENGINEERING &amp; APPLIED RESEARCH</span>
         </div>
-        <div className="hidden sm:flex items-center gap-2">
+        <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
           <span className="inline-block w-1.5 h-1.5 rounded-full bg-foreground/40" />
           <span>BASED IN INDIA</span>
         </div>
       </div>
 
       {/* Main Grid: Editorial Typography & Grounded Photographic Frame */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 pt-8 sm:pt-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 pt-8 sm:pt-12 items-start">
         {/* Left Column: Title, Mandate, Narrative, Actions */}
         <div className="lg:col-span-7 space-y-6 sm:space-y-8">
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-sans uppercase">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-sans uppercase break-words">
               Ugandhar Vaddi
             </h1>
-            <p className="mt-3 text-xl sm:text-2xl font-serif italic text-foreground/80 leading-snug">
+            <p className="mt-2.5 sm:mt-3 text-lg sm:text-2xl font-serif italic text-foreground/80 leading-snug">
               Silicon, Systems &amp; Applied Machine Learning.
             </p>
           </div>
@@ -58,10 +58,10 @@ export function HeroSection() {
           </div>
 
           {/* Direct, Purposeful Actions */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
+          <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[4px] bg-foreground text-background font-medium text-xs font-mono uppercase tracking-wider hover:bg-foreground/90 transition-colors"
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-[4px] bg-foreground text-background font-medium text-xs font-mono uppercase tracking-wider hover:bg-foreground/90 transition-colors touch-manipulation min-h-[40px]"
             >
               <span>Explore Projects</span>
               <ArrowDown className="w-3.5 h-3.5" />
@@ -71,7 +71,7 @@ export function HeroSection() {
               href={PERSONAL_INFO.resumePath}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors touch-manipulation min-h-[40px]"
             >
               <FileText className="w-3.5 h-3.5 text-on-surface-variant" />
               <span>Resume</span>
@@ -81,7 +81,7 @@ export function HeroSection() {
             <button
               onClick={handleCopyEmail}
               title="Copy direct email address"
-              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors touch-manipulation min-h-[40px] cursor-pointer"
             >
               {copied ? (
                 <>
@@ -98,14 +98,14 @@ export function HeroSection() {
           </div>
 
           {/* Clean slash-separated text links */}
-          <div className="pt-4 border-t border-border/60 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-on-surface-variant">
+          <div className="pt-4 border-t border-border/60 flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2 text-xs font-mono text-on-surface-variant">
             {SOCIAL_LINKS.map((link, idx) => (
               <React.Fragment key={link.name}>
                 <a
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-foreground hover:underline transition-colors flex items-center gap-1"
+                  className="hover:text-foreground hover:underline transition-colors flex items-center gap-1 touch-manipulation"
                 >
                   <span>{link.name}</span>
                   <ArrowUpRight className="w-3 h-3 opacity-60" />
@@ -119,19 +119,19 @@ export function HeroSection() {
         </div>
 
         {/* Right Column: Architectural Photograph Frame */}
-        <div className="lg:col-span-5 flex flex-col items-center lg:items-end">
-          <div className="w-full max-w-sm border border-border bg-surface p-3 rounded-[4px] shadow-subtle">
+        <div className="lg:col-span-5 flex flex-col items-center lg:items-end w-full">
+          <div className="w-full max-w-[280px] sm:max-w-sm border border-border bg-surface p-2.5 sm:p-3 rounded-[4px] shadow-subtle">
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-container rounded-[2px]">
               <Image
                 src={PERSONAL_INFO.avatarPath}
                 alt="Portrait of Ugandhar Vaddi"
                 fill
                 priority
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 50vw, 380px"
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out"
               />
             </div>
-            <div className="mt-3 pt-2 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-on-surface-variant">
+            <div className="mt-2.5 sm:mt-3 pt-2 border-t border-border/60 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-on-surface-variant">
               <span>FIG. 01 — RESEARCHER</span>
               <span className="text-foreground/90 font-medium">CHENNAI · VISAKHAPATNAM</span>
             </div>
