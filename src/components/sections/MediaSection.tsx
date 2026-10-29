@@ -59,8 +59,9 @@ export function MediaSection() {
               {item.description}
             </p>
 
+            {/* Topics (Real unicode middle dot) */}
             <div className="pt-2 border-t border-border/40 text-xs font-mono text-on-surface-variant/80">
-              <span>{item.topics.join(" &middot; ")}</span>
+              <span>{item.topics.join(" · ")}</span>
             </div>
           </a>
         ))}

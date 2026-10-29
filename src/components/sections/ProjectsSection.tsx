@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ArrowUpRight, Lock, Star, Users, User } from "lucide-react";
 import { SiGithub } from "react-icons/si";
-import { PROJECTS, Project } from "@/data/portfolio";
+import { PROJECTS } from "@/data/portfolio";
 
 type CategoryFilter = "All" | "Hardware & VLSI" | "AI & ML" | "Desktop & Web";
 
@@ -46,13 +46,13 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        {/* Minimalist Filter Bar */}
-        <div className="flex items-center gap-1 sm:gap-2 text-xs font-mono overflow-x-auto pb-1 sm:pb-0 scrollbar-none">
+        {/* Minimalist Filter Bar without ugly scrollbars */}
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 text-xs font-mono no-scrollbar">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-3 py-1.5 rounded-[3px] transition-colors whitespace-nowrap ${
+              className={`px-3 py-1.5 rounded-[3px] transition-colors whitespace-nowrap cursor-pointer ${
                 filter === cat
                   ? "bg-foreground text-background font-medium"
                   : "text-on-surface-variant hover:text-foreground hover:bg-surface-subtle"
@@ -127,22 +127,22 @@ export function ProjectsSection() {
                   </p>
                 )}
 
-                {/* Evidence / Metric Callout */}
+                {/* Evidence / Metric Callout (No green tint!) */}
                 {project.metrics && (
-                  <div className="text-xs font-mono text-foreground border-l-2 border-accent pl-3 py-1 bg-surface-subtle/50">
-                    <span className="text-accent font-semibold uppercase tracking-wider text-[10px] block mb-0.5">
+                  <div className="text-xs font-mono text-foreground border-l-2 border-foreground/50 pl-3 py-1 bg-surface-subtle/50">
+                    <span className="text-foreground/70 font-semibold uppercase tracking-wider text-[10px] block mb-0.5">
                       Evidence &amp; Measurements
                     </span>
                     <span>{project.metrics}</span>
                   </div>
                 )}
 
-                {/* Technology Metadata Line (Plain monospace text, not pill badges) */}
+                {/* Technology Metadata Line (Real unicode middle dot) */}
                 <div className="pt-2 text-xs font-mono text-on-surface-variant">
                   <span className="text-foreground/70 font-semibold mr-2 uppercase tracking-wider text-[11px]">
                     Stack:
                   </span>
-                  <span>{project.tags.join(" &middot; ")}</span>
+                  <span>{project.tags.join(" · ")}</span>
                 </div>
 
                 {/* Links */}

@@ -45,7 +45,7 @@ export function ExperienceSection() {
               </div>
               <div className="pt-1">
                 {exp.isIncoming ? (
-                  <span className="inline-block text-[10px] uppercase font-semibold text-accent tracking-wider bg-accent/10 px-2 py-0.5 rounded-[2px]">
+                  <span className="inline-block text-[10px] uppercase font-semibold text-foreground bg-surface-subtle border border-border/80 px-2 py-0.5 rounded-[2px] tracking-wider">
                     Joining Soon
                   </span>
                 ) : (
@@ -66,7 +66,7 @@ export function ExperienceSection() {
                   {exp.company}
                   {exp.team && (
                     <span className="text-on-surface-variant font-normal">
-                      {" "}&middot; {exp.team}
+                      {" "}· {exp.team}
                     </span>
                   )}
                 </div>
@@ -88,13 +88,13 @@ export function ExperienceSection() {
                 ))}
               </ul>
 
-              {/* Stack Metadata */}
+              {/* Stack Metadata (Real unicode middle dot) */}
               <div className="pt-2 text-xs font-mono text-on-surface-variant flex flex-wrap items-center justify-between gap-2">
                 <div>
                   <span className="text-foreground/70 font-semibold mr-2 uppercase tracking-wider text-[11px]">
                     Focus:
                   </span>
-                  <span>{exp.skills.join(" &middot; ")}</span>
+                  <span>{exp.skills.join(" · ")}</span>
                 </div>
 
                 {exp.repoUrl && (

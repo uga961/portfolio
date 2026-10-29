@@ -38,7 +38,7 @@ export default async function Home() {
   const liveBlogPosts = await getLiveBlogPosts();
 
   return (
-    <main className="min-h-screen bg-background text-on-surface relative selection:bg-accent/15 selection:text-foreground">
+    <main className="min-h-screen bg-background text-on-surface relative selection:bg-foreground/15 selection:text-foreground">
       {/* Top Architectural Header */}
       <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-8 py-3 bg-background/90 backdrop-blur-md border-b border-border/80 transition-colors">
         <div className="max-w-5xl mx-auto flex items-center justify-between">
@@ -83,6 +83,7 @@ export default async function Home() {
             <a href="#media" className="hover:text-foreground hover:underline transition-colors">
               Tutorials
             </a>
+            <div className="w-[1px] h-3.5 bg-border/80 flex-shrink-0" />
             <a
               href={`https://${PERSONAL_INFO.blogDomain}`}
               target="_blank"

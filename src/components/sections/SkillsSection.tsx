@@ -87,7 +87,7 @@ export function SkillsSection() {
           <span>TECHNICAL DISCIPLINES &amp; COMPETENCIES</span>
         </div>
         <span className="hidden sm:inline font-mono text-[11px]">
-          HARDWARE &middot; SYSTEMS &middot; INTELLIGENCE
+          HARDWARE · SYSTEMS · INTELLIGENCE
         </span>
       </div>
 
@@ -122,13 +122,13 @@ export function SkillsSection() {
               {d.narrative}
             </p>
 
-            {/* Competency Listing */}
+            {/* Competency Listing (Real unicode middle dot) */}
             <div className="pt-2 border-t border-border/40 space-y-1.5">
               <span className="text-[11px] font-mono uppercase tracking-wider text-on-surface-variant block font-medium">
                 Core Technologies &amp; Methods:
               </span>
               <p className="text-xs font-mono text-foreground/90 leading-relaxed">
-                {d.competencies.join(" &middot; ")}
+                {d.competencies.join(" · ")}
               </p>
             </div>
           </div>

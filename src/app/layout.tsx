@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: "%s | Ugandhar Vaddi",
   },
   description:
-    "Associate Data Scientist at Tredence. Building at the intersection of silicon, software, enterprise data pipelines, and applied machine learning models.",
+    "Associate Data Scientist at Tredence (Analytics & Applied AI) & Electronics Engineer. Engineering across silicon architectures, enterprise predictive data pipelines, and systems tooling.",
   keywords: [
     "Ugandhar Vaddi",
     "uga961",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     "Associate Data Scientist",
     "Tredence Analytics Solutions",
     "McKinsey & Company Intern",
-    "Cognizant",
+    "Cognizant Apprentice",
     "Machine Learning",
     "Applied AI",
     "VLSI Design",
@@ -60,6 +60,7 @@ export const metadata: Metadata = {
     ".NET Core",
     "Electronics Engineer",
     "Visakhapatnam",
+    "Chennai",
   ],
   authors: [{ name: "Ugandhar Vaddi", url: "https://www.ugandhar.in" }],
   creator: "Ugandhar Vaddi",
@@ -84,13 +85,17 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    type: "website",
+    type: "profile",
+    firstName: "Ugandhar",
+    lastName: "Vaddi",
+    username: "uga961",
+    gender: "male",
     locale: "en_US",
     url: "https://www.ugandhar.in",
     siteName: "Ugandhar Vaddi",
     title: "Ugandhar Vaddi — Associate Data Scientist & Systems Builder",
     description:
-      "Associate Data Scientist at Tredence. Building at the intersection of silicon, software, enterprise data pipelines, and applied machine learning models.",
+      "Associate Data Scientist at Tredence (Analytics & Applied AI) & Electronics Engineer. Engineering across silicon architectures, enterprise predictive data pipelines, and systems tooling.",
     images: [
       {
         url: "https://www.ugandhar.in/social/og-image.png",
@@ -104,7 +109,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ugandhar Vaddi — Associate Data Scientist & Systems Builder",
     description:
-      "Associate Data Scientist at Tredence. Building at the intersection of silicon, software, enterprise data pipelines, and applied machine learning models.",
+      "Associate Data Scientist at Tredence. Engineering across silicon architectures, enterprise predictive data pipelines, and systems tooling.",
     images: ["https://www.ugandhar.in/social/og-image.png"],
     creator: "@uga961",
     site: "@uga961",
@@ -129,25 +134,37 @@ const jsonLd = {
       "@type": "Person",
       "@id": "https://www.ugandhar.in/#person",
       name: "Ugandhar Vaddi",
-      alternateName: "uga961",
+      alternateName: ["uga961", "VADDI UGANDHAR"],
       url: "https://www.ugandhar.in",
       image: {
         "@type": "ImageObject",
         url: "https://www.ugandhar.in/avatar/profile.jpg",
         width: 640,
         height: 640,
+        caption: "Ugandhar Vaddi",
       },
       logo: "https://www.ugandhar.in/icon.png",
       jobTitle: "Associate Data Scientist",
+      description:
+        "Associate Data Scientist at Tredence (Analytics & Applied AI) & Electronics Engineer. Building at the intersection of silicon, enterprise data pipelines, and applied machine learning models.",
       worksFor: {
         "@type": "Organization",
         name: "Tredence Analytics Solutions",
         url: "https://www.tredence.com",
       },
-      alumniOf: {
-        "@type": "EducationalOrganization",
-        name: "Sathyabama Institute of Science and Technology",
+      hasOccupation: {
+        "@type": "Occupation",
+        name: "Associate Data Scientist",
+        occupationalCategory: "15-2051.00",
+        skills: "Machine Learning, Predictive Analytics, Python, SQL, VLSI CAD, SRAM Architectures, C/C++",
       },
+      alumniOf: [
+        {
+          "@type": "EducationalOrganization",
+          name: "Sathyabama Institute of Science and Technology",
+          url: "https://www.sathyabama.ac.in",
+        },
+      ],
       sameAs: [
         "https://github.com/uga961",
         "https://www.linkedin.com/in/vaddi-ugandhar-b37877266/",
@@ -161,20 +178,46 @@ const jsonLd = {
         "Applied AI",
         "VLSI Design",
         "SRAM Architectures",
+        "Cadence Virtuoso",
+        "Computer Vision",
+        "Multi-Agent Systems",
         "System Programming",
         "Python",
         ".NET Core",
         "Predictive Modeling",
+        "Embedded Systems",
       ],
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Visakhapatnam",
+        addressRegion: "Andhra Pradesh",
+        addressCountry: "IN",
+      },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://www.ugandhar.in/#webpage",
+      url: "https://www.ugandhar.in",
+      name: "Ugandhar Vaddi — Personal Engineering Portfolio",
+      isPartOf: {
+        "@id": "https://www.ugandhar.in/#website",
+      },
+      about: {
+        "@id": "https://www.ugandhar.in/#person",
+      },
+      mainEntity: {
+        "@id": "https://www.ugandhar.in/#person",
+      },
+      inLanguage: "en-US",
     },
     {
       "@type": "WebSite",
-      "alternateName": ["Ugandhar", "ugandhar.in", "Ugandhar Vaddi Portfolio"],
-      "image": "https://www.ugandhar.in/icon.png",
-      "thumbnailUrl": "https://www.ugandhar.in/icon.png",
       "@id": "https://www.ugandhar.in/#website",
       url: "https://www.ugandhar.in",
       name: "Ugandhar Vaddi",
+      alternateName: ["Ugandhar", "ugandhar.in", "Ugandhar Vaddi Portfolio"],
+      image: "https://www.ugandhar.in/icon.png",
+      thumbnailUrl: "https://www.ugandhar.in/icon.png",
       description:
         "Building at the intersection of silicon, software, data, and intelligent systems.",
       publisher: {
@@ -214,7 +257,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} font-sans bg-background text-on-surface antialiased selection:bg-accent/15 selection:text-foreground`}
+        className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} font-sans bg-background text-on-surface antialiased selection:bg-foreground/15 selection:text-foreground`}
       >
         {children}
         <Analytics />

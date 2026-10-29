@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    /* Editorial Light Mode — Warm Parchment & Deep Charcoal Ink */
+    /* Editorial Light Mode — Warm Bone Parchment & Deep Charcoal Ink */
     --background: 45 20% 96.5%;     /* #F8F7F4 warm bone off-white */
-    --foreground: 0 0% 8.6%;        /* #161616 near-black text */
+    --foreground: 0 0% 9%;          /* #161616 near-black text */
 
-    --primary: 0 0% 8.6%;
+    --primary: 0 0% 9%;
     --primary-foreground: 45 20% 96.5%;
-    --primary-hover: 0 0% 18%;
+    --primary-hover: 0 0% 20%;
 
-    --accent: 149 33% 26.5%;        /* #2D5A43 deep forest green */
-    --accent-hover: 148 33% 20%;    /* #224432 */
-    --accent-foreground: 0 0% 100%;
-    --accent-muted: 149 20% 92%;
+    --accent: 0 0% 9%;              /* Crisp charcoal monochrome accent */
+    --accent-hover: 0 0% 25%;
+    --accent-foreground: 45 20% 96.5%;
+    --accent-muted: 45 15% 90%;
 
     --surface: 0 0% 100%;           /* #FFFFFF pure clean surface */
     --surface-subtle: 45 15% 94%;   /* #F2F0EB */
     --surface-container: 45 12% 91%;/* #EBE8E1 */
     --surface-container-high: 42 12% 86%;
 
-    --on-surface: 0 0% 8.6%;
+    --on-surface: 0 0% 9%;
     --on-surface-variant: 60 2% 40%;/* #666663 neutral slate gray */
 
     --border: 40 14% 87.6%;         /* #E4E1DB hairline border */
@@ -40,10 +40,10 @@
     --primary-foreground: 60 3% 6.9%;
     --primary-hover: 47 25% 96%;
 
-    --accent: 144 21% 48.6%;        /* #629677 muted architectural sage */
-    --accent-hover: 144 26% 56%;
+    --accent: 47 16% 89.2%;         /* Warm bone / crisp monochrome contrast */
+    --accent-hover: 47 25% 96%;
     --accent-foreground: 60 3% 6.9%;
-    --accent-muted: 144 15% 15%;
+    --accent-muted: 60 3% 16%;
 
     --surface: 60 4% 9.8%;          /* #1A1A18 deep surface */
     --surface-subtle: 60 3% 12%;    /* #20201E */
@@ -87,7 +87,7 @@
   }
 
   ::selection {
-    background: hsl(var(--accent) / 0.15);
+    background: hsl(var(--foreground) / 0.15);
     color: hsl(var(--foreground));
   }
 }
@@ -109,4 +109,14 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--on-surface-variant) / 0.5);
+}
+
+/* Hidden Scrollbar Utility (Fixes ugly browser scrollbars on overflow tabs) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

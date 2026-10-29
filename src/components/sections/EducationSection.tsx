@@ -14,7 +14,7 @@ export function EducationSection() {
           <span>ACADEMIC FOUNDATIONS</span>
         </div>
         <span className="hidden sm:inline font-mono text-[11px]">
-          CIRCUIT THEORY &middot; MATHEMATICS &middot; COMPUTATION
+          CIRCUIT THEORY · MATHEMATICS · COMPUTATION
         </span>
       </div>
 
@@ -76,12 +76,12 @@ export function EducationSection() {
                 </ul>
               )}
 
-              {/* Coursework / Skills in clean text */}
+              {/* Coursework / Skills (Real unicode middle dot) */}
               <div className="pt-2 text-xs font-mono text-on-surface-variant">
                 <span className="text-foreground/70 font-semibold mr-2 uppercase tracking-wider text-[11px]">
                   Focus Areas:
                 </span>
-                <span>{edu.skills.join(" &middot; ")}</span>
+                <span>{edu.skills.join(" · ")}</span>
               </div>
             </div>
           </div>

@@ -26,10 +26,10 @@ export function HeroSection() {
         <div className="flex items-center gap-3">
           <span className="text-foreground font-semibold uppercase tracking-wider">INDEX 001</span>
           <span className="text-border">/</span>
-          <span>ENGINEERING & APPLIED RESEARCH</span>
+          <span>ENGINEERING &amp; APPLIED RESEARCH</span>
         </div>
         <div className="hidden sm:flex items-center gap-2">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-accent" />
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-foreground/40" />
           <span>BASED IN INDIA</span>
         </div>
       </div>
@@ -53,7 +53,7 @@ export function HeroSection() {
               <span className="text-foreground font-medium">Tredence</span> (Analytics &amp; Applied AI) and graduate in Electronics &amp; Communication from Sathyabama Institute of Science and Technology.
             </p>
             <p>
-              I build and investigate systems across the technical stack — from transistor-level SRAM stability architectures in Cadence Virtuoso and embedded telemetry firmware to enterprise predictive pipelines, multi-agent AI tooling, and native Windows utilities.
+              I build and investigate systems across the technical stack &mdash; from transistor-level SRAM stability architectures in Cadence Virtuoso and embedded telemetry firmware to enterprise predictive pipelines, multi-agent AI tooling, and native Windows utilities.
             </p>
           </div>
 
@@ -85,8 +85,8 @@ export function HeroSection() {
             >
               {copied ? (
                 <>
-                  <Check className="w-3.5 h-3.5 text-accent" />
-                  <span className="text-accent font-semibold">Email Copied</span>
+                  <Check className="w-3.5 h-3.5 text-foreground" />
+                  <span className="text-foreground font-semibold">Email Copied</span>
                 </>
               ) : (
                 <>
@@ -97,7 +97,7 @@ export function HeroSection() {
             </button>
           </div>
 
-          {/* Clean pipe-separated text links */}
+          {/* Clean slash-separated text links */}
           <div className="pt-4 border-t border-border/60 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-mono text-on-surface-variant">
             {SOCIAL_LINKS.map((link, idx) => (
               <React.Fragment key={link.name}>
@@ -120,7 +120,7 @@ export function HeroSection() {
 
         {/* Right Column: Architectural Photograph Frame */}
         <div className="lg:col-span-5 flex flex-col items-center lg:items-end">
-          <div className="w-full max-w-sm border border-border bg-surface p-2.5 rounded-[4px] shadow-subtle">
+          <div className="w-full max-w-sm border border-border bg-surface p-3 rounded-[4px] shadow-subtle">
             <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-container rounded-[2px]">
               <Image
                 src={PERSONAL_INFO.avatarPath}
@@ -131,9 +131,9 @@ export function HeroSection() {
                 className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out"
               />
             </div>
-            <div className="mt-2.5 flex items-center justify-between text-[11px] font-mono text-on-surface-variant px-1">
+            <div className="mt-3 pt-2 border-t border-border/60 flex items-center justify-between text-[11px] font-mono text-on-surface-variant">
               <span>FIG. 01 — RESEARCHER</span>
-              <span className="text-foreground/80 font-medium">CHENNAI &middot; VISAKHAPATNAM</span>
+              <span className="text-foreground/90 font-medium">CHENNAI · VISAKHAPATNAM</span>
             </div>
           </div>
         </div>

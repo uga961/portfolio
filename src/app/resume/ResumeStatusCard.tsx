@@ -27,7 +27,7 @@ export function ResumeStatusCard() {
   };
 
   return (
-    <main className="min-h-screen bg-background text-on-surface flex items-center justify-center p-4 sm:p-6 relative selection:bg-accent/15">
+    <main className="min-h-screen bg-background text-on-surface flex items-center justify-center p-4 sm:p-6 relative selection:bg-foreground/15">
       <div className="relative z-10 max-w-lg w-full rounded-[4px] border border-border/90 bg-surface p-6 sm:p-8 space-y-6 text-center shadow-subtle">
         {/* Editorial Index */}
         <div className="border-b border-border/80 pb-3 text-xs font-mono text-on-surface-variant flex items-center justify-between">
@@ -48,7 +48,7 @@ export function ResumeStatusCard() {
         {/* Informational Message Box */}
         <div className="p-4 rounded-[3px] bg-surface-subtle border border-border/80 text-left space-y-2 text-xs sm:text-sm text-foreground/90 leading-relaxed font-sans">
           <div className="flex items-start gap-2.5">
-            <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+            <CheckCircle2 className="w-4 h-4 text-foreground/80 flex-shrink-0 mt-0.5" />
             <p>
               I am currently happy in my role and am <span className="font-semibold text-foreground">not actively seeking new roles or job opportunities</span> at this time.
             </p>

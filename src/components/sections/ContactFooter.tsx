@@ -31,7 +31,7 @@ export function ContactFooter() {
             <span>CONTACT &amp; CORRESPONDENCE</span>
           </div>
           <span className="font-mono text-[11px] text-on-surface-variant">
-            UTC+5:30 &middot; IST
+            UTC+5:30 · IST
           </span>
         </div>
 
@@ -41,7 +41,7 @@ export function ContactFooter() {
               Let&apos;s build something solid.
             </h2>
             <p className="text-sm sm:text-base text-on-surface-variant leading-relaxed font-sans max-w-lg">
-              Whether you want to discuss VLSI hardware, SRAM stability, enterprise data intelligence pipelines, open-source desktop tooling, or collaborative research — my inbox is always open.
+              Whether you want to discuss VLSI hardware, SRAM stability, enterprise data intelligence pipelines, open-source desktop tooling, or collaborative research &mdash; my inbox is always open.
             </p>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
@@ -55,12 +55,12 @@ export function ContactFooter() {
 
               <button
                 onClick={handleCopyEmail}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 text-foreground font-mono text-xs hover:border-foreground transition-colors cursor-pointer"
               >
                 {copied ? (
                   <>
-                    <Check className="w-3.5 h-3.5 text-accent" />
-                    <span className="text-accent font-semibold">Copied</span>
+                    <Check className="w-3.5 h-3.5 text-foreground" />
+                    <span className="text-foreground font-semibold">Copied</span>
                   </>
                 ) : (
                   <>
@@ -107,7 +107,7 @@ export function ContactFooter() {
               <span className="text-[10px] uppercase tracking-wider text-foreground/70 font-semibold block">
                 Availability
               </span>
-              <div>Joining Tredence Analytics Solutions (Nov 2026)</div>
+              <div>Associate Data Scientist at Tredence (Nov 2026)</div>
               <div>Open for technical discourse &amp; research dialogues</div>
             </div>
           </div>
@@ -139,7 +139,7 @@ export function ContactFooter() {
           <button
             onClick={scrollToTop}
             aria-label="Back to top"
-            className="p-1.5 rounded-[2px] border border-border/80 hover:border-foreground text-on-surface-variant hover:text-foreground transition-colors"
+            className="p-1.5 rounded-[2px] border border-border/80 hover:border-foreground text-on-surface-variant hover:text-foreground transition-colors cursor-pointer"
           >
             <ArrowUp className="w-3.5 h-3.5" />
           </button>
