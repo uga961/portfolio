@@ -68,9 +68,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.ugandhar.in",
   },
-  verification: {
-    google: "d6qC6JXOnKpcVtH15DHGM1LslxfSPMTZd2mavDkuMY8",
-  },
+  // verification: {
+  //   google: "Add your Google site verification code here",
+  // },
   robots: {
     index: true,
     follow: true,
@@ -120,9 +120,7 @@ export const metadata: Metadata = {
       { url: "/icon.png", type: "image/png", sizes: "96x96" },
     ],
     shortcut: "/favicon.ico",
-    apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
   manifest: "/manifest.webmanifest",
 };
@@ -156,7 +154,8 @@ const jsonLd = {
         "@type": "Occupation",
         name: "Associate Data Scientist",
         occupationalCategory: "15-2051.00",
-        skills: "Machine Learning, Predictive Analytics, Python, SQL, VLSI CAD, SRAM Architectures, C/C++",
+        skills:
+          "Machine Learning, Predictive Analytics, Python, SQL, VLSI CAD, SRAM Architectures, C/C++",
       },
       alumniOf: [
         {
