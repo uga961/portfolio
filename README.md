@@ -365,14 +365,8 @@ Pre-configured workspace settings are located in `.vscode/`:
 
 The repository is configured for zero-configuration continuous deployment on Vercel:
 
-1. Import the repository `uga961/portfolio` in [Vercel](https://vercel.com).
+1. Import the repository `username/repo_name` in [Vercel](https://vercel.com).
 2. The framework preset is automatically detected as **Next.js**.
-3. Under **Project Settings > Domains**, configure:
-   - `ugandhar.in` (Primary domain)
-   - `www.ugandhar.in` (Redirects to `ugandhar.in`)
-4. Set DNS records at your domain registrar:
-   - `A` record: `@` &rarr; `76.76.21.21`
-   - `CNAME` record: `www` &rarr; `cname.vercel-dns.com`
 
 Every push to `main` automatically triggers an optimized production deployment with full static asset optimization.
 
