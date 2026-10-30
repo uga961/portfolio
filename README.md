@@ -342,12 +342,22 @@ npx tsc --noEmit
 # Run ESLint validation
 npm run lint
 
+# Submit all URLs to IndexNow (Bing & Microsoft Copilot)
+npm run indexnow
+
 # Build production bundle (and static page generation)
 npm run build
 
 # Preview production build locally
 npm start
 ```
+
+### ⚡ IndexNow (Bing & Microsoft Copilot Instant Indexing)
+
+The site implements the **IndexNow protocol** for instantaneous search discovery on Bing, Microsoft Copilot, and Yandex:
+- **Authentication Key**: `public/2f8745c1a89b4f99a071de8463990b76.txt`
+- **Submission Script**: `scripts/submit-indexnow.mjs` (run via `npm run indexnow`)
+- **API Endpoint**: `/api/indexnow` (triggers automated submission upon HTTP GET/POST)
 
 ### VS Code Integration
 
