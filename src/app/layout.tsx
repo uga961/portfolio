@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     template: "%s | Ugandhar Vaddi",
   },
   description:
-    "Associate Data Scientist at Tredence (Analytics & Applied AI) & Electronics Engineer. Engineering across silicon architectures, enterprise predictive data pipelines, and systems tooling.",
+    "Associate Data Scientist at Tredence and Electronics Engineer. Building across silicon architectures, enterprise predictive pipelines, and systems tooling.",
   keywords: [
     "Ugandhar Vaddi",
     "uga961",
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     siteName: "Ugandhar Vaddi",
     title: "Ugandhar Vaddi — Associate Data Scientist & Systems Builder",
     description:
-      "Associate Data Scientist at Tredence (Analytics & Applied AI) & Electronics Engineer. Engineering across silicon architectures, enterprise predictive data pipelines, and systems tooling.",
+      "Associate Data Scientist at Tredence and Electronics Engineer. Building across silicon architectures, enterprise predictive pipelines, and systems tooling.",
     images: [
       {
         url: "https://www.ugandhar.in/social/og-image.png",
@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ugandhar Vaddi — Associate Data Scientist & Systems Builder",
     description:
-      "Associate Data Scientist at Tredence. Engineering across silicon architectures, enterprise predictive data pipelines, and systems tooling.",
+      "Associate Data Scientist at Tredence and Electronics Engineer. Building across silicon architectures, enterprise predictive pipelines, and systems tooling.",
     images: ["https://www.ugandhar.in/social/og-image.png"],
     creator: "@uga961",
     site: "@uga961",
