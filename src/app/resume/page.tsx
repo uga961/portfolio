@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import fs from "fs";
 import path from "path";
 import { redirect } from "next/navigation";
@@ -5,9 +6,12 @@ import { ResumeStatusCard } from "./ResumeStatusCard";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Career Status & Resume | Ugandhar Vaddi",
   description: "Career status update and technical background of Ugandhar Vaddi.",
+  alternates: {
+    canonical: "https://www.ugandhar.in/resume",
+  },
 };
 
 export default function ResumePage() {
