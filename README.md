@@ -124,17 +124,17 @@ Add a new object to the `PROJECTS` array in `src/data/portfolio.ts`:
 #### A. Standard Open-Source Project:
 ```typescript
 {
-  id: "my-project-id",
-  title: "Project Name",
-  subtitle: "One-line architectural description",
-  description: "Detailed 2-3 sentence overview explaining what was built, how it solves the problem, and technical highlights.",
+  id: "tv-detox",
+  title: "TV Detox Launcher",
+  subtitle: "Ultra-Lightweight Minimalist Launcher for Android TV",
+  description: "A clean, ultra-lightweight, and lightning-fast minimalist launcher built in Java specifically for Android TV and memory-constrained devices...",
   category: "Desktop & Web", // Choose: "AI & ML" | "Hardware & VLSI" | "Desktop & Web"
-  tags: [".NET 8", "C#", "WPF", "Windows API"],
-  metrics: "Production v2.1 · 500+ active users", // Optional metric or measurement
-  githubUrl: "https://github.com/uga961/my-project",
-  liveUrl: "https://myproject.ugandhar.in", // Optional live demo URL
+  tags: ["Android TV", "Java", "ADB", "Leanback", "Open Source"],
+  metrics: "~12MB RAM Overhead · 3.2MB APK · 0% Idle CPU", // Optional metric or measurement
+  githubUrl: "https://github.com/uga961/tv-detox",
+  blogSlug: "debloat-android-tv-adb-guide", // Links to Engineering Essay at blog.ugandhar.in
   featured: true, // true displays it with a gold star badge
-  date: "Oct 2026",
+  date: "Oct 2026 – Nov 2026",
   contributors: [] // Leave empty for solo projects
 }
 ```
@@ -202,25 +202,25 @@ Add an object to the `EXPERIENCES` array in `src/data/portfolio.ts`:
 
 ### 4. Update Skills & Technical Disciplines
 
-Find `SKILL_GROUPS` in `src/data/portfolio.ts` to edit domains, category names, or individual technical capabilities:
+Find `SKILL_CATEGORIES` in `src/data/portfolio.ts` to edit domains, category names, or individual technical capabilities:
 
 ```typescript
-export const SKILL_GROUPS = [
+export const SKILL_CATEGORIES = [
   {
-    category: "Languages & Core Runtimes",
-    skills: ["Python", "C#", "C", "C++", "SQL", "Verilog HDL", "TypeScript", "JavaScript"],
+    name: "Languages & Frameworks",
+    skills: ["Python", "C# / .NET 8", "C / C++", "Java", "TypeScript", "JavaScript", "SQL", "HTML5 & CSS3"],
   },
   {
-    category: "Machine Learning & Applied AI",
-    skills: ["PyTorch", "scikit-learn", "TensorFlow", "Pandas", "NumPy", "OpenCV", "NLP", "LLM APIs"],
+    name: "AI, ML & Data Science",
+    skills: ["Vertex AI / Google Gemini", "Microsoft AutoGen", "scikit-learn", "PyTorch", "Pandas & NumPy", "Computer Vision", "NLP (TF-IDF)", "Matplotlib & Seaborn"],
   },
   {
-    category: "Hardware & EDA Engineering",
-    skills: ["Cadence Virtuoso", "Cadence Spectre", "Xilinx Vivado", "ModelSim", "VLSI CAD", "Arduino", "Embedded Systems"],
+    name: "Hardware & VLSI",
+    skills: ["Cadence Virtuoso", "Assura DRC & LVS", "ADE Simulation", "SRAM Design (6T & 7T)", "CMOS Digital Design", "Arduino & Microcontrollers", "Hardware-Software Interfacing"],
   },
   {
-    category: "Frameworks, Systems & Cloud",
-    skills: [".NET 8", "WPF", "Next.js", "React", "Linux / Fedora", "Docker", "Git", "VS Code"],
+    name: "Systems, Tools & Web",
+    skills: ["Next.js 15 & React 19", "Tailwind CSS", "Linux Kernel & POSIX", "Android SDK & ADB", "WPF Desktop Applications", "Git & GitHub", "VS Code", "Vercel Deployment"],
   },
 ];
 ```

@@ -281,6 +281,23 @@ export const EDUCATION: Education[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: "tv-detox",
+    title: "TV Detox Launcher",
+    subtitle: "Ultra-Lightweight Minimalist Launcher for Android TV",
+    description:
+      "A clean, ultra-lightweight, and lightning-fast minimalist launcher built in Java specifically for Android TV and memory-constrained devices (such as 1GB RAM Mi TVs, Xiaomi TV Sticks, and Chromecast).",
+    longDescription:
+      "Drastically reduces memory overhead to ~12MB RAM (down from 150MB+ on stock PatchWall / Google TV launchers) with 0% idle CPU overhead, zero telemetry or tracking, and smooth 0.5x focus animations. Features dynamic time-based greetings, digital clock, quick input switching, and real-time app discovery.",
+    category: "Desktop & Web",
+    tags: ["Android TV", "Java", "ADB", "Android SDK", "Leanback", "Open Source"],
+    metrics: "~12MB RAM Overhead · 3.2MB APK · 0% Idle CPU",
+    githubUrl: "https://github.com/uga961/tv-detox",
+    blogSlug: "debloat-android-tv-adb-guide",
+    featured: true,
+    date: "Oct 2026 – Nov 2026",
+    stars: 1,
+  },
+  {
     id: "stayactive",
     title: "StayActive",
     subtitle: "Mindful Digital Wellbeing for Windows",
@@ -294,7 +311,7 @@ export const PROJECTS: Project[] = [
     githubUrl: "https://github.com/uga961/StayActive",
     blogSlug: "why-i-built-stayactive",
     featured: true,
-    date: "Sep 2026",
+    date: "Sep 2026 – Nov 2026",
     stars: 1,
   },
   {
@@ -310,7 +327,7 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://blog.ugandhar.in",
     githubUrl: "https://github.com/uga961/Blog",
     featured: true,
-    date: "Oct 2026",
+    date: "Oct 2026 – Nov 2026",
     stars: 1,
   },
   {
@@ -393,7 +410,7 @@ export const PROJECTS: Project[] = [
 export const SKILL_CATEGORIES = [
   {
     name: "Languages & Frameworks",
-    skills: ["Python", "C# / .NET 8", "C / C++", "TypeScript", "JavaScript", "SQL", "HTML5 & CSS3"],
+    skills: ["Python", "C# / .NET 8", "C / C++", "Java", "TypeScript", "JavaScript", "SQL", "HTML5 & CSS3"],
   },
   {
     name: "AI, ML & Data Science",
@@ -426,6 +443,7 @@ export const SKILL_CATEGORIES = [
       "Next.js 15 & React 19",
       "Tailwind CSS",
       "Linux Kernel & POSIX",
+      "Android SDK & ADB",
       "WPF Desktop Applications",
       "Git & GitHub",
       "VS Code",

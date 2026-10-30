@@ -63,10 +63,12 @@ const DISCIPLINES: Discipline[] = [
     title: "Systems Programming & Applications",
     domain: "Linux OS Primitives, .NET Core & Web Architectures",
     narrative:
-      "Low-level memory management and POSIX concurrency in C, enterprise Clean Architecture microservices in .NET 8, native Windows WPF desktop utilities, and high-performance React/Next.js platforms.",
+      "Low-level memory management and POSIX concurrency in C, enterprise Clean Architecture microservices in .NET 8, Android TV system launchers and ADB performance tuning, native Windows WPF desktop utilities, and high-performance React/Next.js platforms.",
     competencies: [
       "C / C++ (Linux Internals & POSIX)",
       ".NET 8 & C#",
+      "Android SDK & ADB",
+      "Java",
       "WPF Desktop Architecture",
       "Next.js 15 & React 19",
       "TypeScript",

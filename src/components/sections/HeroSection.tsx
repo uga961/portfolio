@@ -53,7 +53,7 @@ export function HeroSection() {
               <span className="text-foreground font-medium">Tredence</span> (Analytics &amp; Applied AI) and graduate in Electronics &amp; Communication from Sathyabama Institute of Science and Technology.
             </p>
             <p>
-              I build and investigate systems across the technical stack &mdash; from transistor-level SRAM stability architectures in Cadence Virtuoso and embedded telemetry firmware to enterprise predictive pipelines, multi-agent AI tooling, and native Windows utilities.
+              I build and investigate systems across the technical stack &mdash; from transistor-level SRAM stability architectures in Cadence Virtuoso and embedded telemetry firmware to enterprise predictive pipelines, multi-agent AI tooling, and native Windows and Android system utilities.
             </p>
           </div>
 
