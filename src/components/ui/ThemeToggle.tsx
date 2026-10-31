@@ -9,20 +9,51 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
 
   useEffect(() => {
     setMounted(true);
-    const hasDark = document.documentElement.classList.contains("dark");
-    setIsDark(hasDark);
+    const checkDark = () => document.documentElement.classList.contains("dark");
+    setIsDark(checkDark());
+
+    // Listen for custom theme change events across toggles
+    const handleThemeChange = (e: Event) => {
+      const custom = e as CustomEvent<{ isDark: boolean }>;
+      if (custom.detail && typeof custom.detail.isDark === "boolean") {
+        setIsDark(custom.detail.isDark);
+      } else {
+        setIsDark(checkDark());
+      }
+    };
+
+    // Observe class attribute changes directly on <html> (e.g. from any toggle instance)
+    const observer = new MutationObserver(() => {
+      setIsDark(checkDark());
+    });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    window.addEventListener("theme-change", handleThemeChange);
+    window.addEventListener("storage", handleThemeChange);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("theme-change", handleThemeChange);
+      window.removeEventListener("storage", handleThemeChange);
+    };
   }, []);
 
   const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-      setIsDark(false);
-    } else {
+    const willBeDark = !document.documentElement.classList.contains("dark");
+    if (willBeDark) {
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
-      setIsDark(true);
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
+    setIsDark(willBeDark);
+    window.dispatchEvent(
+      new CustomEvent("theme-change", { detail: { isDark: willBeDark } })
+    );
   };
 
   if (!mounted) {

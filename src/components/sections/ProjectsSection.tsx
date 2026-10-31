@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowUpRight, Lock, Star, Users, User } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Lock, Star, Users, User } from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { PROJECTS } from "@/data/portfolio";
 
@@ -9,6 +9,7 @@ type CategoryFilter = "All" | "Hardware & VLSI" | "AI & ML" | "Desktop & Web";
 
 export function ProjectsSection() {
   const [filter, setFilter] = useState<CategoryFilter>("All");
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const categories: CategoryFilter[] = [
     "All",
@@ -22,6 +23,13 @@ export function ProjectsSection() {
       ? PROJECTS
       : PROJECTS.filter((p) => p.category === filter);
 
+  const visibleProjects = isExpanded ? filteredProjects : filteredProjects.slice(0, 3);
+
+  const handleFilterChange = (cat: CategoryFilter) => {
+    setFilter(cat);
+    setIsExpanded(false);
+  };
+
   return (
     <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden">
       {/* Editorial Header */}
@@ -32,7 +40,7 @@ export function ProjectsSection() {
           <span className="truncate">SELECTED WORK &amp; ENGINEERING SYSTEMS</span>
         </div>
         <span className="hidden sm:inline font-mono text-[11px] flex-shrink-0">
-          {filteredProjects.length} OF {PROJECTS.length} SYSTEMS LISTED
+          {visibleProjects.length} OF {filteredProjects.length} SYSTEMS DISPLAYED
         </span>
       </div>
 
@@ -46,12 +54,12 @@ export function ProjectsSection() {
           </p>
         </div>
 
-        {/* Minimalist Filter Bar without scrollbars */}
-        <div className="flex flex-wrap sm:flex-nowrap items-center gap-1.5 text-xs font-mono no-scrollbar">
+        {/* Minimalist Filter Bar with zero scrollbar on any browser/device */}
+        <div className="flex items-center gap-1.5 text-xs font-mono overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-w-full pb-1 -mb-1">
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setFilter(cat)}
+              onClick={() => handleFilterChange(cat)}
               className={`px-3 py-1.5 rounded-[3px] transition-colors whitespace-nowrap cursor-pointer touch-manipulation min-h-[36px] ${
                 filter === cat
                   ? "bg-foreground text-background font-medium"
@@ -66,7 +74,7 @@ export function ProjectsSection() {
 
       {/* Editorial Project Entries */}
       <div className="divide-y divide-border/80 border-t border-border/80">
-        {filteredProjects.map((project, idx) => (
+        {visibleProjects.map((project, idx) => (
           <article
             key={project.id}
             className="py-8 sm:py-10 transition-colors group"
@@ -127,13 +135,13 @@ export function ProjectsSection() {
                   </p>
                 )}
 
-                {/* Evidence / Metric Callout (No green tint!) */}
+                {/* Evidence / Metric Callout (Vibrant colored live accent) */}
                 {project.metrics && (
-                  <div className="text-xs font-mono text-foreground border-l-2 border-foreground/50 pl-3 py-1 bg-surface-subtle/50 break-words">
-                    <span className="text-foreground/70 font-semibold uppercase tracking-wider text-[10px] block mb-0.5">
+                  <div className="text-xs font-mono text-foreground border-l-2 border-emerald-500 dark:border-emerald-400 pl-3 py-1.5 bg-emerald-500/5 dark:bg-emerald-950/20 rounded-r-[2px] break-words">
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold uppercase tracking-wider text-[10px] block mb-0.5">
                       Evidence &amp; Measurements
                     </span>
-                    <span>{project.metrics}</span>
+                    <span className="text-foreground/95">{project.metrics}</span>
                   </div>
                 )}
 
@@ -196,6 +204,27 @@ export function ProjectsSection() {
           </article>
         ))}
       </div>
+
+      {/* Show More / Show Less Button */}
+      {filteredProjects.length > 3 && (
+        <div className="pt-8 sm:pt-10 flex justify-center border-t border-border/80">
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 hover:bg-surface hover:border-foreground text-foreground text-xs font-mono uppercase tracking-wider transition-all cursor-pointer touch-manipulation min-h-[40px] shadow-subtle"
+          >
+            <span>
+              {isExpanded
+                ? "Show Top 3 Systems"
+                : `View All ${filteredProjects.length} Systems (+${filteredProjects.length - 3} More)`}
+            </span>
+            <ChevronDown
+              className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                isExpanded ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        </div>
+      )}
     </section>
   );
 }

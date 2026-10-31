@@ -18,10 +18,11 @@ export function MediaSection() {
           href={YOUTUBE_INFO.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-foreground hover:underline transition-colors flex items-center gap-1 font-mono text-[11px] flex-shrink-0 touch-manipulation"
+          className="hover:text-foreground hover:underline transition-colors flex items-center gap-1.5 font-mono text-[11px] flex-shrink-0 touch-manipulation group"
         >
+          <span className="w-2 h-2 rounded-full bg-red-600 dark:bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]" />
           <span>{YOUTUBE_INFO.handle} ON YOUTUBE</span>
-          <ArrowUpRight className="w-3 h-3 opacity-60" />
+          <ArrowUpRight className="w-3 h-3 opacity-60 group-hover:opacity-100" />
         </a>
       </div>
 
@@ -45,8 +46,9 @@ export function MediaSection() {
             className="group block space-y-3 p-5 sm:p-6 border border-border/80 bg-surface/60 rounded-[4px] hover:border-foreground/40 hover:bg-surface transition-all touch-manipulation"
           >
             <div className="flex items-center justify-between text-xs font-mono text-on-surface-variant">
-              <span className="text-foreground font-medium uppercase tracking-wider">
-                {item.badge} {item.type}
+              <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[2px] bg-red-500/10 text-red-600 dark:text-red-400 font-semibold uppercase tracking-wider text-[10px] border border-red-500/20">
+                <span className="w-1.5 h-1.5 rounded-full bg-red-600 dark:bg-red-500 animate-pulse" />
+                {item.badge} · {item.type}
               </span>
               <ArrowUpRight className="w-4 h-4 text-on-surface-variant group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
             </div>

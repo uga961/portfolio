@@ -1,10 +1,14 @@
 "use client";
 
-import React from "react";
-import { ArrowUpRight } from "lucide-react";
+import React, { useState } from "react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
 import { EXPERIENCES } from "@/data/portfolio";
 
 export function ExperienceSection() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const visibleExperiences = isExpanded ? EXPERIENCES : EXPERIENCES.slice(0, 3);
+
   return (
     <section id="experience" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden">
       {/* Editorial Header */}
@@ -15,7 +19,7 @@ export function ExperienceSection() {
           <span className="truncate">CHRONOLOGICAL RECORD</span>
         </div>
         <span className="hidden sm:inline font-mono text-[11px] flex-shrink-0">
-          INDUSTRY &amp; APPRENTICESHIPS
+          {visibleExperiences.length} OF {EXPERIENCES.length} RECORDS DISPLAYED
         </span>
       </div>
 
@@ -30,7 +34,7 @@ export function ExperienceSection() {
 
       {/* Chronological Editorial List */}
       <div className="divide-y divide-border/80 border-t border-border/80">
-        {EXPERIENCES.map((exp) => (
+        {visibleExperiences.map((exp) => (
           <div
             key={exp.company}
             className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start"
@@ -113,6 +117,27 @@ export function ExperienceSection() {
           </div>
         ))}
       </div>
+
+      {/* Show More / Show Less Button */}
+      {EXPERIENCES.length > 3 && (
+        <div className="pt-8 sm:pt-10 flex justify-center border-t border-border/80">
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-[4px] border border-border/90 bg-surface/80 hover:bg-surface hover:border-foreground text-foreground text-xs font-mono uppercase tracking-wider transition-all cursor-pointer touch-manipulation min-h-[40px] shadow-subtle"
+          >
+            <span>
+              {isExpanded
+                ? "Show Recent 3 Roles"
+                : `View Full Chronological Record (+${EXPERIENCES.length - 3} More)`}
+            </span>
+            <ChevronDown
+              className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                isExpanded ? "rotate-180" : ""
+              }`}
+            />
+          </button>
+        </div>
+      )}
     </section>
   );
 }

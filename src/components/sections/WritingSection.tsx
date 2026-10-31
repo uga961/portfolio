@@ -9,7 +9,7 @@ interface WritingSectionProps {
 }
 
 export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProps) {
-  const [posts, setPosts] = useState<BlogPost[]>(initialPosts.slice(0, 3));
+  const [posts, setPosts] = useState<BlogPost[]>(initialPosts.slice(0, 2));
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
       .then((res) => (res.ok ? res.json() : null))
       .then((data: BlogPost[] | null) => {
         if (isMounted && Array.isArray(data) && data.length > 0) {
-          setPosts(data.slice(0, 3));
+          setPosts(data.slice(0, 2));
         }
       })
       .catch(() => {});
@@ -35,7 +35,7 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
       if (res.ok) {
         const data: BlogPost[] = await res.json();
         if (Array.isArray(data) && data.length > 0) {
-          setPosts(data.slice(0, 3));
+          setPosts(data.slice(0, 2));
         }
       }
     } catch (e) {

@@ -29,8 +29,8 @@ export function HeroSection() {
           <span className="truncate">ENGINEERING &amp; APPLIED RESEARCH</span>
         </div>
         <div className="hidden sm:flex items-center gap-2 flex-shrink-0">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-foreground/40" />
-          <span>BASED IN INDIA</span>
+          <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" />
+          <span className="text-foreground/90 font-medium">BASED IN INDIA</span>
         </div>
       </div>
 
@@ -128,7 +128,7 @@ export function HeroSection() {
                 fill
                 priority
                 sizes="(max-width: 640px) 280px, (max-width: 1024px) 50vw, 380px"
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-out"
+                className="object-cover transition-opacity duration-500"
               />
             </div>
             <div className="mt-2.5 sm:mt-3 pt-2 border-t border-border/60 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-on-surface-variant">
