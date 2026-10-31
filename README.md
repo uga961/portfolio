@@ -17,7 +17,7 @@ The portfolio eschews generic modern AI templates (glowing rounded bento cards, 
   - Floating navigation dock is centered using viewport inset constraints (`inset-x-0`) with `pointer-events-none` on the container and `pointer-events-auto` on the dock to prevent click blocking.
   - Dedicated hardware compositing layers (`.gpu-layer` with `backface-visibility: hidden` and `will-change: transform`) ensure 60fps stutter-free scrolling on Firefox (Linux/macOS/Windows) and mobile WebKit.
   - Touch target sizing (`min-h-[40px]`), `touch-manipulation` to eliminate mobile 300ms tap delay, and `break-words` on all monospace metadata strings to prevent horizontal layout blowout.
-- **Dynamic Content & Real-Time Sync**: ISR (Incremental Static Regeneration, 60s) continuously fetches latest essays from [blog.ugandhar.in](https://blog.ugandhar.in) via RSS with automatic fallback to static local cache.
+- **Dynamic Content & Real-Time Sync**: ISR (Incremental Static Regeneration, 60s) continuously fetches latest essays from [thoughts.ugandhar.in](https://thoughts.ugandhar.in) via RSS with automatic fallback to static local cache.
 - **Comprehensive SEO**: Rich JSON-LD `ProfilePage` structured schema (`hasOccupation`, `alumniOf`, `knowsAbout`), OpenGraph, Twitter summary cards, dynamic `sitemap.xml`, and clean `robots.txt`.
 - **Dedicated Resume View**: `/resume` route with direct PDF embedding, responsive status card, and zero-overhead fast loading.
 
@@ -43,7 +43,7 @@ Portfolio/
 │   ├── app/
 │   │   ├── [...not_found]/         # 307 redirect catch-all route to root
 │   │   ├── api/
-│   │   │   └── blog/               # Next.js API route fetching RSS from blog.ugandhar.in
+│   │   │   └── blog/               # Next.js API route fetching RSS from thoughts.ugandhar.in
 │   │   ├── resume/
 │   │   │   ├── page.tsx            # Dedicated /resume page with PDF viewer
 │   │   │   └── ResumeStatusCard.tsx# Interactive metadata & download action card
@@ -58,7 +58,7 @@ Portfolio/
 │   │   │   ├── ExperienceSection.tsx   # Work experience, roles, responsibilities, competencies
 │   │   │   ├── SkillsSection.tsx       # Domain classification & technical skills grid
 │   │   │   ├── EducationSection.tsx    # Academic degrees, grade metrics, and focus areas
-│   │   │   ├── WritingSection.tsx      # Synced blog essays from blog.ugandhar.in
+│   │   │   ├── WritingSection.tsx      # Synced blog essays from thoughts.ugandhar.in
 │   │   │   ├── MediaSection.tsx        # YouTube playlists, videos, and tutorials
 │   │   │   └── ContactFooter.tsx       # Direct contact channels, time zone, and footer
 │   │   └── ui/
@@ -101,7 +101,7 @@ export const PERSONAL_INFO = {
   title: "Associate Data Scientist & Software Engineer",
   headline: "Silicon, Systems & Applied Machine Learning.",
   domain: "ugandhar.in",
-  blogDomain: "blog.ugandhar.in",
+  blogDomain: "thoughts.ugandhar.in",
   location: "Visakhapatnam & Chennai, India",
   email: "annajiratnam@gmail.com",
   summary: "Associate Data Scientist at Tredence (Analytics & Applied AI) and graduate in Electronics & Communication...",
@@ -132,7 +132,7 @@ Add a new object to the `PROJECTS` array in `src/data/portfolio.ts`:
   tags: ["Android TV", "Java", "ADB", "Leanback", "Open Source"],
   metrics: "~12MB RAM Overhead · 3.2MB APK · 0% Idle CPU", // Optional metric or measurement
   githubUrl: "https://github.com/uga961/tv-detox",
-  blogSlug: "debloat-android-tv-adb-guide", // Links to Engineering Essay at blog.ugandhar.in
+  blogSlug: "debloat-android-tv-adb-guide", // Links to Engineering Essay at thoughts.ugandhar.in
   featured: true, // true displays it with a gold star badge
   date: "Oct 2026 – Nov 2026",
   contributors: [] // Leave empty for solo projects
@@ -295,7 +295,7 @@ export const YOUTUBE_CONTENT: YouTubeContent = {
 
 ### 8. How Blog Synchronization Works
 
-- The portfolio automatically syncs articles from `https://blog.ugandhar.in/feed.xml`.
+- The portfolio automatically syncs articles from `https://thoughts.ugandhar.in/feed.xml`.
 - When users visit the site, Next.js performs an ISR fetch (`revalidate: 60` seconds) via `src/lib/blog.ts`.
 - If the remote feed is unreachable or during offline builds, the site gracefully falls back to the static blog cache in `src/data/portfolio.ts` without throwing errors or breaking the layout.
 

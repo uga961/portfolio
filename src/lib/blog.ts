@@ -2,7 +2,7 @@ import { BlogPost, BLOG_POSTS } from "@/data/portfolio";
 
 export async function getLiveBlogPosts(): Promise<BlogPost[]> {
   try {
-    const res = await fetch("https://blog.ugandhar.in/feed.xml", {
+    const res = await fetch("https://thoughts.ugandhar.in/feed.xml", {
       next: { revalidate: 60 }, // Re-check feed every 60 seconds for near real-time updates
       headers: {
         "User-Agent": "ugandhar.in-feed-fetcher/2.0",
@@ -73,7 +73,7 @@ export async function getLiveBlogPosts(): Promise<BlogPost[]> {
         rawItems.push({
           title: titleMatch[1].trim(),
           url: linkMatch[1].trim(),
-          excerpt: cleanDesc || "Read the complete technical essay on blog.ugandhar.in.",
+          excerpt: cleanDesc || "Read the complete technical essay on thoughts.ugandhar.in.",
           date: formattedDate,
           tags: categories.length > 0 ? categories : ["Engineering", "Notes"],
         });

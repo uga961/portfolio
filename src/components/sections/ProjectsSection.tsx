@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { ArrowUpRight, ChevronDown, Lock, Star, Users, User } from "lucide-react";
 import { SiGithub } from "react-icons/si";
-import { PROJECTS } from "@/data/portfolio";
+import { PERSONAL_INFO, PROJECTS } from "@/data/portfolio";
 
 type CategoryFilter = "All" | "Hardware & VLSI" | "AI & ML" | "Desktop & Web";
 
@@ -182,7 +182,7 @@ export function ProjectsSection() {
 
                   {project.blogSlug && (
                     <a
-                      href={`https://blog.ugandhar.in/posts/${project.blogSlug}`}
+                      href={`https://${PERSONAL_INFO.blogDomain}/posts/${project.blogSlug}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium touch-manipulation min-h-[36px]"

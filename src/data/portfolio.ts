@@ -88,7 +88,7 @@ export const PERSONAL_INFO = {
   name: "Ugandhar Vaddi",
   handle: "uga961",
   domain: "ugandhar.in",
-  blogDomain: "blog.ugandhar.in",
+  blogDomain: "thoughts.ugandhar.in",
   headline: "Associate Data Scientist at Tredence",
   bioShort:
     "Associate Data Scientist at Tredence. Building enterprise data intelligence, automated pipelines, and applied machine learning models while exploring low-level silicon architectures.",
@@ -105,9 +105,9 @@ export const PERSONAL_INFO = {
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     name: "Blog",
-    url: "https://blog.ugandhar.in",
+    url: "https://thoughts.ugandhar.in",
     icon: "Blog",
-    handle: "blog.ugandhar.in",
+    handle: "thoughts.ugandhar.in",
     color: "#dedbc8",
     category: "primary",
   },
@@ -324,7 +324,7 @@ export const PROJECTS: Project[] = [
       "Features real-time client-side search, automated reading-time calculation, dark/light theme hydration without flash, and a live Spotify turntable mini-player integrated with daily rotation hits.",
     category: "Desktop & Web",
     tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "React 19", "Material 3", "MDX"],
-    liveUrl: "https://blog.ugandhar.in",
+    liveUrl: "https://thoughts.ugandhar.in",
     githubUrl: "https://github.com/uga961/Blog",
     featured: true,
     date: "Oct 2026 – Nov 2026",
@@ -457,7 +457,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Four Interviews, One Long Day, and a Chapter I’ll Always Remember",
     excerpt:
       "The story of how the McKinsey opportunity began, a long interview day in Chennai, and how I felt then—and how I look back on it now.",
-    url: "https://blog.ugandhar.in/posts/mckinsey-interview-day-and-results",
+    url: "https://thoughts.ugandhar.in/posts/mckinsey-interview-day-and-results",
     date: "Oct 26, 2026",
     readTime: "11 min read",
     tags: ["McKinsey", "Interview Experience", "Career Journey", "Personal Reflection"],
@@ -466,7 +466,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Python Data Visualization: A Practical Guide to Matplotlib, Seaborn, and Pandas",
     excerpt:
       "Learn practical data visualization in Python, from your first Matplotlib line chart to Seaborn plots, heatmaps, correlation, and pair plots, with examples you can run in Google Colab.",
-    url: "https://blog.ugandhar.in/posts/python-data-visualization-matplotlib-seaborn-guide",
+    url: "https://thoughts.ugandhar.in/posts/python-data-visualization-matplotlib-seaborn-guide",
     date: "Oct 23, 2026",
     readTime: "24 min read",
     tags: ["Python", "Data Visualization", "Matplotlib", "Seaborn", "Pandas"],
@@ -475,7 +475,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "How I Debloated My Android TV: A Step-by-Step Guide Using ADB",
     excerpt:
       "My practical guide to cleaning up a slow Android TV with ADB over Wi-Fi, a lighter home screen, careful package checks, reversible changes, and troubleshooting steps.",
-    url: "https://blog.ugandhar.in/posts/debloat-android-tv-adb-guide",
+    url: "https://thoughts.ugandhar.in/posts/debloat-android-tv-adb-guide",
     date: "Oct 22, 2026",
     readTime: "24 min read",
     tags: ["Android TV", "ADB", "Optimization", "Guides"],

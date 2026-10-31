@@ -26,7 +26,7 @@
       "identifier": "urn:air:ugandhar.in:website:blog",
       "displayName": "Personal Blog",
       "type": "text/html",
-      "url": "https://blog.ugandhar.in",
+      "url": "https://thoughts.ugandhar.in",
       "description": "Technical essays, software systems architecture, and engineering notes.",
       "representativeQueries": [
         "Ugandhar Vaddi blog",

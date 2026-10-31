@@ -172,7 +172,7 @@ const jsonLd = {
         "https://github.com/uga961",
         "https://www.linkedin.com/in/vaddi-ugandhar-b37877266/",
         "https://www.youtube.com/@uga961",
-        "https://blog.ugandhar.in",
+        "https://thoughts.ugandhar.in",
         "https://www.reddit.com/user/uga961/",
       ],
       knowsAbout: [
