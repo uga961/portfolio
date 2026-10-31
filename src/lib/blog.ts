@@ -1,4 +1,4 @@
-import { BlogPost, BLOG_POSTS } from "@/data/portfolio";
+import { BlogPost, BLOG_POSTS, PERSONAL_INFO } from "@/data/portfolio";
 
 export async function getLiveBlogPosts(): Promise<BlogPost[]> {
   try {
@@ -70,10 +70,16 @@ export async function getLiveBlogPosts(): Promise<BlogPost[]> {
           }
         }
 
+        const rawUrl = linkMatch[1].trim();
+        const normalizedUrl = rawUrl.replace(
+          /^https?:\/\/blog\.ugandhar\.in/i,
+          `https://${PERSONAL_INFO.blogDomain}`
+        );
+
         rawItems.push({
           title: titleMatch[1].trim(),
-          url: linkMatch[1].trim(),
-          excerpt: cleanDesc || "Read the complete technical essay on thoughts.ugandhar.in.",
+          url: normalizedUrl,
+          excerpt: cleanDesc || `Read the complete technical essay on ${PERSONAL_INFO.blogDomain}.`,
           date: formattedDate,
           tags: categories.length > 0 ? categories : ["Engineering", "Notes"],
         });

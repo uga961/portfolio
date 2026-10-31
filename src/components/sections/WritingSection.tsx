@@ -87,14 +87,19 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
 
       {/* Editorial List of Essays */}
       <div className="divide-y divide-border/80 border-t border-border/80">
-        {posts.map((post) => (
-          <a
-            key={post.title}
-            href={post.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start group block touch-manipulation"
-          >
+        {posts.map((post) => {
+          const targetUrl = post.url.replace(
+            /^https?:\/\/blog\.ugandhar\.in/i,
+            `https://${PERSONAL_INFO.blogDomain}`
+          );
+          return (
+            <a
+              key={post.title}
+              href={targetUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start group block touch-manipulation"
+            >
             {/* Left Column: Metadata */}
             <div className="md:col-span-4 space-y-1 text-xs font-mono text-on-surface-variant">
               <div className="text-foreground font-semibold">
@@ -124,7 +129,8 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
               </div>
             </div>
           </a>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
