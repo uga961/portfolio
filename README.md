@@ -43,7 +43,7 @@ Portfolio/
 │   ├── app/
 │   │   ├── [...not_found]/         # 307 redirect catch-all route to root
 │   │   ├── api/
-│   │   │   └── blog/               # Next.js API route fetching RSS from thoughts.ugandhar.in
+│   │   │   └── thought/               # Next.js API route fetching RSS from thoughts.ugandhar.in
 │   │   ├── resume/
 │   │   │   ├── page.tsx            # Dedicated /resume page with PDF viewer
 │   │   │   └── ResumeStatusCard.tsx# Interactive metadata & download action card
@@ -58,7 +58,7 @@ Portfolio/
 │   │   │   ├── ExperienceSection.tsx   # Work experience, roles, responsibilities, competencies
 │   │   │   ├── SkillsSection.tsx       # Domain classification & technical skills grid
 │   │   │   ├── EducationSection.tsx    # Academic degrees, grade metrics, and focus areas
-│   │   │   ├── WritingSection.tsx      # Synced blog essays from thoughts.ugandhar.in
+│   │   │   ├── WritingSection.tsx      # Synced posts from thoughts.ugandhar.in
 │   │   │   ├── MediaSection.tsx        # YouTube playlists, videos, and tutorials
 │   │   │   └── ContactFooter.tsx       # Direct contact channels, time zone, and footer
 │   │   └── ui/
@@ -68,7 +68,7 @@ Portfolio/
 │   ├── data/
 │   │   └── portfolio.ts            # Central single source of truth for ALL content
 │   └── lib/
-│       ├── blog.ts                 # RSS parser & static cache fallback for blog posts
+│       ├── thought.ts                 # RSS parser & static cache fallback for posts
 │       └── utils.ts                # Tailwind class merge utility (clsx + tailwind-merge)
 ├── .eslintrc.json                  # Next.js ESLint configuration
 ├── .gitattributes                  # Cross-platform LF line endings enforcement
@@ -101,10 +101,11 @@ export const PERSONAL_INFO = {
   title: "Associate Data Scientist & Software Engineer",
   headline: "Silicon, Systems & Applied Machine Learning.",
   domain: "ugandhar.in",
-  blogDomain: "thoughts.ugandhar.in",
+  thoughtsDomain: "thoughts.ugandhar.in",
   location: "Visakhapatnam & Chennai, India",
   email: "annajiratnam@gmail.com",
-  summary: "Associate Data Scientist at Tredence (Analytics & Applied AI) and graduate in Electronics & Communication...",
+  summary:
+    "Associate Data Scientist at Tredence (Analytics & Applied AI) and graduate in Electronics & Communication...",
   status: "Available for high-impact engineering & research collaborations",
   social: {
     github: "https://github.com/uga961",
@@ -122,6 +123,7 @@ export const PERSONAL_INFO = {
 Add a new object to the `PROJECTS` array in `src/data/portfolio.ts`:
 
 #### A. Standard Open-Source Project:
+
 ```typescript
 {
   id: "tv-detox",
@@ -130,9 +132,9 @@ Add a new object to the `PROJECTS` array in `src/data/portfolio.ts`:
   description: "A clean, ultra-lightweight, and lightning-fast minimalist launcher built in Java specifically for Android TV and memory-constrained devices...",
   category: "Desktop & Web", // Choose: "AI & ML" | "Hardware & VLSI" | "Desktop & Web"
   tags: ["Android TV", "Java", "ADB", "Leanback", "Open Source"],
-  metrics: "~12MB RAM Overhead · 3.2MB APK · 0% Idle CPU", // Optional metric or measurement
+  metrics: "~12MB RAM Overhead · 2.5MB APK · 0% Idle CPU", // Optional metric or measurement
   githubUrl: "https://github.com/uga961/tv-detox",
-  blogSlug: "debloat-android-tv-adb-guide", // Links to Engineering Essay at thoughts.ugandhar.in
+  thoughtsSlug: "debloat-android-tv-adb-guide", // Links to Engineering Essay at thoughts.ugandhar.in
   featured: true, // true displays it with a gold star badge
   date: "Oct 2026 – Nov 2026",
   contributors: [] // Leave empty for solo projects
@@ -140,6 +142,7 @@ Add a new object to the `PROJECTS` array in `src/data/portfolio.ts`:
 ```
 
 #### B. Collaborative Project (With Contributor Credits):
+
 ```typescript
 {
   id: "sram-design",
@@ -157,6 +160,7 @@ Add a new object to the `PROJECTS` array in `src/data/portfolio.ts`:
 ```
 
 #### C. Proprietary / Internal Enterprise Project (Hides Code Links):
+
 ```typescript
 {
   id: "enterprise-pipeline",
@@ -208,19 +212,54 @@ Find `SKILL_CATEGORIES` in `src/data/portfolio.ts` to edit domains, category nam
 export const SKILL_CATEGORIES = [
   {
     name: "Languages & Frameworks",
-    skills: ["Python", "C# / .NET 8", "C / C++", "Java", "TypeScript", "JavaScript", "SQL", "HTML5 & CSS3"],
+    skills: [
+      "Python",
+      "C# / .NET 8",
+      "C / C++",
+      "Java",
+      "TypeScript",
+      "JavaScript",
+      "SQL",
+      "HTML5 & CSS3",
+    ],
   },
   {
     name: "AI, ML & Data Science",
-    skills: ["Vertex AI / Google Gemini", "Microsoft AutoGen", "scikit-learn", "PyTorch", "Pandas & NumPy", "Computer Vision", "NLP (TF-IDF)", "Matplotlib & Seaborn"],
+    skills: [
+      "Vertex AI / Google Gemini",
+      "Microsoft AutoGen",
+      "scikit-learn",
+      "PyTorch",
+      "Pandas & NumPy",
+      "Computer Vision",
+      "NLP (TF-IDF)",
+      "Matplotlib & Seaborn",
+    ],
   },
   {
     name: "Hardware & VLSI",
-    skills: ["Cadence Virtuoso", "Assura DRC & LVS", "ADE Simulation", "SRAM Design (6T & 7T)", "CMOS Digital Design", "Arduino & Microcontrollers", "Hardware-Software Interfacing"],
+    skills: [
+      "Cadence Virtuoso",
+      "Assura DRC & LVS",
+      "ADE Simulation",
+      "SRAM Design (6T & 7T)",
+      "CMOS Digital Design",
+      "Arduino & Microcontrollers",
+      "Hardware-Software Interfacing",
+    ],
   },
   {
     name: "Systems, Tools & Web",
-    skills: ["Next.js 15 & React 19", "Tailwind CSS", "Linux Kernel & POSIX", "Android SDK & ADB", "WPF Desktop Applications", "Git & GitHub", "VS Code", "Vercel Deployment"],
+    skills: [
+      "Next.js 15 & React 19",
+      "Tailwind CSS",
+      "Linux Kernel & POSIX",
+      "Android SDK & ADB",
+      "WPF Desktop Applications",
+      "Git & GitHub",
+      "VS Code",
+      "Vercel Deployment",
+    ],
   },
 ];
 ```
@@ -235,7 +274,8 @@ Find `EDUCATION` in `src/data/portfolio.ts`:
 export const EDUCATION = [
   {
     institution: "Sathyabama Institute of Science and Technology",
-    degree: "Bachelor of Engineering (B.E.), Electronics and Communication Engineering",
+    degree:
+      "Bachelor of Engineering (B.E.), Electronics and Communication Engineering",
     period: "Aug 2022 – May 2026",
     grade: "9.2 CGPA",
     location: "Chennai, India",
@@ -244,7 +284,7 @@ export const EDUCATION = [
       "VLSI CAD",
       "RTL Design",
       "Digital Signal Processing",
-      "Microcontrollers"
+      "Microcontrollers",
     ],
   },
 ];
@@ -267,15 +307,18 @@ export const YOUTUBE_CONTENT: YouTubeContent = {
       badge: "Featured Playlist",
       type: "Playlist",
       title: "Learn PYTHON in 5 Days or Less",
-      description: "Hands-on accelerated curriculum covering Python fundamentals, OOP, data structures, and practical scripting in Google Colab.",
+      description:
+        "Hands-on accelerated curriculum covering Python fundamentals, OOP, data structures, and practical scripting in Google Colab.",
       url: "https://www.youtube.com/playlist?list=PL42_MhYn2V2U-2pDqO1B1P3c8N3f8-KkM",
       topics: ["Python", "Google Colab", "OOP", "Data Structures"],
     },
     {
       badge: "Latest Tutorial",
       type: "Video",
-      title: "Data Visualization in Python | Complete Seaborn & Matplotlib Guide",
-      description: "Step-by-step masterclass on exploratory data analysis, correlation matrices, aesthetic customization, and publication-ready charts.",
+      title:
+        "Data Visualization in Python | Complete Seaborn & Matplotlib Guide",
+      description:
+        "Step-by-step masterclass on exploratory data analysis, correlation matrices, aesthetic customization, and publication-ready charts.",
       url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
       topics: ["Matplotlib", "Seaborn", "Pandas", "Data Visualization"],
     },
@@ -293,11 +336,11 @@ export const YOUTUBE_CONTENT: YouTubeContent = {
 
 ---
 
-### 8. How Blog Synchronization Works
+### 8. How Post Synchronization Works
 
 - The portfolio automatically syncs articles from `https://thoughts.ugandhar.in/feed.xml`.
-- When users visit the site, Next.js performs an ISR fetch (`revalidate: 60` seconds) via `src/lib/blog.ts`.
-- If the remote feed is unreachable or during offline builds, the site gracefully falls back to the static blog cache in `src/data/portfolio.ts` without throwing errors or breaking the layout.
+- When users visit the site, Next.js performs an ISR fetch (`revalidate: 60` seconds) via `src/lib/thought.ts`.
+- If the remote feed is unreachable or during offline builds, the site gracefully falls back to the static writting cache in `src/data/portfolio.ts` without throwing errors or breaking the layout.
 
 ---
 
@@ -306,6 +349,7 @@ export const YOUTUBE_CONTENT: YouTubeContent = {
 The codebase is configured to run smoothly across **Fedora Linux**, **macOS**, and **Windows**.
 
 ### Prerequisites
+
 - Node.js `v18.18+` or `v20+`
 - npm `v9+` or `v10+`
 
@@ -355,6 +399,7 @@ npm start
 ### ⚡ IndexNow (Bing & Microsoft Copilot Instant Indexing)
 
 The site implements the **IndexNow protocol** for instantaneous search discovery on Bing, Microsoft Copilot, and Yandex:
+
 - **Authentication Key**: `public/2f8745c1a89b4f99a071de8463990b76.txt`
 - **Submission Script**: `scripts/submit-indexnow.mjs` (run via `npm run indexnow`)
 - **API Endpoint**: `/api/indexnow` (triggers automated submission upon HTTP GET/POST)
@@ -362,6 +407,7 @@ The site implements the **IndexNow protocol** for instantaneous search discovery
 ### VS Code Integration
 
 Pre-configured workspace settings are located in `.vscode/`:
+
 - **`.vscode/settings.json`**: Configures Tailwind CSS class sorting, format on save with Prettier/ESLint, and excludes temporary build artifacts.
 - **`.vscode/tasks.json`**: Provides standard VS Code tasks accessible via `Ctrl+Shift+B` or `Terminal > Run Task...`:
   - `dev`: Starts Next.js dev server

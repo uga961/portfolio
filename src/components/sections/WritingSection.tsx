@@ -2,21 +2,23 @@
 
 import React, { useState, useEffect } from "react";
 import { ArrowUpRight, RefreshCw } from "lucide-react";
-import { BlogPost, BLOG_POSTS, PERSONAL_INFO } from "@/data/portfolio";
+import { ThoughtPost, THOUGHT_POSTS, PERSONAL_INFO } from "@/data/portfolio";
 
 interface WritingSectionProps {
-  initialPosts?: BlogPost[];
+  initialPosts?: ThoughtPost[];
 }
 
-export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProps) {
-  const [posts, setPosts] = useState<BlogPost[]>(initialPosts.slice(0, 2));
+export function WritingSection({
+  initialPosts = THOUGHT_POSTS,
+}: WritingSectionProps) {
+  const [posts, setPosts] = useState<ThoughtPost[]>(initialPosts.slice(0, 2));
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   useEffect(() => {
     let isMounted = true;
-    fetch("/api/blog")
+    fetch("/api/thought")
       .then((res) => (res.ok ? res.json() : null))
-      .then((data: BlogPost[] | null) => {
+      .then((data: ThoughtPost[] | null) => {
         if (isMounted && Array.isArray(data) && data.length > 0) {
           setPosts(data.slice(0, 2));
         }
@@ -31,9 +33,11 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
   const refreshPosts = async () => {
     setIsRefreshing(true);
     try {
-      const res = await fetch(`/api/blog?t=${Date.now()}`, { cache: "no-store" });
+      const res = await fetch(`/api/thought?t=${Date.now()}`, {
+        cache: "no-store",
+      });
       if (res.ok) {
-        const data: BlogPost[] = await res.json();
+        const data: ThoughtPost[] = await res.json();
         if (Array.isArray(data) && data.length > 0) {
           setPosts(data.slice(0, 2));
         }
@@ -46,11 +50,16 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
   };
 
   return (
-    <section id="writing" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden">
+    <section
+      id="writing"
+      className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden"
+    >
       {/* Editorial Header */}
       <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3 truncate">
-          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 006</span>
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">
+            INDEX 006
+          </span>
           <span className="text-border flex-shrink-0">/</span>
           <span className="truncate">WRITING &amp; NOTES</span>
         </div>
@@ -60,17 +69,19 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
             disabled={isRefreshing}
             className="text-on-surface-variant hover:text-foreground flex items-center gap-1 transition-colors cursor-pointer touch-manipulation"
           >
-            <RefreshCw className={`w-3 h-3 ${isRefreshing ? "animate-spin text-foreground" : ""}`} />
+            <RefreshCw
+              className={`w-3 h-3 ${isRefreshing ? "animate-spin text-foreground" : ""}`}
+            />
             <span>{isRefreshing ? "Syncing..." : "Sync RSS"}</span>
           </button>
           <span className="text-border">/</span>
           <a
-            href={`https://${PERSONAL_INFO.blogDomain}`}
+            href={`https://${PERSONAL_INFO.thoughtsDomain}`}
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-foreground hover:underline transition-colors flex items-center gap-0.5 touch-manipulation"
           >
-            <span>{PERSONAL_INFO.blogDomain}</span>
+            <span>{PERSONAL_INFO.thoughtsDomain}</span>
             <ArrowUpRight className="w-3 h-3 opacity-60" />
           </a>
         </div>
@@ -81,7 +92,8 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
           Technical Journal
         </h2>
         <p className="mt-2 text-sm sm:text-base text-on-surface-variant font-sans max-w-xl">
-          Long-form essays on data manipulation workflows, technical interviews, performance engineering, and system optimizations.
+          Long-form essays on data manipulation workflows, technical interviews,
+          performance engineering, and system optimizations.
         </p>
       </div>
 
@@ -90,7 +102,7 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
         {posts.map((post) => {
           const targetUrl = post.url.replace(
             /^https?:\/\/blog\.ugandhar\.in/i,
-            `https://${PERSONAL_INFO.blogDomain}`
+            `https://${PERSONAL_INFO.thoughtsDomain}`,
           );
           return (
             <a
@@ -100,35 +112,31 @@ export function WritingSection({ initialPosts = BLOG_POSTS }: WritingSectionProp
               rel="noopener noreferrer"
               className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start group block touch-manipulation"
             >
-            {/* Left Column: Metadata */}
-            <div className="md:col-span-4 space-y-1 text-xs font-mono text-on-surface-variant">
-              <div className="text-foreground font-semibold">
-                {post.date}
-              </div>
-              <div>
-                {post.readTime}
-              </div>
-            </div>
-
-            {/* Right Column: Title, Excerpt, Tags, Arrow */}
-            <div className="md:col-span-8 space-y-3">
-              <div className="flex items-start justify-between gap-4">
-                <h3 className="text-lg sm:text-xl font-serif font-bold text-foreground group-hover:underline transition-colors leading-snug break-words">
-                  {post.title}
-                </h3>
-                <ArrowUpRight className="w-4 h-4 text-on-surface-variant group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 mt-1" />
+              {/* Left Column: Metadata */}
+              <div className="md:col-span-4 space-y-1 text-xs font-mono text-on-surface-variant">
+                <div className="text-foreground font-semibold">{post.date}</div>
+                <div>{post.readTime}</div>
               </div>
 
-              <p className="text-sm text-on-surface-variant leading-relaxed font-sans">
-                {post.excerpt}
-              </p>
+              {/* Right Column: Title, Excerpt, Tags, Arrow */}
+              <div className="md:col-span-8 space-y-3">
+                <div className="flex items-start justify-between gap-4">
+                  <h3 className="text-lg sm:text-xl font-serif font-bold text-foreground group-hover:underline transition-colors leading-snug break-words">
+                    {post.title}
+                  </h3>
+                  <ArrowUpRight className="w-4 h-4 text-on-surface-variant group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 mt-1" />
+                </div>
 
-              {/* Tags (Real unicode middle dot with break-words) */}
-              <div className="pt-1 text-xs font-mono text-on-surface-variant/80 break-words">
-                <span>{post.tags.join(" · ")}</span>
+                <p className="text-sm text-on-surface-variant leading-relaxed font-sans">
+                  {post.excerpt}
+                </p>
+
+                {/* Tags (Real unicode middle dot with break-words) */}
+                <div className="pt-1 text-xs font-mono text-on-surface-variant/80 break-words">
+                  <span>{post.tags.join(" · ")}</span>
+                </div>
               </div>
-            </div>
-          </a>
+            </a>
           );
         })}
       </div>

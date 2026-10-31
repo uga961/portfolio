@@ -1,7 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { ArrowUpRight, ChevronDown, Lock, Star, Users, User } from "lucide-react";
+import {
+  ArrowUpRight,
+  ChevronDown,
+  Lock,
+  Star,
+  Users,
+  User,
+} from "lucide-react";
 import { SiGithub } from "react-icons/si";
 import { PERSONAL_INFO, PROJECTS } from "@/data/portfolio";
 
@@ -19,11 +26,11 @@ export function ProjectsSection() {
   ];
 
   const filteredProjects =
-    filter === "All"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.category === filter);
+    filter === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
 
-  const visibleProjects = isExpanded ? filteredProjects : filteredProjects.slice(0, 3);
+  const visibleProjects = isExpanded
+    ? filteredProjects
+    : filteredProjects.slice(0, 3);
 
   const handleFilterChange = (cat: CategoryFilter) => {
     setFilter(cat);
@@ -31,16 +38,24 @@ export function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden">
+    <section
+      id="projects"
+      className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto overflow-hidden"
+    >
       {/* Editorial Header */}
       <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3 truncate">
-          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 002</span>
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">
+            INDEX 002
+          </span>
           <span className="text-border flex-shrink-0">/</span>
-          <span className="truncate">SELECTED WORK &amp; ENGINEERING SYSTEMS</span>
+          <span className="truncate">
+            SELECTED WORK &amp; ENGINEERING SYSTEMS
+          </span>
         </div>
         <span className="hidden sm:inline font-mono text-[11px] flex-shrink-0">
-          {visibleProjects.length} OF {filteredProjects.length} SYSTEMS DISPLAYED
+          {visibleProjects.length} OF {filteredProjects.length} SYSTEMS
+          DISPLAYED
         </span>
       </div>
 
@@ -50,7 +65,8 @@ export function ProjectsSection() {
             Featured Systems
           </h2>
           <p className="mt-2 text-sm sm:text-base text-on-surface-variant font-sans max-w-xl">
-            Transistor-level circuit design, autonomous multi-agent pipelines, native desktop utilities, and systems tooling.
+            Transistor-level circuit design, autonomous multi-agent pipelines,
+            native desktop utilities, and systems tooling.
           </p>
         </div>
 
@@ -141,7 +157,9 @@ export function ProjectsSection() {
                     <span className="text-emerald-600 dark:text-emerald-400 font-semibold uppercase tracking-wider text-[10px] block mb-0.5">
                       Evidence &amp; Measurements
                     </span>
-                    <span className="text-foreground/95">{project.metrics}</span>
+                    <span className="text-foreground/95">
+                      {project.metrics}
+                    </span>
                   </div>
                 )}
 
@@ -180,9 +198,9 @@ export function ProjectsSection() {
                     </a>
                   )}
 
-                  {project.blogSlug && (
+                  {project.thoughtsSlug && (
                     <a
-                      href={`https://${PERSONAL_INFO.blogDomain}/posts/${project.blogSlug}`}
+                      href={`https://${PERSONAL_INFO.thoughtsDomain}/posts/${project.thoughtsSlug}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium touch-manipulation min-h-[36px]"

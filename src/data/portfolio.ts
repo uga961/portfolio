@@ -18,7 +18,7 @@ export interface Project {
   isProprietary?: boolean; // Set true for proprietary enterprise work (hides external links)
   githubUrl?: string;
   liveUrl?: string;
-  blogSlug?: string;
+  thoughtsSlug?: string;
   featured: boolean;
   date: string;
   stars?: number;
@@ -58,7 +58,7 @@ export interface SocialLink {
   category: "primary" | "social" | "media";
 }
 
-export interface BlogPost {
+export interface ThoughtPost {
   title: string;
   excerpt: string;
   url: string;
@@ -88,7 +88,7 @@ export const PERSONAL_INFO = {
   name: "Ugandhar Vaddi",
   handle: "uga961",
   domain: "ugandhar.in",
-  blogDomain: "thoughts.ugandhar.in",
+  thoughtsDomain: "thoughts.ugandhar.in",
   headline: "Associate Data Scientist at Tredence",
   bioShort:
     "Associate Data Scientist at Tredence. Building enterprise data intelligence, automated pipelines, and applied machine learning models while exploring low-level silicon architectures.",
@@ -104,9 +104,9 @@ export const PERSONAL_INFO = {
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    name: "Blog",
+    name: "Thoughts",
     url: "https://thoughts.ugandhar.in",
-    icon: "Blog",
+    icon: "Thoughts",
     handle: "thoughts.ugandhar.in",
     color: "#dedbc8",
     category: "primary",
@@ -161,7 +161,13 @@ export const EXPERIENCES: Experience[] = [
       "Developing applied machine learning pipelines and statistical analytics solutions for enterprise clients.",
       "Engineering robust feature pipelines, predictive algorithms, and automated data workflows.",
     ],
-    skills: ["Python", "Machine Learning", "Data Science", "SQL", "Predictive Analytics"],
+    skills: [
+      "Python",
+      "Machine Learning",
+      "Data Science",
+      "SQL",
+      "Predictive Analytics",
+    ],
   },
   {
     company: "McKinsey & Company",
@@ -177,7 +183,14 @@ export const EXPERIENCES: Experience[] = [
       "Developed high-throughput data extraction algorithms leveraging Google Gemini Vision and Vertex AI.",
       "Built clean, modular Python microservices and data pipelines for internal consulting analysis workflows.",
     ],
-    skills: ["Python", "Generative AI", "Vertex AI", "LLMs", "Data Pipelines", "Prompt Engineering"],
+    skills: [
+      "Python",
+      "Generative AI",
+      "Vertex AI",
+      "LLMs",
+      "Data Pipelines",
+      "Prompt Engineering",
+    ],
   },
   {
     company: "Cognizant",
@@ -193,8 +206,16 @@ export const EXPERIENCES: Experience[] = [
       "Engineered database schemas, Entity Framework Core migrations, and query optimizations.",
       "Maintained public practice and project repositories with comprehensive unit tests and automated builds.",
     ],
-    skills: [".NET Core", "C#", "ASP.NET Web API", "Entity Framework", "SQL", "Clean Architecture"],
-    repoUrl: "https://github.com/uga961/MyPracticeRepo_6417029_Cognizant-DN-4.0",
+    skills: [
+      ".NET Core",
+      "C#",
+      "ASP.NET Web API",
+      "Entity Framework",
+      "SQL",
+      "Clean Architecture",
+    ],
+    repoUrl:
+      "https://github.com/uga961/MyPracticeRepo_6417029_Cognizant-DN-4.0",
   },
   {
     company: "MachCent Aerospace Pvt. Ltd.",
@@ -209,7 +230,13 @@ export const EXPERIENCES: Experience[] = [
       "Implemented hardware-level fault tolerance and telemetry logging routines.",
       "Optimized power distribution and battery telemetry across autonomous drone frames.",
     ],
-    skills: ["Embedded C/C++", "UAV Telemetry", "Hardware Interfacing", "SPI / I2C / UART", "Sensors"],
+    skills: [
+      "Embedded C/C++",
+      "UAV Telemetry",
+      "Hardware Interfacing",
+      "SPI / I2C / UART",
+      "Sensors",
+    ],
   },
   {
     company: "HCLTech",
@@ -225,7 +252,14 @@ export const EXPERIENCES: Experience[] = [
       "Analyzed Linux kernel subsystem behaviors, system calls, and device driver architectures.",
       "Benchmarked memory efficiency and execution latency under multi-core workloads.",
     ],
-    skills: ["Linux Kernel Internals", "System Programming", "C", "POSIX Threads", "IPC", "Memory Management"],
+    skills: [
+      "Linux Kernel Internals",
+      "System Programming",
+      "C",
+      "POSIX Threads",
+      "IPC",
+      "Memory Management",
+    ],
   },
   {
     company: "Bharath Intern Pvt. Ltd.",
@@ -239,18 +273,31 @@ export const EXPERIENCES: Experience[] = [
       "Trained multi-class text classifiers reducing false positives through iterative feature engineering.",
       "Engineered data pipelines using Pandas, NumPy, and Scikit-Learn for exploratory data analysis.",
     ],
-    skills: ["Machine Learning", "Python", "Scikit-Learn", "Pandas", "Feature Engineering"],
+    skills: [
+      "Machine Learning",
+      "Python",
+      "Scikit-Learn",
+      "Pandas",
+      "Feature Engineering",
+    ],
   },
 ];
 
 export const EDUCATION: Education[] = [
   {
     institution: "Sathyabama Institute of Science and Technology",
-    degree: "Bachelor of Engineering (B.E.) in Electronics and Communication Engineering",
+    degree:
+      "Bachelor of Engineering (B.E.) in Electronics and Communication Engineering",
     period: "Aug 2022 – May 2026",
     grade: "9.0 CGPA",
     location: "Chennai, Tamil Nadu, India",
-    skills: ["Embedded Systems", "VLSI CAD", "RTL Design", "Digital Signal Processing", "Microcontrollers"],
+    skills: [
+      "Embedded Systems",
+      "VLSI CAD",
+      "RTL Design",
+      "Digital Signal Processing",
+      "Microcontrollers",
+    ],
     highlights: [
       "Consistent academic top-tier performance (9.0 CGPA)",
       "Lead researcher for High Performance 6T & 7T SRAM Energy Efficient Memory Project",
@@ -289,10 +336,17 @@ export const PROJECTS: Project[] = [
     longDescription:
       "Drastically reduces memory overhead to ~12MB RAM (down from 150MB+ on stock PatchWall / Google TV launchers) with 0% idle CPU overhead, zero telemetry or tracking, and smooth 0.5x focus animations. Features dynamic time-based greetings, digital clock, quick input switching, and real-time app discovery.",
     category: "Desktop & Web",
-    tags: ["Android TV", "Java", "ADB", "Android SDK", "Leanback", "Open Source"],
+    tags: [
+      "Android TV",
+      "Java",
+      "ADB",
+      "Android SDK",
+      "Leanback",
+      "Open Source",
+    ],
     metrics: "~12MB RAM Overhead · 3.2MB APK · 0% Idle CPU",
     githubUrl: "https://github.com/uga961/tv-detox",
-    blogSlug: "debloat-android-tv-adb-guide",
+    thoughtsSlug: "debloat-android-tv-adb-guide",
     featured: true,
     date: "Oct 2026 – Nov 2026",
     stars: 1,
@@ -306,26 +360,41 @@ export const PROJECTS: Project[] = [
     longDescription:
       "Features independent multi-timer schedules, smart meeting detection that pauses non-urgent prompts when active microphones or video calls are running, and dynamic media session management that pauses background audio while reminders are displayed.",
     category: "Desktop & Web",
-    tags: [".NET 8", "C#", "WPF", "Windows API", "Clean Architecture", "Open Source"],
-    metrics: "Production v2.1 Release · Active system tray & media coordination",
+    tags: [
+      ".NET 8",
+      "C#",
+      "WPF",
+      "Windows API",
+      "Clean Architecture",
+      "Open Source",
+    ],
+    metrics:
+      "Production v2.1 Release · Active system tray & media coordination",
     githubUrl: "https://github.com/uga961/StayActive",
-    blogSlug: "why-i-built-stayactive",
+    thoughtsSlug: "why-i-built-stayactive",
     featured: true,
     date: "Sep 2026 – Nov 2026",
     stars: 1,
   },
   {
-    id: "blog",
+    id: "Journal",
     title: "Personal Engineering Journal",
-    subtitle: "High-Performance Technical Blog Platform",
+    subtitle: "High-Performance Technical Journal Platform",
     description:
       "A file-based modern engineering journal built with Next.js 15, TypeScript, Tailwind CSS, and Material Design 3 tokens. Zero database overhead with instant markdown publishing.",
     longDescription:
       "Features real-time client-side search, automated reading-time calculation, dark/light theme hydration without flash, and a live Spotify turntable mini-player integrated with daily rotation hits.",
     category: "Desktop & Web",
-    tags: ["Next.js 15", "TypeScript", "Tailwind CSS", "React 19", "Material 3", "MDX"],
+    tags: [
+      "Next.js 15",
+      "TypeScript",
+      "Tailwind CSS",
+      "React 19",
+      "Material 3",
+      "MDX",
+    ],
     liveUrl: "https://thoughts.ugandhar.in",
-    githubUrl: "https://github.com/uga961/Blog",
+    githubUrl: "https://github.com/uga961/Thoughts",
     featured: true,
     date: "Oct 2026 – Nov 2026",
     stars: 1,
@@ -339,7 +408,14 @@ export const PROJECTS: Project[] = [
     longDescription:
       "Draw2Spec ingests technical PDFs and CAD drawings to extract geometric dimensions, material specifications, tolerances, bounding boxes, and cost drivers in a standardized, machine-readable format.",
     category: "AI & ML",
-    tags: ["Python", "Google Gemini Vision", "Vertex AI", "Gradio", "Computer Vision", "LLMs"],
+    tags: [
+      "Python",
+      "Google Gemini Vision",
+      "Vertex AI",
+      "Gradio",
+      "Computer Vision",
+      "LLMs",
+    ],
     metrics: "Automated extraction of technical dimensions & material specs",
     isProprietary: true,
     featured: true,
@@ -354,7 +430,14 @@ export const PROJECTS: Project[] = [
     longDescription:
       "Built with Microsoft AutoGen and Google Gemini, SpecMap accepts product documentation and autonomously browses, cross-references, and structures competitor parameters via FastAPI and Streamlit.",
     category: "AI & ML",
-    tags: ["Microsoft AutoGen", "Google Gemini", "FastAPI", "Streamlit", "Python 3.11", "Multi-Agent"],
+    tags: [
+      "Microsoft AutoGen",
+      "Google Gemini",
+      "FastAPI",
+      "Streamlit",
+      "Python 3.11",
+      "Multi-Agent",
+    ],
     metrics: "Automated cross-competitor benchmarking matrices",
     isProprietary: true,
     featured: true,
@@ -369,8 +452,15 @@ export const PROJECTS: Project[] = [
     longDescription:
       "Complete transistor-level schematic capture, peripheral decoder logic, sense amplifiers, write-driver circuitry, and ADE transient simulation. Specifically targeted for low-power edge IoT and embedded systems.",
     category: "Hardware & VLSI",
-    tags: ["VLSI CAD", "Cadence Virtuoso", "SRAM 6T/7T", "RTL Design", "Analog Simulation"],
-    metrics: "Reduced static leakage and improved read static noise margin (SNM)",
+    tags: [
+      "VLSI CAD",
+      "Cadence Virtuoso",
+      "SRAM 6T/7T",
+      "RTL Design",
+      "Analog Simulation",
+    ],
+    metrics:
+      "Reduced static leakage and improved read static noise margin (SNM)",
     githubUrl: "https://github.com/uga961/Final_Year_Project",
     featured: true,
     date: "Sep 2025 – Apr 2026",
@@ -400,7 +490,13 @@ export const PROJECTS: Project[] = [
     description:
       "An embedded ultrasonic radar prototype utilizing an Arduino microcontroller and a servo motor to scan 180° arcs, visualizing obstacle distances in a real-time Processing 3 desktop radar display.",
     category: "Hardware & VLSI",
-    tags: ["Arduino", "Embedded C++", "Processing 3", "Sensors", "Hardware Prototyping"],
+    tags: [
+      "Arduino",
+      "Embedded C++",
+      "Processing 3",
+      "Sensors",
+      "Hardware Prototyping",
+    ],
     githubUrl: "https://github.com/uga961/Safety-radar",
     featured: false,
     date: "Jul 2023 – Nov 2023",
@@ -410,7 +506,16 @@ export const PROJECTS: Project[] = [
 export const SKILL_CATEGORIES = [
   {
     name: "Languages & Frameworks",
-    skills: ["Python", "C# / .NET 8", "C / C++", "Java", "TypeScript", "JavaScript", "SQL", "HTML5 & CSS3"],
+    skills: [
+      "Python",
+      "C# / .NET 8",
+      "C / C++",
+      "Java",
+      "TypeScript",
+      "JavaScript",
+      "SQL",
+      "HTML5 & CSS3",
+    ],
   },
   {
     name: "AI, ML & Data Science",
@@ -452,7 +557,7 @@ export const SKILL_CATEGORIES = [
   },
 ];
 
-export const BLOG_POSTS: BlogPost[] = [
+export const THOUGHT_POSTS: ThoughtPost[] = [
   {
     title: "Four Interviews, One Long Day, and a Chapter I’ll Always Remember",
     excerpt:
@@ -460,10 +565,16 @@ export const BLOG_POSTS: BlogPost[] = [
     url: "https://thoughts.ugandhar.in/posts/mckinsey-interview-day-and-results",
     date: "Oct 26, 2026",
     readTime: "11 min read",
-    tags: ["McKinsey", "Interview Experience", "Career Journey", "Personal Reflection"],
+    tags: [
+      "McKinsey",
+      "Interview Experience",
+      "Career Journey",
+      "Personal Reflection",
+    ],
   },
   {
-    title: "Python Data Visualization: A Practical Guide to Matplotlib, Seaborn, and Pandas",
+    title:
+      "Python Data Visualization: A Practical Guide to Matplotlib, Seaborn, and Pandas",
     excerpt:
       "Learn practical data visualization in Python, from your first Matplotlib line chart to Seaborn plots, heatmaps, correlation, and pair plots, with examples you can run in Google Colab.",
     url: "https://thoughts.ugandhar.in/posts/python-data-visualization-matplotlib-seaborn-guide",
@@ -493,15 +604,18 @@ export const YOUTUBE_INFO: YouTubeContent = {
       badge: "Featured",
       type: "Playlist",
       title: "Learn PYTHON in 5 Days or Less",
-      description: "Complete beginner to intermediate hands-on Python series covering Google Colab, Data Structures, OOPs, NumPy, and Pandas Analytics.",
+      description:
+        "Complete beginner to intermediate hands-on Python series covering Google Colab, Data Structures, OOPs, NumPy, and Pandas Analytics.",
       url: "https://www.youtube.com/@uga961/playlists",
       topics: ["Google Colab", "OOPs", "NumPy", "Pandas"],
     },
     {
       badge: "Latest",
       type: "Video",
-      title: "Data Visualization in Python | Matplotlib, Seaborn & Pandas Tutorial",
-      description: "End-to-end practical workshop on building heatmaps, correlation plots, and custom visualizations with Google Colab notebooks.",
+      title:
+        "Data Visualization in Python | Matplotlib, Seaborn & Pandas Tutorial",
+      description:
+        "End-to-end practical workshop on building heatmaps, correlation plots, and custom visualizations with Google Colab notebooks.",
       url: "https://www.youtube.com/watch?v=T-u2sO0edDI",
       topics: ["Matplotlib", "Seaborn", "Correlation Plots", "Pandas"],
     },

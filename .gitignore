@@ -42,3 +42,6 @@ next-env.d.ts
 # blueprint
 ugandhar-portfolio-blueprint.md
 *blueprint*.md
+
+#Local development
+/.vscode/

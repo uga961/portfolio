@@ -1,6 +1,6 @@
-import { BlogPost, BLOG_POSTS, PERSONAL_INFO } from "@/data/portfolio";
+import { ThoughtPost, THOUGHT_POSTS, PERSONAL_INFO } from "@/data/portfolio";
 
-export async function getLiveBlogPosts(): Promise<BlogPost[]> {
+export async function getLiveThoughtPosts(): Promise<ThoughtPost[]> {
   try {
     const res = await fetch("https://thoughts.ugandhar.in/feed.xml", {
       next: { revalidate: 60 }, // Re-check feed every 60 seconds for near real-time updates
@@ -11,7 +11,7 @@ export async function getLiveBlogPosts(): Promise<BlogPost[]> {
     });
 
     if (!res.ok) {
-      return BLOG_POSTS;
+      return THOUGHT_POSTS;
     }
 
     const xmlText = await res.text();
@@ -30,13 +30,23 @@ export async function getLiveBlogPosts(): Promise<BlogPost[]> {
     while ((match = itemRegex.exec(xmlText)) !== null && rawItems.length < 6) {
       const itemContent = match[1];
 
-      const titleMatch = /<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/i.exec(itemContent);
-      const linkMatch = /<link>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/link>/i.exec(itemContent);
-      const descMatch = /<description>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/description>/i.exec(itemContent);
-      const dateMatch = /<pubDate>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/pubDate>/i.exec(itemContent);
+      const titleMatch =
+        /<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/i.exec(itemContent);
+      const linkMatch = /<link>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/link>/i.exec(
+        itemContent,
+      );
+      const descMatch =
+        /<description>(?:<!\[CDATA\[)?([\s\S]*?)(?:\]\]>)?<\/description>/i.exec(
+          itemContent,
+        );
+      const dateMatch =
+        /<pubDate>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/pubDate>/i.exec(
+          itemContent,
+        );
 
       // Extract all genuine category tags from the RSS item
-      const catRegex = /<category>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/category>/gi;
+      const catRegex =
+        /<category>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/category>/gi;
       const categories: string[] = [];
       let catMatch: RegExpExecArray | null;
       while ((catMatch = catRegex.exec(itemContent)) !== null) {
@@ -73,13 +83,15 @@ export async function getLiveBlogPosts(): Promise<BlogPost[]> {
         const rawUrl = linkMatch[1].trim();
         const normalizedUrl = rawUrl.replace(
           /^https?:\/\/blog\.ugandhar\.in/i,
-          `https://${PERSONAL_INFO.blogDomain}`
+          `https://${PERSONAL_INFO.thoughtsDomain}`,
         );
 
         rawItems.push({
           title: titleMatch[1].trim(),
           url: normalizedUrl,
-          excerpt: cleanDesc || `Read the complete technical essay on ${PERSONAL_INFO.blogDomain}.`,
+          excerpt:
+            cleanDesc ||
+            `Read the complete technical essay on ${PERSONAL_INFO.thoughtsDomain}.`,
           date: formattedDate,
           tags: categories.length > 0 ? categories : ["Engineering", "Notes"],
         });
@@ -87,11 +99,11 @@ export async function getLiveBlogPosts(): Promise<BlogPost[]> {
     }
 
     if (rawItems.length === 0) {
-      return BLOG_POSTS;
+      return THOUGHT_POSTS;
     }
 
-    // Automatically fetch exact reading times from the actual blog post pages
-    const enrichedItems: BlogPost[] = await Promise.all(
+    // Automatically fetch exact reading times from the actual post pages
+    const enrichedItems: ThoughtPost[] = await Promise.all(
       rawItems.map(async (item) => {
         let readTime = "5 min read";
         try {
@@ -102,7 +114,7 @@ export async function getLiveBlogPosts(): Promise<BlogPost[]> {
 
           if (postRes.ok) {
             const html = await postRes.text();
-            // Look for reading time markup rendered by the blog (e.g. "11 min read")
+            // Look for reading time markup rendered by the (e.g. "11 min read")
             const match = html.match(/(\d+)\s*(?:<!-- -->)?\s*min read/i);
             if (match) {
               readTime = `${match[1]} min read`;
@@ -120,12 +132,15 @@ export async function getLiveBlogPosts(): Promise<BlogPost[]> {
           readTime,
           tags: item.tags,
         };
-      })
+      }),
     );
 
     return enrichedItems;
   } catch (err) {
-    console.warn("Failed fetching live blog feed, falling back to static posts:", err);
-    return BLOG_POSTS;
+    console.warn(
+      "Failed fetching live thoughts feed, falling back to static posts:",
+      err,
+    );
+    return THOUGHT_POSTS;
   }
 }

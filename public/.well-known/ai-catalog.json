@@ -16,27 +16,19 @@
         "Ugandhar Vaddi portfolio",
         "Ugandhar Vaddi projects and experience"
       ],
-      "tags": [
-        "portfolio",
-        "engineering",
-        "machine-learning"
-      ]
+      "tags": ["portfolio", "engineering", "machine-learning"]
     },
     {
-      "identifier": "urn:air:ugandhar.in:website:blog",
-      "displayName": "Personal Blog",
+      "identifier": "urn:air:ugandhar.in:website:Thoughts",
+      "displayName": "Personal thoughts and essays",
       "type": "text/html",
       "url": "https://thoughts.ugandhar.in",
       "description": "Technical essays, software systems architecture, and engineering notes.",
       "representativeQueries": [
-        "Ugandhar Vaddi blog",
+        "Ugandhar Vaddi thoughts",
         "Ugandhar Vaddi technical essays"
       ],
-      "tags": [
-        "blog",
-        "software-engineering",
-        "essays"
-      ]
+      "tags": ["thoughts", "software-engineering", "essays"]
     },
     {
       "identifier": "urn:air:ugandhar.in:code-repository:github",
@@ -48,11 +40,7 @@
         "Ugandhar Vaddi github",
         "Ugandhar Vaddi open source repositories"
       ],
-      "tags": [
-        "github",
-        "open-source",
-        "repositories"
-      ]
+      "tags": ["github", "open-source", "repositories"]
     },
     {
       "identifier": "urn:air:ugandhar.in:doc:llms-txt",
@@ -64,11 +52,7 @@
         "Ugandhar Vaddi resume context",
         "Ugandhar Vaddi skills summary for AI"
       ],
-      "tags": [
-        "llms",
-        "documentation",
-        "context"
-      ]
+      "tags": ["llms", "documentation", "context"]
     }
   ]
 }
