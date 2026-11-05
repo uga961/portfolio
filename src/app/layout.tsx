@@ -72,9 +72,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.ugandhar.in",
   },
-  // verification: {
-  //   google: "Add your Google site verification code here",
-  // },
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+      "d6qC6JXOnKpcVtH15DHGM1LslxfSPMTZd2mavDkuMY8",
+    other: {
+      "msvalidate.01": "2f8745c1a89b4f99a071de8463990b76",
+    },
+  },
   robots: {
     index: true,
     follow: true,
@@ -172,7 +177,7 @@ const jsonLd = {
         "https://github.com/uga961",
         "https://www.linkedin.com/in/vaddi-ugandhar-b37877266/",
         "https://www.youtube.com/@uga961",
-        "https://thoughts.ugandhar.in",
+        "https://www.ugandhar.in/blog",
         "https://www.reddit.com/user/uga961/",
       ],
       knowsAbout: [

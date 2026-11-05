@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 const config: Config = {
   darkMode: ["class"],
@@ -41,13 +42,16 @@ const config: Config = {
         mono: ["var(--font-geist-mono)", "monospace"],
         serif: ["var(--font-newsreader)", "Newsreader", "Georgia", "serif"],
       },
+      maxWidth: {
+        reading: "720px",
+      },
       boxShadow: {
         subtle: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
         raised: "0 4px 12px -2px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.04)",
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
 
 export default config;

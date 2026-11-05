@@ -8,13 +8,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/"],
       },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
-        disallow: ["/api/"],
-      },
     ],
     sitemap: "https://www.ugandhar.in/sitemap.xml",
-    host: "https://www.ugandhar.in",
   };
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
 import {
   ArrowUpRight,
   ChevronDown,
@@ -198,16 +199,14 @@ export function ProjectsSection() {
                     </a>
                   )}
 
-                  {project.thoughtsSlug && (
-                    <a
-                      href={`https://${PERSONAL_INFO.thoughtsDomain}/posts/${project.thoughtsSlug}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  {(project.blogSlug || project.thoughtsSlug) && (
+                    <Link
+                      href={`/blog/posts/${project.blogSlug || project.thoughtsSlug}`}
                       className="inline-flex items-center gap-1.5 text-foreground hover:underline font-medium touch-manipulation min-h-[36px]"
                     >
                       <span>Engineering Essay</span>
                       <ArrowUpRight className="w-3.5 h-3.5 opacity-60" />
-                    </a>
+                    </Link>
                   )}
 
                   {project.isProprietary && (

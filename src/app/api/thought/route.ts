@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
-import { getLiveThoughtPosts } from "@/lib/thought";
+import { getAllPosts } from "@/lib/posts";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const posts = await getLiveThoughtPosts();
+  const posts = getAllPosts();
   return NextResponse.json(posts);
 }

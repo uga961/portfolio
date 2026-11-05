@@ -26,7 +26,7 @@ export function ContactFooter() {
       <div className="border-t border-border/80 pt-8 sm:pt-10 space-y-8">
         <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
           <div className="flex items-center gap-2 sm:gap-3 truncate">
-            <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 008</span>
+            <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 009</span>
             <span className="text-border flex-shrink-0">/</span>
             <span className="truncate">CONTACT &amp; CORRESPONDENCE</span>
           </div>

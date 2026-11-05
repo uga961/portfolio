@@ -19,16 +19,18 @@
       "tags": ["portfolio", "engineering", "machine-learning"]
     },
     {
-      "identifier": "urn:air:ugandhar.in:website:Thoughts",
-      "displayName": "Personal thoughts and essays",
+      "identifier": "urn:air:ugandhar.in:website:blog",
+      "displayName": "Technical Blog and Journal",
       "type": "text/html",
-      "url": "https://thoughts.ugandhar.in",
-      "description": "Technical essays, software systems architecture, and engineering notes.",
+      "url": "https://www.ugandhar.in/blog",
+      "description": "Technical essays, software systems architecture, performance engineering, and notes.",
       "representativeQueries": [
-        "Ugandhar Vaddi thoughts",
-        "Ugandhar Vaddi technical essays"
+        "Ugandhar Vaddi blog",
+        "Ugandhar Vaddi technical essays",
+        "Ugandhar thoughts on software engineering",
+        "what ugandhar thinks about software systems"
       ],
-      "tags": ["thoughts", "software-engineering", "essays"]
+      "tags": ["blog", "software-engineering", "essays"]
     },
     {
       "identifier": "urn:air:ugandhar.in:code-repository:github",

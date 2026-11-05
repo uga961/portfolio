@@ -17,8 +17,9 @@ The portfolio eschews generic modern AI templates (glowing rounded bento cards, 
   - Floating navigation dock is centered using viewport inset constraints (`inset-x-0`) with `pointer-events-none` on the container and `pointer-events-auto` on the dock to prevent click blocking.
   - Dedicated hardware compositing layers (`.gpu-layer` with `backface-visibility: hidden` and `will-change: transform`) ensure 60fps stutter-free scrolling on Firefox (Linux/macOS/Windows) and mobile WebKit.
   - Touch target sizing (`min-h-[40px]`), `touch-manipulation` to eliminate mobile 300ms tap delay, and `break-words` on all monospace metadata strings to prevent horizontal layout blowout.
-- **Dynamic Content & Real-Time Sync**: ISR (Incremental Static Regeneration, 60s) continuously fetches latest essays from [thoughts.ugandhar.in](https://thoughts.ugandhar.in) via RSS with automatic fallback to static local cache.
-- **Comprehensive SEO**: Rich JSON-LD `ProfilePage` structured schema (`hasOccupation`, `alumniOf`, `knowsAbout`), OpenGraph, Twitter summary cards, dynamic `sitemap.xml`, and clean `robots.txt`.
+- **Dynamic Content & Native Technical Journal**: Native markdown articles located in `posts/*.md` compiled with syntax highlighting, automatic reading time estimation, table of contents, RSS feed generation (`/feed.xml`), and unified under `/blog` and `/blog/posts/[slug]`.
+- **Live Activity & Music Telemetry**: Real-time integration with Spotify Web API and active GitHub projects in an editorial activity showcase.
+- **Comprehensive SEO & Indexing**: Rich JSON-LD `ProfilePage`, `BlogPosting`, and `BreadcrumbList` structured schemas, canonical links, OpenGraph, dynamic `sitemap.xml`, `robots.txt`, Bing Webmaster authentication, and IndexNow instant indexing.
 - **Dedicated Resume View**: `/resume` route with direct PDF embedding, responsive status card, and zero-overhead fast loading.
 
 ---
@@ -31,49 +32,64 @@ Portfolio/
 │   ├── extensions.json             # Recommended VS Code extensions
 │   ├── settings.json               # Editor formatting & Tailwind IntelliSense
 │   └── tasks.json                  # One-click dev, build, and test tasks
+├── posts/                          # Local Markdown Technical Journal Articles
+│   ├── debloat-android-tv-adb-guide.md
+│   ├── mckinsey-interview-day-and-results.md
+│   └── why-i-built-stayactive.md
 ├── public/
 │   ├── avatar/
 │   │   └── profile.jpg             # High-resolution square portrait photo
 │   ├── resume/
 │   │   └── Resume.pdf              # Official downloadable / viewable resume PDF
+│   ├── 2f8745c1a89b4f99a071de8463990b76.txt # IndexNow verification token
+│   ├── BingSiteAuth.xml            # Bing Webmaster verification XML
 │   ├── icon.png                    # App & bookmark icon
 │   ├── icon-sm.png                 # Small header identity icon
-│   └── robots.txt                  # Search engine crawler permissions
+│   ├── llms.txt                    # LLM context and knowledge base
+│   └── ai-catalog.json             # AIR catalog index
+├── scripts/
+│   └── submit-indexnow.mjs         # Automated IndexNow notification script
 ├── src/
 │   ├── app/
-│   │   ├── [...not_found]/         # 307 redirect catch-all route to root
 │   │   ├── api/
-│   │   │   └── thought/               # Next.js API route fetching RSS from thoughts.ugandhar.in
+│   │   │   └── spotify/            # Spotify Web API live playback endpoint
+│   │   ├── blog/
+│   │   │   ├── page.tsx            # Blog index (search, tag filters, pagination)
+│   │   │   └── posts/[slug]/       # Full article reader with TOC & schema
+│   │   ├── feed.xml/               # Native RSS feed generator
 │   │   ├── resume/
-│   │   │   ├── page.tsx            # Dedicated /resume page with PDF viewer
-│   │   │   └── ResumeStatusCard.tsx# Interactive metadata & download action card
-│   │   ├── globals.css             # Architectural HSL tokens, scrollbar, GPU utilities
+│   │   │   └── page.tsx            # Dedicated /resume page with PDF viewer
+│   │   ├── globals.css             # Architectural tokens, hljs code syntax, GPU rules
 │   │   ├── layout.tsx              # Root HTML, Geist & Newsreader fonts, JSON-LD Schema
 │   │   ├── page.tsx                # Main single-page portfolio layout
-│   │   └── sitemap.ts              # Dynamic sitemap generation
+│   │   ├── robots.ts               # Crawler rules and sitemap declaration
+│   │   └── sitemap.ts              # Dynamic sitemap generator
 │   ├── components/
+│   │   ├── blog/                   # Blog UI: MarkdownRenderer, TableOfContents, etc.
 │   │   ├── sections/
-│   │   │   ├── HeroSection.tsx         # Architectural header, bio, contact pills, portrait
-│   │   │   ├── ProjectsSection.tsx     # Filterable project index, metrics, contributor tags
-│   │   │   ├── ExperienceSection.tsx   # Work experience, roles, responsibilities, competencies
+│   │   │   ├── HeroSection.tsx         # Architectural header, bio, portrait
+│   │   │   ├── ProjectsSection.tsx     # Filterable project index, metrics
+│   │   │   ├── ExperienceSection.tsx   # Work experience, roles, competencies
 │   │   │   ├── SkillsSection.tsx       # Domain classification & technical skills grid
-│   │   │   ├── EducationSection.tsx    # Academic degrees, grade metrics, and focus areas
-│   │   │   ├── WritingSection.tsx      # Synced posts from thoughts.ugandhar.in
-│   │   │   ├── MediaSection.tsx        # YouTube playlists, videos, and tutorials
-│   │   │   └── ContactFooter.tsx       # Direct contact channels, time zone, and footer
+│   │   │   ├── EducationSection.tsx    # Academic degrees, grade metrics
+│   │   │   ├── WritingSection.tsx      # Technical journal summary cards
+│   │   │   ├── MediaSection.tsx        # YouTube playlists & tutorials
+│   │   │   ├── ActivitySection.tsx     # Real-time Spotify & currently building showcase
+│   │   │   └── ContactFooter.tsx       # Direct contact channels and footer
 │   │   └── ui/
 │   │       ├── MagneticDock.tsx        # Floating centered bottom navigation bar
 │   │       ├── ThemeToggle.tsx         # Smooth client-side Dark / Light toggle switch
 │   │       └── SocialIcons.tsx         # High-precision SVG brand icons
 │   ├── data/
-│   │   └── portfolio.ts            # Central single source of truth for ALL content
+│   │   └── portfolio.ts            # Central single source of truth for portfolio data
 │   └── lib/
-│       ├── thought.ts                 # RSS parser & static cache fallback for posts
-│       └── utils.ts                # Tailwind class merge utility (clsx + tailwind-merge)
-├── .eslintrc.json                  # Next.js ESLint configuration
-├── .gitattributes                  # Cross-platform LF line endings enforcement
+│       ├── markdown.ts             # Markdown processing & code block handling
+│       ├── posts.ts                # File-based post parser & frontmatter reader
+│       ├── spotify.ts              # Spotify API authentication & telemetry
+│       └── utils.ts                # Tailwind class merge utility
+├── .env.example                    # Environment variable template
 ├── package.json                    # Project dependencies and scripts
-├── tailwind.config.ts              # Tailwind theme configuration
+├── tailwind.config.ts              # Tailwind typography & theme configuration
 └── tsconfig.json                   # TypeScript configuration
 ```
 
@@ -101,7 +117,8 @@ export const PERSONAL_INFO = {
   title: "Associate Data Scientist & Software Engineer",
   headline: "Silicon, Systems & Applied Machine Learning.",
   domain: "ugandhar.in",
-  thoughtsDomain: "thoughts.ugandhar.in",
+  blogDomain: "ugandhar.in/blog",
+  blogPath: "/blog",
   location: "Visakhapatnam & Chennai, India",
   email: "annajiratnam@gmail.com",
   summary:
@@ -134,7 +151,7 @@ Add a new object to the `PROJECTS` array in `src/data/portfolio.ts`:
   tags: ["Android TV", "Java", "ADB", "Leanback", "Open Source"],
   metrics: "~12MB RAM Overhead · 2.5MB APK · 0% Idle CPU", // Optional metric or measurement
   githubUrl: "https://github.com/uga961/tv-detox",
-  thoughtsSlug: "debloat-android-tv-adb-guide", // Links to Engineering Essay at thoughts.ugandhar.in
+  blogSlug: "debloat-android-tv-adb-guide", // Links to Engineering Essay at /blog/posts/debloat-android-tv-adb-guide
   featured: true, // true displays it with a gold star badge
   date: "Oct 2026 – Nov 2026",
   contributors: [] // Leave empty for solo projects
@@ -336,11 +353,38 @@ export const YOUTUBE_CONTENT: YouTubeContent = {
 
 ---
 
-### 8. How Post Synchronization Works
+### 8. How Technical Journal & Markdown Posts Work
 
-- The portfolio automatically syncs articles from `https://thoughts.ugandhar.in/feed.xml`.
-- When users visit the site, Next.js performs an ISR fetch (`revalidate: 60` seconds) via `src/lib/thought.ts`.
-- If the remote feed is unreachable or during offline builds, the site gracefully falls back to the static writting cache in `src/data/portfolio.ts` without throwing errors or breaking the layout.
+- All articles are stored locally as Markdown files in the `posts/` directory (e.g. `posts/debloat-android-tv-adb-guide.md`).
+- Each post contains YAML frontmatter:
+  ```yaml
+  ---
+  title: "How I Debloated My Android TV: A Step-by-Step Guide Using ADB"
+  date: "2026-10-30"
+  slug: "debloat-android-tv-adb-guide"
+  excerpt: "My practical guide to cleaning up a slow Android TV with ADB over Wi-Fi..."
+  tags: ["Android TV", "ADB", "Windows", "Xiaomi Mi TV", "TV Detox", "Guides"]
+  published: true
+  ---
+  ```
+- Posts are automatically read and parsed at build time via `src/lib/posts.ts`, rendering at `ugandhar.in/blog/posts/[slug]` with syntax highlighting, auto-generated table of contents, and JSON-LD `BlogPosting` schemas.
+- Adding a new `.md` file in `posts/` instantly makes it appear on the homepage, in the `/blog` archive, in `feed.xml` (RSS), and in `sitemap.xml`.
+
+---
+
+### 9. Environment Variables (`.env`)
+
+Copy `.env.example` to `.env.local` or configure in your deployment dashboard:
+
+```bash
+# Spotify Web API (Live Playback Telemetry)
+SPOTIFY_CLIENT_ID=your_spotify_client_id
+SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+SPOTIFY_REFRESH_TOKEN=your_spotify_refresh_token
+
+# Google Search Console Verification
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=d6qC6JXOnKpcVtH15DHGM1LslxfSPMTZd2mavDkuMY8
+```
 
 ---
 

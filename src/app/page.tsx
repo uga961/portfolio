@@ -7,7 +7,7 @@ import { HeroSection } from "@/components/sections/HeroSection";
 import { MagneticDock } from "@/components/ui/MagneticDock";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { PERSONAL_INFO } from "@/data/portfolio";
-import { getLiveThoughtPosts } from "@/lib/thought";
+import { getAllPosts } from "@/lib/posts";
 
 // Code-split below-the-fold client components with SSR preserved for SEO & instant HTML render
 const ExperienceSection = dynamic(() =>
@@ -38,6 +38,11 @@ const WritingSection = dynamic(() =>
 const MediaSection = dynamic(() =>
   import("@/components/sections/MediaSection").then((mod) => mod.MediaSection),
 );
+const ActivitySection = dynamic(() =>
+  import("@/components/sections/ActivitySection").then(
+    (mod) => mod.ActivitySection,
+  ),
+);
 const ContactFooter = dynamic(() =>
   import("@/components/sections/ContactFooter").then(
     (mod) => mod.ContactFooter,
@@ -47,7 +52,7 @@ const ContactFooter = dynamic(() =>
 export const revalidate = 60; // 60-second ISR for near real-time post synchronization
 
 export default async function Home() {
-  const liveThoughtPosts = await getLiveThoughtPosts();
+  const posts = getAllPosts();
 
   return (
     <main className="min-h-screen bg-background text-on-surface relative selection:bg-foreground/15 selection:text-foreground pb-24 sm:pb-28">
@@ -120,15 +125,13 @@ export default async function Home() {
               Tutorials
             </a>
             <div className="w-[1px] h-3.5 bg-border/80 flex-shrink-0" />
-            <a
-              href={`https://${PERSONAL_INFO.thoughtsDomain}`}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/blog"
               className="text-foreground font-semibold hover:underline transition-colors flex items-center gap-0.5 touch-manipulation"
             >
-              <span>Thoughts</span>
+              <span>Blog</span>
               <ArrowUpRight className="w-3 h-3 opacity-60" />
-            </a>
+            </Link>
           </nav>
 
           <div className="flex items-center gap-2">
@@ -143,8 +146,9 @@ export default async function Home() {
       <ExperienceSection />
       <SkillsSection />
       <EducationSection />
-      <WritingSection initialPosts={liveThoughtPosts} />
+      <WritingSection initialPosts={posts} />
       <MediaSection />
+      <ActivitySection />
       <ContactFooter />
 
       {/* Quick Navigation Dock */}

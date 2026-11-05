@@ -151,3 +151,92 @@
   backface-visibility: hidden;
   will-change: transform;
 }
+
+/* Clean Editorial Code Blocks */
+pre {
+  @apply relative overflow-x-auto rounded-[4px] border border-border/80 bg-surface/70 p-4 font-mono text-xs sm:text-sm;
+  color: hsl(var(--foreground));
+}
+
+code.hljs,
+pre code,
+.not-prose code {
+  color: hsl(var(--foreground)) !important;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+code.hljs {
+  @apply bg-transparent p-0 font-mono text-xs sm:text-sm leading-relaxed;
+}
+
+/* Warm Editorial Syntax Highlighting */
+:root {
+  --code-keyword: #a14008;
+  --code-string: #15803d;
+  --code-title: #1d4ed8;
+  --code-number: #b45309;
+  --code-comment: #78716c;
+  --code-variable: #312e81;
+  --code-builtin: #7e22ce;
+  --code-attr: #0369a1;
+}
+
+.dark {
+  --code-keyword: #fbbf24;
+  --code-string: #86efac;
+  --code-title: #93c5fd;
+  --code-number: #fdba74;
+  --code-comment: #8e8c84;
+  --code-variable: #c7d2fe;
+  --code-builtin: #d8b4fe;
+  --code-attr: #7dd3fc;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal {
+  color: var(--code-keyword);
+  font-weight: 600;
+}
+
+.hljs-string,
+.hljs-attr,
+.hljs-attribute {
+  color: var(--code-string);
+}
+
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.function_ {
+  color: var(--code-title);
+  font-weight: 600;
+}
+
+.hljs-number {
+  color: var(--code-number);
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-deletion {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+.hljs-variable,
+.hljs-params,
+.hljs-type {
+  color: var(--code-variable);
+}
+
+.hljs-built_in,
+.hljs-symbol,
+.hljs-bullet {
+  color: var(--code-builtin);
+}
+
+.hljs-meta,
+.hljs-subst {
+  color: var(--code-comment);
+}
+

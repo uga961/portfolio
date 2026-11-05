@@ -18,6 +18,7 @@ export interface Project {
   isProprietary?: boolean; // Set true for proprietary enterprise work (hides external links)
   githubUrl?: string;
   liveUrl?: string;
+  blogSlug?: string;
   thoughtsSlug?: string;
   featured: boolean;
   date: string;
@@ -88,7 +89,8 @@ export const PERSONAL_INFO = {
   name: "Ugandhar Vaddi",
   handle: "uga961",
   domain: "ugandhar.in",
-  thoughtsDomain: "thoughts.ugandhar.in",
+  blogDomain: "ugandhar.in/blog",
+  blogPath: "/blog",
   headline: "Associate Data Scientist at Tredence",
   bioShort:
     "Associate Data Scientist at Tredence. Building enterprise data intelligence, automated pipelines, and applied machine learning models while exploring low-level silicon architectures.",
@@ -100,14 +102,23 @@ export const PERSONAL_INFO = {
   resumePath: "/resume",
   avatarPath: "/avatar/profile.jpg",
   logoPath: "/Logo.png",
+  currentCrafting: {
+    title: "TV Detox",
+    description: "Ultra-lightweight, clean, and fast minimalist launcher for Android TV.",
+    tech: "Java · ADB · Android SDK · Open Source",
+    repoUrl: "https://github.com/uga961/tv-detox",
+  },
+  spotify: {
+    profileUrl: "https://open.spotify.com/user/31ajvsvptg6aygrakjcsm7xnm5am",
+  },
 };
 
 export const SOCIAL_LINKS: SocialLink[] = [
   {
-    name: "Thoughts",
-    url: "https://thoughts.ugandhar.in",
-    icon: "Thoughts",
-    handle: "thoughts.ugandhar.in",
+    name: "Blog",
+    url: "/blog",
+    icon: "Blog",
+    handle: "ugandhar.in/blog",
     color: "#dedbc8",
     category: "primary",
   },
@@ -346,7 +357,7 @@ export const PROJECTS: Project[] = [
     ],
     metrics: "~12MB RAM Overhead · 3.2MB APK · 0% Idle CPU",
     githubUrl: "https://github.com/uga961/tv-detox",
-    thoughtsSlug: "debloat-android-tv-adb-guide",
+    blogSlug: "debloat-android-tv-adb-guide",
     featured: true,
     date: "Oct 2026 – Nov 2026",
     stars: 1,
@@ -371,7 +382,7 @@ export const PROJECTS: Project[] = [
     metrics:
       "Production v2.1 Release · Active system tray & media coordination",
     githubUrl: "https://github.com/uga961/StayActive",
-    thoughtsSlug: "why-i-built-stayactive",
+    blogSlug: "why-i-built-stayactive",
     featured: true,
     date: "Sep 2026 – Nov 2026",
     stars: 1,
@@ -393,8 +404,8 @@ export const PROJECTS: Project[] = [
       "Material 3",
       "MDX",
     ],
-    liveUrl: "https://thoughts.ugandhar.in",
-    githubUrl: "https://github.com/uga961/Thoughts",
+    liveUrl: "/blog",
+    githubUrl: "https://github.com/uga961/portfolio",
     featured: true,
     date: "Oct 2026 – Nov 2026",
     stars: 1,
@@ -557,12 +568,14 @@ export const SKILL_CATEGORIES = [
   },
 ];
 
-export const THOUGHT_POSTS: ThoughtPost[] = [
+export type BlogPost = ThoughtPost;
+
+export const BLOG_POSTS: BlogPost[] = [
   {
     title: "Four Interviews, One Long Day, and a Chapter I’ll Always Remember",
     excerpt:
       "The story of how the McKinsey opportunity began, a long interview day in Chennai, and how I felt then—and how I look back on it now.",
-    url: "https://thoughts.ugandhar.in/posts/mckinsey-interview-day-and-results",
+    url: "/blog/posts/mckinsey-interview-day-and-results",
     date: "Oct 26, 2026",
     readTime: "11 min read",
     tags: [
@@ -577,7 +590,7 @@ export const THOUGHT_POSTS: ThoughtPost[] = [
       "Python Data Visualization: A Practical Guide to Matplotlib, Seaborn, and Pandas",
     excerpt:
       "Learn practical data visualization in Python, from your first Matplotlib line chart to Seaborn plots, heatmaps, correlation, and pair plots, with examples you can run in Google Colab.",
-    url: "https://thoughts.ugandhar.in/posts/python-data-visualization-matplotlib-seaborn-guide",
+    url: "/blog/posts/python-data-visualization-matplotlib-seaborn-guide",
     date: "Oct 23, 2026",
     readTime: "24 min read",
     tags: ["Python", "Data Visualization", "Matplotlib", "Seaborn", "Pandas"],
@@ -586,12 +599,14 @@ export const THOUGHT_POSTS: ThoughtPost[] = [
     title: "How I Debloated My Android TV: A Step-by-Step Guide Using ADB",
     excerpt:
       "My practical guide to cleaning up a slow Android TV with ADB over Wi-Fi, a lighter home screen, careful package checks, reversible changes, and troubleshooting steps.",
-    url: "https://thoughts.ugandhar.in/posts/debloat-android-tv-adb-guide",
+    url: "/blog/posts/debloat-android-tv-adb-guide",
     date: "Oct 22, 2026",
     readTime: "24 min read",
     tags: ["Android TV", "ADB", "Optimization", "Guides"],
   },
 ];
+
+export const THOUGHT_POSTS = BLOG_POSTS;
 
 export const YOUTUBE_INFO: YouTubeContent = {
   channelName: "Ugandhar Vaddi",

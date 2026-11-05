@@ -2,8 +2,14 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactStrictMode: true,
+  trailingSlash: false,
   experimental: {
-    optimizePackageImports: ["lucide-react", "react-icons", "framer-motion"],
+    optimizePackageImports: [
+      "lucide-react",
+      "react-icons",
+      "framer-motion",
+      "date-fns",
+    ],
   },
   images: {
     formats: ["image/avif", "image/webp"],
@@ -34,13 +40,127 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "streak-stats.demolab.com",
       },
+      {
+        protocol: "https",
+        hostname: "i.imgur.com",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
+      },
+      {
+        protocol: "https",
+        hostname: "lastfm.freetls.fastly.net",
+      },
     ],
+  },
+  async redirects() {
+    return [
+      {
+        source: "/sitemap",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      {
+        source: "/posts/:slug*",
+        destination: "/blog/posts/:slug*",
+        permanent: true,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/logo.png",
+        destination: "/Logo.png",
+      },
+      {
+        source: "/resume/Resume.pdf",
+        destination: "/resume",
+      },
+      {
+        source: "/rss",
+        destination: "/feed.xml",
+      },
+      {
+        source: "/feed",
+        destination: "/feed.xml",
+      },
+      {
+        source: "/rss.xml",
+        destination: "/feed.xml",
+      },
+      {
+        source: "/blog/feed.xml",
+        destination: "/feed.xml",
+      },
+      {
+        source: "/blog/rss.xml",
+        destination: "/feed.xml",
+      },
+    ];
   },
   async headers() {
     return [
       {
+        source: "/sitemap.xml",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/xml",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, must-revalidate",
+          },
+        ],
+      },
+      {
+        source: "/robots.txt",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "text/plain; charset=utf-8",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=0, must-revalidate",
+          },
+        ],
+      },
+      {
+        source: "/feed.xml",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/xml; charset=utf-8",
+          },
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, follow",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400",
+          },
+        ],
+      },
+      {
+        source: "/api/:path*",
+        headers: [
+          {
+            key: "X-Robots-Tag",
+            value: "noindex, nofollow",
+          },
+        ],
+      },
+      {
         source:
-          "/((?!api|_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|Logo.png|sitemap.xml|robots.txt|llms.txt|ai-catalog.json).*)",
+          "/((?!api|_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|icon-sm.png|Logo.png|sitemap.xml|robots.txt|feed.xml|manifest.webmanifest|llms.txt|ai-catalog.json|BingSiteAuth.xml|2f8745c1a89b4f99a071de8463990b76.txt).*)",
         headers: [
           {
             key: "X-Content-Type-Options",
@@ -67,18 +187,6 @@ const nextConfig: NextConfig = {
             value: "max-age=63072000; includeSubDomains; preload",
           },
         ],
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/logo.png",
-        destination: "/Logo.png",
-      },
-      {
-        source: "/resume/Resume.pdf",
-        destination: "/resume",
       },
     ];
   },
