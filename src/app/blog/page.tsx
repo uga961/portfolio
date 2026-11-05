@@ -9,7 +9,7 @@ import { BlogHeader } from "@/components/blog/BlogHeader";
 import { BlogFooter } from "@/components/blog/BlogFooter";
 import { HeroBanner } from "@/components/blog/HeroBanner";
 import { ArticleList } from "@/components/blog/ArticleList";
-import { MagneticDock } from "@/components/ui/MagneticDock";
+import { BlogDock } from "@/components/blog/BlogDock";
 import { ArrowRight } from "lucide-react";
 
 export const dynamic = "force-static";
@@ -219,7 +219,7 @@ export default function BlogIndexPage() {
       <BlogFooter />
 
       {/* Floating Quick Navigation Dock */}
-      <MagneticDock />
+      <BlogDock mode="index" />
     </div>
   );
 }

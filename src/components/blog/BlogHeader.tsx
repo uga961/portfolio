@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowUpRight, Rss, Home } from "lucide-react";
+import { ArrowLeft, Rss, Home, ArrowUpRight } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
@@ -17,7 +17,8 @@ export function BlogHeader({
   return (
     <header className="fixed top-0 left-0 right-0 z-40 px-4 sm:px-6 lg:px-8 py-3 bg-background/95 sm:bg-background/90 sm:backdrop-blur-md border-b border-border/80 transition-colors gpu-layer">
       <div className="w-full max-w-5xl mx-auto flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-3 group touch-manipulation">
+        {/* Brand identity — ALWAYS links to /blog within the blog section */}
+        <Link href="/blog" className="flex items-center gap-3 group touch-manipulation">
           <div className="relative w-6 h-6 flex-shrink-0 flex items-center justify-center">
             <Image
               src="/icon-sm.png"
@@ -38,47 +39,41 @@ export function BlogHeader({
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Navigation Links for Blog */}
         <nav
-          aria-label="Navigation"
+          aria-label="Blog Navigation"
           className="hidden md:flex items-center gap-5 text-xs font-mono text-on-surface-variant"
         >
-          {backTo && (
+          {backTo ? (
             <Link
               href={backTo}
-              className="flex items-center gap-1.5 text-foreground hover:underline transition-colors touch-manipulation"
+              className="flex items-center gap-1.5 text-foreground font-semibold hover:underline transition-colors touch-manipulation"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>{backLabel || "All Essays"}</span>
             </Link>
+          ) : (
+            <>
+              <a
+                href="#featured"
+                className="hover:text-foreground hover:underline transition-colors touch-manipulation"
+              >
+                Featured
+              </a>
+              <a
+                href="#articles"
+                className="hover:text-foreground hover:underline transition-colors touch-manipulation"
+              >
+                All Essays
+              </a>
+            </>
           )}
-
-          <Link
-            href="/blog"
-            className="hover:text-foreground hover:underline transition-colors touch-manipulation"
-          >
-            All Essays
-          </Link>
-
-          <Link
-            href="/#projects"
-            className="hover:text-foreground hover:underline transition-colors touch-manipulation"
-          >
-            Work
-          </Link>
-
-          <Link
-            href="/#contact"
-            className="hover:text-foreground hover:underline transition-colors touch-manipulation"
-          >
-            Contact
-          </Link>
 
           <div className="w-[1px] h-3.5 bg-border/80 flex-shrink-0" />
 
           <Link
             href="/"
-            className="text-foreground font-semibold hover:underline transition-colors flex items-center gap-1 touch-manipulation"
+            className="hover:text-foreground hover:underline transition-colors flex items-center gap-1 touch-manipulation"
           >
             <Home className="w-3 h-3 opacity-70" />
             <span>Portfolio</span>
@@ -90,10 +85,11 @@ export function BlogHeader({
             rel="noopener noreferrer"
             aria-label="RSS Feed"
             title="RSS Feed"
-            className="text-on-surface-variant hover:text-foreground transition-colors flex items-center gap-1 touch-manipulation"
+            className="hover:text-foreground hover:underline transition-colors flex items-center gap-1 touch-manipulation"
           >
-            <Rss className="w-3 h-3" />
+            <Rss className="w-3 h-3 opacity-70" />
             <span>RSS</span>
+            <ArrowUpRight className="w-2.5 h-2.5 opacity-50" />
           </a>
         </nav>
 

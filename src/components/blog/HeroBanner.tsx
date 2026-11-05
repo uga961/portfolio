@@ -96,22 +96,22 @@ export function HeroBanner({ totalPosts }: { totalPosts: number }) {
           </div>
         </div>
 
-        {/* Right Column: Square Portrait */}
-        <div className="lg:col-span-5 flex justify-start lg:justify-end">
-          <div className="relative group w-full max-w-[280px] sm:max-w-[320px]">
-            <div className="relative aspect-square w-full rounded-[4px] border border-border/90 overflow-hidden bg-surface-subtle shadow-subtle">
+        {/* Right Column: Architectural Photograph Frame matching portfolio */}
+        <div className="lg:col-span-5 flex flex-col items-center lg:items-end w-full">
+          <div className="w-full max-w-[280px] sm:max-w-sm border border-border bg-surface p-2.5 sm:p-3 rounded-[4px] shadow-subtle">
+            <div className="relative aspect-[4/5] w-full overflow-hidden bg-surface-container rounded-[2px]">
               <Image
                 src={PERSONAL_INFO.avatarPath}
-                alt={PERSONAL_INFO.name}
+                alt="Portrait of Ugandhar Vaddi"
                 fill
-                sizes="(max-width: 640px) 280px, 320px"
                 priority
-                className="object-cover"
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 50vw, 380px"
+                className="object-cover transition-opacity duration-500"
               />
             </div>
-            <div className="mt-2.5 flex items-center justify-between text-[11px] font-mono text-on-surface-variant">
-              <span>{PERSONAL_INFO.domain}/blog</span>
-              <span>CHENNAI &amp; VIZAG</span>
+            <div className="mt-2.5 sm:mt-3 pt-2 border-t border-border/60 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-on-surface-variant">
+              <span>FIG. 01 — AUTHOR</span>
+              <span className="text-foreground/90 font-medium">CHENNAI, INDIA</span>
             </div>
           </div>
         </div>

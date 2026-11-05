@@ -63,7 +63,6 @@ export const metadata: Metadata = {
     "Java",
     ".NET Core",
     "Electronics Engineer",
-    "Visakhapatnam",
     "Chennai",
   ],
   authors: [{ name: "Ugandhar Vaddi", url: "https://www.ugandhar.in" }],
@@ -199,8 +198,8 @@ const jsonLd = {
       ],
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Visakhapatnam",
-        addressRegion: "Andhra Pradesh",
+        addressLocality: "Chennai",
+        addressRegion: "Tamil Nadu",
         addressCountry: "IN",
       },
     },

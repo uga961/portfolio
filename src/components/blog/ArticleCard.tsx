@@ -6,17 +6,14 @@ import { Post, PostSummary } from "@/lib/posts";
 
 export interface ArticleCardProps {
   post: Post | PostSummary;
+  onSelectTag?: (tag: string) => void;
 }
 
-export function ArticleCard({ post }: ArticleCardProps) {
+export function ArticleCard({ post, onSelectTag }: ArticleCardProps) {
   const formattedDate = formatDisplayDate(post.date, "short");
 
   return (
-    <Link
-      href={`/blog/posts/${post.slug}`}
-      prefetch={false}
-      className="py-6 sm:py-8 grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 items-start group block touch-manipulation hover:bg-surface/40 -mx-3 px-3 rounded-[4px] transition-colors"
-    >
+    <div className="py-6 sm:py-8 grid grid-cols-1 md:grid-cols-12 gap-3 md:gap-8 items-start group hover:bg-surface/40 -mx-3 px-3 rounded-[4px] transition-colors">
       {/* Left Column: Metadata */}
       <div className="md:col-span-3 space-y-1 text-xs font-mono text-on-surface-variant">
         <div className="text-foreground font-semibold">
@@ -30,24 +27,53 @@ export function ArticleCard({ post }: ArticleCardProps) {
       {/* Right Column: Title, Excerpt, Tags, Arrow */}
       <div className="md:col-span-9 space-y-2.5">
         <div className="flex items-start justify-between gap-4">
-          <h3 className="text-lg sm:text-xl font-serif font-bold text-foreground group-hover:underline transition-colors leading-snug break-words">
-            {post.title}
-          </h3>
-          <ArrowUpRight className="w-4 h-4 text-on-surface-variant group-hover:text-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 mt-1" />
+          <Link
+            href={`/blog/posts/${post.slug}`}
+            prefetch={false}
+            className="group/title block touch-manipulation"
+          >
+            <h3 className="text-lg sm:text-xl font-serif font-bold text-foreground group-hover/title:underline transition-colors leading-snug break-words">
+              {post.title}
+            </h3>
+          </Link>
+          <Link
+            href={`/blog/posts/${post.slug}`}
+            aria-label={`Read ${post.title}`}
+            className="p-1 text-on-surface-variant hover:text-foreground hover:translate-x-0.5 hover:-translate-y-0.5 transition-all flex-shrink-0 mt-0.5"
+          >
+            <ArrowUpRight className="w-4 h-4" />
+          </Link>
         </div>
 
         {post.excerpt && (
-          <p className="text-sm text-on-surface-variant leading-relaxed font-sans line-clamp-2 sm:line-clamp-3">
-            {post.excerpt}
-          </p>
+          <Link href={`/blog/posts/${post.slug}`} prefetch={false} className="block">
+            <p className="text-sm text-on-surface-variant leading-relaxed font-sans line-clamp-2 sm:line-clamp-3">
+              {post.excerpt}
+            </p>
+          </Link>
         )}
 
         {post.tags && post.tags.length > 0 && (
-          <div className="pt-1 text-xs font-mono text-on-surface-variant/80 break-words">
-            <span>{post.tags.join(" · ")}</span>
+          <div className="pt-1 flex flex-wrap items-center gap-1.5 text-xs font-mono text-on-surface-variant/80 break-words">
+            {post.tags.map((tag) => (
+              <button
+                key={tag}
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (onSelectTag) {
+                    onSelectTag(tag);
+                  }
+                }}
+                className="hover:text-foreground hover:underline transition-colors cursor-pointer touch-manipulation"
+              >
+                #{tag}
+              </button>
+            ))}
           </div>
         )}
       </div>
-    </Link>
+    </div>
   );
 }

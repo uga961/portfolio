@@ -133,7 +133,7 @@ export function HeroSection() {
             </div>
             <div className="mt-2.5 sm:mt-3 pt-2 border-t border-border/60 flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-on-surface-variant">
               <span>FIG. 01 — RESEARCHER</span>
-              <span className="text-foreground/90 font-medium">CHENNAI · VISAKHAPATNAM</span>
+              <span className="text-foreground/90 font-medium">CHENNAI, INDIA</span>
             </div>
           </div>
         </div>

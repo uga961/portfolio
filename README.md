@@ -119,7 +119,7 @@ export const PERSONAL_INFO = {
   domain: "ugandhar.in",
   blogDomain: "ugandhar.in/blog",
   blogPath: "/blog",
-  location: "Visakhapatnam & Chennai, India",
+  location: "Chennai, India",
   email: "annajiratnam@gmail.com",
   summary:
     "Associate Data Scientist at Tredence (Analytics & Applied AI) and graduate in Electronics & Communication...",

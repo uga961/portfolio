@@ -8,24 +8,35 @@ import {
   FolderGit2,
   BookOpen,
   Mail,
+  Code2,
 } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
 
-interface DockItem {
+export interface DockItem {
   label: string;
   href: string;
   icon: React.ReactNode;
+  isExternal?: boolean;
+  onClick?: () => void;
 }
 
-export function MagneticDock({ className }: { className?: string }) {
-  const items: DockItem[] = [
+interface MagneticDockProps {
+  className?: string;
+  items?: DockItem[];
+}
+
+export function MagneticDock({ className, items }: MagneticDockProps) {
+  const defaultItems: DockItem[] = [
     { label: "Top", href: "#hero", icon: <Home className="w-3.5 h-3.5" /> },
-    { label: "Work", href: "#projects", icon: <FolderGit2 className="w-3.5 h-3.5" /> },
+    { label: "Focus", href: "#activity", icon: <Code2 className="w-3.5 h-3.5" /> },
     { label: "Experience", href: "#experience", icon: <Briefcase className="w-3.5 h-3.5" /> },
+    { label: "Work", href: "#projects", icon: <FolderGit2 className="w-3.5 h-3.5" /> },
     { label: "Journal", href: "#writing", icon: <BookOpen className="w-3.5 h-3.5" /> },
     { label: "Contact", href: "#contact", icon: <Mail className="w-3.5 h-3.5" /> },
   ];
+
+  const activeItems = items || defaultItems;
 
   return (
     <div
@@ -38,18 +49,52 @@ export function MagneticDock({ className }: { className?: string }) {
         aria-label="Quick Navigation"
         className="pointer-events-auto flex items-center gap-0.5 sm:gap-1 px-1.5 sm:px-2 py-1 sm:py-1.5 rounded-[4px] border border-border/90 bg-background/95 sm:bg-background/90 sm:backdrop-blur-md shadow-subtle text-xs font-mono gpu-layer"
       >
-        {items.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            aria-label={item.label}
-            title={item.label}
-            className="flex items-center gap-1.5 px-2 py-1 rounded-[2px] text-on-surface-variant hover:text-foreground hover:bg-surface-subtle transition-colors touch-manipulation"
-          >
-            {item.icon}
-            <span className="hidden sm:inline text-[11px]">{item.label}</span>
-          </Link>
-        ))}
+        {activeItems.map((item) => {
+          if (item.onClick) {
+            return (
+              <button
+                key={item.label}
+                onClick={item.onClick}
+                aria-label={item.label}
+                title={item.label}
+                className="flex items-center gap-1.5 px-2 py-1 rounded-[2px] text-on-surface-variant hover:text-foreground hover:bg-surface-subtle transition-colors touch-manipulation cursor-pointer"
+              >
+                {item.icon}
+                <span className="hidden sm:inline text-[11px]">{item.label}</span>
+              </button>
+            );
+          }
+
+          if (item.isExternal) {
+            return (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={item.label}
+                title={item.label}
+                className="flex items-center gap-1.5 px-2 py-1 rounded-[2px] text-on-surface-variant hover:text-foreground hover:bg-surface-subtle transition-colors touch-manipulation"
+              >
+                {item.icon}
+                <span className="hidden sm:inline text-[11px]">{item.label}</span>
+              </a>
+            );
+          }
+
+          return (
+            <Link
+              key={item.label}
+              href={item.href}
+              aria-label={item.label}
+              title={item.label}
+              className="flex items-center gap-1.5 px-2 py-1 rounded-[2px] text-on-surface-variant hover:text-foreground hover:bg-surface-subtle transition-colors touch-manipulation"
+            >
+              {item.icon}
+              <span className="hidden sm:inline text-[11px]">{item.label}</span>
+            </Link>
+          );
+        })}
 
         <div className="w-[1px] h-3.5 bg-border/80 mx-0.5 sm:mx-1 flex-shrink-0" />
 

@@ -96,7 +96,7 @@ export const PERSONAL_INFO = {
     "Associate Data Scientist at Tredence. Building enterprise data intelligence, automated pipelines, and applied machine learning models while exploring low-level silicon architectures.",
   bioLong:
     "I'm Ugandhar, an engineer who enjoys understanding how systems work from first principles — from transistor-level circuit design in Cadence to enterprise machine learning pipelines, predictive modeling, and native desktop utilities.",
-  location: "Visakhapatnam, India",
+  location: "Chennai, India",
   email: "annajiratnam@gmail.com",
   phone: "+91 9493586647",
   resumePath: "/resume",
@@ -320,7 +320,7 @@ export const EDUCATION: Education[] = [
     degree: "Intermediate (MPC — Mathematics, Physics, Chemistry)",
     period: "Oct 2020 – Jul 2022",
     grade: "96.1%",
-    location: "Visakhapatnam, Andhra Pradesh, India",
+    location: "Andhra Pradesh, India",
     skills: ["Mathematics", "Physics", "Chemistry", "Problem Solving"],
     highlights: [
       "Scored 96.1% in Board of Intermediate Education, Andhra Pradesh",

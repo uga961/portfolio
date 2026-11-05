@@ -89,16 +89,22 @@ export default async function Home() {
             className="hidden md:flex items-center gap-5 text-xs font-mono text-on-surface-variant"
           >
             <a
-              href="#projects"
+              href="#activity"
               className="hover:text-foreground hover:underline transition-colors touch-manipulation"
             >
-              Work
+              Focus
             </a>
             <a
               href="#experience"
               className="hover:text-foreground hover:underline transition-colors touch-manipulation"
             >
               Experience
+            </a>
+            <a
+              href="#projects"
+              className="hover:text-foreground hover:underline transition-colors touch-manipulation"
+            >
+              Work
             </a>
             <a
               href="#skills"
@@ -142,13 +148,13 @@ export default async function Home() {
 
       {/* Main Sections */}
       <HeroSection />
-      <ProjectsSection />
+      <ActivitySection />
       <ExperienceSection />
+      <ProjectsSection />
       <SkillsSection />
       <EducationSection />
       <WritingSection initialPosts={posts} />
       <MediaSection />
-      <ActivitySection />
       <ContactFooter />
 
       {/* Quick Navigation Dock */}
