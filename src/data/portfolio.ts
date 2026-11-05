@@ -103,8 +103,9 @@ export const PERSONAL_INFO = {
   avatarPath: "/avatar/profile.jpg",
   logoPath: "/Logo.png",
   currentCrafting: {
-    title: "TV Detox",
-    description: "Ultra-lightweight, clean, and fast minimalist launcher for Android TV.",
+    title: "[Retired] TV Detox",
+    description:
+      "Ultra-lightweight, clean, and fast minimalist launcher for Android TV.",
     tech: "Java · ADB · Android SDK · Open Source",
     repoUrl: "https://github.com/uga961/tv-detox",
   },
@@ -340,7 +341,7 @@ export const EDUCATION: Education[] = [
 export const PROJECTS: Project[] = [
   {
     id: "tv-detox",
-    title: "TV Detox Launcher",
+    title: "[Retired] TV Detox Launcher",
     subtitle: "Ultra-Lightweight Minimalist Launcher for Android TV",
     description:
       "A clean, ultra-lightweight, and lightning-fast minimalist launcher built in Java specifically for Android TV and memory-constrained devices (such as 1GB RAM Mi TVs, Xiaomi TV Sticks, and Chromecast).",
@@ -389,8 +390,9 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "Journal",
-    title: "Personal Engineering Journal",
-    subtitle: "High-Performance Technical Journal Platform",
+    title: " [Retired] Personal Engineering Journal",
+    subtitle:
+      "*This project is retired and no longer maintained advanced features. The blog is now hosted on ugandhar.in/blog.*",
     description:
       "A file-based modern engineering journal built with Next.js 15, TypeScript, Tailwind CSS, and Material Design 3 tokens. Zero database overhead with instant markdown publishing.",
     longDescription:
