@@ -9,6 +9,7 @@ import {
   BookOpen,
   Mail,
   Code2,
+  GraduationCap,
 } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { cn } from "@/lib/utils";
@@ -31,6 +32,7 @@ export function MagneticDock({ className, items }: MagneticDockProps) {
     { label: "Top", href: "#hero", icon: <Home className="w-3.5 h-3.5" /> },
     { label: "Focus", href: "#activity", icon: <Code2 className="w-3.5 h-3.5" /> },
     { label: "Experience", href: "#experience", icon: <Briefcase className="w-3.5 h-3.5" /> },
+    { label: "Education", href: "#education", icon: <GraduationCap className="w-3.5 h-3.5" /> },
     { label: "Work", href: "#projects", icon: <FolderGit2 className="w-3.5 h-3.5" /> },
     { label: "Journal", href: "#writing", icon: <BookOpen className="w-3.5 h-3.5" /> },
     { label: "Contact", href: "#contact", icon: <Mail className="w-3.5 h-3.5" /> },

@@ -43,12 +43,16 @@ export const metadata: Metadata = {
     "Associate Data Scientist at Tredence and Electronics Engineer. Building across silicon architectures, enterprise predictive pipelines, and systems tooling.",
   keywords: [
     "Ugandhar Vaddi",
+    "Ugandhar Vaddi Blog",
+    "ugandhar vaddi blog",
     "uga961",
     "Data Scientist",
     "Associate Data Scientist",
     "Tredence Analytics Solutions",
     "McKinsey & Company Intern",
     "Cognizant Apprentice",
+    "Star of Excellence Sathyabama",
+    "ISTE Sathyabama Chairperson",
     "Machine Learning",
     "Applied AI",
     "VLSI Design",
@@ -170,8 +174,13 @@ const jsonLd = {
           "@type": "EducationalOrganization",
           name: "Sathyabama Institute of Science and Technology",
           url: "https://www.sathyabama.ac.in",
+          award: "Star of Excellence Award",
         },
       ],
+      award: [
+        "Star of Excellence Award (Sathyabama Institute of Science & Technology, presented by Abhishek Sharma)",
+      ],
+      publishingPrinciples: "https://www.ugandhar.in/blog",
       sameAs: [
         "https://github.com/uga961",
         "https://www.linkedin.com/in/vaddi-ugandhar-b37877266/",
@@ -232,6 +241,16 @@ const jsonLd = {
       publisher: {
         "@id": "https://www.ugandhar.in/#person",
       },
+      hasPart: [
+        {
+          "@type": "Blog",
+          "@id": "https://www.ugandhar.in/blog#blog",
+          name: "Ugandhar Vaddi Blog",
+          url: "https://www.ugandhar.in/blog",
+          description:
+            "Official blog and engineering journal by Ugandhar Vaddi. Long-form essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling.",
+        },
+      ],
       inLanguage: "en-US",
     },
   ],

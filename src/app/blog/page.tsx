@@ -15,12 +15,15 @@ import { ArrowRight } from "lucide-react";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Technical Journal & Engineering Blog | Ugandhar Vaddi",
+  title: "Ugandhar Vaddi Blog | Technical Journal & Systems Architecture",
   description:
-    "Long-form engineering essays, systems architectures, technical interviews, performance engineering, and open-source tooling guides by Ugandhar Vaddi.",
+    "Official blog and engineering journal by Ugandhar Vaddi. Long-form essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling.",
   keywords: [
     "Ugandhar Vaddi",
     "Ugandhar Vaddi blog",
+    "ugandhar vaddi blog",
+    "Ugandhar's Blog",
+    "Ugandhar Vaddi Technical Journal",
     "how to debloat tv by ugandhar vaddi",
     "How I Debloated My Android TV Ugandhar Vaddi",
     "debloat android tv adb guide ugandhar",
@@ -40,11 +43,11 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Technical Journal & Engineering Blog | Ugandhar Vaddi",
+    title: "Ugandhar Vaddi Blog | Technical Journal & Systems Architecture",
     description:
-      "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling by Ugandhar Vaddi.",
+      "Official blog and engineering journal by Ugandhar Vaddi. Long-form essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling.",
     url: "https://www.ugandhar.in/blog",
-    siteName: "Ugandhar Vaddi — Technical Journal",
+    siteName: "Ugandhar Vaddi Blog",
     locale: "en_US",
     type: "website",
     images: [
@@ -52,15 +55,15 @@ export const metadata: Metadata = {
         url: "https://www.ugandhar.in/social/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Ugandhar Vaddi — Technical Journal & Blog",
+        alt: "Ugandhar Vaddi Blog — Technical Journal",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Technical Journal & Engineering Blog | Ugandhar Vaddi",
+    title: "Ugandhar Vaddi Blog | Technical Journal & Systems Architecture",
     description:
-      "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, and systems engineering by Ugandhar Vaddi.",
+      "Official blog and engineering journal by Ugandhar Vaddi. Long-form essays on data manipulation workflows, systems architectures, technical interviews, and systems engineering.",
     images: ["https://www.ugandhar.in/social/og-image.png"],
     creator: "@uga961",
     site: "@uga961",
@@ -77,10 +80,16 @@ export default function BlogIndexPage() {
       {
         "@type": "Blog",
         "@id": "https://www.ugandhar.in/blog#blog",
-        name: "Ugandhar Vaddi — Technical Journal & Blog",
+        name: "Ugandhar Vaddi Blog",
+        alternateName: [
+          "Ugandhar Vaddi's Blog",
+          "Ugandhar Vaddi Technical Journal",
+          "Ugandhar Blog",
+          "Ugandhar Vaddi Engineering Blog",
+        ],
         url: "https://www.ugandhar.in/blog",
         description:
-          "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling by Ugandhar Vaddi.",
+          "Official blog and engineering journal by Ugandhar Vaddi. Long-form essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling.",
         publisher: {
           "@type": "Person",
           name: PERSONAL_INFO.name,

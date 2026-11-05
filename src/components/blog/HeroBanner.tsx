@@ -44,11 +44,16 @@ export function HeroBanner({ totalPosts }: { totalPosts: number }) {
         {/* Left Column: Title, Tagline, Bio, Actions */}
         <div className="lg:col-span-7 space-y-6 sm:space-y-7">
           <div>
+            <div className="flex items-center gap-2 text-xs font-mono text-on-surface-variant uppercase tracking-wider mb-2">
+              <span>Official Blog &amp; Journal</span>
+              <span className="text-border">·</span>
+              <span>ugandhar.in/blog</span>
+            </div>
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground font-sans uppercase break-words">
-              {PERSONAL_INFO.name}
+              {PERSONAL_INFO.name} Blog
             </h1>
             <p className="mt-2.5 sm:mt-3 text-base sm:text-xl font-serif italic text-foreground/80 leading-snug">
-              Technical Journal &amp; System Engineering Notes.
+              Technical Journal, Systems Engineering &amp; Applied AI Notes.
             </p>
           </div>
 

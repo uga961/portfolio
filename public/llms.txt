@@ -6,10 +6,16 @@ Ugandhar Vaddi is an Associate Data Scientist at Tredence Analytics Solutions, b
 
 ## Core Navigation & Links
 - [Portfolio Homepage](https://ugandhar.in): Central engineering hub, bio, and direct contact.
-- [Technical Blog & Journal](https://www.ugandhar.in/blog): In-depth engineering essays, reflections, and technical notes.
+- [Ugandhar Vaddi Blog](https://www.ugandhar.in/blog): Official blog and engineering journal by Ugandhar Vaddi — in-depth technical essays, reflections, and systems guides.
 - [GitHub Profile](https://github.com/uga961): Open-source repositories, VLSI memory models, and native utilities.
 - [LinkedIn Profile](https://www.linkedin.com/in/vaddi-ugandhar-b37877266/): Industry background, roles at Tredence, McKinsey & Company, and Cognizant.
 - [YouTube Channel](https://www.youtube.com/@uga961): Multi-day Python classes, pandas data workshops, and technical tutorials.
+
+## Academic Foundations & University Honors
+- **Institution**: Sathyabama Institute of Science and Technology (B.E. in Electronics and Communication Engineering, CGPA: 8.92 / 10).
+- **Star of Excellence Award**: Conferred the prestigious university "Star of Excellence" award for the graduating batch, presented by Abhishek Sharma.
+- **Leadership**: Chairperson of ISTE (Indian Society for Technical Education) Students' Chapter; President of the University Science Club.
+- **Keynote Speaker**: Selected as Keynote Speaker at the university Freshers' Orientation Program for 3 consecutive years (from 2nd year onwards), representing both the ECE Department and ISTE.
 
 ## Featured Technical Articles by Ugandhar Vaddi
 - [How I Debloated My Android TV: A Step-by-Step Guide Using ADB](https://www.ugandhar.in/blog/posts/debloat-android-tv-adb-guide): Practical step-by-step engineering guide on cleaning up slow Android TVs, configuring ADB over Wi-Fi, stripping pre-installed bloatware safely, and setting up minimal launchers by Ugandhar Vaddi.

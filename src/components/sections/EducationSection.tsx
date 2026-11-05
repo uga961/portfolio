@@ -2,6 +2,7 @@
 
 import React from "react";
 import { EDUCATION } from "@/data/portfolio";
+import { Sparkles } from "lucide-react";
 
 export function EducationSection() {
   return (
@@ -9,12 +10,12 @@ export function EducationSection() {
       {/* Editorial Header */}
       <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3 truncate">
-          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 006</span>
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 004</span>
           <span className="text-border flex-shrink-0">/</span>
-          <span className="truncate">ACADEMIC FOUNDATIONS</span>
+          <span className="truncate">ACADEMIC FOUNDATIONS &amp; HONORS</span>
         </div>
         <span className="hidden sm:inline font-mono text-[11px] flex-shrink-0">
-          CIRCUIT THEORY · MATHEMATICS · COMPUTATION
+          CIRCUIT THEORY · LEADERSHIP · COMPUTATION
         </span>
       </div>
 
@@ -23,7 +24,7 @@ export function EducationSection() {
           Academic Background
         </h2>
         <p className="mt-2 text-sm sm:text-base text-on-surface-variant font-sans max-w-xl">
-          Formal training in semiconductor physics, VLSI circuit architecture, digital signal processing, and mathematics.
+          Formal training in semiconductor physics, VLSI circuit architecture, digital signal processing, executive student leadership, and honors.
         </p>
       </div>
 
@@ -49,7 +50,7 @@ export function EducationSection() {
               </div>
             </div>
 
-            {/* Right Column: Institution, Degree, Highlights, Coursework */}
+            {/* Right Column: Institution, Degree, Award, Highlights, Coursework */}
             <div className="md:col-span-8 space-y-3">
               <div>
                 <span className="text-xs font-mono text-on-surface-variant uppercase tracking-wider">
@@ -62,6 +63,23 @@ export function EducationSection() {
                   {edu.degree}
                 </div>
               </div>
+
+              {/* Award Callout Box */}
+              {edu.award && (
+                <div className="rounded-[4px] border border-amber-500/30 bg-amber-500/[0.04] p-3 sm:p-3.5 my-2.5">
+                  <div className="flex items-center gap-1.5 text-xs font-mono font-semibold text-amber-600 dark:text-amber-400">
+                    <Sparkles className="h-3.5 w-3.5 flex-shrink-0" />
+                    <span>HONORS: {edu.award.title.toUpperCase()}</span>
+                    <span className="text-border">·</span>
+                    <span className="text-on-surface-variant text-[11px] font-normal">
+                      Presented by {edu.award.presentedBy}
+                    </span>
+                  </div>
+                  <p className="mt-1 text-xs text-foreground/85 font-sans leading-relaxed">
+                    {edu.award.description}
+                  </p>
+                </div>
+              )}
 
               {edu.highlights && (
                 <ul className="space-y-1.5 text-xs sm:text-sm text-foreground/80 font-sans pt-1">
@@ -76,7 +94,7 @@ export function EducationSection() {
                 </ul>
               )}
 
-              {/* Coursework / Skills (Real unicode middle dot with break-words) */}
+              {/* Coursework / Skills */}
               <div className="pt-2 text-xs font-mono text-on-surface-variant break-words">
                 <span className="text-foreground/70 font-semibold mr-2 uppercase tracking-wider text-[11px]">
                   Focus Areas:

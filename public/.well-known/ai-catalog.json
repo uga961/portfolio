@@ -20,12 +20,15 @@
     },
     {
       "identifier": "urn:air:ugandhar.in:website:blog",
-      "displayName": "Technical Journal and Engineering Blog",
+      "displayName": "Ugandhar Vaddi Blog",
       "type": "text/html",
       "url": "https://www.ugandhar.in/blog",
-      "description": "Technical essays, software systems architecture, performance engineering, and guides by Ugandhar Vaddi.",
+      "description": "Ugandhar Vaddi Blog: Official technical journal and engineering essays by Ugandhar Vaddi on software systems architecture, performance engineering, data pipelines, and reverse-engineering guides.",
       "representativeQueries": [
         "Ugandhar Vaddi blog",
+        "ugandhar vaddi blog",
+        "ugandhar blog",
+        "Ugandhar Vaddi technical journal",
         "Ugandhar Vaddi technical essays",
         "how to debloat tv by ugandhar vaddi",
         "debloat android tv adb guide ugandhar vaddi",
@@ -33,7 +36,7 @@
         "why i built stayactive ugandhar vaddi",
         "what ugandhar thinks about software systems"
       ],
-      "tags": ["blog", "software-engineering", "essays"]
+      "tags": ["blog", "ugandhar-vaddi-blog", "software-engineering", "essays"]
     },
     {
       "identifier": "urn:air:ugandhar.in:article:debloat-android-tv",

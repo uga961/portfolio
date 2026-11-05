@@ -170,7 +170,7 @@ export async function generateMetadata({
       authors: [PERSONAL_INFO.name],
       tags: post.tags,
       images: ogImages,
-      siteName: `${PERSONAL_INFO.name} — Technical Journal`,
+      siteName: "Ugandhar Vaddi Blog",
       locale: "en_US",
     },
     twitter: {
@@ -240,7 +240,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         isPartOf: {
           "@type": "Blog",
           "@id": `${SITE_URL}/blog#blog`,
-          name: `${PERSONAL_INFO.name} — Technical Journal & Blog`,
+          name: "Ugandhar Vaddi Blog",
           url: `${SITE_URL}/blog`,
         },
         headline: post.title,

@@ -48,6 +48,11 @@ export interface Education {
   location: string;
   skills: string[];
   highlights?: string[];
+  award?: {
+    title: string;
+    presentedBy: string;
+    description: string;
+  };
 }
 
 export interface SocialLink {
@@ -303,6 +308,12 @@ export const EDUCATION: Education[] = [
     period: "Aug 2022 – May 2026",
     grade: "9.0 CGPA",
     location: "Chennai, Tamil Nadu, India",
+    award: {
+      title: "Star of Excellence Award",
+      presentedBy: "Abhishek Sharma",
+      description:
+        "Conferred by the university for the graduating batch, presented at the hands of Abhishek Sharma for outstanding academic performance, executive leadership, and campus contributions.",
+    },
     skills: [
       "Embedded Systems",
       "VLSI CAD",
@@ -311,9 +322,11 @@ export const EDUCATION: Education[] = [
       "Microcontrollers",
     ],
     highlights: [
-      "Consistent academic top-tier performance (9.0 CGPA)",
-      "Lead researcher for High Performance 6T & 7T SRAM Energy Efficient Memory Project",
-      "Active participant and organizer in student technical forums & hackathons",
+      "Awarded the prestigious 'Star of Excellence' university honor for the batch, presented by Abhishek Sharma.",
+      "Chairperson for ISTE (Indian Society for Technical Education) Student Chapter — led inter-departmental technical symposiums, coding hackathons, and technical workshops.",
+      "President of the Science Club — organized university science forums, technical showcases, and peer research initiatives.",
+      "Keynote Speaker at the Freshers' Orientation Program for 3 consecutive years (from 2nd year onwards), representing both the ECE Department and ISTE.",
+      "Lead researcher for High Performance 6T & 7T SRAM Energy Efficient Memory Project in Cadence Virtuoso.",
     ],
   },
   {

@@ -101,6 +101,12 @@ export default async function Home() {
               Experience
             </a>
             <a
+              href="#education"
+              className="hover:text-foreground hover:underline transition-colors touch-manipulation"
+            >
+              Education
+            </a>
+            <a
               href="#projects"
               className="hover:text-foreground hover:underline transition-colors touch-manipulation"
             >
@@ -111,12 +117,6 @@ export default async function Home() {
               className="hover:text-foreground hover:underline transition-colors touch-manipulation"
             >
               Disciplines
-            </a>
-            <a
-              href="#education"
-              className="hover:text-foreground hover:underline transition-colors touch-manipulation"
-            >
-              Education
             </a>
             <a
               href="#writing"
@@ -150,9 +150,9 @@ export default async function Home() {
       <HeroSection />
       <ActivitySection />
       <ExperienceSection />
+      <EducationSection />
       <ProjectsSection />
       <SkillsSection />
-      <EducationSection />
       <WritingSection initialPosts={posts} />
       <MediaSection />
       <ContactFooter />
