@@ -1,5 +1,5 @@
 ---
-title: "How I Debloated My Android TV: A Step-by-Step Guide Using ADB"
+title: "[Retired] How I Debloated My Android TV: A Step-by-Step Guide Using ADB"
 seoTitle: "How to Debloat Android TV using ADB: Step-by-Step Guide by Ugandhar Vaddi"
 slug: "debloat-android-tv-adb-guide"
 date: "2026-10-30"
@@ -9,6 +9,8 @@ coverImage: "https://raw.githubusercontent.com/uga961/tv-detox/main/preview.png"
 author: "Ugandhar Vaddi"
 published: true
 ---
+
+_This project was retired and please use this for inspirational purpose only and not for actual use. Thank you !_
 
 My Android TV had started to feel heavier than it needed to be. The home screen was full of recommendations and manufacturer content, while I mainly wanted quick access to the apps I use and the HDMI inputs I need.
 
@@ -41,7 +43,7 @@ You do not need root access for the documented ADB setup. The project uses Andro
 
 Start with the [TV Detox README](https://github.com/uga961/tv-detox#readme). It is the source of truth for the current install command, supported options, warnings, and rollback process.
 
-Do not rely on an old command from this guide *(in case)* if it conflicts with the repository. The installer and its safety checks may evolve, and TV behaviour is not identical across manufacturers.
+Do not rely on an old command from this guide _(in case)_ if it conflicts with the repository. The installer and its safety checks may evolve, and TV behaviour is not identical across manufacturers.
 
 ## 2. Enable developer options and debugging
 
@@ -66,11 +68,9 @@ Check the current README for the connection method appropriate to your setup. Do
 
 Once connected, verify that ADB sees the TV as authorised before running any project script. If the device appears as `unauthorized`, check the TV screen for an approval prompt.
 
-
 ## 4. Review installed apps before debloating
 
 Package names can be misleading, and the same feature can be implemented differently by different TV makers. TV Detox includes a planning script that lists apps and assigns a verdict without changing the device:
-
 
 - **`never`** — a critical component or an app that Android keeps running; leave it enabled.
 - **`keep`** — may provide a feature you use, such as casting, search, or Live TV.
@@ -110,7 +110,7 @@ If the installer leaves the original launcher enabled on your device, follow tha
 
 ## 6. Debloat gradually, not in one large batch
 
-The package cleanup is a separate decision from installing the launcher. 
+The package cleanup is a separate decision from installing the launcher.
 
 Use a cautious process:
 
@@ -168,8 +168,6 @@ After you have tested the setup and no longer need ADB:
 
 Turn debugging back on only when you need to update or undo the setup, then turn it off again afterward.
 
-
-
 ## Final thoughts
 
 The goal is not to disable as many apps as possible. It is to make the TV easier to use while keeping the system stable and recoverable. A simple launcher helps, but the safer process matters just as much: inspect first, make small changes, test the features you need, and keep a rollback path.
@@ -181,4 +179,4 @@ If you try TV Detox, read the README and warnings before making changes, and sha
 - [TV Detox repository and README](https://github.com/uga961/tv-detox)
 - [Google SDK Platform-Tools](https://developer.android.com/tools/releases/platform-tools)
 
-*This guide summarises the current project documentation and general setup flow. Android TV behaviour varies by model and firmware. Follow the repository's latest README, verify each change on your own device, and use the software at your own risk.*
+_This guide summarises the current project documentation and general setup flow. Android TV behaviour varies by model and firmware. Follow the repository's latest README, verify each change on your own device, and use the software at your own risk._
