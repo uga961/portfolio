@@ -1,11 +1,12 @@
 ---
 title: "Python Data Visualization: A Practical Guide to Matplotlib, Seaborn, and Pandas"
+seoTitle: "Python Data Visualization Guide: Matplotlib, Seaborn & Pandas by Ugandhar Vaddi"
 slug: "python-data-visualization-matplotlib-seaborn-guide"
 date: "2026-10-23"
-excerpt: "Learn practical data visualization in Python, from your first Matplotlib line chart to Seaborn plots, heatmaps, correlation, and pair plots, with examples you can run in Google Colab."
+excerpt: "Learn practical data visualization in Python, from your first Matplotlib line chart to Seaborn plots, heatmaps, correlation, and pair plots by Ugandhar Vaddi with Google Colab examples."
 tags: ["Python", "Data Visualization", "Matplotlib", "Seaborn", "Pandas", "Google Colab", "Learning"]
 coverImage: ""
-author: "Ugandhar"
+author: "Ugandhar Vaddi"
 published: true
 ---
 

@@ -1,11 +1,10 @@
 ---
-author: Ugandhar
+author: "Ugandhar Vaddi"
+title: "A Misaligned ₹500 Note and What the Reserve Bank of India Said About Quality Control"
+seoTitle: "RBI ₹500 Note Quality Control Investigation by Ugandhar Vaddi"
 coverImage: "https://i.imgur.com/uVeMtNG.jpeg"
 date: 2026-10-22
-excerpt: A visibly misaligned ₹500 note led me to question currency
-  quality control, test it with a currency counter, and contact the
-  Department of Currency Management. The answer raised more questions
-  than it settled.
+excerpt: "A visibly misaligned ₹500 note led Ugandhar Vaddi to investigate currency quality control, test it with a currency counter, and contact the Reserve Bank of India Department of Currency Management."
 published: true
 slug: rbi-500-rupee-note-quality-control
 tags:
@@ -14,7 +13,6 @@ tags:
 - Currency
 - Quality Control
 - Public Services
-title: "RBI's Quality Control on ₹500 Notes: When a Visible Printing Error Raises Questions"
 ---
 
 A currency note is something we handle almost every day. We use it to buy groceries, pay for transport, and make small purchases without giving much thought to how it was printed.

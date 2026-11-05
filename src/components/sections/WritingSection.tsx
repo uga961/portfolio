@@ -80,6 +80,7 @@ export function WritingSection({
             <Link
               key={post.slug || post.title}
               href={`/blog/posts/${post.slug}`}
+              title={`${post.title} — By Ugandhar Vaddi`}
               className="py-8 sm:py-10 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 items-start group block touch-manipulation"
             >
               {/* Left Column: Metadata */}

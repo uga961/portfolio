@@ -1,12 +1,13 @@
 ---
 title: "Transforming Fedora into a Unified, macOS-Grade Desktop: The Complete Engineering Guide"
+seoTitle: "Transforming Fedora into a macOS-Grade Desktop: Engineering Guide by Ugandhar Vaddi"
 slug: "transforming-fedora-into-unified-macos-grade-desktop"
 date: "2026-11-02"
 lastUpdated: ""
-excerpt: "An in-depth engineering deep dive into styling GNOME Shell 50 on Fedora, reverse engineering Electron app controls, harmonizing GTK 3/4 traffic lights, and achieving seamless compositor-level UI consistency."
+excerpt: "An in-depth engineering deep dive into styling GNOME Shell 50 on Fedora, reverse engineering Electron app controls, harmonizing GTK 3/4 traffic lights, and achieving seamless compositor-level UI consistency by Ugandhar Vaddi."
 tags: ["Linux", "Fedora", "GNOME", "Customization", "UI/UX", "Open Source", "Wayland"]
 coverImage: "https://i.imgur.com/VVLfk5d.png"
-author: "Ugandhar"
+author: "Ugandhar Vaddi"
 published: true
 ---
 

@@ -1,11 +1,12 @@
 ---
 title: "How I Debloated My Android TV: A Step-by-Step Guide Using ADB"
+seoTitle: "How to Debloat Android TV using ADB: Step-by-Step Guide by Ugandhar Vaddi"
 slug: "debloat-android-tv-adb-guide"
 date: "2026-10-30"
-excerpt: "My practical guide to cleaning up a slow Android TV with ADB over Wi-Fi, a lighter home screen, careful package checks, reversible changes, and troubleshooting steps."
+excerpt: "My practical guide to cleaning up a slow Android TV with ADB over Wi-Fi, a lighter home screen, careful package checks, reversible changes, and troubleshooting steps by Ugandhar Vaddi."
 tags: ["Android TV", "ADB", "Windows", "Xiaomi Mi TV", "TV Detox", "Guides"]
 coverImage: "https://raw.githubusercontent.com/uga961/tv-detox/main/preview.png"
-author: "Ugandhar"
+author: "Ugandhar Vaddi"
 published: true
 ---
 

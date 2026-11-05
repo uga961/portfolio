@@ -21,6 +21,78 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+/**
+ * Builds high-ranking intent keywords for Google & Bing discovery,
+ * including exact query variants like "how to debloat tv by ugandhar vaddi".
+ */
+function getArticleSearchKeywords(post: {
+  slug: string;
+  title: string;
+  tags: string[];
+}): string[] {
+  const author = PERSONAL_INFO.name;
+  const base = [
+    `${post.title} by ${author}`,
+    `${post.title} ${author}`,
+    `${author} ${post.title}`,
+    `${author} blog`,
+    `${author} technical journal`,
+    "Ugandhar Vaddi",
+    "ugandhar.in/blog",
+    ...post.tags,
+  ];
+
+  if (post.slug === "debloat-android-tv-adb-guide") {
+    base.push(
+      "how to debloat tv by ugandhar vaddi",
+      "how to debloat android tv using adb",
+      "how to debloat android tv by ugandhar vaddi",
+      "debloat android tv adb guide ugandhar",
+      "tv detox launcher ugandhar vaddi",
+      "remove bloatware android tv adb wifi",
+      "xiaomi mi tv adb debloat guide",
+      "android tv adb shell debloat",
+      "clean up slow android tv ugandhar"
+    );
+  } else if (post.slug === "mckinsey-interview-day-and-results") {
+    base.push(
+      "mckinsey interview experience ugandhar vaddi",
+      "mckinsey interview day and results ugandhar vaddi",
+      "mckinsey associate data scientist interview chennai",
+      "data scientist interview mckinsey ugandhar",
+      "mckinsey case interview reflection"
+    );
+  } else if (post.slug === "why-i-built-stayactive") {
+    base.push(
+      "why i built stayactive ugandhar vaddi",
+      "stayactive windows app ugandhar vaddi",
+      "stayactive ergonomics utility ugandhar",
+      "smart meeting detection wellness app"
+    );
+  } else if (post.slug === "transforming-fedora-into-unified-macos-grade-desktop") {
+    base.push(
+      "transforming fedora into macos desktop ugandhar vaddi",
+      "fedora gnome customization ugandhar vaddi",
+      "fedora wayland macos theme guide ugandhar",
+      "gnome shell 50 styling fedora linux"
+    );
+  } else if (post.slug === "python-data-visualization-matplotlib-seaborn-guide") {
+    base.push(
+      "python data visualization matplotlib seaborn ugandhar vaddi",
+      "python data analysis guide ugandhar vaddi",
+      "google colab python visualization tutorial ugandhar"
+    );
+  } else if (post.slug === "rbi-500-rupee-note-quality-control") {
+    base.push(
+      "rbi 500 rupee note quality control ugandhar vaddi",
+      "reserve bank of india note alignment ugandhar",
+      "currency quality control investigation ugandhar"
+    );
+  }
+
+  return Array.from(new Set(base));
+}
+
 export async function generateStaticParams() {
   const posts = getAllPosts(false);
   return posts.map((post) => ({ slug: post.slug }));
@@ -40,7 +112,10 @@ export async function generateMetadata({
   }
 
   const postUrl = `${SITE_URL}/blog/posts/${post.slug}`;
-  const title = post.title;
+  const keywords = getArticleSearchKeywords(post);
+
+  // SEO Title optimized for search indexing: "Title — By Ugandhar Vaddi"
+  const title = `${post.title} — By ${PERSONAL_INFO.name}`;
 
   const description =
     post.excerpt || `${post.title} — Written by ${PERSONAL_INFO.name}`;
@@ -65,8 +140,9 @@ export async function generateMetadata({
     : isoPublished;
 
   return {
-    title: `${title} | Ugandhar Vaddi`,
+    title,
     description,
+    keywords,
     authors: [{ name: PERSONAL_INFO.name, url: SITE_URL }],
     creator: PERSONAL_INFO.name,
     publisher: PERSONAL_INFO.name,
@@ -152,6 +228,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     ? new Date(post.lastUpdated).toISOString()
     : isoPublished;
 
+  const searchKeywords = getArticleSearchKeywords(post);
+
   // Rich JSON-LD structured data for Google Search (BlogPosting + BreadcrumbList)
   const articleJsonLd = {
     "@context": "https://schema.org",
@@ -166,7 +244,8 @@ export default async function BlogPostPage({ params }: PageProps) {
           url: `${SITE_URL}/blog`,
         },
         headline: post.title,
-        name: post.title,
+        alternativeHeadline: `${post.title} by ${PERSONAL_INFO.name}`,
+        name: `${post.title} — By ${PERSONAL_INFO.name}`,
         description: post.excerpt || post.title,
         url: articleUrl,
         mainEntityOfPage: {
@@ -175,11 +254,18 @@ export default async function BlogPostPage({ params }: PageProps) {
         },
         datePublished: isoPublished,
         dateModified: isoModified,
+        isAccessibleForFree: "True",
         author: {
           "@type": "Person",
           "@id": `${SITE_URL}/#person`,
           name: PERSONAL_INFO.name,
           url: SITE_URL,
+          jobTitle: "Associate Data Scientist",
+          worksFor: {
+            "@type": "Organization",
+            name: "Tredence Analytics Solutions",
+            url: "https://www.tredence.com",
+          },
           image: `${SITE_URL}/avatar/profile.jpg`,
           sameAs: [
             "https://github.com/uga961",
@@ -199,8 +285,12 @@ export default async function BlogPostPage({ params }: PageProps) {
           },
         },
         image: cleanOgImage,
-        keywords: post.tags.join(", "),
+        keywords: searchKeywords.join(", "),
         articleSection: post.tags[0] || "Engineering",
+        about: [
+          ...post.tags.map((t) => ({ "@type": "Thing", name: t })),
+          { "@type": "Person", name: PERSONAL_INFO.name },
+        ],
         inLanguage: "en-US",
       },
       {
@@ -261,16 +351,13 @@ export default async function BlogPostPage({ params }: PageProps) {
         <div className="w-full max-w-3xl lg:max-w-[860px] mx-auto space-y-10">
           {/* Article Header */}
           <header className="space-y-4 border-b border-border/80 pb-6 sm:pb-8">
-            {/* Metadata Row */}
+            {/* Metadata Row — SEO tag badge without internal filter link */}
             <div className="flex flex-wrap items-center gap-2 text-xs font-mono text-on-surface-variant">
               {post.tags && post.tags.length > 0 && (
                 <>
-                  <Link
-                    href={`/blog?tag=${encodeURIComponent(post.tags[0])}#articles`}
-                    className="uppercase tracking-wider font-semibold text-foreground hover:underline"
-                  >
+                  <span className="uppercase tracking-wider font-semibold text-foreground font-mono">
                     #{post.tags[0]}
-                  </Link>
+                  </span>
                   <span className="text-border">·</span>
                 </>
               )}
@@ -326,7 +413,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div className="overflow-hidden rounded-[4px] border border-border/80 bg-surface-container relative aspect-[16/9] w-full">
               <Image
                 src={post.coverImage}
-                alt={post.title}
+                alt={`${post.title} — By ${PERSONAL_INFO.name}`}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 860px"
@@ -345,30 +432,30 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           {/* Post-Article Actions & Author Section */}
           <section className="space-y-8 border-t border-border/80 pt-8">
-            {/* Topic Tags */}
+            {/* Topic Tags — Static semantic metadata chips for search engine context */}
             {post.tags && post.tags.length > 0 && (
               <div className="flex flex-wrap items-center gap-1.5 text-xs font-mono">
                 <span className="text-on-surface-variant font-semibold mr-1">TOPICS:</span>
                 {post.tags.map((tag) => (
-                  <Link
+                  <span
                     key={tag}
-                    href={`/blog?tag=${encodeURIComponent(tag)}#articles`}
-                    className="px-2.5 py-1 rounded-[3px] bg-surface/70 border border-border/80 text-foreground/80 hover:border-foreground hover:text-foreground transition-colors"
+                    className="px-2.5 py-1 rounded-[3px] bg-surface/70 border border-border/80 text-foreground/80 font-mono text-[11px]"
                   >
                     #{tag}
-                  </Link>
+                  </span>
                 ))}
               </div>
             )}
 
-            {/* Action Bar: Archived Date + Share Buttons positioned at bottom */}
+            {/* Action Bar: Published Date + Share Buttons positioned at bottom */}
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono text-xs border-y border-border/60 py-4">
               <div className="space-y-0.5 text-on-surface-variant">
                 <div>
                   Published on{" "}
                   <strong className="text-foreground font-semibold">
                     {formattedDate}
-                  </strong>
+                  </strong>{" "}
+                  by <strong className="text-foreground">{PERSONAL_INFO.name}</strong>
                 </div>
                 {post.lastUpdated && post.lastUpdated !== post.date && (
                   <div className="text-[11px] text-on-surface-variant/80">

@@ -5,7 +5,7 @@ date: "2026-03-01"
 excerpt: "A quiet Sunday in Chennai reminded me that a day doesn't have to be perfectly productive to feel full. Sometimes, taking care of small things is enough to begin again."
 tags: ["Personal Diary", "Life in Chennai", "Reflection"]
 # coverImage: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80"
-author: "Ugandhar"
+author: "Ugandhar Vaddi"
 published: true
 ---
 

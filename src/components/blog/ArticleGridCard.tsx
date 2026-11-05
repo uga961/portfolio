@@ -7,10 +7,9 @@ import { Post, PostSummary } from "@/lib/posts";
 
 export interface ArticleGridCardProps {
   post: Post | PostSummary;
-  onSelectTag?: (tag: string) => void;
 }
 
-export function ArticleGridCard({ post, onSelectTag }: ArticleGridCardProps) {
+export function ArticleGridCard({ post }: ArticleGridCardProps) {
   const formattedDate = formatDisplayDate(post.date, "short");
 
   return (
@@ -25,7 +24,7 @@ export function ArticleGridCard({ post, onSelectTag }: ArticleGridCardProps) {
           >
             <Image
               src={post.coverImage}
-              alt={post.title}
+              alt={`${post.title} — Written by Ugandhar Vaddi`}
               fill
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
               className="object-cover transition-all duration-300 group-hover:scale-[1.02]"
@@ -64,19 +63,9 @@ export function ArticleGridCard({ post, onSelectTag }: ArticleGridCardProps) {
       <div className="pt-4 mt-auto border-t border-border/60 flex items-center justify-between text-xs font-mono">
         <div className="flex items-center gap-1.5 overflow-hidden">
           {post.tags && post.tags.length > 0 && (
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                if (onSelectTag) {
-                  onSelectTag(post.tags[0]);
-                }
-              }}
-              className="text-[11px] text-on-surface-variant hover:text-foreground hover:underline transition-colors truncate max-w-[180px] cursor-pointer"
-            >
+            <span className="text-[11px] text-on-surface-variant/70 truncate max-w-[180px]">
               #{post.tags[0]}
-            </button>
+            </span>
           )}
         </div>
 

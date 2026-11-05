@@ -15,9 +15,24 @@ import { ArrowRight } from "lucide-react";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Technical Journal & Blog | Ugandhar Vaddi",
+  title: "Technical Journal & Engineering Blog | Ugandhar Vaddi",
   description:
-    "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling by Ugandhar Vaddi.",
+    "Long-form engineering essays, systems architectures, technical interviews, performance engineering, and open-source tooling guides by Ugandhar Vaddi.",
+  keywords: [
+    "Ugandhar Vaddi",
+    "Ugandhar Vaddi blog",
+    "how to debloat tv by ugandhar vaddi",
+    "How I Debloated My Android TV Ugandhar Vaddi",
+    "debloat android tv adb guide ugandhar",
+    "McKinsey interview experience Ugandhar Vaddi",
+    "Why I Built StayActive Ugandhar Vaddi",
+    "Transforming Fedora into macOS desktop Ugandhar Vaddi",
+    "Python data visualization guide Ugandhar Vaddi",
+    "Associate Data Scientist Tredence blog",
+    "Technical Journal",
+    "Systems Architecture",
+    "Android TV ADB",
+  ],
   alternates: {
     canonical: "https://www.ugandhar.in/blog",
     types: {
@@ -25,9 +40,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Technical Journal & Blog | Ugandhar Vaddi",
+    title: "Technical Journal & Engineering Blog | Ugandhar Vaddi",
     description:
-      "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling.",
+      "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling by Ugandhar Vaddi.",
     url: "https://www.ugandhar.in/blog",
     siteName: "Ugandhar Vaddi — Technical Journal",
     locale: "en_US",
@@ -43,9 +58,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Technical Journal & Blog | Ugandhar Vaddi",
+    title: "Technical Journal & Engineering Blog | Ugandhar Vaddi",
     description:
-      "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, and systems engineering.",
+      "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, and systems engineering by Ugandhar Vaddi.",
     images: ["https://www.ugandhar.in/social/og-image.png"],
     creator: "@uga961",
     site: "@uga961",
@@ -58,49 +73,65 @@ export default function BlogIndexPage() {
 
   const blogJsonLd = {
     "@context": "https://schema.org",
-    "@type": "Blog",
-    "@id": "https://www.ugandhar.in/blog#blog",
-    name: "Ugandhar Vaddi — Technical Journal & Blog",
-    url: "https://www.ugandhar.in/blog",
-    description:
-      "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling.",
-    publisher: {
-      "@type": "Person",
-      name: PERSONAL_INFO.name,
-      url: "https://www.ugandhar.in",
-    },
-    blogPost: posts.map((post) => ({
-      "@type": "BlogPosting",
-      "@id": `https://www.ugandhar.in/blog/posts/${post.slug}#article`,
-      headline: post.title,
-      name: post.title,
-      url: `https://www.ugandhar.in/blog/posts/${post.slug}`,
-      datePublished: post.date ? new Date(post.date).toISOString() : undefined,
-      dateModified: post.lastUpdated
-        ? new Date(post.lastUpdated).toISOString()
-        : post.date
-        ? new Date(post.date).toISOString()
-        : undefined,
-      description: post.excerpt,
-      author: {
-        "@type": "Person",
-        name: PERSONAL_INFO.name,
-        url: "https://www.ugandhar.in",
-      },
-      image:
-        post.coverImage && post.coverImage.trim() !== ""
-          ? post.coverImage
-          : "https://www.ugandhar.in/social/og-image.png",
-      publisher: {
-        "@type": "Person",
-        name: PERSONAL_INFO.name,
-        url: "https://www.ugandhar.in",
-        logo: {
-          "@type": "ImageObject",
-          url: "https://www.ugandhar.in/icon.png",
+    "@graph": [
+      {
+        "@type": "Blog",
+        "@id": "https://www.ugandhar.in/blog#blog",
+        name: "Ugandhar Vaddi — Technical Journal & Blog",
+        url: "https://www.ugandhar.in/blog",
+        description:
+          "Long-form engineering essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling by Ugandhar Vaddi.",
+        publisher: {
+          "@type": "Person",
+          name: PERSONAL_INFO.name,
+          url: "https://www.ugandhar.in",
         },
+        blogPost: posts.map((post) => ({
+          "@type": "BlogPosting",
+          "@id": `https://www.ugandhar.in/blog/posts/${post.slug}#article`,
+          headline: post.title,
+          alternativeHeadline: `${post.title} by ${PERSONAL_INFO.name}`,
+          name: `${post.title} — By ${PERSONAL_INFO.name}`,
+          url: `https://www.ugandhar.in/blog/posts/${post.slug}`,
+          datePublished: post.date ? new Date(post.date).toISOString() : undefined,
+          dateModified: post.lastUpdated
+            ? new Date(post.lastUpdated).toISOString()
+            : post.date
+            ? new Date(post.date).toISOString()
+            : undefined,
+          description: post.excerpt,
+          author: {
+            "@type": "Person",
+            name: PERSONAL_INFO.name,
+            url: "https://www.ugandhar.in",
+          },
+          image:
+            post.coverImage && post.coverImage.trim() !== ""
+              ? post.coverImage
+              : "https://www.ugandhar.in/social/og-image.png",
+          publisher: {
+            "@type": "Person",
+            name: PERSONAL_INFO.name,
+            url: "https://www.ugandhar.in",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://www.ugandhar.in/icon.png",
+            },
+          },
+        })),
       },
-    })),
+      {
+        "@type": "ItemList",
+        "@id": "https://www.ugandhar.in/blog#itemlist",
+        name: "Latest Technical Articles and Guides by Ugandhar Vaddi",
+        itemListElement: posts.map((post, idx) => ({
+          "@type": "ListItem",
+          position: idx + 1,
+          name: `${post.title} — By ${PERSONAL_INFO.name}`,
+          url: `https://www.ugandhar.in/blog/posts/${post.slug}`,
+        })),
+      },
+    ],
   };
 
   return (
@@ -139,7 +170,7 @@ export default function BlogIndexPage() {
                   <div className="md:col-span-5 overflow-hidden rounded-[3px] border border-border/80 bg-surface-container aspect-[16/10] relative">
                     <Image
                       src={featured.coverImage}
-                      alt={featured.title}
+                      alt={`${featured.title} — Written by ${PERSONAL_INFO.name}`}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 380px, 340px"
                       priority
@@ -166,7 +197,7 @@ export default function BlogIndexPage() {
                       <>
                         <span className="text-border">·</span>
                         <span className="text-on-surface-variant/80">
-                          {featured.tags[0]}
+                          #{featured.tags[0]}
                         </span>
                       </>
                     )}

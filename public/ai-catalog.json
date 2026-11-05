@@ -11,7 +11,7 @@
       "displayName": "Ugandhar Vaddi Portfolio",
       "type": "text/html",
       "url": "https://ugandhar.in",
-      "description": "Personal engineering portfolio, credentials, systems projects, and contact.",
+      "description": "Personal engineering portfolio, credentials, systems projects, and contact of Ugandhar Vaddi.",
       "representativeQueries": [
         "Ugandhar Vaddi portfolio",
         "Ugandhar Vaddi projects and experience"
@@ -20,17 +20,35 @@
     },
     {
       "identifier": "urn:air:ugandhar.in:website:blog",
-      "displayName": "Technical Blog and Journal",
+      "displayName": "Technical Journal and Engineering Blog",
       "type": "text/html",
       "url": "https://www.ugandhar.in/blog",
-      "description": "Technical essays, software systems architecture, performance engineering, and notes.",
+      "description": "Technical essays, software systems architecture, performance engineering, and guides by Ugandhar Vaddi.",
       "representativeQueries": [
         "Ugandhar Vaddi blog",
         "Ugandhar Vaddi technical essays",
-        "Ugandhar thoughts on software engineering",
+        "how to debloat tv by ugandhar vaddi",
+        "debloat android tv adb guide ugandhar vaddi",
+        "mckinsey interview ugandhar vaddi",
+        "why i built stayactive ugandhar vaddi",
         "what ugandhar thinks about software systems"
       ],
       "tags": ["blog", "software-engineering", "essays"]
+    },
+    {
+      "identifier": "urn:air:ugandhar.in:article:debloat-android-tv",
+      "displayName": "How I Debloated My Android TV: A Step-by-Step Guide Using ADB",
+      "type": "text/html",
+      "url": "https://www.ugandhar.in/blog/posts/debloat-android-tv-adb-guide",
+      "description": "Step-by-step engineering tutorial by Ugandhar Vaddi on cleaning up slow Android TVs with ADB over Wi-Fi, disabling telemetry, configuring TV Detox launcher, and reversible system package removal.",
+      "representativeQueries": [
+        "how to debloat tv by ugandhar vaddi",
+        "how to debloat android tv adb guide ugandhar",
+        "debloat android tv adb wifi ugandhar vaddi",
+        "xiaomi mi tv adb debloat ugandhar",
+        "tv detox launcher ugandhar"
+      ],
+      "tags": ["android-tv", "adb", "guides", "tv-detox"]
     },
     {
       "identifier": "urn:air:ugandhar.in:code-repository:github",

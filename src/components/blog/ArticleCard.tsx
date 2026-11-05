@@ -6,10 +6,9 @@ import { Post, PostSummary } from "@/lib/posts";
 
 export interface ArticleCardProps {
   post: Post | PostSummary;
-  onSelectTag?: (tag: string) => void;
 }
 
-export function ArticleCard({ post, onSelectTag }: ArticleCardProps) {
+export function ArticleCard({ post }: ArticleCardProps) {
   const formattedDate = formatDisplayDate(post.date, "short");
 
   return (
@@ -24,7 +23,7 @@ export function ArticleCard({ post, onSelectTag }: ArticleCardProps) {
         <div>{post.readingTime} min read</div>
       </div>
 
-      {/* Right Column: Title, Excerpt, Tags, Arrow */}
+      {/* Right Column: Title, Excerpt, SEO Tags, Arrow */}
       <div className="md:col-span-9 space-y-2.5">
         <div className="flex items-start justify-between gap-4">
           <Link
@@ -38,7 +37,7 @@ export function ArticleCard({ post, onSelectTag }: ArticleCardProps) {
           </Link>
           <Link
             href={`/blog/posts/${post.slug}`}
-            aria-label={`Read ${post.title}`}
+            aria-label={`Read ${post.title} by Ugandhar Vaddi`}
             className="p-1 text-on-surface-variant hover:text-foreground hover:translate-x-0.5 hover:-translate-y-0.5 transition-all flex-shrink-0 mt-0.5"
           >
             <ArrowUpRight className="w-4 h-4" />
@@ -53,23 +52,16 @@ export function ArticleCard({ post, onSelectTag }: ArticleCardProps) {
           </Link>
         )}
 
+        {/* SEO Tag Chips — Static metadata for search engines */}
         {post.tags && post.tags.length > 0 && (
           <div className="pt-1 flex flex-wrap items-center gap-1.5 text-xs font-mono text-on-surface-variant/80 break-words">
             {post.tags.map((tag) => (
-              <button
+              <span
                 key={tag}
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  if (onSelectTag) {
-                    onSelectTag(tag);
-                  }
-                }}
-                className="hover:text-foreground hover:underline transition-colors cursor-pointer touch-manipulation"
+                className="text-[11px] text-on-surface-variant/70 font-mono"
               >
                 #{tag}
-              </button>
+              </span>
             ))}
           </div>
         )}

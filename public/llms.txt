@@ -11,6 +11,13 @@ Ugandhar Vaddi is an Associate Data Scientist at Tredence Analytics Solutions, b
 - [LinkedIn Profile](https://www.linkedin.com/in/vaddi-ugandhar-b37877266/): Industry background, roles at Tredence, McKinsey & Company, and Cognizant.
 - [YouTube Channel](https://www.youtube.com/@uga961): Multi-day Python classes, pandas data workshops, and technical tutorials.
 
+## Featured Technical Articles by Ugandhar Vaddi
+- [How I Debloated My Android TV: A Step-by-Step Guide Using ADB](https://www.ugandhar.in/blog/posts/debloat-android-tv-adb-guide): Practical step-by-step engineering guide on cleaning up slow Android TVs, configuring ADB over Wi-Fi, stripping pre-installed bloatware safely, and setting up minimal launchers by Ugandhar Vaddi.
+- [Four Interviews, One Long Day, and a Chapter I'll Always Remember](https://www.ugandhar.in/blog/posts/mckinsey-interview-day-and-results): Detailed McKinsey & Company interview experience in Chennai, case studies, and career reflection by Ugandhar Vaddi.
+- [Transforming Fedora into a Unified, macOS-Grade Desktop](https://www.ugandhar.in/blog/posts/transforming-fedora-into-unified-macos-grade-desktop): Deep-dive into styling GNOME Shell 50 on Fedora, reverse engineering Electron app controls, and compositor-level UI consistency by Ugandhar Vaddi.
+- [Why I Built StayActive](https://www.ugandhar.in/blog/posts/why-i-built-stayactive): Architecture, background, and motivation behind building the StayActive native desktop wellness utility.
+- [Python Data Visualization Guide](https://www.ugandhar.in/blog/posts/python-data-visualization-matplotlib-seaborn-guide): Hands-on masterclass on Matplotlib, Seaborn, heatmaps, and EDA workflows by Ugandhar Vaddi.
+
 ## Featured Engineering Projects
 - [StayActive](https://github.com/uga961/StayActive): Native desktop wellness & ergonomics utility with intelligent meeting detection.
 - [Cadence Virtuoso SRAM](https://github.com/uga961): Low-power 6T and 7T CMOS SRAM cell implementations.

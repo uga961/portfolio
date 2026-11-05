@@ -1,16 +1,16 @@
 ---
-author: Ugandhar
+author: "Ugandhar Vaddi"
+seoTitle: "Why I Built StayActive: Windows Wellness Utility by Ugandhar Vaddi"
 coverImage: "https://raw.githubusercontent.com/uga961/StayActive/main/Images/main.jpg"
 date: 2026-10-21
-excerpt: "StayActive started with a simple thought: working for hours
-  should not mean forgetting water, rest, or movement. This is the story
-  behind the Windows app, the choices I made, and what I learned
-  building it."
+excerpt: "StayActive started with a simple thought: working for hours should not mean forgetting water, rest, or movement. The engineering story behind the Windows utility by Ugandhar Vaddi."
 published: true
 slug: why-i-built-stayactive
 tags:
 - Projects
 - Digital Wellbeing
+- Windows
+- Desktop
 title: "Why I Built StayActive: A Small Reminder to Take Care of Myself"
 ---
 

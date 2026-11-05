@@ -12,7 +12,6 @@ import {
   BookOpen,
   LayoutList,
   LayoutGrid,
-  Tag,
 } from "lucide-react";
 
 interface ArticleListProps {
@@ -25,39 +24,16 @@ export function ArticleList({
   postsPerPage = 6,
 }: ArticleListProps) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedTag, setSelectedTag] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [viewMode, setViewMode] = useState<"list" | "grid">("list");
   const [mounted, setMounted] = useState(false);
 
-  // Compute all unique tags with their article counts
-  const tagCounts = useMemo(() => {
-    const counts: Record<string, number> = {};
-    for (const post of posts) {
-      if (Array.isArray(post.tags)) {
-        for (const t of post.tags) {
-          counts[t] = (counts[t] || 0) + 1;
-        }
-      }
-    }
-    return Object.entries(counts).sort((a, b) => b[1] - a[1]);
-  }, [posts]);
-
-  // Read URL query parameter ?tag=... on mount or back/forward navigation
   useEffect(() => {
     setMounted(true);
     const saved = localStorage.getItem("blog_view_mode");
     if (saved === "grid" || saved === "list") {
       setViewMode(saved);
     }
-
-    try {
-      const params = new URLSearchParams(window.location.search);
-      const tagParam = params.get("tag");
-      if (tagParam) {
-        setSelectedTag(tagParam);
-      }
-    } catch {}
   }, []);
 
   const handleToggleView = (mode: "list" | "grid") => {
@@ -67,43 +43,23 @@ export function ArticleList({
     } catch {}
   };
 
-  const handleSelectTag = (tag: string) => {
-    setSelectedTag(tag);
-    setCurrentPage(1);
-    try {
-      const url = new URL(window.location.href);
-      if (tag === "all") {
-        url.searchParams.delete("tag");
-      } else {
-        url.searchParams.set("tag", tag);
-      }
-      window.history.replaceState({}, "", url.toString());
-    } catch {}
-  };
-
-  // Filter posts based on selected tag AND search query
+  // Filter posts based solely on search query across title, excerpt, and SEO tags
   const filteredPosts = useMemo(() => {
     const q = searchQuery.toLowerCase().trim();
-    const tagNorm = selectedTag.toLowerCase();
+    if (!q) return posts;
 
     return posts.filter((post) => {
-      // Tag filter
-      const matchesTag =
-        selectedTag === "all" ||
-        (Array.isArray(post.tags) &&
-          post.tags.some((t) => t.toLowerCase() === tagNorm));
+      const matchTitle = post.title.toLowerCase().includes(q);
+      const matchExcerpt = post.excerpt
+        ? post.excerpt.toLowerCase().includes(q)
+        : false;
+      const matchTags = Array.isArray(post.tags)
+        ? post.tags.some((t) => t.toLowerCase().includes(q))
+        : false;
 
-      // Query filter
-      const matchesQuery =
-        !q ||
-        post.title.toLowerCase().includes(q) ||
-        (post.excerpt && post.excerpt.toLowerCase().includes(q)) ||
-        (Array.isArray(post.tags) &&
-          post.tags.some((t) => t.toLowerCase().includes(q)));
-
-      return matchesTag && matchesQuery;
+      return matchTitle || matchExcerpt || matchTags;
     });
-  }, [posts, selectedTag, searchQuery]);
+  }, [posts, searchQuery]);
 
   // Pagination calculation
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage) || 1;
@@ -114,41 +70,6 @@ export function ArticleList({
 
   return (
     <div className="w-full space-y-6">
-      {/* Category / Tag Pill Filter Bar with zero scrollbar blowout */}
-      <div className="flex items-center gap-1.5 text-xs font-mono overflow-x-auto no-scrollbar [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden max-w-full pb-1">
-        <button
-          onClick={() => handleSelectTag("all")}
-          className={`px-3 py-1.5 rounded-[3px] transition-colors whitespace-nowrap cursor-pointer touch-manipulation min-h-[36px] flex items-center gap-1.5 ${
-            selectedTag === "all"
-              ? "bg-foreground text-background font-semibold"
-              : "border border-border/80 text-on-surface-variant hover:text-foreground hover:bg-surface-subtle"
-          }`}
-        >
-          <BookOpen className="w-3 h-3" />
-          <span>All Essays ({posts.length})</span>
-        </button>
-
-        {tagCounts.map(([tagName, count]) => {
-          const isSelected = selectedTag.toLowerCase() === tagName.toLowerCase();
-          return (
-            <button
-              key={tagName}
-              onClick={() => handleSelectTag(tagName)}
-              className={`px-3 py-1.5 rounded-[3px] transition-colors whitespace-nowrap cursor-pointer touch-manipulation min-h-[36px] flex items-center gap-1.5 ${
-                isSelected
-                  ? "bg-foreground text-background font-semibold"
-                  : "border border-border/80 text-on-surface-variant hover:text-foreground hover:bg-surface-subtle"
-              }`}
-            >
-              <Tag className="w-2.5 h-2.5 opacity-60" />
-              <span>
-                {tagName} ({count})
-              </span>
-            </button>
-          );
-        })}
-      </div>
-
       {/* Search & View Controls Bar */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
         {/* Search Input */}
@@ -156,7 +77,7 @@ export function ArticleList({
           <Search className="absolute left-3.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-on-surface-variant/70" />
           <input
             type="text"
-            placeholder="Search essays by title, topic, or keyword…"
+            placeholder="Search essays by title, keyword, or topic…"
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
@@ -209,22 +130,9 @@ export function ArticleList({
         )}
       </div>
 
-      {/* Active Filter Indicators */}
-      <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-mono text-on-surface-variant border-b border-border/60 pb-3">
-        <div className="flex items-center gap-2 flex-wrap">
-          {selectedTag !== "all" && (
-            <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[2px] bg-surface border border-border text-foreground font-medium">
-              <span>Topic: #{selectedTag}</span>
-              <button
-                onClick={() => handleSelectTag("all")}
-                className="hover:text-red-400 cursor-pointer"
-                title="Remove topic filter"
-              >
-                <X className="w-3 h-3" />
-              </button>
-            </span>
-          )}
-
+      {/* Results Count Bar */}
+      <div className="flex items-center justify-between text-xs font-mono text-on-surface-variant border-b border-border/60 pb-3">
+        <div>
           {searchQuery ? (
             <span>
               Showing {filteredPosts.length} result
@@ -232,8 +140,7 @@ export function ArticleList({
             </span>
           ) : (
             <span>
-              {filteredPosts.length} {filteredPosts.length === 1 ? "Essay" : "Essays"}
-              {selectedTag === "all" ? " Published" : ` in #${selectedTag}`}
+              {posts.length} {posts.length === 1 ? "Essay" : "Essays"} Published by Ugandhar Vaddi
             </span>
           )}
         </div>
@@ -251,39 +158,30 @@ export function ArticleList({
             No matching essays found
           </h3>
           <p className="mt-1 text-xs text-on-surface-variant max-w-sm font-sans">
-            No articles match {selectedTag !== "all" ? `topic #${selectedTag} and ` : ""}your query &ldquo;{searchQuery}&rdquo;.
+            No articles match your query &ldquo;{searchQuery}&rdquo;. Try searching for terms like Android, ADB, McKinsey, Python, or Systems.
           </p>
           <button
             onClick={() => {
               setSearchQuery("");
-              setSelectedTag("all");
               setCurrentPage(1);
             }}
             className="mt-4 px-3 py-1.5 rounded-[2px] bg-foreground text-background font-mono text-xs font-medium uppercase tracking-wider hover:bg-foreground/90 transition-colors cursor-pointer touch-manipulation"
           >
-            Reset All Filters
+            Clear Search
           </button>
         </div>
       ) : viewMode === "grid" ? (
         /* Grid View Layout */
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 pt-2">
           {paginatedPosts.map((post) => (
-            <ArticleGridCard
-              key={post.slug}
-              post={post}
-              onSelectTag={handleSelectTag}
-            />
+            <ArticleGridCard key={post.slug} post={post} />
           ))}
         </div>
       ) : (
         /* List View Layout */
         <div className="divide-y divide-border/80 border-y border-border/80">
           {paginatedPosts.map((post) => (
-            <ArticleCard
-              key={post.slug}
-              post={post}
-              onSelectTag={handleSelectTag}
-            />
+            <ArticleCard key={post.slug} post={post} />
           ))}
         </div>
       )}
