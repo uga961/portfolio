@@ -21,7 +21,7 @@ interface ArticleListProps {
 
 export function ArticleList({
   posts,
-  postsPerPage = 6,
+  postsPerPage = 12,
 }: ArticleListProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);

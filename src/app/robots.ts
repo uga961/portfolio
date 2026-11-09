@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/_next/static/media/", "/_next/image"],
       },
     ],
     sitemap: "https://www.ugandhar.in/sitemap.xml",

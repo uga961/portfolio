@@ -4,13 +4,29 @@ import path from "path";
 import { redirect } from "next/navigation";
 import { ResumeStatusCard } from "./ResumeStatusCard";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Career Status & Resume | Ugandhar Vaddi",
-  description: "Career status update and technical background of Ugandhar Vaddi.",
+  title: "Career Status & Technical Background | Ugandhar Vaddi",
+  description:
+    "Career status update, engineering background, and professional profile of Ugandhar Vaddi, Associate Data Scientist at Tredence.",
+  keywords: [
+    "Ugandhar Vaddi resume",
+    "Ugandhar Vaddi CV",
+    "Ugandhar Vaddi career",
+    "Ugandhar Vaddi Tredence",
+    "Ugandhar Vaddi Data Scientist",
+  ],
   alternates: {
     canonical: "https://www.ugandhar.in/resume",
+  },
+  openGraph: {
+    title: "Career Status & Technical Background | Ugandhar Vaddi",
+    description:
+      "Career status update, engineering background, and professional profile of Ugandhar Vaddi, Associate Data Scientist at Tredence.",
+    url: "https://www.ugandhar.in/resume",
+    siteName: "Ugandhar Vaddi",
+    type: "profile",
   },
 };
 

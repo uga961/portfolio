@@ -100,10 +100,11 @@ export function getAllPosts(includeDrafts: boolean = false): Post[] {
       const seoTitle = data.seoTitle ? String(data.seoTitle).trim() : undefined;
       const date = normalizeDate(data.date);
 
-      // Automatic last modified time detection:
-      // If specified in frontmatter, use that; otherwise use filesystem stats mtime
-      const autoMtime = stats ? stats.mtime.toISOString().slice(0, 10) : date;
-      const lastUpdated = data.lastUpdated ? normalizeDate(data.lastUpdated) : autoMtime;
+      // Last modified time: use explicit frontmatter date if provided, otherwise default to post publish date
+      const lastUpdated =
+        data.lastUpdated && String(data.lastUpdated).trim() !== ""
+          ? normalizeDate(data.lastUpdated)
+          : date;
 
       const excerpt = data.excerpt ? String(data.excerpt).trim() : extractFallbackExcerpt(content);
       const tags = Array.isArray(data.tags)

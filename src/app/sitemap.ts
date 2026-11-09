@@ -21,8 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/resume`,
       lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.7,
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
   ];
 
@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/blog/posts/${post.slug}`,
     lastModified: new Date(post.lastUpdated || post.date),
-    changeFrequency: "weekly",
+    changeFrequency: "monthly",
     priority: 0.85,
   }));
 

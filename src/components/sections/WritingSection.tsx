@@ -118,6 +118,44 @@ export function WritingSection({
         })}
       </div>
 
+      {/* Additional Essays in the Technical Journal Archive (Ensures 100% Crawlability by Googlebot) */}
+      {initialPosts.length > 3 && (
+        <div className="pt-6 border-t border-border/80">
+          <div className="flex items-center justify-between text-xs font-mono text-on-surface-variant mb-4">
+            <span className="uppercase tracking-wider font-semibold text-foreground">
+              Technical Journal Archive
+            </span>
+            <span>{initialPosts.length} Articles Total</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {initialPosts.slice(3).map((post) => (
+              <Link
+                key={post.slug}
+                href={`/blog/posts/${post.slug}`}
+                title={`${post.title} — By Ugandhar Vaddi`}
+                className="group p-3 rounded-[3px] border border-border/70 bg-surface/50 hover:bg-surface hover:border-foreground/40 transition-all flex items-start justify-between gap-3 touch-manipulation"
+              >
+                <div className="space-y-1 min-w-0 flex-1">
+                  <div className="text-[11px] font-mono text-on-surface-variant flex items-center gap-1.5">
+                    <span>{formatDisplayDate(post.date, "short")}</span>
+                    {post.tags && post.tags[0] && (
+                      <>
+                        <span className="text-border">·</span>
+                        <span className="truncate">#{post.tags[0]}</span>
+                      </>
+                    )}
+                  </div>
+                  <h4 className="text-xs sm:text-sm font-sans font-medium text-foreground group-hover:underline line-clamp-2 leading-snug">
+                    {post.title}
+                  </h4>
+                </div>
+                <ArrowUpRight className="w-3.5 h-3.5 text-on-surface-variant group-hover:text-foreground flex-shrink-0 mt-0.5" />
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Footer link to view full journal */}
       <div className="pt-8 border-t border-border/80 flex items-center justify-between">
         <span className="text-xs font-mono text-on-surface-variant">

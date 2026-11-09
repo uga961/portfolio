@@ -208,7 +208,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       const bMatches = b.tags.filter((t) => post.tags.includes(t)).length;
       return bMatches - aMatches;
     })
-    .slice(0, 2);
+    .slice(0, 4);
 
   const tocItems = extractTableOfContents(post.content);
 

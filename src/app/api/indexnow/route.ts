@@ -1,19 +1,25 @@
 import { NextResponse } from "next/server";
+import { getAllPosts } from "@/lib/posts";
 
 const INDEXNOW_KEY = "2f8745c1a89b4f99a071de8463990b76";
 const HOST = "www.ugandhar.in";
 
-const URL_LIST = [
-  `https://${HOST}`,
-  `https://${HOST}/resume`,
-];
-
 export async function GET() {
+  const posts = getAllPosts(false);
+  const postUrls = posts.map((p) => `https://${HOST}/blog/posts/${p.slug}`);
+
+  const urlList = [
+    `https://${HOST}`,
+    `https://${HOST}/blog`,
+    `https://${HOST}/resume`,
+    ...postUrls,
+  ];
+
   const payload = {
     host: HOST,
     key: INDEXNOW_KEY,
     keyLocation: `https://${HOST}/${INDEXNOW_KEY}.txt`,
-    urlList: URL_LIST,
+    urlList,
   };
 
   try {
@@ -30,8 +36,8 @@ export async function GET() {
       status: response.status,
       statusText: response.statusText,
       host: HOST,
-      submittedUrls: URL_LIST.length,
-      urls: URL_LIST,
+      submittedUrls: urlList.length,
+      urls: urlList,
     });
   } catch (error: unknown) {
     const message = error instanceof Error ? error.message : "Unknown error";

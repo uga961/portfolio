@@ -61,6 +61,9 @@ export function HeroBanner({ totalPosts }: { totalPosts: number }) {
             <p>
               In-depth essays, post-mortems, and engineering walkthroughs exploring data science pipelines, embedded firmware, Linux kernel internals, and native desktop utilities.
             </p>
+            <p className="text-xs sm:text-sm text-on-surface-variant/90 font-sans">
+              Authored by <span className="font-semibold text-foreground">Ugandhar Vaddi</span> (Associate Data Scientist at Tredence). Topics span hands-on telemetry removal with ADB, GNOME Wayland desktop styling on Fedora, McKinsey interview reflections, currency quality control investigations, and Python data analysis masterclasses.
+            </p>
           </div>
 
           {/* Direct Actions */}

@@ -15,7 +15,9 @@ import { ArrowRight } from "lucide-react";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Ugandhar Vaddi Blog | Technical Journal & Systems Architecture",
+  title: {
+    absolute: "Ugandhar Vaddi Blog | Technical Journal & Systems Architecture",
+  },
   description:
     "Official blog and engineering journal by Ugandhar Vaddi. Long-form essays on data manipulation workflows, systems architectures, technical interviews, performance engineering, and open-source tooling.",
   keywords: [
@@ -252,7 +254,7 @@ export default function BlogIndexPage() {
             </span>
           </div>
 
-          <ArticleList posts={posts} postsPerPage={6} />
+          <ArticleList posts={posts} postsPerPage={12} />
         </section>
       </main>
 
