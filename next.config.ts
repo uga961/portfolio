@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
     ],
   },
   images: {
+    contentDispositionType: "inline",
     formats: ["image/avif", "image/webp"],
     deviceSizes: [360, 480, 640, 750, 828, 1080, 1200],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
@@ -172,15 +173,6 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/_next/static/media/:path*",
-        headers: [
-          {
-            key: "X-Robots-Tag",
-            value: "noindex, nofollow",
-          },
-        ],
-      },
-      {
         source: "/feed.xml",
         headers: [
           {
@@ -208,7 +200,7 @@ const nextConfig: NextConfig = {
       },
       {
         source:
-          "/((?!api|_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|icon-sm.png|Logo.png|sitemap.xml|robots.txt|feed.xml|manifest.webmanifest|llms.txt|ai-catalog.json|BingSiteAuth.xml|2f8745c1a89b4f99a071de8463990b76.txt).*)",
+          "/((?!api|_next|avatar|social|favicon.ico|manifest.webmanifest|sitemap.xml|robots.txt|feed.xml|llms.txt|ai-catalog.json|BingSiteAuth.xml|2f8745c1a89b4f99a071de8463990b76.txt|.*\\.(?:jpg|jpeg|gif|png|webp|avif|ico|svg|woff|woff2|ttf|eot|css|js|map|txt|xml)$).*)",
         headers: [
           {
             key: "X-Content-Type-Options",
@@ -216,7 +208,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "X-Frame-Options",
-            value: "DENY",
+            value: "SAMEORIGIN",
           },
           {
             key: "X-XSS-Protection",

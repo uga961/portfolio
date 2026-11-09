@@ -35,6 +35,14 @@ export function ActivitySection() {
   });
 
   useEffect(() => {
+    // Avoid real-time API polling during search engine crawler runs
+    if (
+      typeof navigator !== "undefined" &&
+      /googlebot|bingbot|crawler|spider|robot|crawling/i.test(navigator.userAgent)
+    ) {
+      return;
+    }
+
     let mounted = true;
     const fetchNowPlaying = async () => {
       try {

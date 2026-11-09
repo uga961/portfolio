@@ -22,6 +22,7 @@ const newsreader = Newsreader({
   subsets: ["latin"],
   style: ["normal", "italic"],
   display: "swap",
+  preload: false,
 });
 
 export const viewport: Viewport = {
