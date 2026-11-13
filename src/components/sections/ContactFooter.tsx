@@ -107,7 +107,7 @@ export function ContactFooter() {
               <span className="text-[10px] uppercase tracking-wider text-foreground/70 font-semibold block">
                 Availability
               </span>
-              <div className="break-words">Associate Data Scientist at Tredence (Nov 2026)</div>
+              <div className="break-words">Associate Data Scientist at Tredence (Nov 2026 – Present)</div>
               <div className="break-words">Open for technical discourse &amp; research dialogues</div>
             </div>
           </div>

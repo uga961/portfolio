@@ -81,7 +81,7 @@ export function ActivitySection() {
       <div className="flex items-center justify-between border-b border-border/80 pb-3 text-xs font-mono text-on-surface-variant">
         <div className="flex items-center gap-2 sm:gap-3 truncate">
           <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">
-            INDEX 002
+            INDEX 008
           </span>
           <span className="text-border flex-shrink-0">/</span>
           <span className="truncate">CURRENTLY CRAFTING &amp; GROOVING</span>

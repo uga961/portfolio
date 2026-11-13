@@ -14,7 +14,7 @@ export function ExperienceSection() {
       {/* Editorial Header */}
       <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3 truncate">
-          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 003</span>
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 002</span>
           <span className="text-border flex-shrink-0">/</span>
           <span className="truncate">CHRONOLOGICAL RECORD</span>
         </div>
@@ -51,6 +51,11 @@ export function ExperienceSection() {
                 {exp.isIncoming ? (
                   <span className="inline-block text-[10px] uppercase font-semibold text-foreground bg-surface-subtle border border-border/80 px-2 py-0.5 rounded-[2px] tracking-wider">
                     Joining Soon
+                  </span>
+                ) : exp.isCurrent ? (
+                  <span className="inline-flex items-center gap-1.5 text-[10px] uppercase font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    Current Role
                   </span>
                 ) : (
                   <span className="inline-block text-[10px] uppercase text-on-surface-variant tracking-wider">

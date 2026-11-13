@@ -10,7 +10,7 @@ export function MediaSection() {
       {/* Editorial Header */}
       <div className="border-b border-border/80 pb-4 text-xs font-mono text-on-surface-variant flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3 truncate">
-          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 008</span>
+          <span className="text-foreground font-semibold uppercase tracking-wider flex-shrink-0">INDEX 007</span>
           <span className="text-border flex-shrink-0">/</span>
           <span className="truncate">TECHNICAL WORKSHOPS</span>
         </div>

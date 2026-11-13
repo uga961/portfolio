@@ -38,6 +38,7 @@ export interface Experience {
   skills: string[];
   repoUrl?: string;
   isIncoming?: boolean;
+  isCurrent?: boolean;
 }
 
 export interface Education {
@@ -166,13 +167,13 @@ export const EXPERIENCES: Experience[] = [
   {
     company: "Tredence Analytics Solutions",
     role: "Associate Data Scientist",
-    period: "Nov 2026 (Joining Soon)",
+    period: "Nov 2026 – Present",
     location: "Chennai, India",
     type: "Full-time",
     team: "Analytics & Applied AI",
-    isIncoming: true,
+    isCurrent: true,
     description:
-      "Incoming Associate Data Scientist (Analyst L1) focusing on enterprise data science, end-to-end predictive modeling, and scalable analytics solutions.",
+      "Associate Data Scientist (Analyst L1) focusing on enterprise data science, end-to-end predictive modeling, and scalable analytics solutions.",
     bullets: [
       "Appointed as Analyst-Level L1 / Associate Data Scientist at Tredence Analytics Solutions.",
       "Developing applied machine learning pipelines and statistical analytics solutions for enterprise clients.",

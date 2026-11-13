@@ -89,12 +89,6 @@ export default async function Home() {
             className="hidden md:flex items-center gap-5 text-xs font-mono text-on-surface-variant"
           >
             <a
-              href="#activity"
-              className="hover:text-foreground hover:underline transition-colors touch-manipulation"
-            >
-              Focus
-            </a>
-            <a
               href="#experience"
               className="hover:text-foreground hover:underline transition-colors touch-manipulation"
             >
@@ -130,6 +124,12 @@ export default async function Home() {
             >
               Tutorials
             </a>
+            <a
+              href="#activity"
+              className="hover:text-foreground hover:underline transition-colors touch-manipulation"
+            >
+              Focus
+            </a>
             <div className="w-[1px] h-3.5 bg-border/80 flex-shrink-0" />
             <Link
               href="/blog"
@@ -148,13 +148,13 @@ export default async function Home() {
 
       {/* Main Sections */}
       <HeroSection />
-      <ActivitySection />
       <ExperienceSection />
       <EducationSection />
       <ProjectsSection />
       <SkillsSection />
       <WritingSection initialPosts={posts} />
       <MediaSection />
+      <ActivitySection />
       <ContactFooter />
 
       {/* Quick Navigation Dock */}

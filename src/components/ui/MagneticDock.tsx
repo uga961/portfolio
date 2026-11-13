@@ -30,11 +30,11 @@ interface MagneticDockProps {
 export function MagneticDock({ className, items }: MagneticDockProps) {
   const defaultItems: DockItem[] = [
     { label: "Top", href: "#hero", icon: <Home className="w-3.5 h-3.5" /> },
-    { label: "Focus", href: "#activity", icon: <Code2 className="w-3.5 h-3.5" /> },
     { label: "Experience", href: "#experience", icon: <Briefcase className="w-3.5 h-3.5" /> },
     { label: "Education", href: "#education", icon: <GraduationCap className="w-3.5 h-3.5" /> },
     { label: "Work", href: "#projects", icon: <FolderGit2 className="w-3.5 h-3.5" /> },
     { label: "Journal", href: "#writing", icon: <BookOpen className="w-3.5 h-3.5" /> },
+    { label: "Focus", href: "#activity", icon: <Code2 className="w-3.5 h-3.5" /> },
     { label: "Contact", href: "#contact", icon: <Mail className="w-3.5 h-3.5" /> },
   ];
 

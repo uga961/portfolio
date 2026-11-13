@@ -93,9 +93,9 @@ export function ResumeStatusCard() {
             <div className="p-3 rounded-[3px] border border-border/70 bg-surface/50 space-y-1">
               <div className="flex items-center justify-between text-foreground font-semibold">
                 <span>Associate Data Scientist</span>
-                <span className="text-[11px] text-on-surface-variant">Jun 2026 – Present</span>
+                <span className="text-[11px] text-on-surface-variant">Nov 2026 – Present</span>
               </div>
-              <div className="text-[11px] text-on-surface-variant">Tredence Analytics Solutions · Bengaluru, India</div>
+              <div className="text-[11px] text-on-surface-variant">Tredence Analytics Solutions · Chennai, India</div>
               <p className="text-xs font-sans text-foreground/80 pt-0.5">Enterprise machine learning models, predictive pipelines, and automated intelligence systems.</p>
             </div>
 
