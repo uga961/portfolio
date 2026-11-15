@@ -193,7 +193,7 @@ export const EXPERIENCES: Experience[] = [
     period: "Nov 2025 – Jun 2026",
     location: "Chennai, India (On-site)",
     type: "Internship",
-    team: "Cleansheets & DtV Lab",
+    team: "Ops. Cleansheet",
     description:
       "Executed cost engineering, should-cost modeling, and supplier research while developing Cleansheet AI tools and manufacturing cost models for global manufacturing, electrical, and pharma clients.",
     bullets: [

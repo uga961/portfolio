@@ -2,7 +2,15 @@
 
 import React from "react";
 import Link from "next/link";
-import { ArrowLeft, Mail, CheckCircle2, BookOpen, Briefcase, GraduationCap, Code2 } from "lucide-react";
+import {
+  ArrowLeft,
+  Mail,
+  CheckCircle2,
+  BookOpen,
+  Briefcase,
+  GraduationCap,
+  Code2,
+} from "lucide-react";
 import { FaLinkedin, FaGithub } from "react-icons/fa6";
 import { PERSONAL_INFO, SOCIAL_LINKS } from "@/data/portfolio";
 
@@ -59,7 +67,9 @@ export function ResumeStatusCard() {
       <div className="relative z-10 max-w-xl w-full rounded-[4px] border border-border/90 bg-surface p-6 sm:p-8 space-y-6 shadow-subtle">
         {/* Editorial Index */}
         <div className="border-b border-border/80 pb-3 text-xs font-mono text-on-surface-variant flex items-center justify-between">
-          <span className="text-foreground font-semibold uppercase tracking-wider">CAREER RECORD</span>
+          <span className="text-foreground font-semibold uppercase tracking-wider">
+            CAREER RECORD
+          </span>
           <span>INDEX RECORD · 2026</span>
         </div>
 
@@ -78,7 +88,18 @@ export function ResumeStatusCard() {
           <div className="flex items-start gap-2.5">
             <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
             <div>
-              <span className="font-semibold text-foreground">Current Status:</span> I am happily committed to my role at <span className="font-medium text-foreground">Tredence Analytics Solutions</span> and am <span className="font-semibold text-foreground">not actively seeking new employment opportunities</span>.
+              <span className="font-semibold text-foreground">
+                Current Status:
+              </span>{" "}
+              I am happily committed to my role at{" "}
+              <span className="font-medium text-foreground">
+                Tredence Analytics Solutions
+              </span>{" "}
+              and am{" "}
+              <span className="font-semibold text-foreground">
+                not actively seeking new employment opportunities
+              </span>
+              .
             </div>
           </div>
         </div>
@@ -93,28 +114,51 @@ export function ResumeStatusCard() {
             <div className="p-3 rounded-[3px] border border-border/70 bg-surface/50 space-y-1">
               <div className="flex items-center justify-between text-foreground font-semibold">
                 <span>Associate Data Scientist</span>
-                <span className="text-[11px] text-on-surface-variant">Nov 2026 – Present</span>
+                <span className="text-[11px] text-on-surface-variant">
+                  Nov 2026 – Present
+                </span>
               </div>
-              <div className="text-[11px] text-on-surface-variant">Tredence Analytics Solutions · Chennai, India</div>
-              <p className="text-xs font-sans text-foreground/80 pt-0.5">Enterprise machine learning models, predictive pipelines, and automated intelligence systems.</p>
+              <div className="text-[11px] text-on-surface-variant">
+                Tredence Analytics Solutions · Chennai, India
+              </div>
+              <p className="text-xs font-sans text-foreground/80 pt-0.5">
+                Enterprise machine learning models, predictive pipelines, and
+                automated intelligence systems.
+              </p>
             </div>
 
             <div className="p-3 rounded-[3px] border border-border/70 bg-surface/50 space-y-1">
               <div className="flex items-center justify-between text-foreground font-semibold">
-                <span>Research &amp; Insights Intern (Cleansheets &amp; DtV Lab)</span>
-                <span className="text-[11px] text-on-surface-variant">Nov 2025 – Jun 2026</span>
+                <span>Research &amp; Insights Intern (Ops. Cleansheet)</span>
+                <span className="text-[11px] text-on-surface-variant">
+                  Nov 2025 – Jun 2026
+                </span>
               </div>
-              <div className="text-[11px] text-on-surface-variant">McKinsey &amp; Company · Chennai, India</div>
-              <p className="text-xs font-sans text-foreground/80 pt-0.5">Cost engineering, should-cost modeling, BoM creation, Datamyne component benchmarking, and PCB manufacturing models across manufacturing, electrical, and pharma sectors. Developed and applied Cleansheet AI tools (Draw2Spec, SpecMap).</p>
+              <div className="text-[11px] text-on-surface-variant">
+                McKinsey &amp; Company · Chennai, India
+              </div>
+              <p className="text-xs font-sans text-foreground/80 pt-0.5">
+                Cost engineering, should-cost modeling, BoM creation, Datamyne
+                component benchmarking, and PCB manufacturing models across
+                manufacturing, electrical, and pharma sectors. Developed and
+                applied Cleansheet AI tools (Draw2Spec, SpecMap).
+              </p>
             </div>
 
             <div className="p-3 rounded-[3px] border border-border/70 bg-surface/50 space-y-1">
               <div className="flex items-center justify-between text-foreground font-semibold">
                 <span>DotNet Full Stack Engineer Apprentice</span>
-                <span className="text-[11px] text-on-surface-variant">Jun 2025 – Aug 2025</span>
+                <span className="text-[11px] text-on-surface-variant">
+                  Jun 2025 – Aug 2025
+                </span>
               </div>
-              <div className="text-[11px] text-on-surface-variant">Cognizant · Chennai, India</div>
-              <p className="text-xs font-sans text-foreground/80 pt-0.5">Enterprise REST APIs and backend microservices using .NET Core and Entity Framework.</p>
+              <div className="text-[11px] text-on-surface-variant">
+                Cognizant · Chennai, India
+              </div>
+              <p className="text-xs font-sans text-foreground/80 pt-0.5">
+                Enterprise REST APIs and backend microservices using .NET Core
+                and Entity Framework.
+              </p>
             </div>
           </div>
         </div>
@@ -128,11 +172,20 @@ export function ResumeStatusCard() {
           <div className="p-3 rounded-[3px] border border-border/70 bg-surface/50 space-y-1 text-xs font-mono">
             <div className="flex items-center justify-between text-foreground font-semibold">
               <span>Sathyabama Institute of Science and Technology</span>
-              <span className="text-[11px] text-on-surface-variant">2022 – 2026</span>
+              <span className="text-[11px] text-on-surface-variant">
+                2022 – 2026
+              </span>
             </div>
-            <div className="text-[11px] text-on-surface-variant">B.E. in Electronics &amp; Communication Engineering · 9.0 CGPA</div>
+            <div className="text-[11px] text-on-surface-variant">
+              B.E. in Electronics &amp; Communication Engineering · 9.0 CGPA
+            </div>
             <div className="text-xs font-sans text-foreground/80 pt-1">
-              Honors: <span className="text-amber-600 dark:text-amber-400 font-medium">Star of Excellence Award</span> (presented by Abhishek Sharma) · Chairperson for ISTE Student Chapter · President of Science Club.
+              Honors:{" "}
+              <span className="text-amber-600 dark:text-amber-400 font-medium">
+                Star of Excellence Award
+              </span>{" "}
+              (presented by Abhishek Sharma) · Chairperson for ISTE Student
+              Chapter · President of Science Club.
             </div>
           </div>
         </div>
@@ -144,8 +197,20 @@ export function ResumeStatusCard() {
             <span>Core Disciplines</span>
           </div>
           <div className="flex flex-wrap gap-1.5 text-[11px] font-mono text-on-surface-variant">
-            {["Machine Learning", "Predictive Analytics", "Python", "SQL", "VLSI CAD", "SRAM Architectures", "C/C++", ".NET Core"].map((s) => (
-              <span key={s} className="px-2 py-0.5 rounded-[2px] bg-surface-subtle border border-border/80">
+            {[
+              "Machine Learning",
+              "Predictive Analytics",
+              "Python",
+              "SQL",
+              "VLSI CAD",
+              "SRAM Architectures",
+              "C/C++",
+              ".NET Core",
+            ].map((s) => (
+              <span
+                key={s}
+                className="px-2 py-0.5 rounded-[2px] bg-surface-subtle border border-border/80"
+              >
                 {s}
               </span>
             ))}

@@ -26,7 +26,7 @@ Ugandhar Vaddi is an Associate Data Scientist at Tredence Analytics Solutions, b
 
 ## Professional Experience
 - **Tredence Analytics Solutions** (Nov 2026 – Present): Associate Data Scientist in Analytics & Applied AI, engineering enterprise predictive machine learning models and automated data intelligence pipelines.
-- **McKinsey & Company** (Nov 2025 – Jun 2026): Research and Insights Intern with Cleansheets & DtV Lab. Executed cost engineering, should-cost analysis, BoM creation, supplier research, and Datamyne component benchmarking across manufacturing, electrical, and pharma clients. Developed PCB manufacturing cost models for the Cleansheet tool and deployed Cleansheet AI tools (Draw2Spec, SpecMap).
+- **McKinsey & Company** (Nov 2025 – Jun 2026): Research and Insights Intern with Ops. Cleansheet. Executed cost engineering, should-cost analysis, BoM creation, supplier research, and Datamyne component benchmarking across manufacturing, electrical, and pharma clients. Developed PCB manufacturing cost models for the Cleansheet tool and deployed Cleansheet AI tools (Draw2Spec, SpecMap).
 - **Cognizant** (Jun 2025 – Aug 2025): DotNet Full Stack Engineer Apprentice, engineering C# microservices, REST APIs, and database migrations.
 
 ## Featured Engineering Projects
