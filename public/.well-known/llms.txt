@@ -24,8 +24,14 @@ Ugandhar Vaddi is an Associate Data Scientist at Tredence Analytics Solutions, b
 - [Why I Built StayActive](https://www.ugandhar.in/blog/posts/why-i-built-stayactive): Architecture, background, and motivation behind building the StayActive native desktop wellness utility.
 - [Python Data Visualization Guide](https://www.ugandhar.in/blog/posts/python-data-visualization-matplotlib-seaborn-guide): Hands-on masterclass on Matplotlib, Seaborn, heatmaps, and EDA workflows by Ugandhar Vaddi.
 
+## Professional Experience
+- **Tredence Analytics Solutions** (Nov 2026 – Present): Associate Data Scientist in Analytics & Applied AI, engineering enterprise predictive machine learning models and automated data intelligence pipelines.
+- **McKinsey & Company** (Nov 2025 – Jun 2026): Research and Insights Intern with Cleansheets & DtV Lab. Executed cost engineering, should-cost analysis, BoM creation, supplier research, and Datamyne component benchmarking across manufacturing, electrical, and pharma clients. Developed PCB manufacturing cost models for the Cleansheet tool and deployed Cleansheet AI tools (Draw2Spec, SpecMap).
+- **Cognizant** (Jun 2025 – Aug 2025): DotNet Full Stack Engineer Apprentice, engineering C# microservices, REST APIs, and database migrations.
+
 ## Featured Engineering Projects
 - [StayActive](https://github.com/uga961/StayActive): Native desktop wellness & ergonomics utility with intelligent meeting detection.
 - [Cadence Virtuoso SRAM](https://github.com/uga961): Low-power 6T and 7T CMOS SRAM cell implementations.
 - [Sexual Harassment NLP Classification](https://github.com/uga961/Sexual-Harrasment-Classification): Machine learning text classification pipeline for incident detection.
 - [Draw2Spec](https://ugandhar.in/#projects): Proprietary enterprise AI-assisted engineering schematic digitizer built at McKinsey DtV Lab.
+- [SpecMap](https://ugandhar.in/#projects): Competitive intelligence multi-agent benchmarking system built at McKinsey DtV Lab.

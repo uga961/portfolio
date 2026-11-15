@@ -101,11 +101,11 @@ export function ResumeStatusCard() {
 
             <div className="p-3 rounded-[3px] border border-border/70 bg-surface/50 space-y-1">
               <div className="flex items-center justify-between text-foreground font-semibold">
-                <span>Research &amp; Insights Intern (Ops.Cleansheet)</span>
+                <span>Research &amp; Insights Intern (Cleansheets &amp; DtV Lab)</span>
                 <span className="text-[11px] text-on-surface-variant">Nov 2025 – Jun 2026</span>
               </div>
               <div className="text-[11px] text-on-surface-variant">McKinsey &amp; Company · Chennai, India</div>
-              <p className="text-xs font-sans text-foreground/80 pt-0.5">Automated analytics pipelines and generative AI schematic extraction at DtV Lab.</p>
+              <p className="text-xs font-sans text-foreground/80 pt-0.5">Cost engineering, should-cost modeling, BoM creation, Datamyne component benchmarking, and PCB manufacturing models across manufacturing, electrical, and pharma sectors. Developed and applied Cleansheet AI tools (Draw2Spec, SpecMap).</p>
             </div>
 
             <div className="p-3 rounded-[3px] border border-border/70 bg-surface/50 space-y-1">
